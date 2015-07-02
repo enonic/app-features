@@ -105,27 +105,6 @@
             <string name="mimeType">image/jpeg</string>
             <long name="size">683675</long>
         </property-set>
-        <property-set name="attachment">
-            <string name="name">Dictyophorus_spumans01_small.jpg</string>
-            <string name="label">small</string>
-            <binaryReference name="binary">Dictyophorus_spumans01_small.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">14265</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Dictyophorus_spumans01_medium.jpg</string>
-            <string name="label">medium</string>
-            <binaryReference name="binary">Dictyophorus_spumans01_medium.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">49574</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Dictyophorus_spumans01_large.jpg</string>
-            <string name="label">large</string>
-            <binaryReference name="binary">Dictyophorus_spumans01_large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">163285</long>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

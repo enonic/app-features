@@ -98,34 +98,6 @@
             <string name="mimeType">image/jpeg</string>
             <long name="size">7670152</long>
         </property-set>
-        <property-set name="attachment">
-            <string name="name">Elephant_(Loxodonta_Africana)_04_small.jpg</string>
-            <string name="label">small</string>
-            <binaryReference name="binary">Elephant_(Loxodonta_Africana)_04_small.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">12958</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Elephant_(Loxodonta_Africana)_04_medium.jpg</string>
-            <string name="label">medium</string>
-            <binaryReference name="binary">Elephant_(Loxodonta_Africana)_04_medium.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">46903</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Elephant_(Loxodonta_Africana)_04_large.jpg</string>
-            <string name="label">large</string>
-            <binaryReference name="binary">Elephant_(Loxodonta_Africana)_04_large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">164522</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Elephant_(Loxodonta_Africana)_04_extra-large.jpg</string>
-            <string name="label">extra-large</string>
-            <binaryReference name="binary">Elephant_(Loxodonta_Africana)_04_extra-large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">539960</long>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

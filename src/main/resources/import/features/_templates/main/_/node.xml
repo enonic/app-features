@@ -14,7 +14,7 @@
             <string name="supports">portal:site</string>
         </property-set>
         <property-set name="page">
-            <string name="controller">com.enonic.xp.modules.features:main</string>
+            <string name="controller">com.enonic.app.features:main</string>
             <property-set name="region">
                 <string name="name">main</string>
             </property-set>

@@ -5,7 +5,7 @@
   <data>
     <boolean name="valid">true</boolean>
     <string name="displayName">Paris</string>
-    <string name="type">com.enonic.xp.modules.features:city</string>
+    <string name="type">com.enonic.app.features:city</string>
     <dateTime name="createdTime">2015-05-12T07:40:17.189Z</dateTime>
     <string name="creator">user:system:su</string>
     <string name="modifier">user:system:su</string>

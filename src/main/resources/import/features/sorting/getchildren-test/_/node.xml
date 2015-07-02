@@ -5,7 +5,7 @@
   <data>
     <boolean name="valid">true</boolean>
     <string name="displayName">getChildren-test</string>
-    <string name="type">com.enonic.xp.modules.features:landing-page</string>
+    <string name="type">com.enonic.app.features:landing-page</string>
     <string name="owner">user:system:su</string>
     <dateTime name="modifiedTime">2015-06-04T12:04:52.450Z</dateTime>
     <string name="modifier">user:system:su</string>
@@ -29,7 +29,7 @@
           <string name="type">PartComponent</string>
           <property-set name="PartComponent">
             <string name="name">Sort test</string>
-            <string name="template">com.enonic.xp.modules.features:sort</string>
+            <string name="template">com.enonic.app.features:sort</string>
             <property-set name="config"/>
           </property-set>
         </property-set>

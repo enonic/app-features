@@ -164,34 +164,6 @@
             <string name="mimeType">image/jpeg</string>
             <long name="size">10709855</long>
         </property-set>
-        <property-set name="attachment">
-            <string name="name">Cahabón_River_Semuc_Champey_Guatemala_small.jpg</string>
-            <string name="label">small</string>
-            <binaryReference name="binary">Cahabón_River_Semuc_Champey_Guatemala_small.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">24217</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Cahabón_River_Semuc_Champey_Guatemala_medium.jpg</string>
-            <string name="label">medium</string>
-            <binaryReference name="binary">Cahabón_River_Semuc_Champey_Guatemala_medium.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">94293</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Cahabón_River_Semuc_Champey_Guatemala_large.jpg</string>
-            <string name="label">large</string>
-            <binaryReference name="binary">Cahabón_River_Semuc_Champey_Guatemala_large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">363595</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Cahabón_River_Semuc_Champey_Guatemala_extra-large.jpg</string>
-            <string name="label">extra-large</string>
-            <binaryReference name="binary">Cahabón_River_Semuc_Champey_Guatemala_extra-large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">1248953</long>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

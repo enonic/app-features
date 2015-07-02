@@ -162,34 +162,6 @@
             <string name="mimeType">image/jpeg</string>
             <long name="size">4541342</long>
         </property-set>
-        <property-set name="attachment">
-            <string name="name">Gasa_Dzong_small.jpg</string>
-            <string name="label">small</string>
-            <binaryReference name="binary">Gasa_Dzong_small.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">10739</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Gasa_Dzong_medium.jpg</string>
-            <string name="label">medium</string>
-            <binaryReference name="binary">Gasa_Dzong_medium.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">37104</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Gasa_Dzong_large.jpg</string>
-            <string name="label">large</string>
-            <binaryReference name="binary">Gasa_Dzong_large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">139726</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Gasa_Dzong_extra-large.jpg</string>
-            <string name="label">extra-large</string>
-            <binaryReference name="binary">Gasa_Dzong_extra-large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">504379</long>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

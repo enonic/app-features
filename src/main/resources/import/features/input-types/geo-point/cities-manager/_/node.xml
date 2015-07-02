@@ -5,7 +5,7 @@
   <data>
     <boolean name="valid">true</boolean>
     <string name="displayName">Cities Manager</string>
-    <string name="type">com.enonic.xp.modules.features:landing-page</string>
+    <string name="type">com.enonic.app.features:landing-page</string>
     <string name="owner">user:system:su</string>
     <dateTime name="modifiedTime">2015-05-28T12:52:12.896Z</dateTime>
     <string name="modifier">user:system:su</string>
@@ -29,7 +29,7 @@
           <string name="type">PartComponent</string>
           <property-set name="PartComponent">
             <string name="name">City Creation</string>
-            <string name="template">com.enonic.xp.modules.features:city-creation</string>
+            <string name="template">com.enonic.app.features:city-creation</string>
             <property-set name="config"/>
           </property-set>
         </property-set>
@@ -37,7 +37,7 @@
           <string name="type">PartComponent</string>
           <property-set name="PartComponent">
             <string name="name">Cities List</string>
-            <string name="template">com.enonic.xp.modules.features:cities-list</string>
+            <string name="template">com.enonic.app.features:cities-list</string>
             <property-set name="config"/>
           </property-set>
         </property-set>

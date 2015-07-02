@@ -131,34 +131,6 @@
             <string name="mimeType">image/jpeg</string>
             <long name="size">3226043</long>
         </property-set>
-        <property-set name="attachment">
-            <string name="name">Cape_Agulhas_P1040396_small.JPG</string>
-            <string name="label">small</string>
-            <binaryReference name="binary">Cape_Agulhas_P1040396_small.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">7714</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Cape_Agulhas_P1040396_medium.JPG</string>
-            <string name="label">medium</string>
-            <binaryReference name="binary">Cape_Agulhas_P1040396_medium.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">24624</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Cape_Agulhas_P1040396_large.JPG</string>
-            <string name="label">large</string>
-            <binaryReference name="binary">Cape_Agulhas_P1040396_large.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">84845</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Cape_Agulhas_P1040396_extra-large.JPG</string>
-            <string name="label">extra-large</string>
-            <binaryReference name="binary">Cape_Agulhas_P1040396_extra-large.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">293991</long>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

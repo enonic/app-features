@@ -22,7 +22,7 @@
             </property-set>
         </property-set>
         <property-set name="page">
-            <string name="controller">com.enonic.xp.modules.features:no-regions</string>
+            <string name="controller">com.enonic.app.features:no-regions</string>
             <property-set isNull="true" name="region"/>
             <property-set name="config"/>
         </property-set>

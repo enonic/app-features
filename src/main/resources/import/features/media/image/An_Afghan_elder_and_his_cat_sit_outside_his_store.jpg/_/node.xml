@@ -180,34 +180,6 @@
             <string name="mimeType">image/jpeg</string>
             <long name="size">5695589</long>
         </property-set>
-        <property-set name="attachment">
-            <string name="name">An_Afghan_elder_and_his_cat_sit_outside_his_store_small.jpg</string>
-            <string name="label">small</string>
-            <binaryReference name="binary">An_Afghan_elder_and_his_cat_sit_outside_his_store_small.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">20628</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">An_Afghan_elder_and_his_cat_sit_outside_his_store_medium.jpg</string>
-            <string name="label">medium</string>
-            <binaryReference name="binary">An_Afghan_elder_and_his_cat_sit_outside_his_store_medium.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">63965</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">An_Afghan_elder_and_his_cat_sit_outside_his_store_large.jpg</string>
-            <string name="label">large</string>
-            <binaryReference name="binary">An_Afghan_elder_and_his_cat_sit_outside_his_store_large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">200539</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">An_Afghan_elder_and_his_cat_sit_outside_his_store_extra-large.jpg</string>
-            <string name="label">extra-large</string>
-            <binaryReference name="binary">An_Afghan_elder_and_his_cat_sit_outside_his_store_extra-large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">620569</long>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

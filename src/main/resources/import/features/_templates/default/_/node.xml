@@ -12,7 +12,7 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-05-28T12:12:09.665Z</dateTime>
         <property-set name="data">
-            <string name="supports">com.enonic.xp.modules.features:landing-page</string>
+            <string name="supports">com.enonic.app.features:landing-page</string>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-xp-modules-features">
@@ -23,7 +23,7 @@
             </property-set>
         </property-set>
         <property-set name="page">
-            <string name="controller">com.enonic.xp.modules.features:default</string>
+            <string name="controller">com.enonic.app.features:default</string>
             <reference isNull="true" name="template"/>
             <property-set name="region">
                 <string name="name">main</string>

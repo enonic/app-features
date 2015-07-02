@@ -146,34 +146,6 @@
             <string name="mimeType">image/jpeg</string>
             <long name="size">9194532</long>
         </property-set>
-        <property-set name="attachment">
-            <string name="name">Castillo_de_Petrela_Petrela_Albania_2014-04-17_DD_09_small.JPG</string>
-            <string name="label">small</string>
-            <binaryReference name="binary">Castillo_de_Petrela_Petrela_Albania_2014-04-17_DD_09_small.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">23237</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Castillo_de_Petrela_Petrela_Albania_2014-04-17_DD_09_medium.JPG</string>
-            <string name="label">medium</string>
-            <binaryReference name="binary">Castillo_de_Petrela_Petrela_Albania_2014-04-17_DD_09_medium.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">85121</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Castillo_de_Petrela_Petrela_Albania_2014-04-17_DD_09_large.JPG</string>
-            <string name="label">large</string>
-            <binaryReference name="binary">Castillo_de_Petrela_Petrela_Albania_2014-04-17_DD_09_large.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">312594</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Castillo_de_Petrela_Petrela_Albania_2014-04-17_DD_09_extra-large.JPG</string>
-            <string name="label">extra-large</string>
-            <binaryReference name="binary">Castillo_de_Petrela_Petrela_Albania_2014-04-17_DD_09_extra-large.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">1058514</long>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

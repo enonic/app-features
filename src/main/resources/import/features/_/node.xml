@@ -13,7 +13,7 @@
         <property-set name="data">
             <string name="description">The Features Site.</string>
             <property-set name="siteConfig">
-                <string name="moduleKey">com.enonic.xp.modules.features</string>
+                <string name="moduleKey">com.enonic.app.features</string>
                 <property-set name="config"/>
             </property-set>
         </property-set>

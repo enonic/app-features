@@ -65,34 +65,6 @@
             <string name="mimeType">image/jpeg</string>
             <long name="size">514829</long>
         </property-set>
-        <property-set name="attachment">
-            <string name="name">Chichicastenango-004-denoised_small.jpg</string>
-            <string name="label">small</string>
-            <binaryReference name="binary">Chichicastenango-004-denoised_small.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">11660</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Chichicastenango-004-denoised_medium.jpg</string>
-            <string name="label">medium</string>
-            <binaryReference name="binary">Chichicastenango-004-denoised_medium.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">36883</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Chichicastenango-004-denoised_large.jpg</string>
-            <string name="label">large</string>
-            <binaryReference name="binary">Chichicastenango-004-denoised_large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">115138</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Chichicastenango-004-denoised_extra-large.jpg</string>
-            <string name="label">extra-large</string>
-            <binaryReference name="binary">Chichicastenango-004-denoised_extra-large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">339032</long>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

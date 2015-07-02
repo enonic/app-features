@@ -110,34 +110,6 @@
             <string name="mimeType">image/jpeg</string>
             <long name="size">4098572</long>
         </property-set>
-        <property-set name="attachment">
-            <string name="name">GT22CU_Tren_a_las_nubes_small.JPG</string>
-            <string name="label">small</string>
-            <binaryReference name="binary">GT22CU_Tren_a_las_nubes_small.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">15095</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">GT22CU_Tren_a_las_nubes_medium.JPG</string>
-            <string name="label">medium</string>
-            <binaryReference name="binary">GT22CU_Tren_a_las_nubes_medium.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">54870</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">GT22CU_Tren_a_las_nubes_large.JPG</string>
-            <string name="label">large</string>
-            <binaryReference name="binary">GT22CU_Tren_a_las_nubes_large.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">198082</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">GT22CU_Tren_a_las_nubes_extra-large.JPG</string>
-            <string name="label">extra-large</string>
-            <binaryReference name="binary">GT22CU_Tren_a_las_nubes_extra-large.JPG</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">649432</long>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

@@ -5,7 +5,7 @@
   <data>
     <boolean name="valid">true</boolean>
     <string name="displayName">create 2</string>
-    <string name="type">com.enonic.xp.modules.features:blog</string>
+    <string name="type">com.enonic.app.features:blog</string>
     <string name="owner">user:system:su</string>
     <dateTime name="modifiedTime">2015-06-04T12:07:33.466Z</dateTime>
     <string name="modifier">user:system:su</string>

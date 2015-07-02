@@ -118,27 +118,6 @@
             <string name="mimeType">image/jpeg</string>
             <long name="size">1491470</long>
         </property-set>
-        <property-set name="attachment">
-            <string name="name">Adansonia_grandidieri_02_small.jpg</string>
-            <string name="label">small</string>
-            <binaryReference name="binary">Adansonia_grandidieri_02_small.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">12915</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Adansonia_grandidieri_02_medium.jpg</string>
-            <string name="label">medium</string>
-            <binaryReference name="binary">Adansonia_grandidieri_02_medium.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">43774</long>
-        </property-set>
-        <property-set name="attachment">
-            <string name="name">Adansonia_grandidieri_02_large.jpg</string>
-            <string name="label">large</string>
-            <binaryReference name="binary">Adansonia_grandidieri_02_large.jpg</binaryReference>
-            <string name="mimeType">image/jpeg</string>
-            <long name="size">147477</long>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>
