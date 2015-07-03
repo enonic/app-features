@@ -14,7 +14,7 @@
             <string name="supports">base:folder</string>
         </property-set>
         <property-set name="meta">
-            <property-set name="com-enonic-xp-modules-features">
+            <property-set name="com-enonic-app-features">
                 <property-set name="menu-item">
                     <boolean name="menuItem">false</boolean>
                     <string name="menuName"/>

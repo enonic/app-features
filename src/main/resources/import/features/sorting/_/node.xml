@@ -13,7 +13,7 @@
     <dateTime name="createdTime">2015-06-04T12:03:52.413Z</dateTime>
     <property-set name="data"/>
     <property-set name="x">
-      <property-set name="com-enonic-xp-modules-features">
+      <property-set name="com-enonic-app-features">
         <property-set name="menu-item">
           <boolean name="menuItem">false</boolean>
           <string name="menuName"/>

@@ -15,7 +15,7 @@
             <string name="supports">com.enonic.app.features:landing-page</string>
         </property-set>
         <property-set name="x">
-            <property-set name="com-enonic-xp-modules-features">
+            <property-set name="com-enonic-app-features">
                 <property-set name="menu-item">
                     <boolean name="menuItem">false</boolean>
                     <string name="menuName"/>
