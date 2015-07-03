@@ -12,7 +12,7 @@
     <dateTime name="modifiedTime">2015-05-12T07:40:17.189Z</dateTime>
     <string name="owner">user:system:su</string>
     <property-set name="data">
-      <geoPoint name="cityLocation">59.95,10.75</geoPoint>
+      <geoPoint name="cityLocation">59.91,10.75</geoPoint>
     </property-set>
   </data>
   <indexConfigs>

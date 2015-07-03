@@ -6,10 +6,9 @@ var service = require('service.js').service;
 var citiesLocation = "/features/Cities"
 
 function handleGet(req) {
-    var cityServiceUrl = service.serviceUrl('city');
-
     var cityName;
     var cityLocation;
+
     if (req.params.city) {
         var city = getCity(req.params.city);
         if (city) {
@@ -18,29 +17,41 @@ function handleGet(req) {
         }
     }
 
-    cityName = cityName || "City Name";
-    cityLocation = cityLocation || "lat,lon";
-
+    cityLocation = cityLocation || "NaN,NaN";
     var coordinates = cityLocation.split(",");
 
+    var cityMapGreeting = "Select city!";
+    if (cityName) {
+        cityMapGreeting = "City map of " + cityName;
+    }
+
     var params = {
-        cityServiceUrl: cityServiceUrl,
-        defaultCityName: cityName,
         cityLatitude: coordinates[0],
-        cityLongitude: coordinates[1]
+        cityLongitude: coordinates[1],
+        cityMapGreeting: cityMapGreeting
     };
+
     var body = thymeleaf.render(view, params);
 
     function getCity(cityName) {
-        var result = contentSvc.get({
-            key: citiesLocation + '/' + cityName
-        });
-        return result;
+        var result = contentSvc.query({
+                count: 1,
+                contentTypes: [
+                    module.name + ':city'
+                ],
+                "query": "_name = '" + cityName + "'"
+            }
+        );
+
+        return result.contents[0];
     }
 
     return {
         contentType: 'text/html',
-        body: body
+        body: body,
+        "pageContributions" : {
+            headEnd: "<style>#map-canvas {width: 600px; height: 400px; }</style><script src='https://maps.googleapis.com/maps/api/js'></script>"
+        }
     };
 }
 
