@@ -52,12 +52,20 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-07-07T11:43:07.521Z</dateTime>
         <property-set name="data">
-            <htmlPart name="htmlarea_text">&lt;form&gt;&lt;input checked="checked" name="sex" type="radio" value="male" /&gt;Male &lt;br /&gt; &lt;input name="sex" type="radio" value="female" /&gt;Female&lt;/form&gt;</htmlPart>
-            <htmlPart name="htmlarea_text2">&lt;form action="action_page.php"&gt;First name:&lt;br /&gt; &lt;input type="text" value="Mickey" /&gt; &lt;br /&gt; Last name:&lt;br /&gt; &lt;input name="lastname" type="text" value="Mouse" /&gt; &lt;br /&gt;&lt;br /&gt; &lt;input type="submit" value="Submit" /&gt;&lt;/form&gt;
-&lt;p&gt;The first name will not be submitted, because the input element does not have a name attribute.&lt;/p&gt;</htmlPart>
-            <htmlPart name="htmlarea_text3">&lt;form action="action_page.php"&gt;&lt;fieldset&gt;&lt;legend&gt;Personal information:&lt;/legend&gt; First name:&lt;br /&gt; &lt;input name="firstname" type="text" value="Mickey" /&gt; &lt;br /&gt; Last name:&lt;br /&gt; &lt;input name="lastname" type="text" value="Mouse" /&gt; &lt;br /&gt;&lt;br /&gt; &lt;input type="submit" value="Submit" /&gt;&lt;/fieldset&gt;&lt;/form&gt;</htmlPart>
-            <htmlPart name="htmlarea_text3">&lt;h2&gt;Send e-mail to someone@example.com:&lt;/h2&gt;
-&lt;form action="MAILTO:someone@example.com" enctype="text/plain" method="post"&gt;Name:&lt;br /&gt; &lt;input name="name" type="text" value="your name" /&gt;&lt;br /&gt; E-mail:&lt;br /&gt; &lt;input name="mail" type="text" value="your email" /&gt;&lt;br /&gt; Comment:&lt;br /&gt; &lt;input name="comment" size="50" type="text" value="your comment" /&gt;&lt;br /&gt;&lt;br /&gt; &lt;input type="submit" value="Send" /&gt; &lt;input type="reset" value="Reset" /&gt;&lt;/form&gt;</htmlPart>
+            <string name="htmlarea_text">&lt;form&gt;&lt;input checked="checked" name="sex" type="radio" value="male" /&gt;Male &lt;br /&gt;
+                &lt;input name="sex" type="radio" value="female" /&gt;Female&lt;/form&gt;</string>
+            <string name="htmlarea_text2">&lt;form action="action_page.php"&gt;First name:&lt;br /&gt; &lt;input type="text" value="Mickey"
+                /&gt; &lt;br /&gt; Last name:&lt;br /&gt; &lt;input name="lastname" type="text" value="Mouse" /&gt; &lt;br /&gt;&lt;br /&gt;
+                &lt;input type="submit" value="Submit" /&gt;&lt;/form&gt;
+                &lt;p&gt;The first name will not be submitted, because the input element does not have a name attribute.&lt;/p&gt;</string>
+            <string name="htmlarea_text3">&lt;form action="action_page.php"&gt;&lt;fieldset&gt;&lt;legend&gt;Personal information:&lt;/legend&gt;
+                First name:&lt;br /&gt; &lt;input name="firstname" type="text" value="Mickey" /&gt; &lt;br /&gt; Last name:&lt;br /&gt; &lt;input
+                name="lastname" type="text" value="Mouse" /&gt; &lt;br /&gt;&lt;br /&gt; &lt;input type="submit" value="Submit" /&gt;&lt;/fieldset&gt;&lt;/form&gt;</string>
+            <string name="htmlarea_text3">&lt;h2&gt;Send e-mail to someone@example.com:&lt;/h2&gt;
+                &lt;form action="MAILTO:someone@example.com" enctype="text/plain" method="post"&gt;Name:&lt;br /&gt; &lt;input name="name"
+                type="text" value="your name" /&gt;&lt;br /&gt; E-mail:&lt;br /&gt; &lt;input name="mail" type="text" value="your email" /&gt;&lt;br
+                /&gt; Comment:&lt;br /&gt; &lt;input name="comment" size="50" type="text" value="your comment" /&gt;&lt;br /&gt;&lt;br /&gt;
+                &lt;input type="submit" value="Send" /&gt; &lt;input type="reset" value="Reset" /&gt;&lt;/form&gt;</string>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-app-features">

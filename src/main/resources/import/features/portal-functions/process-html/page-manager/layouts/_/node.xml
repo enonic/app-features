@@ -52,7 +52,7 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-07-07T11:45:42.928Z</dateTime>
         <property-set name="data">
-            <htmlPart name="htmlarea_text">&lt;p&gt;&lt;/p&gt;
+            <string name="htmlarea_text">&lt;p&gt;&lt;/p&gt;
 &lt;div id="header"&gt;
 &lt;h1&gt;City Gallery&lt;/h1&gt;
 &lt;/div&gt;
@@ -62,8 +62,8 @@
 &lt;p&gt;London is the capital city of England. It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.&lt;/p&gt;
 &lt;p&gt;Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id="footer"&gt;Copyright &amp;copy; W3Schools.com&lt;/div&gt;</htmlPart>
-            <htmlPart name="htmlarea_text2">&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+                &lt;div id="footer"&gt;Copyright &amp;copy; W3Schools.com&lt;/div&gt;</string>
+            <string name="htmlarea_text2">&lt;p&gt;&amp;nbsp;&lt;/p&gt;
 &lt;header&gt;
 &lt;h1&gt;City Gallery by semantic elements&lt;/h1&gt;
 &lt;/header&gt;&lt;nav&gt;London&lt;br /&gt; Paris&lt;br /&gt; Tokyo&lt;/nav&gt;
@@ -72,8 +72,8 @@
 &lt;p&gt;London is the capital city of England. It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.&lt;/p&gt;
 &lt;p&gt;Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.&lt;/p&gt;
 &lt;/section&gt;
-&lt;footer&gt;Copyright &amp;copy; W3Schools.com&lt;/footer&gt;</htmlPart>
-            <htmlPart name="htmlarea_text3">&lt;p&gt;empty&lt;/p&gt;</htmlPart>
+                &lt;footer&gt;Copyright &amp;copy; W3Schools.com&lt;/footer&gt;</string>
+            <string name="htmlarea_text3">&lt;p&gt;empty&lt;/p&gt;</string>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-app-features">

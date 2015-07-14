@@ -52,14 +52,14 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-07-07T11:40:29.969Z</dateTime>
         <property-set name="data">
-            <htmlPart name="htmlarea_text">&lt;h2&gt;A Description List&lt;/h2&gt;
+            <string name="htmlarea_text">&lt;h2&gt;A Description List&lt;/h2&gt;
 &lt;dl&gt;
 &lt;dt&gt;Coffee&lt;/dt&gt;
 &lt;dd&gt;- black hot drink&lt;/dd&gt;
 &lt;dt&gt;Milk&lt;/dt&gt;
 &lt;dd&gt;- white cold drink&lt;/dd&gt;
-&lt;/dl&gt;</htmlPart>
-            <htmlPart name="htmlarea_text2">&lt;h2&gt;A Nested List&lt;/h2&gt;
+                &lt;/dl&gt;</string>
+            <string name="htmlarea_text2">&lt;h2&gt;A Nested List&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Coffee&lt;/li&gt;
 &lt;li&gt;Tea
@@ -70,8 +70,8 @@
 &lt;/li&gt;
 &lt;li&gt;Milk&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;</htmlPart>
-            <htmlPart name="htmlarea_text2">&lt;h2&gt;A Nested List&lt;/h2&gt;
+                &lt;p&gt;&amp;nbsp;&lt;/p&gt;</string>
+            <string name="htmlarea_text2">&lt;h2&gt;A Nested List&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Coffee&lt;/li&gt;
 &lt;li&gt;Tea
@@ -86,23 +86,23 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Milk&lt;/li&gt;
-&lt;/ul&gt;</htmlPart>
-            <htmlPart name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
+                &lt;/ul&gt;</string>
+            <string name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
 &lt;h2&gt;Horizontal List&lt;/h2&gt;
 &lt;ul id="menu"&gt;
 &lt;li&gt;&lt;a href="../../../../../../html/default.asp"&gt;HTML&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="../../../../../../css/default.asp"&gt;CSS&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="../../../../../../js/default.asp"&gt;JavaScript&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="../../../../../../php/default.asp"&gt;PHP&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</htmlPart>
-            <htmlPart name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
+                &lt;/ul&gt;</string>
+            <string name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
 &lt;h2&gt;Horizontal List&lt;/h2&gt;
 &lt;ul id="menu"&gt;
 &lt;li&gt;HTML&lt;/li&gt;
 &lt;li&gt;CSS&lt;/li&gt;
 &lt;li&gt;JavaScript&lt;/li&gt;
 &lt;li&gt;PHP&lt;/li&gt;
-&lt;/ul&gt;</htmlPart>
+                &lt;/ul&gt;</string>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-app-features">

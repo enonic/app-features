@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
   <x-data mixin="menu-item"/>
-  <config/>
+  <config>
+
+
+  </config>
 </site>

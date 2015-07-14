@@ -52,7 +52,7 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-07-07T11:48:51.393Z</dateTime>
         <property-set name="data">
-            <htmlPart name="htmlarea_text">&lt;p&gt;&lt;/p&gt;
+            <string name="htmlarea_text">&lt;p&gt;&lt;/p&gt;
 &lt;table style="width: 100%;"&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
@@ -72,8 +72,8 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Try to change the border-spacing to 5px.&lt;/p&gt;</htmlPart>
-            <htmlPart name="htmlarea_text2">&lt;p&gt;&lt;/p&gt;
+                &lt;p&gt;Try to change the border-spacing to 5px.&lt;/p&gt;</string>
+            <string name="htmlarea_text2">&lt;p&gt;&lt;/p&gt;
 &lt;table&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
@@ -107,8 +107,8 @@
 &lt;td&gt;HELLO&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</htmlPart>
-            <htmlPart name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
+                &lt;/table&gt;</string>
+            <string name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
 &lt;table style="width: 100%;"&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
@@ -132,8 +132,8 @@
 &lt;td&gt;80&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</htmlPart>
-            <htmlPart name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
+                &lt;/table&gt;</string>
+            <string name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
 &lt;table&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
@@ -182,7 +182,7 @@
 &lt;td&gt;80&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</htmlPart>
+                &lt;/table&gt;</string>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-app-features">
