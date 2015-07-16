@@ -58,9 +58,6 @@ function handleGet(req) {
         );
     }
 
-    log.info(cities.constructor === Array);
-    log.info(Array.isArray(cities));
-
     var content = portal.getContent();
     var currentPage = portal.pageUrl({
         path: content._path
