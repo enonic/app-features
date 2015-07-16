@@ -12,7 +12,8 @@ function handleGet(req) {
     var postUrl = stk.serviceUrl("content", {});
 
     if (req.params && req.params.contentId) {
-        stk.log("Loading content with Id " + req.parameters.contentId);
+        stk.log("Loading content with Id " + req.params.contentId);
+        stk.log("Loading content with Id " + req.params.contentId);
 
         var result = contentSvc.get({
             key: req.params.contentId
@@ -28,8 +29,13 @@ function handleGet(req) {
         content: content,
         postUrl: postUrl
     };
+	
+	var body = thymeleaf.render(view, params);
 
-    return thymeleaf.render(view, params);
+    return {
+        contentType: 'text/html',
+        body: body
+    };
 }
 
 exports.get = handleGet;
