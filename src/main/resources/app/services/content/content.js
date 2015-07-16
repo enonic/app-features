@@ -38,7 +38,19 @@ function handlePost(req) {
         contentType: module.name + ':all-input-types',
         data: {
             myDateTime: contentData.datetime,
-            myCheckbox: contentData.checkbox
+            myCheckbox: contentData.checkbox,
+            myGeoPoint: contentData.geopoint,
+            myDate: contentData.date,
+            myComboBox: contentData.combobox,
+            myDouble: contentData.double,
+            myHtmlArea: contentData.htmlarea,
+            myLong: contentData.long,
+            myTextLine: contentData.textline,
+            myTextArea: contentData.textarea,
+            myTime: contentData.time,
+            myXml: contentData.xml,
+            myTag: contentData.tag,
+            myRadioButtons: contentData.radio
         }
     });
 

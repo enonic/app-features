@@ -2,5 +2,7 @@
 <page>
   <display-name>All input types</display-name>
   <config />
-  <regions />
+  <regions>
+    <region name="main"/>
+  </regions>
 </page>
