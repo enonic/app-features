@@ -13,6 +13,7 @@
     <string name="owner">user:system:su</string>
     <property-set name="data">
       <geoPoint name="cityLocation">59.91,10.75</geoPoint>
+      <boolean name="officeLocation">true</boolean>
     </property-set>
   </data>
   <indexConfigs>

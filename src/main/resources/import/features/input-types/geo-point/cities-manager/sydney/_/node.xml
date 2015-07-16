@@ -1,19 +1,18 @@
 <node xmlns="urn:enonic:xp:export:1.0">
-  <id>6544caf7-aa63-4ee0-8551-56b1cfe41128</id>
+  <id>aae3febd-8aa9-a863-1e59-d98693ac1f93</id>
   <childOrder>modifiedtime DESC</childOrder>
   <nodeType>content</nodeType>
   <data>
     <boolean name="valid">true</boolean>
-    <string name="displayName">Bogotá</string>
+    <string name="displayName">Sydney</string>
     <string name="type">com.enonic.app.features:city</string>
-    <dateTime name="createdTime">2015-05-12T07:43:01.810Z</dateTime>
+    <dateTime name="createdTime">2015-05-12T07:40:17.190Z</dateTime>
     <string name="creator">user:system:su</string>
     <string name="modifier">user:system:su</string>
-    <dateTime name="modifiedTime">2015-05-12T07:43:01.810Z</dateTime>
+    <dateTime name="modifiedTime">2015-05-12T07:40:17.190Z</dateTime>
     <string name="owner">user:system:su</string>
     <property-set name="data">
-      <geoPoint name="cityLocation">4.6,-74.1</geoPoint>
-      <boolean name="officeLocation">true</boolean>
+      <geoPoint name="cityLocation">-33.86,151.21</geoPoint>
     </property-set>
   </data>
   <indexConfigs>
