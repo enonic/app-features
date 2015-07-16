@@ -1,8 +1,8 @@
 <node>
-    <id>1f515b3e-c8d5-4cca-af93-fc85453ec009</id>
+    <id>01384621-d294-4f9a-9271-60043810c390</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-07-07T11:42:46.311Z</timestamp>
+    <timestamp>2015-07-16T11:01:17.414Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="user:system:anonymous">
@@ -44,65 +44,145 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Lists</string>
+        <string name="displayName">Tables</string>
         <string name="type">com.enonic.app.features:tinymce</string>
         <string name="owner">user:system:su</string>
-        <dateTime name="modifiedTime">2015-07-07T11:42:46.309Z</dateTime>
+        <dateTime name="modifiedTime">2015-07-07T11:50:13.478Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-07-07T11:40:29.969Z</dateTime>
+        <dateTime name="createdTime">2015-07-07T11:48:51.393Z</dateTime>
         <property-set name="data">
-            <string name="htmlarea_text">&lt;h2&gt;A Description List&lt;/h2&gt;
-&lt;dl&gt;
-&lt;dt&gt;Coffee&lt;/dt&gt;
-&lt;dd&gt;- black hot drink&lt;/dd&gt;
-&lt;dt&gt;Milk&lt;/dt&gt;
-&lt;dd&gt;- white cold drink&lt;/dd&gt;
-                &lt;/dl&gt;</string>
-            <string name="htmlarea_text2">&lt;h2&gt;A Nested List&lt;/h2&gt;
+            <string name="htmlarea_text">&lt;p&gt;&lt;/p&gt;
+&lt;table style="width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Jill&lt;/td&gt;
+&lt;td&gt;Smith&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Eve&lt;/td&gt;
+&lt;td&gt;Jackson&lt;/td&gt;
+&lt;td&gt;94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;John&lt;/td&gt;
+&lt;td&gt;Doe&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+                &lt;p&gt;Try to change the border-spacing to 5px.&lt;/p&gt;</string>
+            <string name="htmlarea_text2">&lt;p&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;p&gt;This is a paragraph&lt;/p&gt;
+&lt;p&gt;This is another paragraph&lt;/p&gt;
+&lt;/td&gt;
+&lt;td&gt;This cell contains a table:
+&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;This cell contains a list
 &lt;ul&gt;
-&lt;li&gt;Coffee&lt;/li&gt;
-&lt;li&gt;Tea
-&lt;ul&gt;
-&lt;li&gt;Black tea&lt;/li&gt;
-&lt;li&gt;Green tea&lt;/li&gt;
+&lt;li&gt;apples&lt;/li&gt;
+&lt;li&gt;bananas&lt;/li&gt;
+&lt;li&gt;pineapples&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Milk&lt;/li&gt;
-&lt;/ul&gt;
-                &lt;p&gt;&amp;nbsp;&lt;/p&gt;</string>
-            <string name="htmlarea_text2">&lt;h2&gt;A Nested List&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Coffee&lt;/li&gt;
-&lt;li&gt;Tea
-&lt;ul&gt;
-&lt;li&gt;Black tea&lt;/li&gt;
-&lt;li&gt;Green tea
-&lt;ul&gt;
-&lt;li&gt;China&lt;/li&gt;
-&lt;li&gt;Africa&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Milk&lt;/li&gt;
-                &lt;/ul&gt;</string>
+&lt;/td&gt;
+&lt;td&gt;HELLO&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+                &lt;/table&gt;</string>
             <string name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
-&lt;h2&gt;Horizontal List&lt;/h2&gt;
-&lt;ul id="menu"&gt;
-&lt;li&gt;&lt;a href="../../../../../../html/default.asp"&gt;HTML&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="../../../../../../css/default.asp"&gt;CSS&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="../../../../../../js/default.asp"&gt;JavaScript&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="../../../../../../php/default.asp"&gt;PHP&lt;/a&gt;&lt;/li&gt;
-                &lt;/ul&gt;</string>
+&lt;table style="width: 100%;"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;First Name&lt;/th&gt;
+&lt;th&gt;Last Name&lt;/th&gt;
+&lt;th&gt;Points&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Jill&lt;/td&gt;
+&lt;td&gt;Smith&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Eve&lt;/td&gt;
+&lt;td&gt;Jackson&lt;/td&gt;
+&lt;td&gt;94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;John&lt;/td&gt;
+&lt;td&gt;Doe&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+                &lt;/table&gt;</string>
             <string name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
-&lt;h2&gt;Horizontal List&lt;/h2&gt;
-&lt;ul id="menu"&gt;
-&lt;li&gt;HTML&lt;/li&gt;
-&lt;li&gt;CSS&lt;/li&gt;
-&lt;li&gt;JavaScript&lt;/li&gt;
-&lt;li&gt;PHP&lt;/li&gt;
-                &lt;/ul&gt;</string>
+&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;First Name&lt;/th&gt;
+&lt;th&gt;Last Name&lt;/th&gt;
+&lt;th&gt;Points&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Jill&lt;/td&gt;
+&lt;td&gt;Smith&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Eve&lt;/td&gt;
+&lt;td&gt;Jackson&lt;/td&gt;
+&lt;td&gt;94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;John&lt;/td&gt;
+&lt;td&gt;Doe&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;table class="names"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;th&gt;First Name&lt;/th&gt;
+&lt;th&gt;Last Name&lt;/th&gt;
+&lt;th&gt;Points&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Jill&lt;/td&gt;
+&lt;td&gt;Smith&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Eve&lt;/td&gt;
+&lt;td&gt;Jackson&lt;/td&gt;
+&lt;td&gt;94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;John&lt;/td&gt;
+&lt;td&gt;Doe&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+                &lt;/table&gt;</string>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-app-features">

@@ -1,0 +1,31 @@
+<div>
+    <div>
+        <h2>Processed Html Pages</h2>
+    </div>
+    <div data-th-if="${htmlPages}" data-th-remove="tag">
+        <div>
+            <select id="htmlPagesSelect" onchange="location = this.options[this.selectedIndex].value;">
+                <div data-th-if="${currentHtmlPage}" data-th-remove="tag">
+                    <option data-th-text="${currentHtmlPage.displayName}" selected="selected"/>
+                </div>
+                <div data-th-if="${!currentHtmlPage}" data-th-remove="tag">
+                    <option data-th-text="Select" selected="selected"/>
+                </div>
+
+                <option data-th-each="htmlPage : ${htmlPages}" data-th-value="${currentPage} + '?htmlPage=' + ${htmlPage._name}"
+                        data-th-text="${htmlPage.displayName}"/>
+            </select>
+        </div>
+        <div data-th-if="${currentHtmlPage}" data-th-remove="tag">
+            <h1>Example 1:</h1>
+            <div data-th-remove="tag" data-th-utext="${portal.processHtml({'_value=' + currentHtmlPage.data.htmlarea_text})}"></div>
+            <h1>Example 2:</h1>
+            <div data-th-remove="tag" data-th-utext="${portal.processHtml({'_value=' + currentHtmlPage.data.htmlarea_text2})}"></div>
+            <h1>Example 3:</h1>
+            <div data-th-remove="tag" data-th-utext="${portal.processHtml({'_value=' + currentHtmlPage.data.htmlarea_text3})}"></div>
+        </div>
+    </div>
+</div>
+
+
+

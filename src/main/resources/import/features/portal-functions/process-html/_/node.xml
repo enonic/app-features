@@ -1,9 +1,9 @@
 <node>
-    <id>5c97d9d9-4beb-46d1-b38d-b79df66fcb10</id>
+    <id>2c598890-f109-4a14-8337-0c76d7284158</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-07-07T11:24:15.158Z</timestamp>
-    <inheritPermissions>true</inheritPermissions>
+    <timestamp>2015-07-16T11:01:17.262Z</timestamp>
+    <inheritPermissions>false</inheritPermissions>
     <permissions>
         <principal key="user:system:anonymous">
             <allow type="array">
@@ -44,19 +44,34 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">process-html</string>
-        <string name="type">base:folder</string>
+        <string name="displayName">Process Html</string>
+        <string name="type">com.enonic.app.features:landing-page</string>
         <string name="owner">user:system:su</string>
-        <dateTime name="modifiedTime">2015-07-07T11:24:14.991Z</dateTime>
+        <dateTime name="modifiedTime">2015-07-16T11:00:49.533Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-07-07T11:24:06.379Z</dateTime>
+        <dateTime name="createdTime">2015-07-07T11:24:21.483Z</dateTime>
         <property-set name="data"/>
         <property-set name="x">
             <property-set name="com-enonic-app-features">
                 <property-set name="menu-item">
                     <boolean name="menuItem">false</boolean>
                     <string isNull="true" name="menuName"/>
+                </property-set>
+            </property-set>
+        </property-set>
+        <property-set name="page">
+            <string isNull="true" name="controller"/>
+            <reference name="template">f5e15d67-4c9b-49d4-9d74-93adc65d9074</reference>
+            <property-set name="region">
+                <string name="name">main</string>
+                <property-set name="component">
+                    <string name="type">PartComponent</string>
+                    <property-set name="PartComponent">
+                        <string name="name">Process Html Example</string>
+                        <string name="template">com.enonic.app.features:process-html</string>
+                        <property-set name="config"/>
+                    </property-set>
                 </property-set>
             </property-set>
         </property-set>
@@ -80,6 +95,19 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <indexValueProcessors>
+                        <indexValueProcessor>constructor</indexValueProcessor>
+                    </indexValueProcessors>
+                </indexConfig>
+                <path>data.htmlarea_text</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
