@@ -3,7 +3,6 @@ var thymeleaf = require('/lib/xp/thymeleaf');
 var contentSvc = require('/lib/xp/content');
 
 var view = resolve('sort-test.html');
-var service = require('service.js').service;
 
 function handleGet(req) {
 

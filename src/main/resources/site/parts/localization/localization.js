@@ -2,7 +2,6 @@ var portal = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
 var i18n = require('/lib/xp/i18n');
 var view = resolve('localization.html');
-var service = require('service.js').service;
 
 function handleGet(req) {
 
