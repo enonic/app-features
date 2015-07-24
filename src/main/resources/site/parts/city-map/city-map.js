@@ -2,8 +2,6 @@ var thymeleaf = require('/lib/xp/thymeleaf');
 var contentSvc = require('/lib/xp/content');
 
 var view = resolve('city-map.page.html');
-var service = require('service.js').service;
-var citiesLocation = "/features/Cities"
 
 function handleGet(req) {
     var cityName;
