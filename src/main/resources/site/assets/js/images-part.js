@@ -18,16 +18,21 @@ $(function () {
             var container = form.parent().parent();
             var parent = $('.fp-images', container);
 
-            var imageElements = resp.images.map(function (imageUrl) {
+            var imageElements = resp.images.map(function (image) {
                 var figure = $('<figure/>');
-                var img = $('<img />').attr('src', imageUrl);
+                var img = $('<img />').attr('src', image.url);
                 var caption = $('<figcaption/>');
-                var a = $('<a target="_blank"/>').attr('href', imageUrl).text(imageUrl);
-                caption.append(document.createTextNode('URL ')).append(a);
+                var a = $('<a target="_blank"/>').attr('href', image.url).text(image.url);
+                var tab = $('<table><tr></tr></table>');
+                var tr = tab.find('tr');
+                tr.append($('<td/>').text('Source image: '));
+                tr.append($('<td style="border: 1px solid;"/>').text('width='+image.width+' px'));
+                tr.append($('<td style="border: 1px solid;"/>').text('height='+image.height+' px'));
+                tr.append($('<td style="border: 1px solid;"/>').text('size='+image.bytesize+' bytes'));
+                caption.append(document.createTextNode('URL: ')).append(a).append('<br/>').append(tab);
                 figure.append(img).append(caption);
                 return figure;
             });
-
             parent.fadeOut(250, function () {
                 parent.empty().show().append(imageElements);
             });

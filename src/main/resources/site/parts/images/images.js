@@ -37,15 +37,15 @@ var filterOptions = [
 ];
 
 exports.get = function (req) {
-    var imageIds = getImageIds();
-    var imageUrls = [];
-    for (var i = 0; i < imageIds.length; i++) {
-        imageUrls.push(defaultImageUrl(imageIds[i]));
+    var images = getImages(), img;
+    for (var i = 0; i < images.length; i++) {
+        img = images[i];
+        img.url = defaultImageUrl(img.id);
     }
 
     var postUrl = portal.componentUrl({});
     var params = {
-        imageUrls: imageUrls,
+        images: images,
         postUrl: postUrl,
         scaleOptions: scaleOptions,
         filterOptions: filterOptions
@@ -71,43 +71,50 @@ exports.post = function (req) {
     var filter = req.formParams.filter;
     var scale = req.formParams.scale;
 
-    var imageIds = getImageIds();
-    var imageUrls = [];
-    for (var i = 0; i < imageIds.length; i++) {
-        var imageUrl = portal.imageUrl({
-            id: imageIds[i],
+    var images = getImages(), img;
+    for (var i = 0; i < images.length; i++) {
+        img = images[i];
+        img.url = portal.imageUrl({
+            id: img.id,
             scale: scale,
             filter: filter
         });
-        imageUrls.push(imageUrl);
     }
 
     return {
         contentType: 'application/json',
         body: {
-            images: imageUrls
+            images: images
         }
     };
 };
 
-function getImageIds() {
+function getImages() {
     var component = portal.getComponent();
 
     var imageFolderId = component.config.imageFolder;
-    var imageIds = [];
+    var images = [];
     if (imageFolderId) {
         var result = contentSvc.getChildren({
             key: imageFolderId,
             count: 20
         });
+
         for (var i = 0; i < result.contents.length; i++) {
             var child = result.contents[i];
             if (child.type === "media:image") {
-                imageIds.push(child._id);
+                var media = child.x.media || {};
+                var info = media['image-info'] || {};
+                images.push({
+                    id: child._id,
+                    width: info.imageWidth || '?',
+                    height: info.imageHeight || '?',
+                    bytesize: info.bytesize || '?'
+                });
             }
         }
     }
-    return imageIds;
+    return images;
 }
 
 function defaultImageUrl(contentId) {

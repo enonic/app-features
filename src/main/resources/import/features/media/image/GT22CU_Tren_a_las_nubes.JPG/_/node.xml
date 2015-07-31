@@ -11,96 +11,46 @@
         <dateTime name="createdTime">2015-02-11T11:01:56.747Z</dateTime>
         <string name="type">media:image</string>
         <property-set name="data">
-            <string name="media">GT22CU_Tren_a_las_nubes.JPG</string>
-            <string name="mimeType">image/jpeg</string>
-            <property-set name="metadata">
-                <string name="date">2011-07-02T15:16:06</string>
-                <string name="exifVersion">2.21</string>
-                <string name="componentsConfiguration">YCbCr</string>
-                <string name="compressionType">Baseline</string>
-                <string name="thumbnailCompression">JPEG (old-style)</string>
-                <string name="numberOfComponents">3</string>
-                <string name="component2">Cb component: Quantization table 1, Sampling factors 1 horiz/1 vert</string>
-                <string name="focalLength">4.1 mm</string>
-                <string name="component1">Y component: Quantization table 0, Sampling factors 2 horiz/1 vert</string>
-                <string name="ycbcrPositioning">Datum point</string>
-                <string name="tiffResolutionunit">Inch</string>
-                <string name="dateTimeOriginal">2011:06:04 15:53:33</string>
-                <string name="XResolution">180 dots per inch</string>
-                <string name="tiffMake">Panasonic</string>
-                <string name="interoperabilityVersion">1.00</string>
-                <string name="component3">Cr component: Quantization table 1, Sampling factors 1 horiz/1 vert</string>
-                <string name="FNumber">F5.6</string>
-                <string name="focalLength35">26mm</string>
-                <string name="modified">2011-07-02T15:16:06</string>
-                <string name="tiffBitspersample">8</string>
-                <string name="exposureProgram">Program normal</string>
-                <string name="digitalZoomRatio">Digital zoom not used.</string>
-                <string name="fileSource">Digital Still Camera (DSC)</string>
-                <string name="metaCreationDate">2011-06-04T15:53:33</string>
-                <string name="exifFnumber">5.6</string>
-                <string name="exposureTime">1/500 sec</string>
-                <string name="isoSpeedRatings">80</string>
-                <string name="creationDate">2011-06-04T15:53:33</string>
-                <string name="make">Panasonic</string>
-                <string name="meteringMode">Multi-segment</string>
-                <string name="orientation">Right side, top (Rotate 90 CW)</string>
-                <string name="contrast">None</string>
-                <string name="tiffOrientation">1</string>
-                <string name="interoperabilityIndex">Recommended Exif Interoperability Rules (ExifR98)</string>
-                <string name="tiffSoftware">Microsoft Windows Photo Viewer 6.1.7600.16385</string>
-                <string name="exifFocallength">4.1</string>
-                <string name="unknownTag(0xc4a5)">[208 bytes]</string>
-                <string name="thumbnailOffset">14512 bytes</string>
-                <string name="gainControl">None</string>
-                <string name="exifImageHeight">3648 pixels</string>
-                <string name="software">Microsoft Windows Photo Viewer 6.1.7600.16385</string>
-                <string name="tiffYresolution">180.0</string>
-                <string name="YResolution">180 dots per inch</string>
-                <string name="sceneType">Directly photographed image</string>
-                <string name="flashpixVersion">1.00</string>
-                <string name="dataPrecision">8 bits</string>
-                <string name="compressedBitsPerPixel">4 bits/pixel</string>
-                <string name="whiteBalance">Unknown</string>
-                <string name="tiffImagelength">3648</string>
-                <string name="dctermsCreated">2011-06-04T15:53:33</string>
-                <string name="sensingMethod">One-chip color area sensor</string>
-                <string name="dctermsModified">2011-07-02T15:16:06</string>
-                <string name="lastModified">2011-07-02T15:16:06</string>
-                <string name="exifFlash">false</string>
-                <string name="exifExposuretime">0.002</string>
-                <string name="lastSaveDate">2011-07-02T15:16:06</string>
-                <string name="thumbnailLength">4396 bytes</string>
-                <string name="colorSpace">sRGB</string>
-                <string name="unknownTag(0xc6d2)">[64 bytes]</string>
-                <string name="metaSaveDate">2011-07-02T15:16:06</string>
-                <string name="unknownTag(0xea1d)">3792</string>
-                <string name="dateTimeDigitized">2011:06:04 15:53:33</string>
-                <string name="flash">Flash did not fire, auto</string>
-                <string name="contentType">image/jpeg</string>
-                <string name="XParsedBy">org.apache.tika.parser.DefaultParser</string>
-                <string name="resolutionUnits">inch</string>
-                <string name="tiffXresolution">180.0</string>
-                <string name="saturation">None</string>
-                <string name="exifDatetimeoriginal">2011-06-04T15:53:33</string>
-                <string name="dateTime">2011:07:02 15:16:06</string>
-                <string name="exifImageWidth">2432 pixels</string>
-                <string name="imageHeight">3648 pixels</string>
-                <string name="sharpness">None</string>
-                <string name="imageWidth">2432 pixels</string>
-                <string name="resolutionUnit">Inch</string>
-                <string name="unknownTag(0xc6d3)">[128 bytes]</string>
-                <string name="tiffModel">DMC-TZ6</string>
-                <string name="exifIsospeedratings">80</string>
-                <string name="exposureBiasValue">0 EV</string>
-                <string name="maxApertureValue">F3.3</string>
-                <string name="exposureMode">Auto exposure</string>
-                <string name="unknownTag(0xea1c)">[2060 bytes]</string>
-                <string name="sceneCaptureType">Standard</string>
-                <string name="model">DMC-TZ6</string>
-                <string name="customRendered">Normal process</string>
-                <string name="tiffImagewidth">2432</string>
-                <string name="whiteBalanceMode">Auto white balance</string>
+            <property-set name="media">
+                <string name="attachment">GT22CU_Tren_a_las_nubes.JPG</string>
+                <property-set name="focalPoint">
+                    <double name="x">0.5</double>
+                    <double name="y">0.5</double>
+                </property-set>
+            </property-set>
+            <string name="caption"/>
+            <string name="artist"/>
+            <string name="copyright"/>
+            <string name="tags"/>
+        </property-set>
+        <property-set name="x">
+            <property-set name="media">
+                <property-set name="photo-info">
+                    <localDateTime name="date">2011-07-02T15:16:06.000Z</localDateTime>
+                    <string name="focalLength">4.1 mm</string>
+                    <string name="aperture">F5.6</string>
+                    <string name="focalLength35">26mm</string>
+                    <string name="exposureProgram">Program normal</string>
+                    <string name="shutterTime">1/500 sec</string>
+                    <string name="iso">80</string>
+                    <string name="make">Panasonic</string>
+                    <string name="meteringMode">Multi-segment</string>
+                    <string name="orientation">Right side, top (Rotate 90 CW)</string>
+                    <string name="flash">Flash did not fire, auto</string>
+                    <string name="exposureBias">0 EV</string>
+                    <string name="exposureMode">Auto exposure</string>
+                    <string name="model">DMC-TZ6</string>
+                    <string name="whiteBalance">Auto white balance</string>
+                </property-set>
+                <property-set name="image-info">
+                    <string name="fileSource">Digital Still Camera (DSC)</string>
+                    <long name="imageHeight">3648</long>
+                    <string name="colorSpace">sRGB</string>
+                    <string name="contentType">image/jpeg</string>
+                    <long name="imageWidth">2432</long>
+                    <long name="bytesize">4098572</long>
+                    <long name="pixelSize">8871936</long>
+                </property-set>
             </property-set>
         </property-set>
         <property-set name="attachment">
@@ -124,42 +74,45 @@
             <pathIndexConfig>
                 <indexConfig>
                     <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <indexValueProcessors>
+                        <indexValueProcessor>constructor</indexValueProcessor>
+                    </indexValueProcessors>
+                </indexConfig>
+                <path>data.htmlarea_text</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>data.metadata.media</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>false</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>data.metadata</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>false</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>draft</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>false</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
                 <path>attachment</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>x</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -174,17 +127,7 @@
             <pathIndexConfig>
                 <indexConfig>
                     <decideByType>false</decideByType>
-                    <enabled>false</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>form</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>false</enabled>
+                    <enabled>true</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>

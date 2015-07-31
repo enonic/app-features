@@ -34,10 +34,16 @@
     </div>
 
     <div class="fp-images">
-        <figure data-th-each="imageUrl : ${imageUrls}">
-            <img data-th-src="${imageUrl}" src="image"/>
+        <figure data-th-each="image : ${images}">
+            <img data-th-src="${image.url}" src="image"/>
             <figcaption>
-                URL <a data-th-href="${imageUrl}" target="_blank" data-th-text="${imageUrl}"></a>
+                URL: <a data-th-href="${image.url}" target="_blank" data-th-text="${image.url}"></a><br/>
+                <table><tr>
+                    <td>Source image:</td>
+                    <td style="border: 1px solid;" data-th-text="${'width='+image.width+' px'}"></td>
+                    <td style="border: 1px solid;" data-th-text="${'height='+image.height+' px'}"></td>
+                    <td style="border: 1px solid;" data-th-text="${'size=' + image.bytesize + ' bytes'}"></td>
+                </tr></table>
             </figcaption>
         </figure>
     </div>

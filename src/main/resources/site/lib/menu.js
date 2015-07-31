@@ -15,8 +15,7 @@ function isMenuItem(content) {
         return false;
     }
     var menuItemMetadata = extraDataModule['menu-item'] || {};
-    var menuItemValue = menuItemMetadata.menuItem;
-    return menuItemValue;
+    return menuItemMetadata.menuItem;
 }
 
 function getChildMenuItems(parentContent, levels) {
@@ -35,8 +34,6 @@ function getChildMenuItems(parentContent, levels) {
         }
     });
 
-    log.info('getChildMenuItems: \r\n %s', JSON.stringify(childMenuItems, null, 4));
-    
     return childMenuItems;
 }
 
@@ -63,9 +60,6 @@ exports.getSiteMenu = function (levels) {
     if (!site) {
         return [];
     }
-    var menuItems = getChildMenuItems(site, levels);
 
-    log.info('Site Menu: \r\n %s', JSON.stringify(menuItems, null, 4));
-
-    return menuItems;
+    return getChildMenuItems(site, levels);
 };
