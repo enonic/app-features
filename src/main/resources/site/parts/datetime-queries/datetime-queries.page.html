@@ -1,0 +1,41 @@
+<div>
+    <div>
+        <h2>dateTime queries</h2>
+    </div>
+
+    <h3>With TZ</h3>
+    <h4>Future datetimes</h4>
+
+    <div data-th-if="${futureWithTZ}" data-th-remove="tag">
+        <ol>
+            <li data-th-each="hit : ${futureWithTZ}" data-th-text="${hit.displayName}"></li>
+        </ol>
+    </div>
+
+    <h4>Past datetimes</h4>
+
+    <div data-th-if="${pastWithTZ}" data-th-remove="tag">
+        <ol>
+            <li data-th-each="hit : ${pastWithTZ}" data-th-text="${hit.displayName}"></li>
+        </ol>
+    </div>
+
+    <h3>Without TZ</h3>
+    <h4>Future datetimes</h4>
+
+    <div data-th-if="${futureNoTZ}" data-th-remove="tag">
+        <ol>
+            <li data-th-each="hit : ${futureNoTZ}" data-th-text="${hit.displayName}"></li>
+        </ol>
+    </div>
+
+    <h4>Past datetimes</h4>
+
+    <div data-th-if="${pastNoTZ}" data-th-remove="tag">
+        <ol>
+            <li data-th-each="hit : ${pastNoTZ}" data-th-text="${hit.displayName}"></li>
+        </ol>
+    </div>
+
+
+</div>
