@@ -1,100 +1,140 @@
-<node xmlns="urn:enonic:xp:export:1.0">
-  <id>aae3febd-8aa9-a863-1e59-d98693ac1f93</id>
-  <childOrder>modifiedtime DESC</childOrder>
-  <nodeType>content</nodeType>
-  <data>
-    <boolean name="valid">true</boolean>
-    <string name="displayName">Sydney</string>
-    <string name="type">com.enonic.app.features:city</string>
-    <dateTime name="createdTime">2015-05-12T07:40:17.190Z</dateTime>
-    <string name="creator">user:system:su</string>
-    <string name="modifier">user:system:su</string>
-    <dateTime name="modifiedTime">2015-05-12T07:40:17.190Z</dateTime>
-    <string name="owner">user:system:su</string>
-    <property-set name="data">
-      <geoPoint name="cityLocation">-33.86,151.21</geoPoint>
-    </property-set>
-  </data>
-  <indexConfigs>
-    <analyzer>document_index_default</analyzer>
-    <defaultConfig>
-      <decideByType>true</decideByType>
-      <enabled>true</enabled>
-      <nGram>false</nGram>
-      <fulltext>false</fulltext>
-      <includeInAllText>false</includeInAllText>
-    </defaultConfig>
-    <pathIndexConfigs>
-      <pathIndexConfig>
-        <indexConfig>
-          <decideByType>false</decideByType>
-          <enabled>false</enabled>
-          <nGram>false</nGram>
-          <fulltext>false</fulltext>
-          <includeInAllText>false</includeInAllText>
-        </indexConfig>
-        <path>page.regions</path>
-      </pathIndexConfig>
-      <pathIndexConfig>
-        <indexConfig>
-          <decideByType>false</decideByType>
-          <enabled>true</enabled>
-          <nGram>false</nGram>
-          <fulltext>false</fulltext>
-          <includeInAllText>false</includeInAllText>
-        </indexConfig>
-        <path>attachment</path>
-      </pathIndexConfig>
-      <pathIndexConfig>
-        <indexConfig>
-          <decideByType>false</decideByType>
-          <enabled>true</enabled>
-          <nGram>false</nGram>
-          <fulltext>false</fulltext>
-          <includeInAllText>false</includeInAllText>
-        </indexConfig>
-        <path>x</path>
-      </pathIndexConfig>
-      <pathIndexConfig>
-        <indexConfig>
-          <decideByType>true</decideByType>
-          <enabled>true</enabled>
-          <nGram>false</nGram>
-          <fulltext>false</fulltext>
-          <includeInAllText>false</includeInAllText>
-        </indexConfig>
-        <path>data</path>
-      </pathIndexConfig>
-      <pathIndexConfig>
-        <indexConfig>
-          <decideByType>false</decideByType>
-          <enabled>true</enabled>
-          <nGram>false</nGram>
-          <fulltext>false</fulltext>
-          <includeInAllText>false</includeInAllText>
-        </indexConfig>
-        <path>page</path>
-      </pathIndexConfig>
-      <pathIndexConfig>
-        <indexConfig>
-          <decideByType>false</decideByType>
-          <enabled>false</enabled>
-          <nGram>false</nGram>
-          <fulltext>false</fulltext>
-          <includeInAllText>false</includeInAllText>
-        </indexConfig>
-        <path>site</path>
-      </pathIndexConfig>
-      <pathIndexConfig>
-        <indexConfig>
-          <decideByType>false</decideByType>
-          <enabled>true</enabled>
-          <nGram>false</nGram>
-          <fulltext>false</fulltext>
-          <includeInAllText>false</includeInAllText>
-        </indexConfig>
-        <path>type</path>
-      </pathIndexConfig>
-    </pathIndexConfigs>
-  </indexConfigs>
+<node>
+    <id>aae3febd-8aa9-a863-1e59-d98693ac1f93</id>
+    <childOrder>modifiedtime DESC</childOrder>
+    <nodeType>content</nodeType>
+    <timestamp>2015-08-06T12:00:18.921Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
+    <permissions>
+        <principal key="user:system:anonymous">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.authenticated">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
+    <data>
+        <boolean name="valid">true</boolean>
+        <string name="displayName">Sydney</string>
+        <string name="type">com.enonic.app.features:city</string>
+        <dateTime name="createdTime">2015-05-12T07:40:17.190Z</dateTime>
+        <string name="creator">user:system:su</string>
+        <string name="modifier">user:system:su</string>
+        <dateTime name="modifiedTime">2015-05-12T07:40:17.190Z</dateTime>
+        <string name="owner">user:system:su</string>
+        <property-set name="data">
+            <geoPoint name="cityLocation">-33.86,151.21</geoPoint>
+        </property-set>
+    </data>
+    <indexConfigs>
+        <analyzer>document_index_default</analyzer>
+        <defaultConfig>
+            <decideByType>true</decideByType>
+            <enabled>true</enabled>
+            <nGram>false</nGram>
+            <fulltext>false</fulltext>
+            <includeInAllText>false</includeInAllText>
+        </defaultConfig>
+        <pathIndexConfigs>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>x</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>site</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>type</path>
+            </pathIndexConfig>
+        </pathIndexConfigs>
+    </indexConfigs>
 </node>
