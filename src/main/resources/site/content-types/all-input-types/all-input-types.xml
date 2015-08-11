@@ -91,9 +91,6 @@
       <label>Time</label>
       <occurrences minimum="0" maximum="0"/>
     </input>
-    <input name="myXml" type="Xml">
-      <label>Xml</label>
-      <occurrences minimum="0" maximum="0"/>
-    </input>
+
   </form>
 </content-type>
