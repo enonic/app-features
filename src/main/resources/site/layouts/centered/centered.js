@@ -5,11 +5,8 @@ exports.get = function (req) {
     var component = portal.getComponent();
 
     return {
-        body: thymeleaf.render( {
-            view: resolve('centered.html'),
-            model: {
-                centerRegion: component.regions["center"]
-            }
+        body: thymeleaf.render(resolve('./centered.html'), {
+            centerRegion: component.regions["center"]
         })
     };
 
