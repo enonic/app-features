@@ -8,20 +8,14 @@
       <indexed>true</indexed>
       <occurrences minimum="0" maximum="1"/>
       <config>
-        <options>
-          <option>
-            <label>option A</label>
-            <value>o1</value>
-          </option>
-          <option>
-            <label>option B</label>
-            <value>o2</value>
-          </option>
-          <option>
-            <label>option C</label>
-            <value>o3</value>
-          </option>
-        </options>
+        <property name="option.value">o1</property>
+        <property name="option.label">option A</property>
+
+        <property name="option.value">o2</property>
+        <property name="option.label">option B</property>
+
+        <property name="option.value">o3</property>
+        <property name="option.label">option C</property>
       </config>
     </input>
     <input name="combobox_min1_max1" type="ComboBox">
@@ -29,20 +23,14 @@
       <indexed>true</indexed>
       <occurrences minimum="1" maximum="1"/>
       <config>
-        <options>
-          <option>
-            <label>option A</label>
-            <value>o1</value>
-          </option>
-          <option>
-            <label>option B</label>
-            <value>o2</value>
-          </option>
-          <option>
-            <label>option C</label>
-            <value>o3</value>
-          </option>
-        </options>
+        <property name="option.value">o1</property>
+        <property name="option.label">option A</property>
+
+        <property name="option.value">o2</property>
+        <property name="option.label">option B</property>
+
+        <property name="option.value">o3</property>
+        <property name="option.label">option C</property>
       </config>
     </input>
     <input name="combobox_min0_max0" type="ComboBox">
@@ -50,20 +38,14 @@
       <indexed>true</indexed>
       <occurrences minimum="0" maximum="0"/>
       <config>
-        <options>
-          <option>
-            <label>option A</label>
-            <value>o1</value>
-          </option>
-          <option>
-            <label>option B</label>
-            <value>o2</value>
-          </option>
-          <option>
-            <label>option C</label>
-            <value>o3</value>
-          </option>
-        </options>
+        <property name="option.value">o1</property>
+        <property name="option.label">option A</property>
+
+        <property name="option.value">o2</property>
+        <property name="option.label">option B</property>
+
+        <property name="option.value">o3</property>
+        <property name="option.label">option C</property>
       </config>
     </input>
     <input name="combobox_min0_max3" type="ComboBox">
@@ -71,24 +53,17 @@
       <indexed>true</indexed>
       <occurrences minimum="0" maximum="3"/>
       <config>
-        <options>
-          <option>
-            <label>option A</label>
-            <value>o1</value>
-          </option>
-          <option>
-            <label>option B</label>
-            <value>o2</value>
-          </option>
-          <option>
-            <label>option C</label>
-            <value>o3</value>
-          </option>
-          <option>
-            <label>option D</label>
-            <value>o4</value>
-          </option>
-        </options>
+        <property name="option.value">o1</property>
+        <property name="option.label">option A</property>
+
+        <property name="option.value">o2</property>
+        <property name="option.label">option B</property>
+
+        <property name="option.value">o3</property>
+        <property name="option.label">option C</property>
+
+        <property name="option.value">o4</property>
+        <property name="option.label">option D</property>
       </config>
     </input>
     <input name="combobox_min2_max4" type="ComboBox">
@@ -96,28 +71,20 @@
       <indexed>true</indexed>
       <occurrences minimum="2" maximum="4"/>
       <config>
-        <options>
-          <option>
-            <label>111</label>
-            <value>o1</value>
-          </option>
-          <option>
-            <label>222</label>
-            <value>o2</value>
-          </option>
-          <option>
-            <label>333</label>
-            <value>o3</value>
-          </option>
-          <option>
-            <label>444</label>
-            <value>o4</value>
-          </option>
-          <option>
-            <label>555</label>
-            <value>o5</value>
-          </option>
-        </options>
+        <property name="option.value">o1</property>
+        <property name="option.label">111</property>
+
+        <property name="option.value">o2</property>
+        <property name="option.label">222</property>
+
+        <property name="option.value">o3</property>
+        <property name="option.label">333</property>
+
+        <property name="option.value">o4</property>
+        <property name="option.label">444</property>
+
+        <property name="option.value">o5</property>
+        <property name="option.label">555</property>
       </config>
     </input>
   </form>

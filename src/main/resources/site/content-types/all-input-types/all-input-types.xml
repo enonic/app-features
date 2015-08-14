@@ -11,16 +11,11 @@
       <label>ComboBox</label>
       <occurrences minimum="0" maximum="0"/>
       <config>
-        <options>
-          <option>
-            <label>myOption 1</label>
-            <value>o1</value>
-          </option>
-          <option>
-            <label>myOption 2</label>
-            <value>o2</value>
-          </option>
-        </options>
+        <property name="option.value">o1</property>
+        <property name="option.label">myOption 1</property>
+
+        <property name="option.value">o2</property>
+        <property name="option.label">myOption 2</property>
       </config>
     </input>
     <input name="myDate" type="Date">
@@ -59,20 +54,15 @@
         <relationship-type>system:reference</relationship-type>
       </config>
     </input>
-    <input name="myRadioButton" type="RadioButton">
-      <label>Radio Button</label>
+    <input name="myRadioButtons" type="RadioButton">
+      <label>Radio Buttons</label>
       <occurrences minimum="0" maximum="0"/>
       <config>
-        <options>
-          <option>
-            <label>myOption 1</label>
-            <value>o1</value>
-          </option>
-          <option>
-            <label>myOption 2</label>
-            <value>o2</value>
-          </option>
-        </options>
+        <property name="option.value">o1</property>
+        <property name="option.label">myOption 1</property>
+
+        <property name="option.value">o2</property>
+        <property name="option.label">myOption 2</property>
       </config>
     </input>
     <input name="myTag" type="Tag">

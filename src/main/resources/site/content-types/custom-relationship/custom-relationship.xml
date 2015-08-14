@@ -10,14 +10,14 @@
       <help-text/>
       <occurrences minimum="0" maximum="0"/>
       <config>
-        <relationship-type>com.enonic.app.features:citation</relationship-type>
+        <property name="relationshipType">com.enonic.app.features:citation</property>
       </config>
     </input>
     <input name="media-in-use" type="ContentSelector">
       <label>Media in use</label>
       <occurrences minimum="1" maximum="1"/>
       <config>
-        <relationship-type>com.enonic.app.features:media-content</relationship-type>
+        <property name="relationshipType">com.enonic.app.features:media-content</property>
       </config>
     </input>
   </form>

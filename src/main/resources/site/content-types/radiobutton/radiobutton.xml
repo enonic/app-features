@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <content-type>
-  <display-name>Radio button</display-name>
+  <display-name>Radio buttons</display-name>
   <super-type>base:structured</super-type>
   <form>
     <input name="ss_radio" type="RadioButton">
-      <label>Radio button</label>
+      <label>Radio buttons</label>
       <indexed>true</indexed>
       <occurrences minimum="0" maximum="0"/>
       <config>
-        <options>
-          <option>
-            <label>myOption 1</label>
-            <value>o1</value>
-          </option>
-          <option>
-            <label>myOption 2</label>
-            <value>o2</value>
-          </option>
-          <option>
-            <label>myOption 3</label>
-            <value>o3</value>
-          </option>
-        </options>
+        <property name="option.value">o1</property>
+        <property name="option.label">myOption 1</property>
+
+        <property name="option.value">o2</property>
+        <property name="option.label">myOption 2</property>
+
+        <property name="option.value">o3</property>
+        <property name="option.label">myOption 3</property>
       </config>
     </input>
   </form>
