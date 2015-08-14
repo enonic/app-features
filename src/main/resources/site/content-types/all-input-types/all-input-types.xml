@@ -59,8 +59,8 @@
         <relationship-type>system:reference</relationship-type>
       </config>
     </input>
-    <input name="myRadioButtons" type="RadioButtons">
-      <label>Radio Buttons</label>
+    <input name="myRadioButton" type="RadioButton">
+      <label>Radio Button</label>
       <occurrences minimum="0" maximum="0"/>
       <config>
         <options>

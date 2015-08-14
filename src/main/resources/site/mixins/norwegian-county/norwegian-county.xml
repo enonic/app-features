@@ -2,7 +2,7 @@
 <mixin>
   <display-name>Norwegian counties</display-name>
   <items>
-    <input type="RadioButtons" name="norwegianCounty">
+    <input type="RadioButton" name="norwegianCounty">
       <label>Norwegian county</label>
       <custom-text/>
       <help-text/>

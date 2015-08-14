@@ -50,7 +50,7 @@ function handlePost(req) {
             myTime: contentData.time,
             myXml: contentData.xml,
             myTag: contentData.tag,
-            myRadioButtons: contentData.radio
+            myRadioButton: contentData.radio
         }
     });
 
