@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <content-type>
-  <display-name>Radio buttons</display-name>
+  <display-name>Radio button</display-name>
   <super-type>base:structured</super-type>
   <form>
-    <input name="ss_radio" type="RadioButtons">
-      <label>Radio buttons</label>
+    <input name="ss_radio" type="RadioButton">
+      <label>Radio button</label>
       <indexed>true</indexed>
       <occurrences minimum="0" maximum="0"/>
       <config>
