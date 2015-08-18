@@ -8,62 +8,25 @@
       <help-text/>
       <occurrences minimum="0" maximum="1"/>
       <config>
-        <property name="option.value">Østfold</property>
-        <property name="option.value">01</property>
-
-        <property name="option.value">Akershus</property>
-        <property name="option.value">02</property>
-
-        <property name="option.value">Oslo</property>
-        <property name="option.value">03</property>
-
-        <property name="option.value">Hedmark</property>
-        <property name="option.value">04</property>
-
-        <property name="option.value">Oppland</property>
-        <property name="option.value">05</property>
-
-        <property name="option.value">Buskerud</property>
-        <property name="option.value">06</property>
-
-        <property name="option.value">Vestfold</property>
-        <property name="option.value">07</property>
-
-        <property name="option.value">Telemark</property>
-        <property name="option.value">08</property>
-
-        <property name="option.value">Øst-Agder</property>
-        <property name="option.value">09</property>
-
-        <property name="option.value">Vest-Agder</property>
-        <property name="option.value">10</property>
-
-        <property name="option.value">Rogaland</property>
-        <property name="option.value">11</property>
-
-        <property name="option.value">Hordaland</property>
-        <property name="option.value">12</property>
-
-        <property name="option.value">Sogn og Fjordane</property>
-        <property name="option.value">14</property>
-
-        <property name="option.value">Møre og Romsdal</property>
-        <property name="option.value">15</property>
-
-        <property name="option.value">Sør-Trøndelag</property>
-        <property name="option.value">16</property>
-
-        <property name="option.value">Nord-Trøndelag</property>
-        <property name="option.value">17</property>
-
-        <property name="option.value">Nordland</property>
-        <property name="option.value">18</property>
-
-        <property name="option.value">Troms</property>
-        <property name="option.value">19</property>
-
-        <property name="option.value">Finnmark</property>
-        <property name="option.value">20</property>
+        <option value="01">Østfold</option>
+        <option value="02">Akershus</option>
+        <option value="03">Oslo</option>
+        <option value="04">Hedmark</option>
+        <option value="05">Oppland</option>
+        <option value="06">Buskerud</option>
+        <option value="07">Vestfold</option>
+        <option value="08">Telemark</option>
+        <option value="09">Øst-Agder</option>
+        <option value="10">Vest-Agder</option>
+        <option value="11">Rogaland</option>
+        <option value="12">Hordaland</option>
+        <option value="13">Sogn og Fjordane</option>
+        <option value="14">Møre og Romsdal</option>
+        <option value="15">Sør-Trøndelag</option>
+        <option value="16">Nord-Trøndelag</option>
+        <option value="17">Nordland</option>
+        <option value="18">Troms</option>
+        <option value="19">Finnmark</option>
       </config>
     </input>
   </items>

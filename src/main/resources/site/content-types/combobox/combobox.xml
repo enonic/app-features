@@ -8,14 +8,9 @@
       <indexed>true</indexed>
       <occurrences minimum="0" maximum="1"/>
       <config>
-        <property name="option.value">o1</property>
-        <property name="option.label">option A</property>
-
-        <property name="option.value">o2</property>
-        <property name="option.label">option B</property>
-
-        <property name="option.value">o3</property>
-        <property name="option.label">option C</property>
+        <option value="o1">option A</option>
+        <option value="o2">option B</option>
+        <option value="o3">option C</option>
       </config>
     </input>
     <input name="combobox_min1_max1" type="ComboBox">
@@ -23,14 +18,9 @@
       <indexed>true</indexed>
       <occurrences minimum="1" maximum="1"/>
       <config>
-        <property name="option.value">o1</property>
-        <property name="option.label">option A</property>
-
-        <property name="option.value">o2</property>
-        <property name="option.label">option B</property>
-
-        <property name="option.value">o3</property>
-        <property name="option.label">option C</property>
+        <option value="o1">option A</option>
+        <option value="o2">option B</option>
+        <option value="o3">option C</option>
       </config>
     </input>
     <input name="combobox_min0_max0" type="ComboBox">
@@ -38,14 +28,9 @@
       <indexed>true</indexed>
       <occurrences minimum="0" maximum="0"/>
       <config>
-        <property name="option.value">o1</property>
-        <property name="option.label">option A</property>
-
-        <property name="option.value">o2</property>
-        <property name="option.label">option B</property>
-
-        <property name="option.value">o3</property>
-        <property name="option.label">option C</property>
+        <option value="o1">option A</option>
+        <option value="o2">option B</option>
+        <option value="o3">option C</option>
       </config>
     </input>
     <input name="combobox_min0_max3" type="ComboBox">
@@ -53,17 +38,10 @@
       <indexed>true</indexed>
       <occurrences minimum="0" maximum="3"/>
       <config>
-        <property name="option.value">o1</property>
-        <property name="option.label">option A</property>
-
-        <property name="option.value">o2</property>
-        <property name="option.label">option B</property>
-
-        <property name="option.value">o3</property>
-        <property name="option.label">option C</property>
-
-        <property name="option.value">o4</property>
-        <property name="option.label">option D</property>
+        <option value="o1">option A</option>
+        <option value="o2">option B</option>
+        <option value="o3">option C</option>
+        <option value="o4">option D</option>
       </config>
     </input>
     <input name="combobox_min2_max4" type="ComboBox">
@@ -71,20 +49,11 @@
       <indexed>true</indexed>
       <occurrences minimum="2" maximum="4"/>
       <config>
-        <property name="option.value">o1</property>
-        <property name="option.label">111</property>
-
-        <property name="option.value">o2</property>
-        <property name="option.label">222</property>
-
-        <property name="option.value">o3</property>
-        <property name="option.label">333</property>
-
-        <property name="option.value">o4</property>
-        <property name="option.label">444</property>
-
-        <property name="option.value">o5</property>
-        <property name="option.label">555</property>
+        <option value="o1">111</option>
+        <option value="o2">222</option>
+        <option value="o3">333</option>
+        <option value="o4">444</option>
+        <option value="o5">555</option>
       </config>
     </input>
   </form>

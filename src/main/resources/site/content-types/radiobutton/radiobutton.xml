@@ -8,14 +8,9 @@
       <indexed>true</indexed>
       <occurrences minimum="0" maximum="0"/>
       <config>
-        <property name="option.value">o1</property>
-        <property name="option.label">myOption 1</property>
-
-        <property name="option.value">o2</property>
-        <property name="option.label">myOption 2</property>
-
-        <property name="option.value">o3</property>
-        <property name="option.label">myOption 3</property>
+        <option value="o1">myOption 1</option>
+        <option value="o2">myOption 2</option>
+        <option value="o3">myOption 3</option>
       </config>
     </input>
   </form>

@@ -10,14 +10,24 @@
       <help-text/>
       <occurrences minimum="0" maximum="0"/>
       <config>
-        <property name="relationshipType">com.enonic.app.features:citation</property>
+        <relationship-type>com.enonic.app.features:citation</relationship-type>
       </config>
     </input>
     <input name="media-in-use" type="ContentSelector">
       <label>Media in use</label>
       <occurrences minimum="1" maximum="1"/>
       <config>
-        <property name="relationshipType">com.enonic.app.features:media-content</property>
+        <relationship-type>com.enonic.app.features:media-content</relationship-type>
+      </config>
+    </input>
+    <input name="audio-or-image" type="ContentSelector">
+      <label>Audio or Image</label>
+      <custom-text/>
+      <help-text/>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <allow-content-type>media:image</allow-content-type>
+        <allow-content-type>media:audio</allow-content-type>
       </config>
     </input>
   </form>

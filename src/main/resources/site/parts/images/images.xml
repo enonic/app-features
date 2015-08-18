@@ -8,7 +8,7 @@
       <help-text/>
       <occurrences minimum="1" maximum="1"/>
       <config>
-        <property name="allowedContentType">base:folder</property>
+        <allowed-content-type>base:folder</allowed-content-type>
       </config>
     </input>
   </config>
