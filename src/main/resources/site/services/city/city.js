@@ -21,7 +21,7 @@ function handlePost(req) {
         var result = contentSvc.query({
                 count: 1,
                 contentTypes: [
-                    module.name + ':city'
+                    app.name + ':city'
                 ],
                 "query": "_name = '" + cityName + "'"
             }
@@ -50,7 +50,7 @@ function handlePost(req) {
             displayName: cityName,
             draft: false,
             requireValid: true,
-            contentType: module.name + ':city',
+            contentType: app.name + ':city',
             data: {
                 cityLocation: cityLocation
             }

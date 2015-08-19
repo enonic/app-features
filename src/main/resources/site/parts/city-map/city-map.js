@@ -35,7 +35,7 @@ function handleGet(req) {
         var result = contentSvc.query({
                 count: 1,
                 contentTypes: [
-                    module.name + ':city'
+                    app.name + ':city'
                 ],
                 "query": "_name = '" + cityName + "'"
             }
@@ -47,7 +47,7 @@ function handleGet(req) {
     return {
         contentType: 'text/html',
         body: body,
-        "pageContributions" : {
+        "pageContributions": {
             headEnd: "<style>#map-canvas {width: 600px; height: 400px; }</style><script src='https://maps.googleapis.com/maps/api/js'></script>"
         }
     };

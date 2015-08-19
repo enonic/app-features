@@ -17,7 +17,7 @@ function handleGet(req) {
                     start: 0,
                     count: 25,
                     contentTypes: [
-                        module.name + ':city'
+                        app.name + ':city'
                     ],
                     "sort": "geoDistance('data.cityLocation','" + city.data.cityLocation + "')",
                     "query": "_name != '" + currentCityName + "'"
@@ -35,7 +35,7 @@ function handleGet(req) {
                 start: 0,
                 count: 25,
                 contentTypes: [
-                    module.name + ':city'
+                    app.name + ':city'
                 ]
             }
         );
@@ -57,7 +57,7 @@ function handleGet(req) {
         var result = contentSvc.query({
                 count: 1,
                 contentTypes: [
-                    module.name + ':city'
+                    app.name + ':city'
                 ],
                 "query": "_name = '" + cityName + "'"
             }

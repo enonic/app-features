@@ -20,7 +20,7 @@ function handleGet(req) {
                     start: 0,
                     count: 50,
                     contentTypes: [
-                        module.name + ':city'
+                        app.name + ':city'
                     ],
                     "sort": "geoDistance('data.cityLocation','" + city.data.cityLocation + "')",
                     "query": "_name != '" + currentCityName + "'",
@@ -33,7 +33,8 @@ function handleGet(req) {
                                     'lat': coordinates[0],
                                     'lon': coordinates[1]
                                 },
-                                'ranges': [ { 'from': 0, 'to': 1200 }, { 'from': 1200, 'to': 4000 }, { 'from': 4000, 'to': 12000 }, {'from': 12000} ]
+                                'ranges': [{'from': 0, 'to': 1200}, {'from': 1200, 'to': 4000}, {'from': 4000, 'to': 12000},
+                                    {'from': 12000}]
                             }
                         }
                     }
@@ -51,7 +52,7 @@ function handleGet(req) {
                 start: 0,
                 count: 25,
                 contentTypes: [
-                    module.name + ':city'
+                    app.name + ':city'
                 ]
             }
         );
@@ -86,7 +87,7 @@ function handleGet(req) {
         var result = contentSvc.query({
                 count: 1,
                 contentTypes: [
-                    module.name + ':city'
+                    app.name + ':city'
                 ],
                 "query": "_name = '" + cityName + "'"
             }

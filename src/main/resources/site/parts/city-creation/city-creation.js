@@ -34,7 +34,7 @@ function handleGet(req) {
         var result = contentSvc.query({
                 count: 1,
                 contentTypes: [
-                    module.name + ':city'
+                    app.name + ':city'
                 ],
                 "query": "_name = '" + cityName + "'"
             }

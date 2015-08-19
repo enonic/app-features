@@ -11,7 +11,7 @@ function handlePost(req) {
     var contentFolder;
     var saveLocation;
 
-    if(stk.content.exists(contentItem._path + '/content')) {
+    if (stk.content.exists(contentItem._path + '/content')) {
         saveLocation = contentItem._path + '/content';
     } else {
         contentFolder = contentSvc.create({
@@ -35,7 +35,7 @@ function handlePost(req) {
         displayName: contentName,
         draft: true,
         requireValid: true,
-        contentType: module.name + ':all-input-types',
+        contentType: app.name + ':all-input-types',
         data: {
             myDateTime: contentData.datetime,
             myCheckbox: contentData.checkbox,
