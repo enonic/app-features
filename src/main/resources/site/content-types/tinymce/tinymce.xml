@@ -3,15 +3,15 @@
   <display-name>Tiny MCE editor</display-name>
   <super-type>base:structured</super-type>
   <form>
-    <input name="htmlarea_text" type="TinyMCE">
+    <input name="htmlarea_text" type="HtmlArea">
       <label>HTML content</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
-    <input name="htmlarea_text2" type="TinyMCE">
+    <input name="htmlarea_text2" type="HtmlArea">
       <label>Second HTML content</label>
       <occurrences minimum="0" maximum="2"/>
     </input>
-    <input name="htmlarea_text3" type="TinyMCE">
+    <input name="htmlarea_text3" type="HtmlArea">
       <label>Third HTML content</label>
       <occurrences minimum="0" maximum="0"/>
     </input>
