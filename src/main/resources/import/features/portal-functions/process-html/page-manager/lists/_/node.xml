@@ -45,7 +45,7 @@
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Lists</string>
-        <string name="type">com.enonic.app.features:tinymce</string>
+        <string name="type">com.enonic.app.features:htmlarea</string>
         <string name="owner">user:system:su</string>
         <dateTime name="modifiedTime">2015-07-07T11:42:46.309Z</dateTime>
         <string name="modifier">user:system:su</string>
