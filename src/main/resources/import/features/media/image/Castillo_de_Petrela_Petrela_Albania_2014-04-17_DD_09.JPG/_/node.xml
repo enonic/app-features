@@ -65,17 +65,17 @@
         </property-set>
         <property-set name="x">
             <property-set name="media">
-                <property-set name="image-info">
+                <property-set name="imageInfo">
                     <string name="colorSpace">RGB</string>
                     <long name="imageWidth">2800</long>
                     <long name="imageHeight">4502</long>
                     <string name="contentType">image/jpeg</string>
-                    <long name="bytesize">9194532</long>
+                    <long name="byteSize">9194532</long>
                     <long name="pixelSize">12605600</long>
                     <string isNull="true" name="description"/>
                     <string isNull="true" name="fileSource"/>
                 </property-set>
-                <property-set name="photo-info">
+                <property-set name="cameraInfo">
                     <string name="focalLength">20.0 mm</string>
                     <string name="aperture">F10</string>
                     <string name="make">Canon</string>
@@ -98,7 +98,7 @@
                 </property-set>
             </property-set>
             <property-set name="base">
-                <property-set name="gps-info">
+                <property-set name="gpsInfo">
                     <geoPoint isNull="true" name="geoPoint"/>
                     <string isNull="true" name="altitude"/>
                     <string isNull="true" name="direction"/>

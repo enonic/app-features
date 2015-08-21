@@ -65,17 +65,17 @@
     </property-set>
     <property-set name="x">
       <property-set name="media">
-        <property-set name="image-info">
+        <property-set name="imageInfo">
           <string name="fileSource">Digital Still Camera (DSC)</string>
           <long name="imageHeight">1536</long>
           <string name="description">OLYMPUS DIGITAL CAMERA</string>
           <string name="colorSpace">sRGB</string>
           <string name="contentType">image/jpeg</string>
           <long name="imageWidth">2048</long>
-          <long name="bytesize">683675</long>
+          <long name="byteSize">683675</long>
           <long name="pixelSize">3145728</long>
         </property-set>
-        <property-set name="photo-info">
+        <property-set name="cameraInfo">
           <localDateTime name="date">2007-01-06T22:32:53.000Z</localDateTime>
           <string name="focalLength">10.9 mm</string>
           <string name="aperture">F3.2</string>
@@ -98,7 +98,7 @@
         </property-set>
       </property-set>
       <property-set name="base">
-        <property-set name="gps-info">
+        <property-set name="gpsInfo">
           <geoPoint isNull="true" name="geoPoint"/>
           <string isNull="true" name="altitude"/>
           <string isNull="true" name="direction"/>

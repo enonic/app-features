@@ -104,12 +104,12 @@ function getImages() {
             var child = result.contents[i];
             if (child.type === "media:image") {
                 var media = child.x.media || {};
-                var info = media['image-info'] || {};
+                var info = media['imageInfo'] || {};
                 images.push({
                     id: child._id,
                     width: info.imageWidth || '?',
                     height: info.imageHeight || '?',
-                    bytesize: info.bytesize || '?'
+                    byteSize: info.byteSize || '?'
                 });
             }
         }

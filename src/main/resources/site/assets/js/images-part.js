@@ -28,7 +28,7 @@ $(function () {
                 tr.append($('<td/>').text('Source image: '));
                 tr.append($('<td style="border: 1px solid;"/>').text('width='+image.width+' px'));
                 tr.append($('<td style="border: 1px solid;"/>').text('height='+image.height+' px'));
-                tr.append($('<td style="border: 1px solid;"/>').text('size='+image.bytesize+' bytes'));
+                tr.append($('<td style="border: 1px solid;"/>').text('size='+image.byteSize+' bytes'));
                 caption.append(document.createTextNode('URL: ')).append(a).append('<br/>').append(tab);
                 figure.append(img).append(caption);
                 return figure;

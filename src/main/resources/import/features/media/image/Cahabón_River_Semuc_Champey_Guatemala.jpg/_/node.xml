@@ -65,17 +65,17 @@
         </property-set>
         <property-set name="x">
             <property-set name="media">
-                <property-set name="image-info">
+                <property-set name="imageInfo">
                     <string name="fileSource">Digital Still Camera (DSC)</string>
                     <string name="colorSpace">RGB</string>
                     <long name="imageWidth">3264</long>
                     <long name="imageHeight">4896</long>
                     <string name="contentType">image/jpeg</string>
-                    <long name="bytesize">10709855</long>
+                    <long name="byteSize">10709855</long>
                     <long name="pixelSize">15980544</long>
                     <string isNull="true" name="description"/>
                 </property-set>
-                <property-set name="photo-info">
+                <property-set name="cameraInfo">
                     <string name="focalLength">23.0 mm</string>
                     <string name="aperture">F5.6</string>
                     <string name="make">FUJIFILM</string>
@@ -98,7 +98,7 @@
                 </property-set>
             </property-set>
             <property-set name="base">
-                <property-set name="gps-info">
+                <property-set name="gpsInfo">
                     <geoPoint isNull="true" name="geoPoint"/>
                     <string isNull="true" name="altitude"/>
                     <string isNull="true" name="direction"/>

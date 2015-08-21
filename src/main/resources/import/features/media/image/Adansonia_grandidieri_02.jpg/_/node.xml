@@ -65,18 +65,18 @@
         </property-set>
         <property-set name="x">
             <property-set name="media">
-                <property-set name="image-info">
+                <property-set name="imageInfo">
                     <string name="colorSpace">RGB</string>
                     <string name="colorSpace">sRGB</string>
                     <long name="imageHeight">2592</long>
                     <string name="contentType">image/jpeg</string>
                     <long name="imageWidth">1944</long>
-                    <long name="bytesize">1491470</long>
+                    <long name="byteSize">1491470</long>
                     <long name="pixelSize">5038848</long>
                     <string isNull="true" name="description"/>
                     <string isNull="true" name="fileSource"/>
                 </property-set>
-                <property-set name="photo-info">
+                <property-set name="cameraInfo">
                     <localDateTime name="date">2009-06-02T20:23:51.000Z</localDateTime>
                     <string name="orientation">Top, left side (Horizontal / normal)</string>
                     <string isNull="true" name="make"/>
@@ -99,7 +99,7 @@
                 </property-set>
             </property-set>
             <property-set name="base">
-                <property-set name="gps-info">
+                <property-set name="gpsInfo">
                     <geoPoint isNull="true" name="geoPoint"/>
                     <string isNull="true" name="altitude"/>
                     <string isNull="true" name="direction"/>

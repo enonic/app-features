@@ -65,17 +65,17 @@
         </property-set>
         <property-set name="x">
             <property-set name="media">
-                <property-set name="image-info">
+                <property-set name="imageInfo">
                     <string name="fileSource">Digital Still Camera (DSC)</string>
                     <long name="imageWidth">3264</long>
                     <long name="imageHeight">2448</long>
                     <string name="colorSpace">sRGB</string>
                     <string name="contentType">image/jpeg</string>
-                    <long name="bytesize">3226043</long>
+                    <long name="byteSize">3226043</long>
                     <long name="pixelSize">7990272</long>
                     <string isNull="true" name="description"/>
                 </property-set>
-                <property-set name="photo-info">
+                <property-set name="cameraInfo">
                     <string name="focalLength">7.4 mm</string>
                     <string name="aperture">F6.3</string>
                     <string name="make">Panasonic</string>
@@ -98,7 +98,7 @@
                 </property-set>
             </property-set>
             <property-set name="base">
-                <property-set name="gps-info">
+                <property-set name="gpsInfo">
                     <geoPoint isNull="true" name="geoPoint"/>
                     <string isNull="true" name="altitude"/>
                     <string isNull="true" name="direction"/>

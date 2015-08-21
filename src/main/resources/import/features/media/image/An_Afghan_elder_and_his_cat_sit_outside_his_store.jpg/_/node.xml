@@ -65,7 +65,7 @@
         </property-set>
         <property-set name="x">
             <property-set name="media">
-                <property-set name="photo-info">
+                <property-set name="cameraInfo">
                     <string name="focalLength">40.0 mm</string>
                     <string name="aperture">F4</string>
                     <string name="make">Canon</string>
@@ -81,14 +81,14 @@
                     <string name="exposureBias">0 EV</string>
                     <string name="exposureMode">Auto exposure</string>
                 </property-set>
-                <property-set name="image-info">
+                <property-set name="imageInfo">
                     <string name="colorSpace">RGB</string>
                     <string name="colorSpace">sRGB</string>
                     <long name="imageWidth">2500</long>
                     <long name="imageHeight">3286</long>
                     <string name="description">An Afghan elder and his cat, sit outside his store, at the Anaba Bazaar, in the Panjshir province, Afghanistan, Jan. 2, 2010. The Anaba Bazaar is a very prosperous location for businessmen because of the stable security within the Panjshir province. (U.S. Army photo by Sgt. Teddy Wade/Released)</string>
                     <string name="contentType">image/jpeg</string>
-                    <long name="bytesize">5695589</long>
+                    <long name="byteSize">5695589</long>
                     <long name="pixelSize">8215000</long>
                 </property-set>
             </property-set>

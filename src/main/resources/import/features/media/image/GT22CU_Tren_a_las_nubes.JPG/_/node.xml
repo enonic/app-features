@@ -65,17 +65,17 @@
         </property-set>
         <property-set name="x">
             <property-set name="media">
-                <property-set name="image-info">
+                <property-set name="imageInfo">
                     <string name="fileSource">Digital Still Camera (DSC)</string>
                     <long name="imageHeight">3648</long>
                     <string name="colorSpace">sRGB</string>
                     <string name="contentType">image/jpeg</string>
                     <long name="imageWidth">2432</long>
-                    <long name="bytesize">4098572</long>
+                    <long name="byteSize">4098572</long>
                     <long name="pixelSize">8871936</long>
                     <string isNull="true" name="description"/>
                 </property-set>
-                <property-set name="photo-info">
+                <property-set name="cameraInfo">
                     <localDateTime name="date">2011-07-02T15:16:06.000Z</localDateTime>
                     <string name="focalLength">4.1 mm</string>
                     <string name="aperture">F5.6</string>
@@ -98,7 +98,7 @@
                 </property-set>
             </property-set>
             <property-set name="base">
-                <property-set name="gps-info">
+                <property-set name="gpsInfo">
                     <geoPoint isNull="true" name="geoPoint"/>
                     <string isNull="true" name="altitude"/>
                     <string isNull="true" name="direction"/>

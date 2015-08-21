@@ -65,18 +65,18 @@
         </property-set>
         <property-set name="x">
             <property-set name="media">
-                <property-set name="image-info">
+                <property-set name="imageInfo">
                     <string name="fileSource">Digital Still Camera (DSC)</string>
                     <string name="colorSpace">RGB</string>
                     <string name="colorSpace">sRGB</string>
                     <long name="imageWidth">7244</long>
                     <long name="imageHeight">4765</long>
                     <string name="contentType">image/jpeg</string>
-                    <long name="bytesize">4541342</long>
+                    <long name="byteSize">4541342</long>
                     <long name="pixelSize">34517660</long>
                     <string isNull="true" name="description"/>
                 </property-set>
-                <property-set name="photo-info">
+                <property-set name="cameraInfo">
                     <string name="focalLength">38.0 mm</string>
                     <string name="aperture">F8</string>
                     <string name="make">NIKON CORPORATION</string>
@@ -99,7 +99,7 @@
                 </property-set>
             </property-set>
             <property-set name="base">
-                <property-set name="gps-info">
+                <property-set name="gpsInfo">
                     <string name="altitude">2813 metres</string>
                     <geoPoint name="geoPoint">27.904278,89.728673</geoPoint>
                     <string isNull="true" name="direction"/>
