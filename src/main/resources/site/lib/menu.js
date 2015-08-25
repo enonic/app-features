@@ -28,7 +28,7 @@ function getChildMenuItems(parentContent, levels) {
 
     var childMenuItems = [];
     
-    childrenResult.contents.forEach(function (child) {
+    childrenResult.hits.forEach(function (child) {
         if (isMenuItem(child)) {
             childMenuItems.push(menuItemToJson(child, levels));
         }
