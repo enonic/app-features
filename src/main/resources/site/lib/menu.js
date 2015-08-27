@@ -28,11 +28,12 @@ function getChildMenuItems(parentContent, levels) {
 
     var childMenuItems = [];
 
-    for (var i = 0; i < childrenResult.contents.length; i++) {
-        if (isMenuItem(childrenResult.contents[i])) {
-            childMenuItems.push(menuItemToJson(childrenResult.contents[i], levels));
+
+    childrenResult.hits.forEach(function (child) {
+        if (isMenuItem(child)) {
+            childMenuItems.push(menuItemToJson(child, levels));
         }
-    }
+    });
 
     return childMenuItems;
 }
