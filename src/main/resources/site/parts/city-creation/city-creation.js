@@ -40,7 +40,7 @@ function handleGet(req) {
             }
         );
 
-        return result.contents[0];
+        return result.hits[0];
     }
 
     return {

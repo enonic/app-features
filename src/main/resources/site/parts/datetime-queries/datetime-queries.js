@@ -48,10 +48,10 @@ function handleGet(req) {
     });
 
     var params = {
-        futureWithTZ: futureWithTZ.contents,
-        futureNoTZ: futureNoTZ.contents,
-        pastWithTZ: pastWithTZ.contents,
-        pastNoTZ: pastNoTZ.contents,
+        futureWithTZ: futureWithTZ.hits,
+        futureNoTZ: futureNoTZ.hits,
+        pastWithTZ: pastWithTZ.hits,
+        pastNoTZ: pastNoTZ.hits,
         currentPage: currentPage
     };
     var body = thymeleaf.render(view, params);

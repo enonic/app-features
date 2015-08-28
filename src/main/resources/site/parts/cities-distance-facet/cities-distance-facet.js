@@ -69,7 +69,7 @@ function handleGet(req) {
     }
 
     var params = {
-        cities: cities.contents,
+        cities: cities.hits,
         total: cities.total,
         buckets: buckets,
         currentCity: currentCityName,
@@ -93,7 +93,7 @@ function handleGet(req) {
             }
         );
 
-        return result.contents[0];
+        return result.hits[0];
     }
 }
 

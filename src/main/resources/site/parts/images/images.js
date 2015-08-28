@@ -100,8 +100,8 @@ function getImages() {
             count: 20
         });
 
-        for (var i = 0; i < result.contents.length; i++) {
-            var child = result.contents[i];
+        for (var i = 0; i < result.hits.length; i++) {
+            var child = result.hits[i];
             if (child.type === "media:image") {
                 var media = child.x.media || {};
                 var info = media['imageInfo'] || {};
