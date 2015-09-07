@@ -61,7 +61,10 @@ function handlePost(req) {
 
     return {
         redirect: portal.pageUrl({
-            path: parentPath + "?city=" + cityName
+            path: parentPath,
+            params: {
+                city: cityName
+            }
         })
     }
 }
