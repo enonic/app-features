@@ -5,7 +5,7 @@ var stk = require('stk/stk');
 exports.post = handlePost;
 
 function handlePost(req) {
-    var contentData = req.formParams;
+    var contentData = req.params;
     var contentCreated = null;
     var contentItem = stk.content.get(contentData.content_ID);
     var contentFolder;

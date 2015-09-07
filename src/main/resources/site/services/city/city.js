@@ -3,9 +3,9 @@ var contentSvc = require('/lib/xp/content');
 
 function handlePost(req) {
 
-    var parentPath = req.formParams.parentPath;
-    var cityName = req.formParams.cityName;
-    var cityLocation = req.formParams.cityLocation;
+    var parentPath = req.params.parentPath;
+    var cityName = req.params.cityName;
+    var cityLocation = req.params.cityLocation;
 
     if (cityName && cityLocation) {
         var city = getCity(cityName);

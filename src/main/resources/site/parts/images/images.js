@@ -68,8 +68,8 @@ exports.get = function (req) {
 };
 
 exports.post = function (req) {
-    var filter = req.formParams.filter;
-    var scale = req.formParams.scale;
+    var filter = req.params.filter;
+    var scale = req.params.scale;
 
     var images = getImages(), img;
     for (var i = 0; i < images.length; i++) {
