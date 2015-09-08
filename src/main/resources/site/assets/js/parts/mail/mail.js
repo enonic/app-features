@@ -15,7 +15,7 @@ $(function () {
                 cc: form.find('input[name="cc"]').val(),
                 bcc: form.find('input[name="bcc"]').val(),
                 replyTo: form.find('input[name="replyTo"]').val(),
-                body: form.find('input[name="body"]').val()
+                body: form.find('textarea[name="body"]').val()
             }
         }).done(function (resp) {
             console.log(resp);
