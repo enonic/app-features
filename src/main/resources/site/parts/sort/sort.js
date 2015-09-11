@@ -6,7 +6,11 @@ var view = resolve('sort-test.html');
 
 function handleGet(req) {
 
+    log.info("Request: %s", req);
+
     var content = portal.getContent();
+
+    log.info("Content: %s", req);
 
     var currentPage = portal.pageUrl({
         path: content._path

@@ -26,16 +26,16 @@ app {
 }
 
 dependencies {
-    compile 'com.enonic.xp:core-api:6.1.0-SNAPSHOT'
-    compile 'com.enonic.xp:portal-api:6.1.0-SNAPSHOT'
-    include 'com.enonic.xp:lib-content:6.1.0-SNAPSHOT'
-    include 'com.enonic.xp:lib-portal:6.1.0-SNAPSHOT'
-    include 'com.enonic.xp:lib-thymeleaf:6.1.0-SNAPSHOT'
-    include 'com.enonic.xp:lib-xslt:6.1.0-SNAPSHOT'
-    include 'com.enonic.xp:lib-mustache:6.1.0-SNAPSHOT'
-    include 'com.enonic.xp:lib-i18n:6.1.0-SNAPSHOT'
-    include 'com.enonic.xp:lib-mail:6.1.0-SNAPSHOT'
-    include 'com.enonic.xp:lib-auth:6.1.0-SNAPSHOT'
+    compile "com.enonic.xp:core-api:${version}"
+    compile "com.enonic.xp:portal-api:${version}"
+    include "com.enonic.xp:lib-content:${version}"
+    include "com.enonic.xp:lib-portal:${version}"
+    include "com.enonic.xp:lib-thymeleaf:${version}"
+    include "com.enonic.xp:lib-xslt:${version}"
+    include "com.enonic.xp:lib-mustache:${version}"
+    include "com.enonic.xp:lib-i18n:${version}"
+    include "com.enonic.xp:lib-mail:${version}"
+    include "com.enonic.xp:lib-auth:${version}"
 }
 
 repositories {
