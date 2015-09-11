@@ -10,7 +10,8 @@ exports.get = function (req) {
     var params = {
         postUrl: postUrl,
         user: user,
-        userStore: 'system'
+        userStore: 'system',
+        role: 'system.admin'
     };
 
     var view = resolve('auth.html');
@@ -33,14 +34,20 @@ exports.get = function (req) {
 
 exports.post = function (req) {
     var action = req.params.action;
-    var userName = req.params.user;
-    var pwd = req.params.pwd;
-    var userStore = req.params.userStore;
+    var userName = req.params.user || '';
+    var pwd = req.params.pwd || '';
+    var userStore = req.params.userStore || 'system';
+    var role = req.params.role || '';
+    var hasRole, errorMsg;
 
-    var user;
+    var user = auth.getUser();
     if (action === 'logout') {
         auth.logout();
         user = auth.getUser();
+
+    } else if (action === 'hasRole') {
+        hasRole = auth.hasRole(role);
+        log.info('Current user has role %s? %s', role, hasRole ? 'Yes' : 'No');
 
     } else if (action === 'login') {
         var loginResult = auth.login({
@@ -52,10 +59,9 @@ exports.post = function (req) {
         if (loginResult.authenticated) {
             user = loginResult.user;
         }
+        errorMsg = loginResult.message;
         log.info('LOGIN %s', loginResult);
 
-     } else {
-        user = auth.getUser();
     }
 
     var postUrl = portal.componentUrl({});
@@ -63,7 +69,10 @@ exports.post = function (req) {
     var params = {
         postUrl: postUrl,
         user: user,
-        userStore: userStore || 'system'
+        userStore: userStore,
+        role: role,
+        hasRole: hasRole,
+        errorMsg: errorMsg
     };
 
     var view = resolve('auth.html');
