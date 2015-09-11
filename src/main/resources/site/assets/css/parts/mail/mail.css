@@ -1,3 +1,11 @@
 fieldset.mail-form label {
     font-weight: bold;
 }
+
+span.sendresultmsg.fail {
+    color: darkred;
+}
+
+span.sendresultmsg.success {
+    color: forestgreen;
+}

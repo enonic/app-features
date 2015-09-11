@@ -18,7 +18,12 @@ $(function () {
                 body: form.find('textarea[name="body"]').val()
             }
         }).done(function (resp) {
-            console.log(resp);
+            var msgEl = form.find('span.sendresultmsg');
+            if (resp && !resp.result) {
+                msgEl.addClass('success').removeClass('fail').text('Email sent successfully!');
+            } else {
+                msgEl.addClass('fail').removeClass('success').text('Email could not be sent. Check the log.');
+            }
         });
     });
 

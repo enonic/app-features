@@ -1,5 +1,5 @@
 <node>
-    <id>2428c75f-d89f-48a7-95f6-41c5a7565072</id>
+    <id>2428c75f-d89f-48a7-95f6-41c5a7565075</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <timestamp>2015-07-03T08:04:36.036Z</timestamp>
@@ -44,7 +44,7 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Image URL</string>
+        <string name="displayName">Mail send</string>
         <string name="type">com.enonic.app.features:landing-page</string>
         <string name="owner">user:system:su</string>
         <dateTime name="modifiedTime">2015-07-03T08:04:36.036Z</dateTime>
@@ -68,11 +68,8 @@
                 <property-set name="component">
                     <string name="type">PartComponent</string>
                     <property-set name="PartComponent">
-                        <string name="name">Image filters test</string>
-                        <string name="template">com.enonic.app.features:images</string>
-                        <property-set name="config">
-                            <reference name="imageFolder">d4cf1085-cb65-4523-a6e9-10406e1e107e</reference>
-                        </property-set>
+                        <string name="name">Mail library test</string>
+                        <string name="template">com.enonic.app.features:mail</string>
                     </property-set>
                 </property-set>
             </property-set>
