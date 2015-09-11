@@ -1,0 +1,51 @@
+<div class="auth-part">
+    <h2>Auth Lib Demo</h2>
+
+    <form action="#" data-th-action="${postUrl}" method="post">
+        <div data-th-if="${user}" >
+            <fieldset class="auth-user-details">
+                <legend>User logged in</legend>
+                <ul>
+                    <li><label>Username:</label> <span data-th-text="${user.login}"></span></li>
+                    <li><label>Display name:</label> <span data-th-text="${user.displayName}"></span></li>
+                    <li><label>Key:</label> <span data-th-text="${user.key}"></span></li>
+                    <li><label>Email:</label> <span data-th-text="${user.email}"></span></li>
+                    <li><label>Modified time:</label> <span data-th-text="${user.modifiedTime}"></span></li>
+                    <li><label>Account:</label> <span data-th-text="${user.disabled} ? 'disabled' : 'enabled'"></span></li>
+
+                </ul>
+                <p>
+                    <button type="button" name="logout">Logout</button>
+                </p>
+            </fieldset>
+            <br/>
+        </div>
+
+        <div class="auth-form">
+            <input name="action" type="hidden" value="logout"/>
+            <fieldset class="auth-user-details">
+                <p>
+                    <label>User Store</label>
+                    <input name="userStore" type="text" data-th-value="${userStore}"/>
+                </p>
+
+                <p>
+                    <label>Username</label>
+                    <input name="user" type="text" value=""/>
+                </p>
+
+                <p>
+                    <label>Password</label>
+                    <input name="pwd" type="password" value=""/>
+                </p>
+
+                <p>
+                    <button type="button" name="login">Login</button>
+                </p>
+            </fieldset>
+        </div>
+
+    </form>
+
+</div>
+
