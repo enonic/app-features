@@ -19,7 +19,7 @@ $(function () {
             }
         }).done(function (resp) {
             var msgEl = form.find('span.sendresultmsg');
-            if (resp && !resp.result) {
+            if (resp && resp.result) {
                 msgEl.addClass('success').removeClass('fail').text('Email sent successfully!');
             } else {
                 msgEl.addClass('fail').removeClass('success').text('Email could not be sent. Check the log.');
