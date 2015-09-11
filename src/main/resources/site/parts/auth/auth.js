@@ -32,10 +32,10 @@ exports.get = function (req) {
 };
 
 exports.post = function (req) {
-    var action = req.formParams.action;
-    var userName = req.formParams.user;
-    var pwd = req.formParams.pwd;
-    var userStore = req.formParams.userStore;
+    var action = req.params.action;
+    var userName = req.params.user;
+    var pwd = req.params.pwd;
+    var userStore = req.params.userStore;
 
     var user;
     if (action === 'logout') {
