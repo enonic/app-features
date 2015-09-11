@@ -7,7 +7,7 @@ our main Enonic XP releases.
 
 Here's a list of released versions with compatibility notes:
 
-* [6.0.0](http://repo.enonic.com/public/com/enonic/app/features/1.0.0/superhero-1.0.0.jar) - Enonic XP 6.0.0
+* [6.0.0](http://repo.enonic.com/public/com/enonic/app/features/6.0.0/features-6.0.0.jar) - Enonic XP 6.0.0
 
 ## Building
 
