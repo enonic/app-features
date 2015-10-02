@@ -24,7 +24,8 @@ exports.get = function (req) {
                 '<script src="' + portal.assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
                 '<script src="' + portal.assetUrl({path: 'js/parts/mail/mail.js'}) + '" type="text/javascript"></script>',
             ]
-        }
+        },
+        filters: ['filter2']
     };
 };
 
@@ -52,6 +53,7 @@ exports.post = function (req) {
         contentType: 'application/json',
         body: {
             result: sendResult
-        }
+        },
+        filters: ['filter2']
     };
 };
