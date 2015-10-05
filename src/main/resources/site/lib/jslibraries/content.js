@@ -180,3 +180,24 @@ exports.query = function () {
 
     return result;
 };
+
+exports.delete = function () {
+
+    //Documentation BEGIN
+    var contentLib = require('/lib/xp/content');
+
+    var result = contentLib.delete({
+        key: '/features/js-libraries/mycontent'
+    });
+
+    if (result) {
+        log.info('Content deleted');
+    } else {
+        log.info('Content was not found');
+    }
+    //Documentation END
+
+    log.info('Delete result: ' + JSON.stringify(result, null, 4));
+
+    return result;
+};

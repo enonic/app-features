@@ -9,12 +9,14 @@ function handleGet(req) {
     var getResult = JSON.stringify(contentJsLib.get(), null, 4);
     var getChildrenResult = JSON.stringify(contentJsLib.getChildren(), null, 4);
     var queryResult = JSON.stringify(contentJsLib.query(), null, 4);
+    var deleteResult = JSON.stringify(contentJsLib.delete(), null, 4);
 
     var params = {
         createResult: createResult,
         getResult: getResult,
         getChildrenResult: getChildrenResult,
-        queryResult: queryResult
+        queryResult: queryResult,
+        deleteResult: deleteResult
     };
 
     var body = thymeleaf.render(view, params);
