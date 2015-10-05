@@ -9,6 +9,7 @@ function handleGet(req) {
     var getResult = JSON.stringify(contentJsLib.get(), null, 4);
     var getChildrenResult = JSON.stringify(contentJsLib.getChildren(), null, 4);
     var queryResult = JSON.stringify(contentJsLib.query(), null, 4);
+    var modifyResult = JSON.stringify(contentJsLib.modify(), null, 4);
     var deleteResult = JSON.stringify(contentJsLib.delete(), null, 4);
 
     var params = {
@@ -16,6 +17,7 @@ function handleGet(req) {
         getResult: getResult,
         getChildrenResult: getChildrenResult,
         queryResult: queryResult,
+        modifyResult: modifyResult,
         deleteResult: deleteResult
     };
 
