@@ -1,8 +1,8 @@
 <node>
-    <id>e9eaba21-d998-4733-9e52-25a94e4dff5f</id>
+    <id>1c5eb02f-e37d-4dee-b997-7490381bd187</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-10-05T10:44:38.046Z</timestamp>
+    <timestamp>2015-10-05T13:59:50.400Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="user:system:anonymous">
@@ -44,13 +44,13 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Landing Page</string>
+        <string name="displayName">I18n</string>
         <string name="type">com.enonic.app.features:landing-page</string>
         <string name="owner">user:system:su</string>
-        <dateTime name="modifiedTime">2015-10-05T10:44:38.045Z</dateTime>
+        <dateTime name="modifiedTime">2015-10-05T13:59:50.399Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-10-05T10:44:17.004Z</dateTime>
+        <dateTime name="createdTime">2015-10-05T13:59:31.478Z</dateTime>
         <property-set name="data"/>
         <property-set name="x">
             <property-set name="com-enonic-app-features">
@@ -68,8 +68,8 @@
                 <property-set name="component">
                     <string name="type">PartComponent</string>
                     <property-set name="PartComponent">
-                        <string name="name">jslibraries</string>
-                        <string name="template">com.enonic.app.features:jslibraries</string>
+                        <string name="name">js-libraries-i18n</string>
+                        <string name="template">com.enonic.app.features:js-libraries-i18n</string>
                         <property-set name="config"/>
                     </property-set>
                 </property-set>

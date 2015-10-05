@@ -1,7 +1,7 @@
 var portal = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
 var contentJsLib = require('/lib/jslibraries/content');
-var view = resolve('jslibraries.html');
+var view = resolve('js-libraries-content.html');
 
 function handleGet(req) {
 
