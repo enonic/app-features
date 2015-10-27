@@ -98,7 +98,6 @@ public final class FeaturesInitializer
 
             contentService.applyPermissions( ApplyContentPermissionsParams.create().
                 contentId( featuresContent.getId() ).
-                modifier( PrincipalKey.ofAnonymous() ).
                 build() );
         }
     }

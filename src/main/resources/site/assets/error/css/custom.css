@@ -1,0 +1,22 @@
+
+html,
+body {
+  height: 100%;
+  background-color: #C4EBFF;
+}
+body {
+  color: #333;
+  text-align: center;
+}
+
+pre {
+	background-color: #C4EBFF;
+	border: none;
+	color: #91959B;
+}
+
+img {
+
+    margin-top: 50px;
+
+}
