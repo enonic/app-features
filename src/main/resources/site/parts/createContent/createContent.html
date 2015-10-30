@@ -1,0 +1,42 @@
+<div class="create-content-part">
+    <h2>Create Content</h2>
+
+    <form action="#" data-th-action="${postUrl}" method="post">
+        <div>
+            <fieldset class="create-content-details">
+                <p>
+                    <label>Name</label>
+                    <input name="contentName" type="text" data-th-value="${contentName}" style="width: 200px;"/>
+                </p>
+
+                <p>
+                    <label>Display Name</label>
+                    <input name="displayName" type="text" data-th-value="${displayName}" style="width: 200px;"/>
+                </p>
+
+                <p>
+                    <label>Parent</label>
+                    <input name="parentPath" type="text" data-th-value="${parentPath}" style="width: 200px;"/>
+                </p>
+
+                <p>
+                    <label>Content Type</label>
+                    <input name="contentType" type="text" data-th-value="${contentType}" style="width: 200px;"/>
+                </p>
+
+                <p>
+                    <label style="vertical-align: top">Content Data</label>
+                    <textarea name="contentData" data-th-utext="${contentData}" rows="6" style="width: 200px;"></textarea>
+                </p>
+                <span style="color:darkred;" data-th-if="${errorMsg != null}" data-th-text="${errorMsg}"></span>
+                <span style="color:darkgreen;" data-th-if="${msg != null}" data-th-text="${msg}"></span>
+
+                <p>
+                    <button type="button" name="create">Create</button>
+                </p>
+            </fieldset>
+            <br/>
+        </div>
+    </form>
+
+</div>
