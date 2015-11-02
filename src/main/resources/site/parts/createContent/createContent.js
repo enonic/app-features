@@ -20,7 +20,8 @@ exports.get = function (req) {
         parentPath: parentPath,
         displayName: '',
         contentName: '',
-        contentType: 'base:unstructured'
+        contentType: 'base:unstructured',
+        contentData: '{}'
     };
 
     var view = resolve('createContent.html');
