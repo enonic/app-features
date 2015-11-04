@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<content-type>
+  <display-name>Text Line with Regular expression</display-name>
+  <super-type>base:structured</super-type>
+  <form>
+    <input name="textline" type="TextLine">
+      <label>Regexp IP address</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <regexp>\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b</regexp>
+      </config>
+    </input>
+    <input name="textline2" type="TextLine">
+      <label>Regexp Email</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <regexp>^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$</regexp>
+      </config>
+    </input>
+  </form>
+</content-type>
