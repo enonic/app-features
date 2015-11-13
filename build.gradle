@@ -8,15 +8,12 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.enonic.xp:gradle-plugin:6.2.0-SNAPSHOT'
+        classpath "com.enonic.xp:gradle-plugin:${xpVersion}"
     }
 }
 
 apply plugin: 'maven'
 apply plugin: 'com.enonic.xp.app'
-
-group = 'com.enonic.app'
-version = '6.2.0-SNAPSHOT'
 
 app {
     name = 'com.enonic.app.features'
@@ -26,16 +23,19 @@ app {
 }
 
 dependencies {
-    compile "com.enonic.xp:core-api:${version}"
-    compile "com.enonic.xp:portal-api:${version}"
-    include "com.enonic.xp:lib-content:${version}"
-    include "com.enonic.xp:lib-portal:${version}"
-    include "com.enonic.xp:lib-thymeleaf:${version}"
-    include "com.enonic.xp:lib-xslt:${version}"
-    include "com.enonic.xp:lib-mustache:${version}"
-    include "com.enonic.xp:lib-i18n:${version}"
-    include "com.enonic.xp:lib-mail:${version}"
-    include "com.enonic.xp:lib-auth:${version}"
+    compile "com.enonic.xp:core-api:${xpVersion}"
+    compile "com.enonic.xp:portal-api:${xpVersion}"
+    include "com.enonic.xp:lib-content:${xpVersion}"
+    include "com.enonic.xp:lib-portal:${xpVersion}"
+    include "com.enonic.xp:lib-thymeleaf:${xpVersion}"
+    include "com.enonic.xp:lib-xslt:${xpVersion}"
+    include "com.enonic.xp:lib-mustache:${xpVersion}"
+    include "com.enonic.xp:lib-i18n:${xpVersion}"
+    include "com.enonic.xp:lib-mail:${xpVersion}"
+    include "com.enonic.xp:lib-auth:${xpVersion}"
+
+    testCompile 'junit:junit:4.10'
+    testCompile "com.enonic.xp:testing:${xpVersion}"
 }
 
 repositories {
