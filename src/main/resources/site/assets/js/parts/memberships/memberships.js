@@ -1,11 +1,13 @@
 $(function () {
 
     $('input[name="principalKey"]').focus();
-    $(document).on('keypress', 'form input[name="principalKey"]', function (e) {
+    $(document).on('keypress', 'form input[type="text"]', function (e) {
         if (e.which == 13) {
             e.preventDefault();
             var form = $(this).closest('form');
-            postForm(form, 'search');
+            if ($(this).attr('name') !== 'addmember') {
+                postForm(form, 'search');
+            }
         }
     });
 
@@ -56,6 +58,7 @@ function postForm(form, action) {
             displayname: form.find('input[name="displayname"]').val(),
             email: form.find('input[name="email"]').val(),
             userstore: form.find('input[name="userstore"]').val(),
+            searchText: form.find('input[name="searchText"]').val(),
             user: type === 'user',
             group: type === 'group',
             role: type === 'role',

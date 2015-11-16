@@ -30,6 +30,11 @@
                 </p>
 
                 <p>
+                    <label>Free text</label>
+                    <input name="searchText" type="text" data-th-value="${searchText}"/>
+                </p>
+
+                <p>
                     <label>Type</label>
                     <label><input type="radio" name="type" value="any" data-th-checked="${type=='any'}"/>Any type</label>
                     <label><input type="radio" name="type" value="user" data-th-checked="${type=='user'}"/>User</label>

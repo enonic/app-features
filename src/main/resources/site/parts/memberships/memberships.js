@@ -41,6 +41,7 @@ exports.post = function (req) {
     var displayname = req.params.displayname || '';
     var email = req.params.email || '';
     var userstore = req.params.userstore || '';
+    var searchText = req.params.searchText || '';
     var typeParam = '';
     if (req.params.user === 'true') {
         typeParam = 'user';
@@ -67,7 +68,8 @@ exports.post = function (req) {
                 count: 10,
                 name: username,
                 email: email,
-                displayName: displayname
+                displayName: displayname,
+                searchText: searchText
             });
             infoMsg = results.total + ' principals found.';
             log.info('Results \r\n %s', results);
@@ -117,6 +119,7 @@ exports.post = function (req) {
         displayname: displayname,
         email: email,
         userstore: userstore,
+        searchText: searchText,
         type: typeParam || 'any',
         memberships: memberships,
         members: members,
