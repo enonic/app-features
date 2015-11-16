@@ -1,0 +1,118 @@
+<div class="memberships-part">
+    <h2>Memberships Test Page</h2>
+
+    <form action="#" data-th-action="${postUrl}" method="post">
+        <div>
+            <fieldset class="user-details">
+                <p>
+                    <label>Principal Key</label>
+                    <input name="principalKey" type="text" data-th-value="${principalKey}"/>
+                </p>
+
+                <p>
+                    <label>Name</label>
+                    <input name="username" type="text" data-th-value="${username}"/>
+                </p>
+
+                <p>
+                    <label>Display Name</label>
+                    <input name="displayname" type="text" data-th-value="${displayname}"/>
+                </p>
+
+                <p>
+                    <label>Email</label>
+                    <input name="email" type="text" data-th-value="${email}"/>
+                </p>
+
+                <p>
+                    <label>User Store</label>
+                    <input name="userstore" type="text" data-th-value="${userstore}"/>
+                </p>
+
+                <p>
+                    <label>Type</label>
+                    <label><input type="radio" name="type" value="any" data-th-checked="${type=='any'}"/>Any type</label>
+                    <label><input type="radio" name="type" value="user" data-th-checked="${type=='user'}"/>User</label>
+                    <label><input type="radio" name="type" value="group" data-th-checked="${type=='group'}"/>Group</label>
+                    <label><input type="radio" name="type" value="role" data-th-checked="${type=='role'}"/>Role</label>
+                </p>
+                <span style="color:darkred;" data-th-if="${errorMsg != null}" data-th-text="${errorMsg}"></span>
+                <span style="color:darkgreen;" data-th-if="${infoMsg != null}" data-th-text="${infoMsg}"></span>
+
+                <p>
+                    <button type="button" name="search">Search</button>
+                </p>
+            </fieldset>
+            <br/>
+        </div>
+        <div data-th-if="${searchResults}">
+            <fieldset class="user-details">
+                <legend>Search Results</legend>
+                <ul data-th-each="result : ${searchResults}">
+                    <li>
+                        <a data-th-attr="data-principal=${result.key}" href="#">
+                            <span data-th-text="${result.displayName}"></span>
+                        </a>
+                    </li>
+                </ul>
+            </fieldset>
+            <br/>
+        </div>
+        <div data-th-if="${user}">
+            <fieldset class="user-details">
+                <legend>User</legend>
+                <ul>
+                    <li><label>Username:</label> <span data-th-text="${user.login}"></span></li>
+                    <li><label>Display name:</label> <span data-th-text="${user.displayName}"></span></li>
+                    <li><label>Key:</label> <span data-th-text="${user.key}"></span></li>
+                    <li><label>Email:</label> <span data-th-text="${user.email}"></span></li>
+                    <li><label>Modified time:</label> <span data-th-text="${user.modifiedTime}"></span></li>
+                    <li><label>Account:</label> <span data-th-text="${user.disabled} ? 'disabled' : 'enabled'"></span></li>
+                </ul>
+            </fieldset>
+            <br/>
+        </div>
+        <div data-th-if="${group}">
+            <fieldset class="group-details">
+                <legend>Group or Role</legend>
+                <ul>
+                    <li><label>Display name:</label> <span data-th-text="${group.displayName}"></span></li>
+                    <li><label>Key:</label> <span data-th-text="${group.key}"></span></li>
+                </ul>
+            </fieldset>
+            <br/>
+        </div>
+        <div data-th-if="${memberships}">
+            <fieldset class="user-details">
+                <legend>Direct Memberships</legend>
+                <ul data-th-each="membership : ${memberships}">
+                    <li>
+                        <a data-th-attr="data-principal=${membership.key}" href="#">
+                            <span data-th-text="${membership.displayName}"></span>
+                        </a>
+                    </li>
+                </ul>
+            </fieldset>
+            <br/>
+        </div>
+        <div data-th-if="${members}">
+            <fieldset class="user-details">
+                <legend>Members</legend>
+                <ul data-th-each="member : ${members}">
+                    <li>
+                        <input type="checkbox" data-th-attr="data-principal=${member.key}"/>
+                        <a data-th-attr="data-principal=${member.key}" href="#">
+                            <span data-th-text="${member.displayName}"></span>
+                        </a>
+                    </li>
+                </ul>
+                <p>
+                    <button type="button" name="remove">Remove Members</button>
+                </p>
+            </fieldset>
+            <br/>
+        </div>
+    </form>
+
+</div>
+
