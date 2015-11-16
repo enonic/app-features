@@ -36,6 +36,7 @@ exports.post = function (req) {
     var key = req.params.key || '';
     var removeParam = req.params.remove || '';
     var removeKeys = removeParam.trim() ? removeParam.split(',') : [];
+    var addKey = req.params.add || '';
     var username = req.params.username || '';
     var displayname = req.params.displayname || '';
     var email = req.params.email || '';
@@ -78,9 +79,18 @@ exports.post = function (req) {
         } catch (e) {
         }
 
-        log.info('%s %s', key, removeKeys);
         auth.removeMembers(key, removeKeys);
         infoMsg = 'Members removed';
+    }
+    if (action === 'add' && key && addKey) {
+        try {
+            principal = auth.getPrincipal(key);
+        } catch (e) {
+        }
+
+        log.info('%s %s', key, addKey);
+        auth.addMembers(key, [addKey]);
+        infoMsg = 'Member ' + addKey + ' added to ' + key;
     }
 
     if (principal) {

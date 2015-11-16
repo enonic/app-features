@@ -30,6 +30,12 @@ $(function () {
         postForm(form, 'remove');
     });
 
+    $(document).on('click', 'form button[name="add"]', function (e) {
+        e.preventDefault();
+        var form = $(this).closest('form');
+        postForm(form, 'add');
+    });
+
 });
 
 function postForm(form, action) {
@@ -54,6 +60,7 @@ function postForm(form, action) {
             group: type === 'group',
             role: type === 'role',
             remove: keys.join(','),
+            add: form.find('input[name="addmember"]').val(),
             debug: true
         }
     }).done(function (resp) {
