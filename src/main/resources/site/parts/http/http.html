@@ -1,0 +1,113 @@
+<div class="http-part">
+    <h2>HTTP Lib Demo</h2>
+
+    <form action="#" data-th-action="${postUrl}" method="post">
+        <div>
+            <fieldset class="http-details">
+                <p>
+                    <label>URL</label>
+                    <input name="url" type="text" data-th-value="${url}" size="150"/>
+                </p>
+
+                <p>
+                    <label>Method</label>
+                    <label><input type="radio" name="method" value="get" data-th-checked="${method=='any'}"/>GET</label>
+                    <label><input type="radio" name="method" value="post" data-th-checked="${method=='post'}"/>POST</label>
+                    <label><input type="radio" name="method" value="put" data-th-checked="${method=='put'}"/>PUT</label>
+                    <label><input type="radio" name="method" value="patch" data-th-checked="${method=='patch'}"/>PATCH</label>
+                    <label><input type="radio" name="method" value="delete" data-th-checked="${method=='delete'}"/>DELETE</label>
+                    <label><input type="radio" name="method" value="head" data-th-checked="${method=='head'}"/>HEAD</label>
+                    <label><input type="radio" name="method" value="options" data-th-checked="${method=='options'}"/>OPTIONS</label>
+                </p>
+
+                <p>
+                    <label>Content Type</label>
+                    <select name="contentType">
+                        <option value="application/x-www-form-urlencoded">application/x-www-form-urlencoded</option>
+                        <option value="text/plain">text/plain</option>
+                        <option value="text/html">text/html</option>
+                        <option value="application/json">application/json</option>
+                        <option value="application/xml">application/xml</option>
+                        <option value="multipart/form-data">multipart/form-data</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label>Params</label><br/>
+                    <input name="param1" type="text" data-th-value="${param1}"/> : <input name="value1" type="text"
+                                                                                          data-th-value="${value1}" size="100"/><br/>
+                    <input name="param2" type="text" data-th-value="${param2}"/> : <input name="value2" type="text"
+                                                                                          data-th-value="${value2}" size="100"/><br/>
+                    <input name="param3" type="text" data-th-value="${param3}"/> : <input name="value3" type="text"
+                                                                                          data-th-value="${value3}" size="100"/><br/>
+                    <input name="param4" type="text" data-th-value="${param4}"/> : <input name="value4" type="text"
+                                                                                          data-th-value="${value4}" size="100"/><br/>
+                </p>
+
+                <p>
+                    <label>Body</label>
+                    <textarea name="body" data-th-utext="${body}" rows="6" style="width: 600px;"></textarea>
+                </p>
+
+                <p>
+                    <label>Headers</label><br/>
+                    <input name="headerName1" type="text" data-th-value="${headerName1}"/> : <input name="headerValue1" type="text"
+                                                                                                    data-th-value="${headerValue1}"
+                                                                                                    size="100"/><br/>
+                    <input name="headerName2" type="text" data-th-value="${headerName2}"/> : <input name="headerValue2" type="text"
+                                                                                                    data-th-value="${headerValue2}"
+                                                                                                    size="100"/><br/>
+                    <input name="headerName3" type="text" data-th-value="${headerName3}"/> : <input name="headerValue3" type="text"
+                                                                                                    data-th-value="${headerValue3}"
+                                                                                                    size="100"/><br/>
+                    <input name="headerName4" type="text" data-th-value="${headerName4}"/> : <input name="headerValue4" type="text"
+                                                                                                    data-th-value="${headerValue4}"
+                                                                                                    size="100"/><br/>
+                </p>
+
+                <p>
+                    <label>Connect Timeout (ms)</label>
+                    <input name="connectTimeout" type="text" data-th-value="${connectTimeout}"/>
+                </p>
+
+                <p>
+                    <label>Read Timeout (ms)</label>
+                    <input name="readTimeout" type="text" data-th-value="${readTimeout}"/>
+                </p>
+
+                <span style="color:darkred;" data-th-if="${errorMsg != null}" data-th-text="${errorMsg}"></span>
+                <span style="color:darkgreen;" data-th-if="${infoMsg != null}" data-th-text="${infoMsg}"></span>
+
+                <p>
+                    <button type="button" name="send">Send</button>
+                </p>
+            </fieldset>
+            <br/>
+        </div>
+
+        <br/>
+
+        <div data-th-if="${response}">
+            <fieldset class="http-details">
+                <legend>Response</legend>
+                <ul>
+                    <li><label>Status:</label> <span data-th-text="${response.status}"></span></li>
+                    <li><label>Message:</label> <span data-th-text="${response.message}"></span></li>
+                    <li><label>Content Type:</label> <span data-th-text="${response.contentType}"></span></li>
+                    <legend>Headers</legend>
+                    <ul data-th-each="header : ${response.headers}">
+                        <li>
+                            <span data-th-text="${header.key}"></span> : <span data-th-text="${header.value}"></span>
+                        </li>
+                    </ul>
+                    <li><label>Body:</label>
+                        <pre data-th-text="${response.body}"></pre>
+                    </li>
+                </ul>
+            </fieldset>
+            <br/>
+        </div>
+    </form>
+
+</div>
+

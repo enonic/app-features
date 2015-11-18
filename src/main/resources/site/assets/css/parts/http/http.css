@@ -1,0 +1,8 @@
+fieldset.http-details label {
+    font-weight: bold;
+    vertical-align: top;
+}
+
+fieldset.http-details > ul > legend {
+    font-weight: bold;
+}
