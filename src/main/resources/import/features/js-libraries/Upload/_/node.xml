@@ -1,8 +1,8 @@
 <node>
-  <id>2428c75f-d89f-48a7-95f6-41c5a756508B</id>
+  <id>72941646-0295-43dc-a20c-c055821ee123</id>
   <childOrder>modifiedtime DESC</childOrder>
   <nodeType>content</nodeType>
-  <timestamp>2015-07-03T08:04:36.036Z</timestamp>
+  <timestamp>2015-10-05T12:09:31.292Z</timestamp>
   <inheritPermissions>true</inheritPermissions>
   <permissions>
     <principal key="user:system:anonymous">
@@ -44,36 +44,15 @@
   </permissions>
   <data>
     <boolean name="valid">true</boolean>
-    <string name="displayName">HTTP functions</string>
-    <string name="type">com.enonic.app.features:landing-page</string>
+    <string name="displayName">Upload</string>
+    <string name="type">base:folder</string>
     <string name="owner">user:system:su</string>
-    <dateTime name="modifiedTime">2015-07-03T08:04:36.036Z</dateTime>
+    <dateTime name="modifiedTime">2015-10-05T12:09:31.285Z</dateTime>
     <string name="modifier">user:system:su</string>
     <string name="creator">user:system:su</string>
-    <dateTime name="createdTime">2015-07-03T08:01:35.642Z</dateTime>
+    <dateTime name="createdTime">2015-10-05T12:09:24.974Z</dateTime>
     <property-set name="data"/>
-    <property-set name="x">
-      <property-set name="com-enonic-app-features">
-        <property-set name="menu-item">
-          <boolean name="menuItem">false</boolean>
-          <string isNull="true" name="menuName"/>
-        </property-set>
-      </property-set>
-    </property-set>
-    <property-set name="page">
-      <string isNull="true" name="controller"/>
-      <reference name="template">f5e15d67-4c9b-49d4-9d74-93adc65d9074</reference>
-      <property-set name="region">
-        <string name="name">main</string>
-        <property-set name="component">
-          <string name="type">PartComponent</string>
-          <property-set name="PartComponent">
-            <string name="name">HTTP functions test</string>
-            <string name="template">com.enonic.app.features:http</string>
-          </property-set>
-        </property-set>
-      </property-set>
-    </property-set>
+    <property-set name="x"/>
   </data>
   <indexConfigs>
     <analyzer>document_index_default</analyzer>
@@ -94,6 +73,69 @@
           <includeInAllText>false</includeInAllText>
         </indexConfig>
         <path>page.regions</path>
+      </pathIndexConfig>
+      <pathIndexConfig>
+        <indexConfig>
+          <decideByType>false</decideByType>
+          <enabled>true</enabled>
+          <nGram>true</nGram>
+          <fulltext>true</fulltext>
+          <includeInAllText>true</includeInAllText>
+          <indexValueProcessors>
+            <indexValueProcessor>htmlStripper</indexValueProcessor>
+          </indexValueProcessors>
+        </indexConfig>
+        <path>data.htmlarea_text</path>
+      </pathIndexConfig>
+      <pathIndexConfig>
+        <indexConfig>
+          <decideByType>false</decideByType>
+          <enabled>true</enabled>
+          <nGram>false</nGram>
+          <fulltext>false</fulltext>
+          <includeInAllText>false</includeInAllText>
+        </indexConfig>
+        <path>creator</path>
+      </pathIndexConfig>
+      <pathIndexConfig>
+        <indexConfig>
+          <decideByType>false</decideByType>
+          <enabled>true</enabled>
+          <nGram>false</nGram>
+          <fulltext>false</fulltext>
+          <includeInAllText>false</includeInAllText>
+        </indexConfig>
+        <path>createdTime</path>
+      </pathIndexConfig>
+      <pathIndexConfig>
+        <indexConfig>
+          <decideByType>false</decideByType>
+          <enabled>true</enabled>
+          <nGram>false</nGram>
+          <fulltext>false</fulltext>
+          <includeInAllText>false</includeInAllText>
+        </indexConfig>
+        <path>modifiedTime</path>
+      </pathIndexConfig>
+      <pathIndexConfig>
+        <indexConfig>
+          <decideByType>false</decideByType>
+          <enabled>true</enabled>
+          <nGram>false</nGram>
+          <fulltext>false</fulltext>
+          <includeInAllText>false</includeInAllText>
+        </indexConfig>
+        <path>modifier</path>
+      </pathIndexConfig>
+      <pathIndexConfig>
+        <indexConfig>
+          <decideByType>false</decideByType>
+          <enabled>true</enabled>
+          <nGram>false</nGram>
+          <fulltext>false</fulltext>
+          <includeInAllText>false</includeInAllText>
+        </indexConfig>
+        <path>owner</path>
       </pathIndexConfig>
       <pathIndexConfig>
         <indexConfig>

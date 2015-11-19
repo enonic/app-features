@@ -1,0 +1,60 @@
+<div>
+    <h2>Multipart Request Demo</h2>
+
+    <form action="#" data-th-action="${postUrl}" method="post" enctype="multipart/form-data">
+        <div>
+            <fieldset class="http-details">
+                <p>
+                    <label>Upload Folder</label>
+                    <input name="targetFolder" type="text" data-th-value="${targetFolder}" size="80"/>
+                </p>
+
+                <p>
+                    <label>File 1</label>
+                    <input name="file1" type="file"/>
+                </p>
+
+                <p>
+                    <label>File 2</label>
+                    <input name="file2" type="file"/>
+                </p>
+
+                <p>
+                    <label>File 3</label>
+                    <input name="file3" type="file"/>
+                </p>
+
+                <p>
+                    <label>File 4</label>
+                    <input name="file4" type="file"/>
+                </p>
+
+                <p>
+                    <input name="multipartRedirect" type="hidden" data-th-value="${multipartRedirect}"/>
+                    <input name="debug" type="hidden" value="true"/>
+                    <button type="submit" name="send">Send</button>
+                </p>
+            </fieldset>
+            <br/>
+        </div>
+
+        <br/>
+
+        <div data-th-if="${files}">
+            <fieldset>
+                <legend>Upload Files</legend>
+                <ul>
+                    <li data-th-each="file : ${files}" data-th-if="${file.type == 'media:image'}">
+                        <a data-th-href="${file.url}" target="_blank"><img data-th-src="${file.thumbUrl}" src="image"/></a>
+                    </li>
+                    <li data-th-each="file : ${files}" data-th-if="${file.type != 'media:image'}">
+                        <a data-th-href="${file.url}" target="_blank" data-th-text="${file.name}"></a>
+                    </li>
+                </ul>
+            </fieldset>
+            <br/>
+        </div>
+    </form>
+
+</div>
+

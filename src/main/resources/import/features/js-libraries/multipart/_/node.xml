@@ -1,5 +1,5 @@
 <node>
-  <id>2428c75f-d89f-48a7-95f6-41c5a756508B</id>
+  <id>2428c75f-d89f-48a7-95f6-41c5a75650CC</id>
   <childOrder>modifiedtime DESC</childOrder>
   <nodeType>content</nodeType>
   <timestamp>2015-07-03T08:04:36.036Z</timestamp>
@@ -44,7 +44,7 @@
   </permissions>
   <data>
     <boolean name="valid">true</boolean>
-    <string name="displayName">HTTP functions</string>
+    <string name="displayName">Multipart request</string>
     <string name="type">com.enonic.app.features:landing-page</string>
     <string name="owner">user:system:su</string>
     <dateTime name="modifiedTime">2015-07-03T08:04:36.036Z</dateTime>
@@ -68,8 +68,11 @@
         <property-set name="component">
           <string name="type">PartComponent</string>
           <property-set name="PartComponent">
-            <string name="name">HTTP functions test</string>
-            <string name="template">com.enonic.app.features:http</string>
+            <string name="name">Multipart functions test</string>
+            <string name="template">com.enonic.app.features:multipart</string>
+            <property-set name="config">
+              <reference name="targetFolder">72941646-0295-43dc-a20c-c055821ee123</reference>
+            </property-set>
           </property-set>
         </property-set>
       </property-set>
