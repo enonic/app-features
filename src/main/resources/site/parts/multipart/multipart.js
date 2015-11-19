@@ -48,7 +48,7 @@ exports.post = function (req) {
 };
 
 function createMedia(multipartForm) {
-    var uploadFolder, media, part, partBytes, contentIds = [];
+    var uploadFolder, media, part, contentIds = [];
 
     var targetFolderPath = portal.getMultipartText('targetFolder');
     if (targetFolderPath) {
@@ -65,15 +65,13 @@ function createMedia(multipartForm) {
         part = portal.getMultipartItem(name);
 
         if (part.fileName && part.size > 0) {
-            partBytes = portal.getMultipartBytes(name);
-
             media = contentLib.createMedia({
                 name: part.fileName,
                 parentPath: uploadFolder._path,
                 mimeType: part.contentType,
                 focalX: 0.5,
                 focalY: 0.5,
-                data: partBytes
+                data: portal.getMultipartBytes(name)
             });
             log.info('Media created: %s', media);
             contentIds.push(media._id);
