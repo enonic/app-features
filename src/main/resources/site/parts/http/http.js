@@ -24,7 +24,7 @@ exports.get = function (req) {
         body: body,
         pageContributions: {
             headEnd: [
-                '<link rel="stylesheet" href="' + portal.assetUrl({path: 'css/parts/http/http.css'}) + '" type="text/css" />',
+                '<link rel="stylesheet" href="' + portal.assetUrl({path: 'css/parts/http/http.css'}) + '" type="text/css" />'
             ],
             bodyEnd: [
                 '<script src="' + portal.assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
