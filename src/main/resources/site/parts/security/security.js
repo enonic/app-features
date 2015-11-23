@@ -11,20 +11,16 @@ function a() {
 
 function handleGet(req) {
 
-    var getCurrentUser = function test() {
-        log.info("success");
-        log.info(JSON.stringify(auth.getUser(), null, 4));
+    function getCurrentUser() {
+        log.info("auth.getUser(): %s", JSON.stringify(auth.getUser(), null, 4));
+        return auth.getUser();
     }
 
-
     var getUserResult = getCurrentUser();
-    log.info("getUserResult %s", getUserResult);
     var getUserResultWithContext = security.runWith({
         branch: 'draft',
         user: 'su'
     }, getCurrentUser);
-    log.info("getUserResultWithContext %s", getUserResultWithContext);
-
 
     var params = {
         getUserResult: getUserResult,
