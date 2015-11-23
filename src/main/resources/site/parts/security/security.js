@@ -1,4 +1,4 @@
-var portal = require('/lib/xp/portal');
+var content = require('/lib/xp/content');
 var thymeleaf = require('/lib/xp/thymeleaf');
 var auth = require('/lib/xp/auth');
 var security = require('/lib/xp/security');
@@ -16,9 +16,23 @@ function handleGet(req) {
         user: 'su'
     }, auth.getUser);
 
+
+    function getNumberOfContents() {
+        return {
+            total: content.query({count: 0}).total
+        }
+    }
+
+    var getNumberOfContentsResult = getNumberOfContents();
+    var getNumberOfContentsOnMasterResult = security.runWith({
+        branch: 'master'
+    }, getNumberOfContents);
+
     var params = {
         getUserResult: getUserResult,
-        getUserResultWithContext: getUserResultWithContext
+        getUserResultWithContext: getUserResultWithContext,
+        getNumberOfContentsResult: getNumberOfContentsResult,
+        getNumberOfContentsOnMasterResult: getNumberOfContentsOnMasterResult
     };
 
     var body = thymeleaf.render(view, params);

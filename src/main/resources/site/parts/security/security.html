@@ -1,11 +1,19 @@
 <h1>Lib Content</h1>
 
 <div>
-    <h2>Get User</h2>
+    <h2>Get current user</h2>
 
     <p data-th-text="${getUserResult}"></p>
 
-    <h2>Get User using runWith with parameter user:su</h2>
+    <h2>Get current user using runWith with parameter user: 'su'</h2>
 
     <p data-th-text="${getUserResultWithContext}"></p>
+
+    <h2>Get number of contents</h2>
+
+    <p data-th-text="${getNumberOfContentsResult}"></p>
+
+    <h2>Get number of contents using runWith with parameter branch: 'master'</h2>
+
+    <p data-th-text="${getNumberOfContentsOnMasterResult}"></p>
 </div>
