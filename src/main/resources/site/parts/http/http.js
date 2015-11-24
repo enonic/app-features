@@ -1,6 +1,6 @@
 var portal = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
-var http = require('/lib/xp/http');
+var httpClient = require('/lib/xp/http-client');
 
 
 exports.get = function (req) {
@@ -63,7 +63,7 @@ exports.post = function (req) {
 
     var response;
     try {
-        response = http.request({
+        response = httpClient.request({
             url: url,
             method: method,
             contentType: contentType,
