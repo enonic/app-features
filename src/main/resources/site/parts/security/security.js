@@ -29,7 +29,7 @@ function handleGet(req) {
     }, getNumberOfContents);
 
 
-    var updatedContent = security.setPermissions({
+    var updatedContent = content.setPermissions({
         key: '03c6ae7b-7f48-45f5-973d-1f03606ab928',
         permissions: [{
             principal: 'user:system:anonymous',
