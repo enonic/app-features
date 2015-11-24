@@ -28,11 +28,22 @@ function handleGet(req) {
         branch: 'master'
     }, getNumberOfContents);
 
+
+    var updatedContent = content.setPermissions({
+        key: '03c6ae7b-7f48-45f5-973d-1f03606ab928',
+        permissions: [{
+            principal: 'user:system:anonymous',
+            allow: ['READ'],
+            deny: []
+        }]
+    });
+
     var params = {
         getUserResult: getUserResult,
         getUserResultWithContext: getUserResultWithContext,
         getNumberOfContentsResult: getNumberOfContentsResult,
-        getNumberOfContentsOnMasterResult: getNumberOfContentsOnMasterResult
+        getNumberOfContentsOnMasterResult: getNumberOfContentsOnMasterResult,
+        updatedContent: updatedContent
     };
 
     var body = thymeleaf.render(view, params);
