@@ -17,7 +17,6 @@ exports.testGet = function () {
         }
     });
 
-    assert.assertEquals(0, result.status);
     assert.assertEquals('text/html', result.contentType);
     assert.assertNotNull(result.body);
 

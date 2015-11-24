@@ -14,7 +14,6 @@ exports.test404 = function () {
         request: requestMock
     });
 
-    assert.assertEquals(0, result.status);
     assert.assertEquals('text/html', result.contentType);
     assert.assertNotNull(result.body);
 
@@ -26,7 +25,6 @@ exports.testDefault = function () {
         request: requestMock
     });
 
-    assert.assertEquals(0, result.status);
     assert.assertEquals('text/html', result.contentType);
     assert.assertNotNull(result.body);
 
