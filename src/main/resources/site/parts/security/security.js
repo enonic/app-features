@@ -1,7 +1,7 @@
 var content = require('/lib/xp/content');
 var thymeleaf = require('/lib/xp/thymeleaf');
 var auth = require('/lib/xp/auth');
-var security = require('/lib/xp/security');
+var context = require('/lib/xp/context');
 var view = resolve('security.html');
 
 function a() {
@@ -12,7 +12,7 @@ function a() {
 function handleGet(req) {
 
     var getUserResult = auth.getUser();
-    var getUserResultWithContext = security.runWith({
+    var getUserResultWithContext = context.runWith({
         user: 'su'
     }, auth.getUser);
 
@@ -24,7 +24,7 @@ function handleGet(req) {
     }
 
     var getNumberOfContentsResult = getNumberOfContents();
-    var getNumberOfContentsOnMasterResult = security.runWith({
+    var getNumberOfContentsOnMasterResult = context.runWith({
         branch: 'master'
     }, getNumberOfContents);
 
