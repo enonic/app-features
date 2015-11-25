@@ -5,7 +5,10 @@ exports.runWithUser = function () {
     var contextLib = require('/lib/xp/context');
 
     var result = contextLib.run({
-        user: 'su'
+        user: {
+            login: 'su',
+            userStore: 'system'
+        }
     }, authLib.getUser);
 
     if (result) {
