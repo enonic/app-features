@@ -235,3 +235,29 @@ exports.modify = function () {
 
     return result;
 };
+
+exports.setPermissions = function () {
+
+    //Documentation BEGIN
+    var contentLib = require('/lib/xp/content');
+
+    var result = contentLib.setPermissions({
+        key: '/features/js-libraries/mycontent',
+        permissions: [{
+            principal: 'user:system:anonymous',
+            allow: ['READ'],
+            deny: []
+        }]
+    });
+
+    if (result) {
+        log.info('Permissions set on ' + result.displayName);
+    } else {
+        log.info('Content not found');
+    }
+    //Documentation END
+
+    log.info('SetPermissions result: ' + JSON.stringify(result, null, 4));
+
+    return result;
+};
