@@ -4,7 +4,7 @@ exports.runWithUser = function () {
     var authLib = require('/lib/xp/auth');
     var contextLib = require('/lib/xp/context');
 
-    var result = contextLib.runWith({
+    var result = contextLib.run({
         user: 'su'
     }, authLib.getUser);
 
@@ -32,7 +32,7 @@ exports.runWithBranch = function () {
         }
     }
 
-    var result = contextLib.runWith({
+    var result = contextLib.run({
         branch: 'master'
     }, getNumberOfContents);
 
