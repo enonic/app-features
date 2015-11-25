@@ -9,7 +9,7 @@ exports.runWithUser = function () {
     }, authLib.getUser);
 
     if (result) {
-        log.info('Current user nickname: ' + result.nickname);
+        log.info('Current user name: ' + result.displayName);
     } else {
         log.info('No current user');
     }
