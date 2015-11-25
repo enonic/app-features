@@ -243,6 +243,8 @@ exports.setPermissions = function () {
 
     var result = contentLib.setPermissions({
         key: '/features/js-libraries/mycontent',
+        inheritPermissions: false,
+        overwriteChildPermissions: true,
         permissions: [{
             principal: 'user:system:anonymous',
             allow: ['READ'],
