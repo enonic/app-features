@@ -33,7 +33,7 @@ dependencies {
     include "com.enonic.xp:lib-i18n:${xpVersion}"
     include "com.enonic.xp:lib-mail:${xpVersion}"
     include "com.enonic.xp:lib-auth:${xpVersion}"
-    include "com.enonic.xp:lib-http:${xpVersion}"
+    include "com.enonic.xp:lib-http-client:${xpVersion}"
     include "com.enonic.xp:lib-context:${xpVersion}"
 
     testCompile 'junit:junit:4.10'
