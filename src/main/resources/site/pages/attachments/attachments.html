@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Attachments test page</title>
+</head>
+
+<body data-portal-component-type="page" data-th-class="${editable}? 'edit'">
+
+<div id="mainRegion" data-portal-region="main">
+
+    <h2>Attachments Demo</h2>
+
+    <form action="#" data-th-action="${pageUrl}" method="post" enctype="application/x-www-form-urlencoded">
+        <div>
+            <fieldset class="http-details">
+                <p>
+                    <label>Content path</label>
+                    <input name="contentPath" type="text" data-th-value="${contentPath}" size="80"/>
+                </p>
+
+            </fieldset>
+            <br/>
+            <button type="submit" name="send">Show Attachments</button>
+            <input name="debug" type="hidden" value="true"/>
+        </div>
+
+        <br/>
+
+        <div data-th-if="${attachments}">
+            <fieldset>
+                <legend>Attachments</legend>
+                <ul>
+                    <li data-th-each="attachment : ${attachments.values}">
+                        <a data-th-href="${portal.pageUrl({pageUrl, 'contentPath='+contentPath, 'name='+attachment.name})}" target="_blank"
+                           data-th-text="${attachment.name}"></a>
+                    </li>
+                </ul>
+            </fieldset>
+            <br/>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

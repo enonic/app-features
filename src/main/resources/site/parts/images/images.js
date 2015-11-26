@@ -9,7 +9,8 @@ var scaleOptions = [
     {name: 'Scale Block H', value: 'block(200,600)'},
     {name: 'Scale Square', value: 'square(600)'},
     {name: 'Scale Width', value: 'width(600)'},
-    {name: 'Scale Height', value: 'height(600)'}
+    {name: 'Scale Height', value: 'height(600)'},
+    {name: 'Source', value: '(1,1)'}
 ];
 
 var filterOptions = [
