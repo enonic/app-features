@@ -1,40 +1,61 @@
 <div class="mail-part">
     <h2>Mail Lib Demo</h2>
 
-    <form action="#" data-th-action="${postUrl}" method="post">
+    <form action="#" data-th-action="${postUrl}" method="post" enctype="multipart/form-data">
+        <input name="pageRedirect" type="hidden" data-th-value="${pageRedirect}"/>
+        <input name="debug" type="hidden" value="true"/>
+
         <div class="mail-form">
             <fieldset class="mail-form">
                 <p>
                     <label>From</label>
                     <input name="from" type="text" value=""/>
                 </p>
+
                 <p>
                     <label>To</label>
                     <input name="to" type="text" value=""/>
                 </p>
+
                 <p>
                     <label>CC</label>
                     <input name="cc" type="text" value=""/>
                 </p>
+
                 <p>
                     <label>BCC</label>
                     <input name="bcc" type="text" value=""/>
                 </p>
+
                 <p>
                     <label>Reply To</label>
                     <input name="replyTo" type="text" value=""/>
                 </p>
+
                 <p>
                     <label>Subject</label>
                     <input name="subject" type="text" value=""/>
                 </p>
+
                 <p>
                     <label>Text</label>
                     <textarea name="body"></textarea>
                 </p>
-                <span class="sendresultmsg"></span>
+
                 <p>
-                    <button type="button" name="send">Send</button>
+                    <label>Attachment 1</label>
+                    <input name="file1" type="file"/>
+                </p>
+
+                <p>
+                    <label>Attachment 2</label>
+                    <input name="file2" type="file"/>
+                </p>
+                <span class="sendresultmsg success" data-th-attr="style=${result == null || result != 'true'?'display:none;':''}">Email sent successfully!</span>
+                <span class="sendresultmsg fail" data-th-attr="style=${result == null || result != 'false'?'display:none;':''}">Email could not be sent. Check the log.</span>
+
+                <p>
+                    <button type="submit" name="send">Send</button>
                 </p>
             </fieldset>
         </div>
