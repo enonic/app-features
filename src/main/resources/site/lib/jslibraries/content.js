@@ -275,7 +275,6 @@ exports.getPermissions = function () {
 
     if (result) {
         log.info('Content inherits permissions: ' + result.inheritPermissions);
-        log.info('Content permissions: ' + result.permissions);
     } else {
         log.info('Content not found');
     }
