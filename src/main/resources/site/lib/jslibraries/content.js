@@ -281,7 +281,7 @@ exports.getPermissions = function () {
     }
     //Documentation END
 
-    log.info('SetPermissions result: ' + JSON.stringify(result, null, 4));
+    log.info('GetPermissions result: ' + JSON.stringify(result, null, 4));
 
     return result;
 };
