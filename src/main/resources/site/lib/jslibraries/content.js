@@ -253,7 +253,29 @@ exports.setPermissions = function () {
     });
 
     if (result) {
-        log.info('Permissions set on ' + result.displayName);
+        log.info('Content permissions updated.');
+    } else {
+        log.info('Content not found');
+    }
+    //Documentation END
+
+    log.info('SetPermissions result: ' + JSON.stringify(result, null, 4));
+
+    return result;
+};
+
+exports.getPermissions = function () {
+
+    //Documentation BEGIN
+    var contentLib = require('/lib/xp/content');
+
+    var result = contentLib.getPermissions({
+        key: '/features/js-libraries/mycontent'
+    });
+
+    if (result) {
+        log.info('Content inherits permissions: ' + result.inheritPermissions);
+        log.info('Content permissions: ' + result.permissions);
     } else {
         log.info('Content not found');
     }

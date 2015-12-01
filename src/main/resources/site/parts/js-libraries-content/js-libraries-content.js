@@ -10,7 +10,9 @@ function handleGet(req) {
     var getChildrenResult = JSON.stringify(contentJsLib.getChildren(), null, 4);
     var queryResult = JSON.stringify(contentJsLib.query(), null, 4);
     var modifyResult = JSON.stringify(contentJsLib.modify(), null, 4);
+    var getPermissionsResultBefore = JSON.stringify(contentJsLib.getPermissions(), null, 4);
     var setPermissionsResult = JSON.stringify(contentJsLib.setPermissions(), null, 4);
+    var getPermissionsResultAfter = JSON.stringify(contentJsLib.getPermissions(), null, 4);
     var deleteResult = JSON.stringify(contentJsLib.delete(), null, 4);
 
     var params = {
@@ -19,7 +21,9 @@ function handleGet(req) {
         getChildrenResult: getChildrenResult,
         queryResult: queryResult,
         modifyResult: modifyResult,
+        getPermissionsResultBefore: getPermissionsResultBefore,
         setPermissionsResult: setPermissionsResult,
+        getPermissionsResultAfter: getPermissionsResultAfter,
         deleteResult: deleteResult
     };
 
