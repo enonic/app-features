@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<content-type>
+  <display-name>Selector</display-name>
+  <super-type>base:structured</super-type>
+  <form>
+    <input name="allowArticle" type="ContentSelector">
+      <label>Allow articles</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <relationship>system:reference</relationship>
+        <allowType>article</allowType>
+      </config>
+    </input>
+    <input name="allowCurrentFolder" type="ContentSelector">
+      <label>Allow ./</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <relationship>system:reference</relationship>
+        <allowPath>./</allowPath>
+      </config>
+    </input>
+    <input name="allowCurrentAndChildFolder" type="ContentSelector">
+      <label>Allow ./*</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <relationship>system:reference</relationship>
+        <allowPath>./*</allowPath>
+      </config>
+    </input>
+    <input name="allowAllOnCurrentSite" type="ContentSelector">
+      <label>Allow ${site}/</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <relationship>system:reference</relationship>
+        <allowPath>${site}/*</allowPath>
+      </config>
+    </input>
+    <input name="allowCurrentSite_input-types_date-and-time" type="ContentSelector">
+      <label>Allow ${site}/input-types/date-and-time</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <relationship>system:reference</relationship>
+        <allowPath>${site}/input-types/date-and-time/*</allowPath>
+      </config>
+    </input>
+  </form>
+</content-type>
