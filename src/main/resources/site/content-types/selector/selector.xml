@@ -3,6 +3,20 @@
   <display-name>Selector</display-name>
   <super-type>base:structured</super-type>
   <form>
+    <input name="imageSelector" type="ImageSelector">
+      <label>Allow children</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <allowPath>./</allowPath>
+      </config>
+    </input>
+    <input name="imageSelector" type="ImageSelector">
+      <label>allow all on site</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <allowPath>${site}</allowPath>
+      </config>
+    </input>
     <input name="allowArticle" type="ContentSelector">
       <label>Allow articles</label>
       <occurrences minimum="0" maximum="0"/>
