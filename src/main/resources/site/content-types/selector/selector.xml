@@ -10,7 +10,7 @@
         <allowPath>./</allowPath>
       </config>
     </input>
-    <input name="imageSelector" type="ImageSelector">
+    <input name="imageSelectorSite" type="ImageSelector">
       <label>allow all on site</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
