@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<content-type>
+  <display-name>Reference-test</display-name>
+  <super-type>base:structured</super-type>
+  <form>
+    <input name="myRelation" type="ContentSelector">
+      <label>References to other contents</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <relationship-type>system:reference</relationship-type>
+      </config>
+    </input>
+  </form>
+</content-type>

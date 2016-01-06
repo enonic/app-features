@@ -1,0 +1,11 @@
+<div>
+    <h2>My incoming references</h2>
+
+    <ul>
+        <div data-th-each="ref : ${incomingRefs}">
+            <li>
+                <div data-th-text="${ref._path}"></div>
+            </li>
+        </div>
+    </ul>
+</div>
