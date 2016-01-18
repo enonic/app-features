@@ -5,7 +5,7 @@ var viewGeneric = resolve('default.html');
 
 exports.handle404 = function (err) {
     var debugMode = err.request.params.debug === 'true';
-    if (debugMode && err.request.mode === 'preview') {
+    if (debugMode && (err.request.mode === 'preview' || err.request.mode === 'edit')) {
         return null;
     }
 
@@ -20,7 +20,7 @@ exports.handle404 = function (err) {
 
 exports.handleError = function (err) {
     var debugMode = err.request.params.debug === 'true';
-    if (debugMode && err.request.mode === 'preview') {
+    if (debugMode && (err.request.mode === 'preview' || err.request.mode === 'edit')) {
         return null;
     }
 
