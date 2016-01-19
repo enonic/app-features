@@ -1,0 +1,11 @@
+fieldset.publish-form label {
+    font-weight: bold;
+}
+
+span.publishresultmsg.fail {
+    color: darkred;
+}
+
+span.publishresultmsg.success {
+    color: forestgreen;
+}

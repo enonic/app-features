@@ -1,0 +1,41 @@
+<div class="publish-part">
+    <h2>Publish Content Demo</h2>
+
+    <form action="#" data-th-action="${postUrl}" method="post">
+        <input name="debug" type="hidden" value="true"/>
+
+        <div class="publish-form">
+            <fieldset class="publish-form">
+                <p>
+                    <label>Content Key</label>
+                    <input name="key" type="text" value="" size="80"/>
+                    <button type="button" name="moreKeys"><b>+</b></button>
+                </p>
+                <p>
+                    <label for="publish-branch">Branch</label>
+                    <select name="branch" id="publish-branch">
+                        <option value="master">Master</option>
+                        <option value="draft">Draft</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="publish-includeChildren">Include Children</label>
+                    <input id="publish-includeChildren" type="checkbox" name="includeChildren"/>
+                </p>
+                <p>
+                    <label for="publish-includeDependencies">Include Dependencies</label>
+                    <input id="publish-includeDependencies" type="checkbox" name="includeDependencies"/>
+                </p>
+                <span class="publishresultmsg success" style="display: none;">...</span>
+                <span class="publishresultmsg fail" style="display: none;">...</span>
+
+                <p>
+                    <button type="button" name="publish">Publish</button>
+                </p>
+            </fieldset>
+        </div>
+
+    </form>
+
+</div>
+
