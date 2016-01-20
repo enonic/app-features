@@ -33,7 +33,7 @@ exports.post = function (req) {
         keys: keys,
         targetBranch: branch,
         includeChildren: includeChildren,
-        resolveDependencies: includeDependencies
+        includeDependencies: includeDependencies
     };
     log.info("Publish parameters %s", publishParams);
 
