@@ -26,8 +26,8 @@
       <help-text/>
       <occurrences minimum="0" maximum="0"/>
       <config>
-        <allow-content-type>media:image</allow-content-type>
-        <allow-content-type>media:audio</allow-content-type>
+        <allowContentType>media:image</allowContentType>
+        <allowContentType>media:audio</allowContentType>
       </config>
     </input>
   </form>

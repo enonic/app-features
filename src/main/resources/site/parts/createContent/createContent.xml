@@ -6,7 +6,7 @@
       <label>Target Folder</label>
       <occurrences minimum="1" maximum="1"/>
       <config>
-        <allow-content-type>base:folder</allow-content-type>
+        <allowContentType>base:folder</allowContentType>
       </config>
     </input>
   </config>
