@@ -27,11 +27,13 @@ exports.post = function (req) {
     var includeChildren = req.params.includeChildren == 'true';
     var includeDependencies = req.params.includeDependencies == 'true';
     var keys = (req.params.keys || '').split(',');
-    var branch = req.params.branch;
+    var sourceBranch = req.params.sourceBranch;
+    var targetBranch = req.params.targetBranch;
 
     var publishParams = {
         keys: keys,
-        targetBranch: branch,
+        sourceBranch: sourceBranch,
+        targetBranch: targetBranch,
         includeChildren: includeChildren,
         includeDependencies: includeDependencies
     };

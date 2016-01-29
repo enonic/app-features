@@ -40,7 +40,8 @@ $(function () {
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             data: {
                 keys: keyParam,
-                branch: form.find('select[name="branch"]').val(),
+                sourceBranch: form.find('select[name="sourceBranch"]').val(),
+                targetBranch: form.find('select[name="targetBranch"]').val(),
                 includeChildren: form.find('input[name="includeChildren"]').is(':checked'),
                 includeDependencies: form.find('input[name="includeDependencies"]').is(':checked'),
                 debug: true

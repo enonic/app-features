@@ -12,9 +12,16 @@
                     <button type="button" name="moreKeys"><b>+</b></button>
                 </p>
                 <p>
-                    <label for="publish-branch">Branch</label>
-                    <select name="branch" id="publish-branch">
+                    <label for="publish-source-branch">Branch</label>
+                    <select name="sourceBranch" id="publish-source-branch">
                         <option value="master">Master</option>
+                        <option value="draft" selected="selected">Draft</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="publish-target-branch">Branch</label>
+                    <select name="targetBranch" id="publish-target-branch">
+                        <option value="master" selected="selected">Master</option>
                         <option value="draft">Draft</option>
                     </select>
                 </p>
