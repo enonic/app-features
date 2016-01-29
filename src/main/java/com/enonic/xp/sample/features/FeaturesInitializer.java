@@ -12,16 +12,19 @@ import org.slf4j.LoggerFactory;
 
 import com.enonic.xp.content.ApplyContentPermissionsParams;
 import com.enonic.xp.content.Content;
+import com.enonic.xp.content.ContentConstants;
 import com.enonic.xp.content.ContentPath;
 import com.enonic.xp.content.ContentService;
 import com.enonic.xp.content.CreateContentParams;
 import com.enonic.xp.content.UpdateContentParams;
+import com.enonic.xp.context.Context;
 import com.enonic.xp.context.ContextAccessor;
 import com.enonic.xp.context.ContextBuilder;
 import com.enonic.xp.data.PropertyTree;
 import com.enonic.xp.export.ExportService;
 import com.enonic.xp.export.ImportNodesParams;
 import com.enonic.xp.export.NodeImportResult;
+import com.enonic.xp.index.IndexService;
 import com.enonic.xp.node.NodePath;
 import com.enonic.xp.schema.content.ContentTypeName;
 import com.enonic.xp.security.PrincipalKey;
@@ -48,16 +51,30 @@ public final class FeaturesInitializer
 
     private ExportService exportService;
 
+    private IndexService indexService;
+
     private final Logger LOG = LoggerFactory.getLogger( FeaturesInitializer.class );
 
     @Activate
     public void initialize()
         throws Exception
     {
-        runAs( RoleKeys.CONTENT_MANAGER_ADMIN, () -> {
-            doInitialize();
-            return null;
-        } );
+        if ( this.indexService.isMaster() )
+        {
+            runAs( createInitContext(), () -> {
+                doInitialize();
+                return null;
+            } );
+        }
+    }
+
+    private Context createInitContext()
+    {
+        return ContextBuilder.from( ContextAccessor.current() ).
+            authInfo( AuthenticationInfo.create().principals( RoleKeys.CONTENT_MANAGER_ADMIN ).user( User.ANONYMOUS ).build() ).
+            branch( ContentConstants.BRANCH_DRAFT ).
+            repositoryId( ContentConstants.CONTENT_REPO.getId() ).
+            build();
     }
 
     private void doInitialize()
@@ -156,6 +173,12 @@ public final class FeaturesInitializer
         this.contentService = contentService;
     }
 
+    @Reference
+    public void setIndexService( final IndexService indexService )
+    {
+        this.indexService = indexService;
+    }
+
     private void createLargeTree()
     {
         final ContentPath largeTreePath = ContentPath.from( "/large-tree" );
@@ -187,9 +210,8 @@ public final class FeaturesInitializer
         }
     }
 
-    private <T> T runAs( final PrincipalKey role, final Callable<T> runnable )
+    private <T> T runAs( final Context context, final Callable<T> runnable )
     {
-        final AuthenticationInfo authInfo = AuthenticationInfo.create().principals( role ).user( User.ANONYMOUS ).build();
-        return ContextBuilder.from( ContextAccessor.current() ).authInfo( authInfo ).build().callWith( runnable );
+        return context.callWith( runnable );
     }
 }
