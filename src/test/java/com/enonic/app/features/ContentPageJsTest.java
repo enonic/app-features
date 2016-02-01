@@ -1,15 +1,13 @@
 package com.enonic.app.features;
 
-import org.junit.Test;
-
-import com.enonic.xp.testing.script.ScriptTestSupport;
+import com.enonic.xp.testing.script.ScriptRunnerSupport;
 
 public class ContentPageJsTest
-    extends ScriptTestSupport
+    extends ScriptRunnerSupport
 {
-    @Test
-    public void testGet()
+    @Override
+    public String getScriptTestFile()
     {
-        runFunction( "/site/pages/content/content-test.js", "testGet" );
+        return "/site/pages/content/content-test.js";
     }
 }

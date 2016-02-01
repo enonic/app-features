@@ -1,21 +1,13 @@
 package com.enonic.app.features;
 
-import org.junit.Test;
-
-import com.enonic.xp.testing.script.ScriptTestSupport;
+import com.enonic.xp.testing.script.ScriptRunnerSupport;
 
 public class ErrorJsTest
-    extends ScriptTestSupport
+    extends ScriptRunnerSupport
 {
-    @Test
-    public void test404()
+    @Override
+    public String getScriptTestFile()
     {
-        runFunction( "/site/error/error-test.js", "test404" );
-    }
-
-    @Test
-    public void testDefault()
-    {
-        runFunction( "/site/error/error-test.js", "testDefault" );
+        return "/site/error/error-test.js";
     }
 }
