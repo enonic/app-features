@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Chat - Customer Module</title>
+    <link type="text/css" rel="stylesheet" data-th-href="${portal.assetUrl({'_path=css/chat.css'})}"/>
+    <script type="text/javascript">
+        var socket = new WebSocket("ws://localhost:8080/portal/draft/features/_/service/com.enonic.app.features/chat", "text");
+
+        socket.onmessage = function (event) {
+            var el = document.getElementById('chatbox');
+            el.innerHTML += event.data + '<br/>';
+        };
+
+        function sendMessage() {
+            var el = document.getElementById('message');
+            if (el.value.length > 0) {
+                socket.send(el.value);
+                el.value = '';
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="wrapper">
+    <div id="menu">
+        <p class="welcome">Welcome, <b>Unknown</b></p>
+        <div style="clear:both"></div>
+    </div>
+
+    <div id="chatbox"></div>
+
+    <input name="message" type="text" id="message" size="63"/>
+    <input name="submit" type="submit" id="submit" value="Send" onclick="sendMessage();"/>
+</div>
+
+</body>
+</html>
