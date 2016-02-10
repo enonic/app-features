@@ -1,0 +1,13 @@
+<p>
+    <a href='http://example.com/' onclick='stealCookies()'>Link</a>
+</p>
+
+<p>
+    <iframe src="javascript:alert('XSS');"></iframe>
+</p>
+
+<img src="#" onmouseover="alert('xxs')"/>
+
+<img src="/" onerror="alert(String.fromCharCode(88,83,83))"/>
+
+<script>alert("XSS")</script>

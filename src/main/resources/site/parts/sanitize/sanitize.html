@@ -1,0 +1,26 @@
+<div class="sanitize-part">
+    <h2>Portal Lib sanitizeHtml Demo</h2>
+
+    <form action="#" data-th-action="${postUrl}" method="post" enctype="multipart/form-data">
+        <div class="sanitize-form">
+            <fieldset class="sanitize-form">
+                <p>
+                    <button type="submit" name="sanitize">Sanitize</button>
+                </p>
+                <hr/>
+                <p>
+                    <label>Original HTML </label>
+                    <textarea name="html" data-th-utext="${html}" rows="20" style="width: 600px;"></textarea>
+                </p>
+                <br/>
+                <p>
+                    <label>Sanitized HTML</label>
+                    <textarea name="cleanHtml" data-th-utext="${cleanHtml}" rows="20" style="width: 600px;"></textarea>
+                </p>
+            </fieldset>
+        </div>
+
+    </form>
+
+</div>
+
