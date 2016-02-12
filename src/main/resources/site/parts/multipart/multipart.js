@@ -62,19 +62,25 @@ function createMedia(multipartForm) {
     }
 
     for (var name in multipartForm) {
-        part = portal.getMultipartItem(name);
 
-        if (part.fileName && part.size > 0) {
-            media = contentLib.createMedia({
-                name: part.fileName,
-                parentPath: uploadFolder._path,
-                mimeType: part.contentType,
-                focalX: 0.5,
-                focalY: 0.5,
-                data: portal.getMultipartStream(name)
-            });
-            log.info('Media created: %s', media);
-            contentIds.push(media._id);
+        // handle multiple files on the same input file
+        var fileCount = multipartForm[name].length || 1;
+
+        for (var idx = 0; idx < fileCount; idx++) {
+            part = portal.getMultipartItem(name, idx);
+
+            if (part.fileName && part.size > 0) {
+                media = contentLib.createMedia({
+                    name: part.fileName,
+                    parentPath: uploadFolder._path,
+                    mimeType: part.contentType,
+                    focalX: 0.5,
+                    focalY: 0.5,
+                    data: portal.getMultipartStream(name, idx)
+                });
+                log.info('Media created: %s', media);
+                contentIds.push(media._id);
+            }
         }
     }
     return contentIds;
