@@ -1,11 +1,14 @@
 var portal = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
+var ioLib = require('/lib/xp/io');
 
 
 exports.get = function (req) {
     var postUrl = portal.componentUrl({});
 
-    var sampleHtml = thymeleaf.render(resolve('./example1.html'), {});
+    var sampleHtmlRes = ioLib.getResource('/site/parts/sanitize/example1.html');
+    var stream = sampleHtmlRes.getStream();
+    var sampleHtml = ioLib.readText(stream);
 
     var params = {
         postUrl: postUrl,
