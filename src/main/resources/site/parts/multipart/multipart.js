@@ -76,6 +76,7 @@ function createMedia(multipartForm) {
                     mimeType: part.contentType,
                     focalX: 0.5,
                     focalY: 0.5,
+                    branch: 'draft',
                     data: portal.getMultipartStream(name, idx)
                 });
                 log.info('Media created: %s', media);
