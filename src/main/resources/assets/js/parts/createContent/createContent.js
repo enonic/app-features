@@ -18,7 +18,8 @@ function postForm(form) {
             displayName: form.find('input[name="displayName"]').val(),
             parent: form.find('input[name="parentPath"]').val(),
             contentType: form.find('input[name="contentType"]').val(),
-            contentData: form.find('textarea[name="contentData"]').val()
+            contentData: form.find('textarea[name="contentData"]').val(),
+            contentXData: form.find('textarea[name="contentXData"]').val(),
         }
     }).done(function (resp) {
         form.closest('.create-content-part').replaceWith(resp);

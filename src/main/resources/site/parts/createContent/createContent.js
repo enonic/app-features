@@ -21,7 +21,8 @@ exports.get = function (req) {
         displayName: '',
         contentName: '',
         contentType: 'base:unstructured',
-        contentData: '{}'
+        contentData: '{}',
+        contentXData: '{}'
     };
 
     var view = resolve('createContent.html');
@@ -45,23 +46,27 @@ exports.post = function (req) {
     var parentPath = req.params.parent;
     var contentType = req.params.contentType || 'base:unstructured';
     var dataStr = req.params.contentData || '{}';
+    var xDataStr = req.params.contentXData || '{}';
 
     var errorMsg;
     var msg;
     try {
         var data = JSON.parse(dataStr);
+        var xdata = JSON.parse(xDataStr);
 
         var createResult = contentSvc.create({
             name: name,
             parentPath: parentPath,
             displayName: displayName,
             contentType: contentType,
-            data: data
+            data: data,
+            x: xdata
         });
 
         msg = 'Content created: ' + createResult._path;
         name = createResult._name;
         dataStr = JSON.stringify(createResult.data, null, 4);
+        xDataStr = JSON.stringify(createResult.x, null, 4);
     } catch (e) {
         if (e.code === 'contentAlreadyExist') {
             errorMsg = 'There is already a content with that name';
@@ -78,6 +83,7 @@ exports.post = function (req) {
         contentName: name,
         contentType: contentType,
         contentData: dataStr,
+        contentXData: xDataStr, 
         errorMsg: errorMsg,
         msg: msg
     };
