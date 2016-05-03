@@ -4,7 +4,7 @@ exports.assetUrl = function () {
     var portal = require('/lib/xp/portal');
 
     var url = portal.assetUrl({
-        path: 'styles/main.css'
+        path: 'error/css/custom.css'
     });
     //Documentation END
 
@@ -67,7 +67,7 @@ exports.pageUrl = function () {
     var portal = require('/lib/xp/portal');
 
     var url = portal.pageUrl({
-        path: '/my/page',
+        path: '/features/js-libraries/portal',
         params: {
             a: 1,
             b: [1, 2]
@@ -86,7 +86,7 @@ exports.serviceUrl = function () {
     var portal = require('/lib/xp/portal');
 
     var url = portal.serviceUrl({
-        service: 'myservice',
+        service: 'test',
         params: {
             a: 1,
             b: 2

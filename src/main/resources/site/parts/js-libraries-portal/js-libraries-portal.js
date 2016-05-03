@@ -5,12 +5,12 @@ var view = resolve('js-libraries-portal.html');
 
 function handleGet(req) {
 
-    var assetUrlResult = JSON.stringify(portalJsLib.assetUrl(), null, 4);
-    var attachmentUrlResult = JSON.stringify(portalJsLib.attachmentUrl(), null, 4);
-    var componentUrlResult = JSON.stringify(portalJsLib.componentUrl(), null, 4);
-    var imageUrlResult = JSON.stringify(portalJsLib.imageUrl(), null, 4);
-    var pageUrlResult = JSON.stringify(portalJsLib.pageUrl(), null, 4);
-    var serviceUrlResult = JSON.stringify(portalJsLib.serviceUrl(), null, 4);
+    var assetUrlResult = portalJsLib.assetUrl();
+    var attachmentUrlResult = portalJsLib.attachmentUrl();
+    var componentUrlResult = portalJsLib.componentUrl();
+    var imageUrlResult = portalJsLib.imageUrl();
+    var pageUrlResult = portalJsLib.pageUrl();
+    var serviceUrlResult = portalJsLib.serviceUrl();
     var processHtmlResult = JSON.stringify(portalJsLib.processHtml(), null, 4);
 
     var params = {
