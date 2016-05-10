@@ -46,10 +46,14 @@ function handleGet(req) {
         path: content._path
     });
 
+    var part = portal.getComponent();
+    var title = part.config.title || '<please configure title>';
+
     var params = {
         cities: cities.hits,
         currentCity: currentCityName,
-        currentPage: currentPage
+        currentPage: currentPage,
+        title: title
     };
     var body = thymeleaf.render(view, params);
 

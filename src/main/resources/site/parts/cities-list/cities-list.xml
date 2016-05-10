@@ -2,5 +2,12 @@
 <part>
   <display-name>Cities List</display-name>
   <config>
+    <input type="TextLine" name="title">
+      <label>Title text</label>
+      <default>Cities list</default>
+      <custom-text/>
+      <help-text/>
+      <occurrences minimum="1" maximum="1"/>
+    </input>
   </config>
 </part>
