@@ -1,0 +1,26 @@
+<div class="move-content-part">
+    <h2>Create Content</h2>
+
+    <form action="#" data-th-action="${postUrl}" method="post">
+        <div>
+            <fieldset>
+                <p>
+                    <label>Source (content path or id)</label>
+                    <input name="source" type="text" data-th-value="${source}" size="40"/>
+                </p>
+                <p>
+                    <label>Target (content path or new name)</label>
+                    <input name="target" type="text" data-th-value="${target}" size="40"/>
+                </p>
+                <span style="color:darkred;" data-th-if="${errorMsg != null}" data-th-text="${errorMsg}"></span>
+                <span style="color:darkgreen;" data-th-if="${msg != null}" data-th-text="${msg}"></span>
+
+                <p>
+                    <button type="button" name="move">Move</button>
+                </p>
+            </fieldset>
+            <br/>
+        </div>
+    </form>
+
+</div>
