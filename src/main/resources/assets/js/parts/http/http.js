@@ -33,6 +33,10 @@ $(function () {
                 headerValue3: form.find('input[name="headerValue3"]').val(),
                 headerValue4: form.find('input[name="headerValue4"]').val(),
 
+                proxyHost: form.find('input[name="proxyHost"]').val(),
+                proxyPort: form.find('input[name="proxyPort"]').val(),
+                proxyUsername: form.find('input[name="proxyUsername"]').val(),
+                proxyPassword: form.find('input[name="proxyPassword"]').val(),
                 debug: true
             }
         }).done(function (resp) {

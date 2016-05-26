@@ -59,6 +59,11 @@ exports.post = function (req) {
     var headerValue3 = p.headerValue3;
     var headerValue4 = p.headerValue4;
 
+    var proxyHost = p.proxyHost;
+    var proxyPort = p.proxyPort;
+    var proxyUsername = p.proxyUsername;
+    var proxyPassword = p.proxyPassword;
+
     var errorMsg, infoMsg;
 
     var response;
@@ -71,7 +76,13 @@ exports.post = function (req) {
             connectTimeout: connectTimeout,
             readTimeout: readTimeout,
             headers: getHeaders(req),
-            params: getParams(req)
+            params: getParams(req),
+            proxy: {
+                host: proxyHost,
+                port: proxyPort,
+                user: proxyUsername,
+                password: proxyPassword
+            }
         });
 
         if (response.contentType == 'application/json') {
@@ -117,6 +128,11 @@ exports.post = function (req) {
         'headerValue2': headerValue2,
         'headerValue3': headerValue3,
         'headerValue4': headerValue4,
+
+        'proxyHost': proxyHost,
+        'proxyPort': proxyPort,
+        'proxyUsername': proxyUsername,
+        'proxyPassword': proxyPassword,
 
         'response': response,
         infoMsg: infoMsg,
