@@ -11,6 +11,7 @@ function handleGet(req) {
     var imageUrlResult = portalJsLib.imageUrl();
     var pageUrlResult = portalJsLib.pageUrl();
     var serviceUrlResult = portalJsLib.serviceUrl();
+    var idProviderUrlResult = portal.idProviderUrl();
     var loginUrlResult = portal.loginUrl({redirect: pageUrlResult});
     var logoutUrlResult = portal.logoutUrl({redirect: pageUrlResult});
     var processHtmlResult = JSON.stringify(portalJsLib.processHtml(), null, 4);
@@ -22,6 +23,7 @@ function handleGet(req) {
         imageUrlResult: imageUrlResult,
         pageUrlResult: pageUrlResult,
         serviceUrlResult: serviceUrlResult,
+        idProviderUrlResult: idProviderUrlResult,
         loginUrlResult: loginUrlResult,
         logoutUrlResult: logoutUrlResult,
         processHtmlResult: processHtmlResult
