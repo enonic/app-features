@@ -15,6 +15,7 @@ function handleGet(req) {
     var loginUrlResult = portal.loginUrl({redirect: pageUrlResult});
     var logoutUrlResult = portal.logoutUrl({redirect: pageUrlResult});
     var processHtmlResult = JSON.stringify(portalJsLib.processHtml(), null, 4);
+    var getUserStoreKeyResult = portal.getUserStoreKey();
 
     var params = {
         assetUrlResult: assetUrlResult,
@@ -26,7 +27,8 @@ function handleGet(req) {
         idProviderUrlResult: idProviderUrlResult,
         loginUrlResult: loginUrlResult,
         logoutUrlResult: logoutUrlResult,
-        processHtmlResult: processHtmlResult
+        processHtmlResult: processHtmlResult,
+        getUserStoreKeyResult: getUserStoreKeyResult
     };
 
     var body = thymeleaf.render(view, params);
