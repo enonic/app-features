@@ -44,7 +44,8 @@ function postForm(form, action) {
             userStore: form.find('input[name="userStore"]').val(),
             role: form.find('input[name="role"]').val(),
             userKey: form.find('input[name="userKey"]').val(),
-            namespace: form.find('input[name="namespace"]').val()
+            namespace: form.find('input[name="namespace"]').val(),
+            userExtraData: form.find('textarea[name="userExtraData"]').val()
         }
     }).done(function (resp) {
         form.closest('.auth-part').replaceWith(resp);

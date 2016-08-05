@@ -15,7 +15,7 @@ exports.get = function (req) {
         userStore: 'system',
         role: 'system.admin',
         appName: app.name,
-        userExtraData: userExtraData
+        userExtraData: JSON.stringify(userExtraData, null, 2)
     };
 
     var view = resolve('auth.html');
@@ -72,12 +72,10 @@ exports.post = function (req) {
         userExtraData = getUserExtraData(userKey, namespace);
     } else if (action === 'modifyUserExtraData') {
         userExtraData = modifyUserExtraData(userKey, namespace, function (c) {
-            if (!c) {
-                c = {};
-            }
-
-            c.tmp = "test";//JSON.parse(userExtraData);
-            return c;
+            var extraData = JSON.parse(userExtraData);
+            log.info('UserExtraData before: %s', JSON.stringify(c));
+            log.info('UserExtraData after:  %s', JSON.stringify(extraData));
+            return extraData;
         });
     } else {
         userExtraData = getUserExtraData(user && user.key, app.name);
