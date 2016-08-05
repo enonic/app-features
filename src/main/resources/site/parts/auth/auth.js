@@ -7,11 +7,15 @@ exports.get = function (req) {
     var user = auth.getUser();
     var postUrl = portal.componentUrl({});
 
+    var userExtraData = getUserExtraData(user && user.key, app.name);
+
     var params = {
         postUrl: postUrl,
         user: user,
         userStore: 'system',
-        role: 'system.admin'
+        role: 'system.admin',
+        appName: app.name,
+        userExtraData: userExtraData
     };
 
     var view = resolve('auth.html');
@@ -38,6 +42,9 @@ exports.post = function (req) {
     var pwd = req.params.pwd || '';
     var userStore = req.params.userStore || 'system';
     var role = req.params.role || '';
+    var userKey = req.params.userKey || '';
+    var namespace = req.params.namespace || '';
+    var userExtraData = req.params.userExtraData || '';
     var hasRole, errorMsg;
 
     var user = auth.getUser();
@@ -61,7 +68,19 @@ exports.post = function (req) {
         }
         errorMsg = loginResult.message;
         log.info('LOGIN %s', loginResult);
+    } else if (action === 'getUserExtraData') {
+        userExtraData = getUserExtraData(userKey, namespace);
+    } else if (action === 'modifyUserExtraData') {
+        userExtraData = modifyUserExtraData(userKey, namespace, function (c) {
+            if (!c) {
+                c = {};
+            }
 
+            c.tmp = "test";//JSON.parse(userExtraData);
+            return c;
+        });
+    } else {
+        userExtraData = getUserExtraData(user && user.key, app.name);
     }
 
     var postUrl = portal.componentUrl({});
@@ -72,7 +91,9 @@ exports.post = function (req) {
         userStore: userStore,
         role: role,
         hasRole: hasRole,
-        errorMsg: errorMsg
+        errorMsg: errorMsg,
+        appName: app.name,
+        userExtraData: JSON.stringify(userExtraData, null, 2)
     };
 
     var view = resolve('auth.html');
@@ -83,3 +104,23 @@ exports.post = function (req) {
         body: body
     };
 };
+
+function getUserExtraData(userKey, namespace) {
+    if (userKey) {
+        return auth.getUserExtraData({
+            key: userKey,
+            namespace: namespace
+        });
+    }
+    return null;
+}
+function modifyUserExtraData(userKey, namespace, editor) {
+    if (userKey) {
+        return auth.modifyUserExtraData({
+            key: userKey,
+            namespace: namespace,
+            editor: editor
+        });
+    }
+    return null;
+}
