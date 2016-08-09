@@ -23,6 +23,22 @@ exports.runWithUser = function () {
     return result;
 };
 
+exports.runWithPrincipals = function () {
+
+    //Documentation BEGIN
+    var authLib = require('/lib/xp/auth');
+    var contextLib = require('/lib/xp/context');
+
+    var result = contextLib.run({
+        principals: ["role:system.myrole"]
+    }, contextLib.get);
+    //Documentation END
+
+    log.info('RunWithPrincipal result: ' + JSON.stringify(result, null, 4));
+
+    return result;
+};
+
 exports.runWithBranch = function () {
 
     //Documentation BEGIN
