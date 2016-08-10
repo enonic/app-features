@@ -64,24 +64,24 @@
 
         <div>
             <fieldset class="auth-user-details">
-                <legend>User Extra Data</legend>
+                <legend>Profile</legend>
                 <p>
                     <label>User key</label>
                     <input name="userKey" type="text" data-th-value="${user != null} ? ${user.key}"/>
                 </p>
 
                 <p>
-                    <label>Namespace</label>
+                    <label>Scope</label>
                     <input name="namespace" type="text" data-th-value="${appName}"/>
                 </p>
 
                 <p>
-                    <textarea form="formid" name="userExtraData" data-th-text="${userExtraData}" rows="10" cols="80"></textarea>
+                    <textarea form="formid" name="profile" data-th-text="${profile}" rows="10" cols="80"></textarea>
                 </p>
 
                 <p>
-                    <button type="button" name="getUserExtraData">Get</button>
-                    <button type="button" name="modifyUserExtraData">Modify</button>
+                    <button type="button" name="getProfile">Get</button>
+                    <button type="button" name="modifyProfile">Modify</button>
                 </p>
             </fieldset>
         </div>
