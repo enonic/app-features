@@ -7,15 +7,15 @@ exports.get = function (req) {
     var user = auth.getUser();
     var postUrl = portal.componentUrl({});
 
-    var userExtraData = getUserExtraData(user && user.key, app.name);
+    var profile = getProfile(user && user.key, app.name);
 
     var params = {
         postUrl: postUrl,
         user: user,
         userStore: 'system',
         role: 'system.admin',
-        appName: app.name,
-        userExtraData: JSON.stringify(userExtraData, null, 2)
+        scope: app.name,
+        profile: JSON.stringify(profile, null, 2)
     };
 
     var view = resolve('auth.html');
@@ -43,8 +43,8 @@ exports.post = function (req) {
     var userStore = req.params.userStore || 'system';
     var role = req.params.role || '';
     var userKey = req.params.userKey || '';
-    var namespace = req.params.namespace || '';
-    var userExtraData = req.params.userExtraData || '';
+    var scope = req.params.scope;
+    var profile = req.params.profile || '';
     var hasRole, errorMsg;
 
     var user = auth.getUser();
@@ -68,17 +68,17 @@ exports.post = function (req) {
         }
         errorMsg = loginResult.message;
         log.info('LOGIN %s', loginResult);
-    } else if (action === 'getUserExtraData') {
-        userExtraData = getUserExtraData(userKey, namespace);
-    } else if (action === 'modifyUserExtraData') {
-        userExtraData = modifyUserExtraData(userKey, namespace, function (c) {
-            var extraData = JSON.parse(userExtraData);
+    } else if (action === 'getProfile') {
+        profile = getProfile(userKey, scope == '' ? null : scope);
+    } else if (action === 'modifyProfile') {
+        profile = modifyProfile(userKey, scope == '' ? null : scope, function (c) {
+            var newProfile = JSON.parse(profile);
             log.info('UserExtraData before: %s', JSON.stringify(c));
-            log.info('UserExtraData after:  %s', JSON.stringify(extraData));
-            return extraData;
+            log.info('UserExtraData after:  %s', JSON.stringify(newProfile));
+            return newProfile;
         });
     } else {
-        userExtraData = getUserExtraData(user && user.key, app.name);
+        profile = getProfile(user && user.key, app.name);
     }
 
     var postUrl = portal.componentUrl({});
@@ -90,8 +90,8 @@ exports.post = function (req) {
         role: role,
         hasRole: hasRole,
         errorMsg: errorMsg,
-        appName: app.name,
-        userExtraData: JSON.stringify(userExtraData, null, 2)
+        scope: scope,
+        profile: JSON.stringify(profile, null, 2)
     };
 
     var view = resolve('auth.html');
@@ -103,20 +103,20 @@ exports.post = function (req) {
     };
 };
 
-function getUserExtraData(userKey, namespace) {
+function getProfile(userKey, scope) {
     if (userKey) {
-        return auth.getUserExtraData({
+        return auth.getProfile({
             key: userKey,
-            namespace: namespace
+            scope: scope
         });
     }
     return null;
 }
-function modifyUserExtraData(userKey, namespace, editor) {
+function modifyProfile(userKey, scope, editor) {
     if (userKey) {
-        return auth.modifyUserExtraData({
+        return auth.modifyProfile({
             key: userKey,
-            namespace: namespace,
+            scope: scope,
             editor: editor
         });
     }
