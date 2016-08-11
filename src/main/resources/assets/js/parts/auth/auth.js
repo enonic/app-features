@@ -44,7 +44,7 @@ function postForm(form, action) {
             userStore: form.find('input[name="userStore"]').val(),
             role: form.find('input[name="role"]').val(),
             userKey: form.find('input[name="userKey"]').val(),
-            namespace: form.find('input[name="namespace"]').val(),
+            scope: form.find('input[name="scope"]').val(),
             profile: form.find('textarea[name="profile"]').val()
         }
     }).done(function (resp) {

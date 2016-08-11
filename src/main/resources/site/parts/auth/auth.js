@@ -14,7 +14,7 @@ exports.get = function (req) {
         user: user,
         userStore: 'system',
         role: 'system.admin',
-        appName: app.name,
+        scope: app.name,
         profile: JSON.stringify(profile, null, 2)
     };
 
@@ -43,7 +43,7 @@ exports.post = function (req) {
     var userStore = req.params.userStore || 'system';
     var role = req.params.role || '';
     var userKey = req.params.userKey || '';
-    var namespace = req.params.namespace || '';
+    var scope = req.params.scope;
     var profile = req.params.profile || '';
     var hasRole, errorMsg;
 
@@ -69,9 +69,9 @@ exports.post = function (req) {
         errorMsg = loginResult.message;
         log.info('LOGIN %s', loginResult);
     } else if (action === 'getProfile') {
-        profile = getProfile(userKey, namespace);
+        profile = getProfile(userKey, scope == '' ? null : scope);
     } else if (action === 'modifyProfile') {
-        profile = modifyProfile(userKey, namespace, function (c) {
+        profile = modifyProfile(userKey, scope == '' ? null : scope, function (c) {
             var newProfile = JSON.parse(profile);
             log.info('UserExtraData before: %s', JSON.stringify(c));
             log.info('UserExtraData after:  %s', JSON.stringify(newProfile));
@@ -90,7 +90,7 @@ exports.post = function (req) {
         role: role,
         hasRole: hasRole,
         errorMsg: errorMsg,
-        appName: app.name,
+        scope: scope,
         profile: JSON.stringify(profile, null, 2)
     };
 
