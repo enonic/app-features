@@ -30,6 +30,12 @@ $(function () {
         postForm(form, 'modifyProfile');
     });
 
+    $(document).on('click', 'form button[name="findUsers"]', function (e) {
+        e.preventDefault();
+        var form = $(this).closest('form');
+        postForm(form, 'findUsers');
+    });
+
 });
 
 function postForm(form, action) {
@@ -45,7 +51,8 @@ function postForm(form, action) {
             role: form.find('input[name="role"]').val(),
             userKey: form.find('input[name="userKey"]').val(),
             scope: form.find('input[name="scope"]').val(),
-            profile: form.find('textarea[name="profile"]').val()
+            profile: form.find('textarea[name="profile"]').val(),
+            query: form.find('input[name="query"]').val()
         }
     }).done(function (resp) {
         form.closest('.auth-part').replaceWith(resp);

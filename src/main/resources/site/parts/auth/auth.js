@@ -42,8 +42,7 @@ exports.post = function (req) {
     var role = req.params.role || '';
     var userKey = req.params.userKey || '';
     var scope = req.params.scope || '';
-    var newProfile = req.params.profile;
-    var hasRole, errorMsg;
+    var hasRole, errorMsg, findUsersResult;
 
     var user = auth.getUser();
     var profile = getProfile(userKey, scope == '' ? null : scope);
@@ -69,10 +68,14 @@ exports.post = function (req) {
         log.info('LOGIN %s', loginResult);
     } else if (action === 'modifyProfile') {
         profile = modifyProfile(userKey, scope == '' ? null : scope, function (c) {
-            var newProfile = JSON.parse(newProfile);
+            var newProfile = JSON.parse(req.params.profile);
             log.info('UserExtraData before: %s', JSON.stringify(c));
             log.info('UserExtraData after:  %s', JSON.stringify(newProfile));
             return newProfile;
+        });
+    } else if (action === 'findUsers') {
+        var findUsersResult = auth.findUsers({
+            query: req.params.query
         });
     }
 
@@ -86,7 +89,9 @@ exports.post = function (req) {
         hasRole: hasRole,
         errorMsg: errorMsg,
         scope: scope,
-        profile: JSON.stringify(profile, null, 2)
+        profile: JSON.stringify(profile, null, 2),
+        query: req.params.query,
+        findUsersResult: findUsersResult ? JSON.stringify(findUsersResult, null, 2) : ''
     };
 
     var view = resolve('auth.html');
