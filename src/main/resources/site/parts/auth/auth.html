@@ -12,10 +12,6 @@
                     <li><label>Email:</label> <span data-th-text="${user.email}"></span></li>
                     <li><label>Modified time:</label> <span data-th-text="${user.modifiedTime}"></span></li>
                     <li><label>Account:</label> <span data-th-text="${user.disabled} ? 'disabled' : 'enabled'"></span></li>
-                    <li>
-                        <label>Profile:</label><br/>
-                        <textarea data-th-text="${user.profile}" rows="10" cols="80" readonly></textarea>
-                    </li>
                 </ul>
                 <p>
                     <button type="button" name="logout">Logout</button>

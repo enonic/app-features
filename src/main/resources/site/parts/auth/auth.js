@@ -6,15 +6,13 @@ var auth = require('/lib/xp/auth');
 exports.get = function (req) {
     var user = auth.getUser();
     var postUrl = portal.componentUrl({});
-
-    var profile = getProfile(user && user.key, app.name);
+    var profile = getProfile(user && user.key);
 
     var params = {
         postUrl: postUrl,
         user: user,
         userStore: 'system',
         role: 'system.admin',
-        scope: app.name,
         profile: JSON.stringify(profile, null, 2)
     };
 
@@ -43,11 +41,12 @@ exports.post = function (req) {
     var userStore = req.params.userStore || 'system';
     var role = req.params.role || '';
     var userKey = req.params.userKey || '';
-    var scope = req.params.scope;
-    var profile = req.params.profile || '';
+    var scope = req.params.scope || '';
+    var newProfile = req.params.profile;
     var hasRole, errorMsg;
 
     var user = auth.getUser();
+    var profile = getProfile(userKey, scope == '' ? null : scope);
     if (action === 'logout') {
         auth.logout();
         user = auth.getUser();
@@ -68,17 +67,13 @@ exports.post = function (req) {
         }
         errorMsg = loginResult.message;
         log.info('LOGIN %s', loginResult);
-    } else if (action === 'getProfile') {
-        profile = getProfile(userKey, scope == '' ? null : scope);
     } else if (action === 'modifyProfile') {
         profile = modifyProfile(userKey, scope == '' ? null : scope, function (c) {
-            var newProfile = JSON.parse(profile);
+            var newProfile = JSON.parse(newProfile);
             log.info('UserExtraData before: %s', JSON.stringify(c));
             log.info('UserExtraData after:  %s', JSON.stringify(newProfile));
             return newProfile;
         });
-    } else {
-        profile = getProfile(user && user.key, app.name);
     }
 
     var postUrl = portal.componentUrl({});
