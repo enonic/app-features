@@ -69,13 +69,9 @@ exports.post = function (req) {
     } else if (action === 'modifyProfile') {
         profile = modifyProfile(userKey, scope == '' ? null : scope, function (c) {
             var newProfile = JSON.parse(req.params.profile);
-            log.info('UserExtraData before: %s', JSON.stringify(c));
-            log.info('UserExtraData after:  %s', JSON.stringify(newProfile));
             return newProfile;
         });
     } else if (action === 'findUsers') {
-
-        log.info('req.params %s', JSON.stringify(req.params, null, 2));
         var findUsersResult = auth.findUsers({
             start: req.params.start == '' ? null : req.params.start,
             count: req.params.count == '' ? null : req.params.count,
