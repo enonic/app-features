@@ -89,8 +89,23 @@
             <fieldset class="auth-user-details">
                 <legend>Find User</legend>
                 <p>
+                    <label>Start</label>
+                    <input name="start" type="text" data-th-value="${start}"/>
+                </p>
+
+                <p>
+                    <label>Count</label>
+                    <input name="count" type="text" data-th-value="${count}"/>
+                </p>
+
+                <p>
                     <label>Query</label>
                     <input name="query" type="text" data-th-value="${query}"/>
+                </p>
+
+                <p>
+                    <label>Sort</label>
+                    <input name="sort" type="text" data-th-value="${sort}"/>
                 </p>
 
                 <p>

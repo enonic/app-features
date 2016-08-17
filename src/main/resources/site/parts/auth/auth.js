@@ -74,8 +74,13 @@ exports.post = function (req) {
             return newProfile;
         });
     } else if (action === 'findUsers') {
+
+        log.info('req.params %s', JSON.stringify(req.params, null, 2));
         var findUsersResult = auth.findUsers({
-            query: req.params.query
+            start: req.params.start == '' ? null : req.params.start,
+            count: req.params.count == '' ? null : req.params.count,
+            query: req.params.query == '' ? null : req.params.query,
+            sort: req.params.sort == '' ? null : req.params.sort
         });
     }
 
@@ -90,7 +95,10 @@ exports.post = function (req) {
         errorMsg: errorMsg,
         scope: scope,
         profile: JSON.stringify(profile, null, 2),
+        start: req.params.start,
+        count: req.params.count,
         query: req.params.query,
+        sort: req.params.sort,
         findUsersResult: findUsersResult ? JSON.stringify(findUsersResult, null, 2) : ''
     };
 

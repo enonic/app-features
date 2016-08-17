@@ -52,7 +52,10 @@ function postForm(form, action) {
             userKey: form.find('input[name="userKey"]').val(),
             scope: form.find('input[name="scope"]').val(),
             profile: form.find('textarea[name="profile"]').val(),
-            query: form.find('input[name="query"]').val()
+            start: form.find('input[name="start"]').val(),
+            count: form.find('input[name="count"]').val(),
+            query: form.find('input[name="query"]').val(),
+            sort: form.find('input[name="sort"]').val()
         }
     }).done(function (resp) {
         form.closest('.auth-part').replaceWith(resp);
