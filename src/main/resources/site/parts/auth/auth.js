@@ -6,12 +6,14 @@ var auth = require('/lib/xp/auth');
 exports.get = function (req) {
     var user = auth.getUser();
     var postUrl = portal.componentUrl({});
+    var profile = getProfile(user && user.key);
 
     var params = {
         postUrl: postUrl,
         user: user,
         userStore: 'system',
-        role: 'system.admin'
+        role: 'system.admin',
+        profile: JSON.stringify(profile, null, 2)
     };
 
     var view = resolve('auth.html');
@@ -38,9 +40,12 @@ exports.post = function (req) {
     var pwd = req.params.pwd || '';
     var userStore = req.params.userStore || 'system';
     var role = req.params.role || '';
-    var hasRole, errorMsg;
+    var userKey = req.params.userKey || '';
+    var scope = req.params.scope || '';
+    var hasRole, errorMsg, findUsersResult;
 
     var user = auth.getUser();
+    var profile = getProfile(userKey, scope == '' ? null : scope);
     if (action === 'logout') {
         auth.logout();
         user = auth.getUser();
@@ -61,7 +66,22 @@ exports.post = function (req) {
         }
         errorMsg = loginResult.message;
         log.info('LOGIN %s', loginResult);
+    } else if (action === 'modifyProfile') {
+        profile = modifyProfile(userKey, scope == '' ? null : scope, function (c) {
+            var newProfile = JSON.parse(req.params.profile);
+            log.info('UserExtraData before: %s', JSON.stringify(c));
+            log.info('UserExtraData after:  %s', JSON.stringify(newProfile));
+            return newProfile;
+        });
+    } else if (action === 'findUsers') {
 
+        log.info('req.params %s', JSON.stringify(req.params, null, 2));
+        var findUsersResult = auth.findUsers({
+            start: req.params.start == '' ? null : req.params.start,
+            count: req.params.count == '' ? null : req.params.count,
+            query: req.params.query == '' ? null : req.params.query,
+            sort: req.params.sort == '' ? null : req.params.sort
+        });
     }
 
     var postUrl = portal.componentUrl({});
@@ -72,7 +92,14 @@ exports.post = function (req) {
         userStore: userStore,
         role: role,
         hasRole: hasRole,
-        errorMsg: errorMsg
+        errorMsg: errorMsg,
+        scope: scope,
+        profile: JSON.stringify(profile, null, 2),
+        start: req.params.start,
+        count: req.params.count,
+        query: req.params.query,
+        sort: req.params.sort,
+        findUsersResult: findUsersResult ? JSON.stringify(findUsersResult, null, 2) : ''
     };
 
     var view = resolve('auth.html');
@@ -83,3 +110,23 @@ exports.post = function (req) {
         body: body
     };
 };
+
+function getProfile(userKey, scope) {
+    if (userKey) {
+        return auth.getProfile({
+            key: userKey,
+            scope: scope
+        });
+    }
+    return null;
+}
+function modifyProfile(userKey, scope, editor) {
+    if (userKey) {
+        return auth.modifyProfile({
+            key: userKey,
+            scope: scope,
+            editor: editor
+        });
+    }
+    return null;
+}
