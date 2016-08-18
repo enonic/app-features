@@ -4,8 +4,6 @@ var portalLib = require('/lib/xp/portal');
 
 function handleGet(req) {
 
-    log.info("ColorPicker service get: %s", req.params);
-
     var body = {
         total: 16,
         count: 16,
