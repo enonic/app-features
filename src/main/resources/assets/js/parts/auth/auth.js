@@ -55,7 +55,8 @@ function postForm(form, action) {
             start: form.find('input[name="start"]').val(),
             count: form.find('input[name="count"]').val(),
             query: form.find('input[name="query"]').val(),
-            sort: form.find('input[name="sort"]').val()
+            sort: form.find('input[name="sort"]').val(),
+            includeProfile: form.find('input[name="includeProfile"]').is(':checked')
         }
     }).done(function (resp) {
         form.closest('.auth-part').replaceWith(resp);

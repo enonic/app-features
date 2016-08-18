@@ -76,7 +76,8 @@ exports.post = function (req) {
             start: req.params.start == '' ? null : req.params.start,
             count: req.params.count == '' ? null : req.params.count,
             query: req.params.query == '' ? null : req.params.query,
-            sort: req.params.sort == '' ? null : req.params.sort
+            sort: req.params.sort == '' ? null : req.params.sort,
+            includeProfile: req.params.includeProfile == "true"
         });
     }
 
@@ -95,6 +96,7 @@ exports.post = function (req) {
         count: req.params.count,
         query: req.params.query,
         sort: req.params.sort,
+        includeParams: req.params.includeProfile == "true",
         findUsersResult: findUsersResult ? JSON.stringify(findUsersResult, null, 2) : ''
     };
 
