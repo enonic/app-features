@@ -4,6 +4,26 @@ var portalLib = require('/lib/xp/portal');
 
 function handleGet(req) {
 
+    var q = req.params['query'],
+        ids = req.params['ids'],
+        start, count, end;
+
+    try {
+        start = parseInt(req.params['start']) || 0;
+    } catch (e) {
+        start = 0;
+    }
+
+    try {
+        count = parseInt(req.params['count']) || 10;
+    } catch (e) {
+        count = 10;
+    }
+
+    end = start + count;
+
+    log.debug('Color picker service ids: %s, start: %s, end: %s, count: %s', JSON.stringify(ids), start, end, count);
+
     var body = {
         total: 16,
         count: 16,
@@ -26,6 +46,21 @@ function handleGet(req) {
             getItemFor('#800080', 'Purple')
         ]
     };
+
+    var hitCount = 0, include;
+    body.hits = body.hits.filter(function (hit) {
+        if (!!q && q.trim().length > 0) {
+            var queryRegex = new RegExp(q, 'i');
+            include = queryRegex.test(hit.displayName) || queryRegex.test(hit.description) || queryRegex.test(hit.id);
+        } else {
+            include = true;
+        }
+        if (include) {
+            hitCount++;
+        }
+        return include && hitCount > start && hitCount <= end;
+    });
+    body.count = Math.min(count, body.hits.length);
 
     return {
         contentType: 'application/json',
