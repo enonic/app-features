@@ -5,56 +5,52 @@ var portalLib = require('/lib/xp/portal');
 function handleGet(req) {
 
     var q = req.params['query'],
-        ids = req.params['ids'],
-        start, count, end;
+        ids, start, count, end;
+
+    log.info('Color picker service params: %s', req.params);
+
+    try {
+        ids = JSON.parse(req.params['ids']) || []
+    } catch (e) {
+        log.warning('Invalid parameter ids: %s, using []', req.params['ids']);
+        ids = [];
+    }
 
     try {
         start = parseInt(req.params['start']) || 0;
     } catch (e) {
+        log.warning('Invalid parameter start: %s, using 0', req.params['start']);
         start = 0;
     }
 
     try {
-        count = parseInt(req.params['count']) || 10;
+        count = parseInt(req.params['count']) || 15;
     } catch (e) {
-        count = 10;
+        log.warning('Invalid parameter count: %s, using 15', req.params['count']);
+        count = 15;
     }
 
     end = start + count;
 
-    log.debug('Color picker service ids: %s, start: %s, end: %s, count: %s', JSON.stringify(ids), start, end, count);
-
     var body = {
         total: 16,
         count: 16,
-        hits: [
-            getItemFor('#FFFFFF', 'White'),
-            getItemFor('#C0C0C0', 'Silver'),
-            getItemFor('#808080', 'Gray'),
-            getItemFor('#000000', 'Black'),
-            getItemFor('#FF0000', 'Red'),
-            getItemFor('#800000', 'Maroon'),
-            getItemFor('#FFFF00', 'Yellow'),
-            getItemFor('#808000', 'Olive'),
-            getItemFor('#00FF00', 'Lime'),
-            getItemFor('#008000', 'Green'),
-            getItemFor('#00FFFF', 'Aqua'),
-            getItemFor('#008080', 'Teal'),
-            getItemFor('#0000FF', 'Blue'),
-            getItemFor('#000080', 'Navy'),
-            getItemFor('#FF00FF', 'Fuchsia'),
-            getItemFor('#800080', 'Purple')
-        ]
+        hits: getItems()
     };
 
     var hitCount = 0, include;
     body.hits = body.hits.filter(function (hit) {
-        if (!!q && q.trim().length > 0) {
-            var queryRegex = new RegExp(q, 'i');
-            include = queryRegex.test(hit.displayName) || queryRegex.test(hit.description) || queryRegex.test(hit.id);
-        } else {
-            include = true;
+        include = true;
+
+        if (!!ids && ids.length > 0) {
+            include = ids.some(function (id) {
+                return id == hit.id;
+            });
+        } else if (!!q && q.trim().length > 0) {
+            var qRegex = new RegExp(q, 'i');
+            include = qRegex.test(hit.displayName) || qRegex.test(hit.description) || qRegex.test(hit.id);
         }
+
         if (include) {
             hitCount++;
         }
@@ -66,6 +62,27 @@ function handleGet(req) {
         contentType: 'application/json',
         body: body
     }
+}
+
+function getItems() {
+    return [
+        getItemFor('#FFFFFF', 'White'),
+        getItemFor('#C0C0C0', 'Silver'),
+        getItemFor('#808080', 'Gray'),
+        getItemFor('#000000', 'Black'),
+        getItemFor('#FF0000', 'Red'),
+        getItemFor('#800000', 'Maroon'),
+        getItemFor('#FFFF00', 'Yellow'),
+        getItemFor('#808000', 'Olive'),
+        getItemFor('#00FF00', 'Lime'),
+        getItemFor('#008000', 'Green'),
+        getItemFor('#00FFFF', 'Aqua'),
+        getItemFor('#008080', 'Teal'),
+        getItemFor('#0000FF', 'Blue'),
+        getItemFor('#000080', 'Navy'),
+        getItemFor('#FF00FF', 'Fuchsia'),
+        getItemFor('#800080', 'Purple')
+    ];
 }
 
 function getItemFor(color, desc) {
