@@ -1,62 +1,10 @@
-var contentLib = require('/lib/xp/content');
-var contextLib = require('/lib/xp/context');
-var portalLib = require('/lib/xp/portal');
+var helper = require('/lib/custom-selector-helper');
 
 function handleGet(req) {
 
-    var q = req.params['query'],
-        ids, start, count, end;
+    var params = helper.parseparams(req.params);
 
-    log.info('Color picker service params: %s', req.params);
-
-    try {
-        ids = JSON.parse(req.params['ids']) || []
-    } catch (e) {
-        log.warning('Invalid parameter ids: %s, using []', req.params['ids']);
-        ids = [];
-    }
-
-    try {
-        start = parseInt(req.params['start']) || 0;
-    } catch (e) {
-        log.warning('Invalid parameter start: %s, using 0', req.params['start']);
-        start = 0;
-    }
-
-    try {
-        count = parseInt(req.params['count']) || 15;
-    } catch (e) {
-        log.warning('Invalid parameter count: %s, using 15', req.params['count']);
-        count = 15;
-    }
-
-    end = start + count;
-
-    var body = {
-        total: 16,
-        count: 16,
-        hits: getItems()
-    };
-
-    var hitCount = 0, include;
-    body.hits = body.hits.filter(function (hit) {
-        include = true;
-
-        if (!!ids && ids.length > 0) {
-            include = ids.some(function (id) {
-                return id == hit.id;
-            });
-        } else if (!!q && q.trim().length > 0) {
-            var qRegex = new RegExp(q, 'i');
-            include = qRegex.test(hit.displayName) || qRegex.test(hit.description) || qRegex.test(hit.id);
-        }
-
-        if (include) {
-            hitCount++;
-        }
-        return include && hitCount > start && hitCount <= end;
-    });
-    body.count = Math.min(count, body.hits.length);
+    var body = helper.createresults(getItems(), 16, params);
 
     return {
         contentType: 'application/json',
