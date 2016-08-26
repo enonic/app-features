@@ -58,7 +58,12 @@ exports.createresults = function (items, total, params) {
     log.info('Creating results with params: %s', params);
 
     var hitCount = 0, include;
-    body.hits = items.filter(function (hit) {
+    body.hits = items.sort(function (hit1, hit2) {
+        if (!hit1 || !hit2) {
+            return !!hit1 ? 1 : -1;
+        }
+        return hit1.displayName.localeCompare(hit2.displayName);
+    }).filter(function (hit) {
         include = true;
 
         if (!!params.ids && params.ids.length > 0) {
