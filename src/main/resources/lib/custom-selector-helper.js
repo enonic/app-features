@@ -37,7 +37,6 @@ exports.parseparams = function (params) {
 /**
  * Create results filtered by params
  * @param items
- * @param total
  * @param params = {
             query: string,
             ids: [...],
@@ -45,13 +44,14 @@ exports.parseparams = function (params) {
             end: number,
             count: number
         }
+ * @param total
  * @returns body = {
             total: number,
             count: number,
             hits: [...]
         }
  */
-exports.createresults = function (items, total, params) {
+exports.createresults = function (items, params, total) {
 
     var body = {};
 
@@ -81,7 +81,7 @@ exports.createresults = function (items, total, params) {
         return include && hitCount > params.start && hitCount <= params.end;
     });
     body.count = Math.min(params.count, body.hits.length);
-    body.total = params.query ? hitCount : total;
+    body.total = params.query ? hitCount : (total || items.length);
 
     return body;
 };

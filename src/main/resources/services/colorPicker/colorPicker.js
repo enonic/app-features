@@ -4,7 +4,7 @@ function handleGet(req) {
 
     var params = helper.parseparams(req.params);
 
-    var body = helper.createresults(getItems(), 16, params);
+    var body = helper.createresults(getItems(), params);
 
     return {
         contentType: 'application/json',
