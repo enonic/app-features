@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<content-type>
+  <display-name>Related cities</display-name>
+  <super-type>base:structured</super-type>
+  <form>
+    <item-set name="units">
+      <label>Department</label>
+      <items>
+        <input name="name" type="TextLine">
+          <label>Name</label>
+          <occurrences minimum="0" maximum="1"/>
+        </input>
+        <input name="body" type="HtmlArea">
+          <label>Info</label>
+          <occurrences minimum="0" maximum="1"/>
+        </input>
+        <item-set name="cities">
+          <label>Cities</label>
+          <items>
+            <input name="city" type="ContentSelector">
+              <label>City</label>
+              <occurrences minimum="1" maximum="1"/>
+              <config>
+                <relationship-type>system:reference</relationship-type>
+                <allow-content-type>city</allow-content-type>
+              </config>
+            </input>
+            <input name="rol" type="TextLine">
+              <label>Role</label>
+              <occurrences minimum="0" maximum="1"/>
+            </input>
+            <input name="description" type="HtmlArea">
+              <label>Description</label>
+              <occurrences minimum="0" maximum="1"/>
+            </input>
+          </items>
+          <occurrences minimum="0" maximum="0"/>
+        </item-set>
+      </items>
+      <occurrences minimum="0" maximum="0"/>
+    </item-set>
+  </form>
+</content-type>
