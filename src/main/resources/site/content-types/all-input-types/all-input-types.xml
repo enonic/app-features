@@ -98,5 +98,43 @@
       </items>
       <occurrences minimum="0" maximum="5"/>
     </item-set>
+    <option-set name="checkOptionSet">
+      <label>Multi selection</label>
+      <expanded>false</expanded>
+      <occurrences minimum="1" maximum="2"/>
+      <options>
+        <option name="First option">
+          <label>Option 1</label>
+          <default>false</default>
+          <items></items>
+        </option>
+        <option name="Second option">
+          <label>Option 2</label>
+          <default>false</default>
+          <items>.
+            <input name="contentSelector" type="ContentSelector">
+              <label>Content selector</label>
+              <occurrences minimum="0" maximum="0"/>
+              <config/>
+            </input>
+          </items>
+        </option>
+        <option name="Third option">
+          <label>Option 3</label>
+          <default>false</default>
+          <items>
+            <input name="textarea" type="TextArea">
+              <label>Text Area</label>
+              <occurrences minimum="0" maximum="1"/>
+            </input>
+            <input name="long" type="Long">
+              <label>Long</label>
+              <indexed>true</indexed>
+              <occurrences minimum="0" maximum="1"/>
+            </input>
+          </items>
+        </option>
+      </options>
+    </option-set>
   </form>
 </content-type>
