@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<content-type>
+  <display-name>OptionSet</display-name>
+  <super-type>base:structured</super-type>
+  <form>
+    <option-set name="radioOptionSet">
+      <label>Single selection</label>
+      <expanded>false</expanded>
+      <occurrences minimum="0" maximum="1"/>
+      <options>
+        <option name="First option">
+          <label>Option 1</label>
+          <default>false</default>
+          <items>
+            <input name="name" type="TextLine">
+              <label>Name</label>
+              <occurrences minimum="1" maximum="1"/>
+              <help-text>Text input</help-text>
+            </input>
+            <item-set name="minimum3">
+              <label>Minimum 3</label>
+              <items>
+                <input name="label" type="TextLine">
+                  <label>Label</label>
+                  <occurrences minimum="0" maximum="1"/>
+                </input>
+                <input name="value" type="TextLine">
+                  <label>Value</label>
+                  <occurrences minimum="0" maximum="1"/>
+                </input>
+              </items>
+              <occurrences minimum="3" maximum="0"/>
+            </item-set>
+          </items>
+        </option>
+        <option name="Second option">
+          <label>Option 2</label>
+          <default>false</default>
+          <items>
+          </items>
+        </option>
+      </options>
+    </option-set>
+    <option-set name="checkOptionSet">
+      <label>Multi selection</label>
+      <expanded>true</expanded>
+      <occurrences minimum="1" maximum="3"/>
+      <options>
+        <option name="First option">
+          <label>Option 1</label>
+          <default>false</default>
+          <items>
+          </items>
+        </option>
+        <option name="Second option">
+          <label>Option 2</label>
+          <default>true</default>
+          <items>
+          </items>
+        </option>
+        <option name="Third option">
+          <label>Option 3</label>
+          <default>false</default>
+          <items>
+            <input name="imageselector" type="ImageSelector">
+              <label>Image selector</label>
+              <indexed>true</indexed>
+              <occurrences minimum="0" maximum="1"/>
+              <config/>
+            </input>
+          </items>
+        </option>
+        <option name="Fourth option">
+          <label>Option 4</label>
+          <default>false</default>
+          <items>
+            <input name="double" type="Double">
+              <label>Double</label>
+              <indexed>true</indexed>
+              <occurrences minimum="0" maximum="1"/>
+            </input>
+            <input name="long" type="Long">
+              <label>Long</label>
+              <indexed>true</indexed>
+              <occurrences minimum="0" maximum="1"/>
+            </input>
+          </items>
+        </option>
+      </options>
+    </option-set>
+  </form>
+</content-type>
