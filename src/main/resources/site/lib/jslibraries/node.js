@@ -45,10 +45,26 @@ exports.create = function () {
     return result;
 };
 
-exports.get = function () {
-    var result = nodeLib.get({
+exports.getNodeByKeyResult = function () {
+    return get({
         key: '/content/features'
     });
+};
+
+exports.getMissingNodeByKeyResult = function () {
+    return get({
+        key: 'missing'
+    });
+};
+
+exports.getNodesByKeysResult = function () {
+    return get({
+        keys: ['/content/features', 'missing']
+    });
+};
+
+function get(params) {
+    var result = nodeLib.get(params);
 
     return result;
-};
+}
