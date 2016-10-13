@@ -7,17 +7,18 @@ var contextLib = require('/lib/xp/context');
 
 function handleGet(req) {
 
-    //var createResult = JSON.stringify(nodeJsLib.create(), null, 4);
-    var getNodeByKeyResult = JSON.stringify(nodeJsLib.getNodeByKeyResult(), null, 4);
-    var getMissingNodeByKeyResult = JSON.stringify(nodeJsLib.getMissingNodeByKeyResult(), null, 4);
-    var getNodesByKeysResult = JSON.stringify(nodeJsLib.getNodesByKeysResult(), null, 4);
+    var createResult = JSON.stringify(nodeJsLib.create(), null, 4);
+    var getNodeByKeyResult = JSON.stringify(nodeJsLib.getNodeByKey(), null, 4);
+    var getMissingNodeByKeyResult = JSON.stringify(nodeJsLib.getMissingNodeByKey(), null, 4);
+    var getNodesByKeysResult = JSON.stringify(nodeJsLib.getNodesByKeys(), null, 4);
+    var deleteResult = JSON.stringify(nodeJsLib.delete(), null, 4);
 
     var params = {
-        //createResult: createResult,
+        createResult: createResult,
         getNodeByKeyResult: getNodeByKeyResult,
         getMissingNodeByKeyResult: getMissingNodeByKeyResult,
-        getNodesByKeysResult: getNodesByKeysResult
-
+        getNodesByKeysResult: getNodesByKeysResult,
+        deleteResult: deleteResult
     };
 
     var body = thymeleaf.render(view, params);
