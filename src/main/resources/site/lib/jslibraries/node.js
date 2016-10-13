@@ -45,21 +45,27 @@ exports.create = function () {
     return result;
 };
 
-exports.getNodeByKeyResult = function () {
+exports.getNodeByKey = function () {
     return get({
-        key: '/content/features'
+        key: '/myName'
     });
 };
 
-exports.getMissingNodeByKeyResult = function () {
+exports.getMissingNodeByKey = function () {
     return get({
         key: 'missing'
     });
 };
 
-exports.getNodesByKeysResult = function () {
+exports.getNodesByKeys = function () {
     return get({
-        keys: ['/content/features', 'missing']
+        keys: ['/myName', 'missing']
+    });
+};
+
+exports.delete = function () {
+    return nodeLib.delete({
+        keys: ['/myName', 'missing']
     });
 };
 
