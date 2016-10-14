@@ -2,7 +2,7 @@ var nodeLib = require('/lib/xp/node.js');
 
 exports.create = function () {
     var result = nodeLib.create({
-        _name: "myName",
+        _name: "my-name",
         displayName: "This is brand new node",
         someData: {
             cars: [
@@ -47,7 +47,7 @@ exports.create = function () {
 
 exports.getNodeByKey = function () {
     return get({
-        key: '/myName'
+        key: '/my-name'
     });
 };
 
@@ -59,13 +59,43 @@ exports.getMissingNodeByKey = function () {
 
 exports.getNodesByKeys = function () {
     return get({
-        keys: ['/myName', 'missing']
+        keys: ['/my-name', 'missing']
+    });
+};
+
+exports.rename = function () {
+    return nodeLib.move({
+        source: '/my-name',
+        target: 'new-name'
+    });
+};
+
+exports.move = function () {
+    nodeLib.create({
+        _name: "parent"
+    });
+    return nodeLib.move({
+        source: '/new-name',
+        target: '/parent/'
+    });
+};
+
+exports.moveAndRename = function () {
+    nodeLib.create({
+        _name: "new-parent"
+    });
+    var movedNode = nodeLib.move({
+        source: '/parent/new-name',
+        target: '/new-parent/newer-name'
+    });
+    nodeLib.delete({
+        key: "/parent"
     });
 };
 
 exports.delete = function () {
     return nodeLib.delete({
-        keys: ['/myName', 'missing']
+        keys: ['/new-parent', 'missing']
     });
 };
 

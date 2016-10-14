@@ -11,6 +11,9 @@ function handleGet(req) {
     var getNodeByKeyResult = JSON.stringify(nodeJsLib.getNodeByKey(), null, 4);
     var getMissingNodeByKeyResult = JSON.stringify(nodeJsLib.getMissingNodeByKey(), null, 4);
     var getNodesByKeysResult = JSON.stringify(nodeJsLib.getNodesByKeys(), null, 4);
+    var renameResult = JSON.stringify(nodeJsLib.rename(), null, 4);
+    //var moveResult = JSON.stringify(nodeJsLib.move(), null, 4);
+    //var moveAndRenameResult = JSON.stringify(nodeJsLib.moveAndRename(), null, 4);
     var deleteResult = JSON.stringify(nodeJsLib.delete(), null, 4);
 
     var params = {
@@ -18,6 +21,9 @@ function handleGet(req) {
         getNodeByKeyResult: getNodeByKeyResult,
         getMissingNodeByKeyResult: getMissingNodeByKeyResult,
         getNodesByKeysResult: getNodesByKeysResult,
+        renameResult: renameResult,
+        //moveResult: moveResult,
+        //moveAndRenameResult: moveAndRenameResult,
         deleteResult: deleteResult
     };
 
