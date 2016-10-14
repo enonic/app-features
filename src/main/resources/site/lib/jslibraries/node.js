@@ -91,6 +91,7 @@ exports.moveAndRename = function () {
     nodeLib.delete({
         key: "/parent"
     });
+    return movedNode;
 };
 
 exports.delete = function () {

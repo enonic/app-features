@@ -2,8 +2,6 @@ var portal = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
 var nodeJsLib = require('/lib/jslibraries/node');
 var view = resolve('js-libraries-node.html');
-var contentLib = require('/lib/xp/content');
-var contextLib = require('/lib/xp/context');
 
 function handleGet(req) {
 
@@ -12,8 +10,8 @@ function handleGet(req) {
     var getMissingNodeByKeyResult = JSON.stringify(nodeJsLib.getMissingNodeByKey(), null, 4);
     var getNodesByKeysResult = JSON.stringify(nodeJsLib.getNodesByKeys(), null, 4);
     var renameResult = JSON.stringify(nodeJsLib.rename(), null, 4);
-    //var moveResult = JSON.stringify(nodeJsLib.move(), null, 4);
-    //var moveAndRenameResult = JSON.stringify(nodeJsLib.moveAndRename(), null, 4);
+    var moveResult = JSON.stringify(nodeJsLib.move(), null, 4);
+    var moveAndRenameResult = JSON.stringify(nodeJsLib.moveAndRename(), null, 4);
     var deleteResult = JSON.stringify(nodeJsLib.delete(), null, 4);
 
     var params = {
@@ -22,8 +20,8 @@ function handleGet(req) {
         getMissingNodeByKeyResult: getMissingNodeByKeyResult,
         getNodesByKeysResult: getNodesByKeysResult,
         renameResult: renameResult,
-        //moveResult: moveResult,
-        //moveAndRenameResult: moveAndRenameResult,
+        moveResult: moveResult,
+        moveAndRenameResult: moveAndRenameResult,
         deleteResult: deleteResult
     };
 
