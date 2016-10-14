@@ -63,12 +63,14 @@ exports.post = function (req) {
     var proxyPort = p.proxyPort;
     var proxyUsername = p.proxyUsername;
     var proxyPassword = p.proxyPassword;
+    var authUsername = p.authUsername;
+    var authPassword = p.authPassword;
 
     var errorMsg, infoMsg;
 
     var response;
     try {
-        response = httpClient.request({
+        var req = {
             url: url,
             method: method,
             contentType: contentType,
@@ -83,7 +85,14 @@ exports.post = function (req) {
                 user: proxyUsername,
                 password: proxyPassword
             }
-        });
+        };
+        if (authUsername) {
+            req.auth = {
+                user: authUsername,
+                password: authPassword
+            };
+        }
+        response = httpClient.request(req);
 
         if (response.contentType == 'application/json') {
             var b = response.body;
@@ -133,6 +142,9 @@ exports.post = function (req) {
         'proxyPort': proxyPort,
         'proxyUsername': proxyUsername,
         'proxyPassword': proxyPassword,
+
+        'authUsername': authUsername,
+        'authPassword': authPassword,
 
         'response': response,
         infoMsg: infoMsg,
