@@ -65,7 +65,7 @@
             <input name="imageselector" type="ImageSelector">
               <label>Image selector</label>
               <indexed>true</indexed>
-              <occurrences minimum="0" maximum="1"/>
+              <occurrences minimum="1" maximum="1"/>
               <config/>
             </input>
           </items>
@@ -77,7 +77,7 @@
             <input name="double" type="Double">
               <label>Double</label>
               <indexed>true</indexed>
-              <occurrences minimum="0" maximum="1"/>
+              <occurrences minimum="1" maximum="1"/>
             </input>
             <input name="long" type="Long">
               <label>Long</label>
