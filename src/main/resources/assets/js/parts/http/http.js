@@ -37,6 +37,8 @@ $(function () {
                 proxyPort: form.find('input[name="proxyPort"]').val(),
                 proxyUsername: form.find('input[name="proxyUsername"]').val(),
                 proxyPassword: form.find('input[name="proxyPassword"]').val(),
+                authUsername: form.find('input[name="authUsername"]').val(),
+                authPassword: form.find('input[name="authPassword"]').val(),
                 debug: true
             }
         }).done(function (resp) {

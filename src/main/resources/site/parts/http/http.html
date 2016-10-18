@@ -4,6 +4,7 @@
     <form action="#" data-th-action="${postUrl}" method="post">
         <div>
             <fieldset class="http-details">
+                <h5>See testing endpoints at <a href="http://httpbin.org/" target="_blank">httpbin.org</a></h5>
                 <p>
                     <label>URL</label>
                     <input name="url" type="text" data-th-value="${url}" size="150"/>
@@ -63,6 +64,12 @@
                     <input name="headerName4" type="text" data-th-value="${headerName4}"/> : <input name="headerValue4" type="text"
                                                                                                     data-th-value="${headerValue4}"
                                                                                                     size="100"/><br/>
+                </p>
+
+                <p>
+                    <label>Basic Authentication</label><br/>
+                    Username : <input name="authUsername" type="text" data-th-value="${authUsername}" size="50"/><br/>
+                    Password : <input name="authPassword" type="text" data-th-value="${authPassword}" size="50"/><br/>
                 </p>
 
                 <p>
