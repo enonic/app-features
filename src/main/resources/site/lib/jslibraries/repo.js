@@ -12,9 +12,12 @@ exports.create = function (id, light) {
     } else {
         var result = repoLib.create({
             id: id,
-            validation: light ? undefined : {
-                checkExists: false,
-                checkParentExists: false
+            settings: {
+                validationSettings: light ? {
+                    checkExists: false,
+                    checkParentExists: false,
+                    checkPermissions: false
+                } : undefined
             }
         });
 
