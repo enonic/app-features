@@ -1,18 +1,18 @@
 var repoLib = require('/lib/xp/repo.js');
 
-exports.create = function () {
+exports.create = function (id, light) {
 
     var repo = repoLib.get({
-        id: 'test-repo'
+        id: id
     });
 
     if (repo) {
-        log.info('Repository [test-repo] already exists');
-        return 'Repository [test-repo] already exists';
+        log.info('Repository [' + id + '] already exists');
+        return 'Repository [' + id + '] already exists';
     } else {
         var result = repoLib.create({
-            id: 'test-repo',
-            validation: {
+            id: id,
+            validation: light ? undefined : {
                 checkExists: false,
                 checkParentExists: false
             }
@@ -24,9 +24,9 @@ exports.create = function () {
 
 };
 
-exports.get = function () {
+exports.get = function (id) {
     var result = repoLib.get({
-        id: 'test-repo'
+        id: id
     });
 
     return result;
