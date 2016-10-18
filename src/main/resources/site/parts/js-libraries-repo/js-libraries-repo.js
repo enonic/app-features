@@ -4,16 +4,12 @@ var repoJsLib = require('/lib/jslibraries/repo');
 var view = resolve('js-libraries-repo.html');
 
 function handleGet(req) {
-    var createLightRepoResult = JSON.stringify(repoJsLib.create('features-repo-light', true), null, 4);
-    var createDefaultRepoResult = JSON.stringify(repoJsLib.create('features-repo-default'), null, 4);
-    var getLightRepoResult = JSON.stringify(repoJsLib.get('features-repo-light'), null, 4);
-    var getDefaultRepoResult = JSON.stringify(repoJsLib.get('features-repo-default'), null, 4);
+    var createFeaturesRepoResult = JSON.stringify(repoJsLib.create('features-repo'), null, 4);
+    var getFeaturesRepoResult = JSON.stringify(repoJsLib.get('features-repo'), null, 4);
 
     var params = {
-        createLightRepoResult: createLightRepoResult,
-        createDefaultRepoResult: createDefaultRepoResult,
-        getLightRepoResult: getLightRepoResult,
-        getDefaultRepoResult: getDefaultRepoResult
+        createFeaturesRepoResult: createFeaturesRepoResult,
+        getFeaturesRepoResult: getFeaturesRepoResult
     };
 
     var body = thymeleaf.render(view, params);

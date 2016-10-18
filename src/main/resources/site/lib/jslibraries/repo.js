@@ -1,6 +1,6 @@
 var repoLib = require('/lib/xp/repo.js');
 
-exports.create = function (id, light) {
+exports.create = function (id) {
 
     var repo = repoLib.get({
         id: id
@@ -12,13 +12,7 @@ exports.create = function (id, light) {
     } else {
         var result = repoLib.create({
             id: id,
-            settings: {
-                validationSettings: light ? {
-                    checkExists: false,
-                    checkParentExists: false,
-                    checkPermissions: false
-                } : undefined
-            }
+            settings: {}
         });
 
         log.info('Repository [' + result.id + '] was created');
