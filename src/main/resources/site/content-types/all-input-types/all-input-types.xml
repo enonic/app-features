@@ -103,12 +103,12 @@
       <expanded>false</expanded>
       <occurrences minimum="1" maximum="1"/>
       <options minimum="1" maximum="3">
-        <option name="First option">
+        <option name="option_1">
           <label>Option 1</label>
           <default>false</default>
           <items></items>
         </option>
-        <option name="Second option">
+        <option name="option_2">
           <label>Option 2</label>
           <default>false</default>
           <items>
@@ -119,7 +119,7 @@
             </input>
           </items>
         </option>
-        <option name="Third option">
+        <option name="option_3">
           <label>Option 3</label>
           <default>false</default>
           <items>
