@@ -6,10 +6,12 @@ var view = resolve('js-libraries-repo.html');
 function handleGet(req) {
     var createFeaturesRepoResult = JSON.stringify(repoJsLib.create('features-repo'), null, 4);
     var getFeaturesRepoResult = JSON.stringify(repoJsLib.get('features-repo'), null, 4);
+    var listReposResult = JSON.stringify(repoJsLib.list(), null, 4);
 
     var params = {
         createFeaturesRepoResult: createFeaturesRepoResult,
-        getFeaturesRepoResult: getFeaturesRepoResult
+        getFeaturesRepoResult: getFeaturesRepoResult,
+        listReposResult: listReposResult
     };
 
     var body = thymeleaf.render(view, params);

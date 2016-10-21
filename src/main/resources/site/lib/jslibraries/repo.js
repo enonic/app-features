@@ -97,6 +97,12 @@ exports.create = function (id) {
 
 };
 
+exports.list = function () {
+    var result = repoLib.list();
+
+    return result;
+};
+
 exports.get = function (id) {
     var result = repoLib.get({
         id: id
