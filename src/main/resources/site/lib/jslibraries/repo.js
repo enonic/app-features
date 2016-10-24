@@ -110,3 +110,11 @@ exports.get = function (id) {
 
     return result;
 };
+
+exports.createBranch = function (id) {
+    var result = repoLib.createBranch({
+        id: id
+    });
+
+    return result;
+};
