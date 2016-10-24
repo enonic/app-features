@@ -10,9 +10,14 @@ function handleGet(req) {
     var createBranchResult;
     try {
         createBranchResult = JSON.stringify(repoJsLib.createBranch('features-branch'), null, 4);
-    } catch (exc) {
-        log.info("Error: " + JSON.stringify(exc, null, 2));
-        createBranchResult = "Branch [features-branch] already exist";
+    } catch (e) {
+        if (e.code == 'branchAlreadyExists') {
+            log.error('Branch [features-branch] already exist');
+            createBranchResult = "Branch [features-branch] already exist";
+        } else {
+            log.error('Unexpected error: ' + e.message);
+            createBranchResult = e.message;
+        }
     }
     var listReposResult = JSON.stringify(repoJsLib.list(), null, 4);
 
