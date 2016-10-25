@@ -10,5 +10,29 @@
       <occurrences minimum="0" maximum="1"/>
       <help-text>..that's the question!</help-text>
     </input>
+    <input name="checkbox2" type="Checkbox">
+      <label>Checkbox with label placed on the left</label>
+      <indexed>true</indexed>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <labelPlacement>left</labelPlacement>
+      </config>
+    </input>
+    <input name="checkbox3" type="Checkbox">
+      <label>Checkbox with label placed on the right</label>
+      <indexed>true</indexed>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <labelPlacement>right</labelPlacement>
+      </config>
+    </input>
+    <input name="checkbox4" type="Checkbox">
+      <label>Checkbox with label placed below</label>
+      <indexed>true</indexed>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <labelPlacement>bottom</labelPlacement>
+      </config>
+    </input>
   </form>
 </content-type>
