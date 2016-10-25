@@ -20,12 +20,16 @@ function handleGet(req) {
         }
     }
     var listReposResult = JSON.stringify(repoJsLib.list(), null, 4);
+    var deleteFeaturesRepoResult = JSON.stringify(repoJsLib.delete('features-repo'), null, 4);
+    var listReposResult2 = JSON.stringify(repoJsLib.list(), null, 4);
 
     var params = {
         createFeaturesRepoResult: createFeaturesRepoResult,
         getFeaturesRepoResult: getFeaturesRepoResult,
         createBranchResult: createBranchResult,
-        listReposResult: listReposResult
+        listReposResult: listReposResult,
+        deleteFeaturesRepoResult: deleteFeaturesRepoResult,
+        listReposResult2: listReposResult2
     };
 
     var body = thymeleaf.render(view, params);
