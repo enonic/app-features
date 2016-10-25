@@ -98,23 +98,23 @@ exports.create = function (id) {
 };
 
 exports.list = function () {
-    var result = repoLib.list();
-
-    return result;
+    return repoLib.list();
 };
 
 exports.get = function (id) {
-    var result = repoLib.get({
+    return repoLib.get({
         id: id
     });
+};
 
-    return result;
+exports.delete = function (id) {
+    return repoLib.delete({
+        id: id
+    });
 };
 
 exports.createBranch = function (id) {
-    var result = repoLib.createBranch({
+    return repoLib.createBranch({
         id: id
     });
-
-    return result;
 };
