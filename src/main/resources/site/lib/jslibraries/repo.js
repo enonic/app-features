@@ -1,3 +1,4 @@
+var contextLib = require('/lib/xp/context.js');
 var repoLib = require('/lib/xp/repo.js');
 
 exports.create = function (id) {
@@ -113,8 +114,12 @@ exports.delete = function (id) {
     });
 };
 
-exports.createBranch = function (id) {
-    return repoLib.createBranch({
-        id: id
+exports.createBranch = function (repositoryId, branchId) {
+    return contextLib.run({
+        repository: repositoryId
+    }, function () {
+        return repoLib.createBranch({
+            id: branchId
+        });
     });
 };
