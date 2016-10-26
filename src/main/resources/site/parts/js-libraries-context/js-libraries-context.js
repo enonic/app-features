@@ -5,14 +5,18 @@ var view = resolve('js-libraries-context.html');
 
 function handleGet(req) {
 
-    var runWithUserResult = JSON.stringify(contextJsLib.runWithUser(), null, 4);
-    var runWithPrincipalsResult = JSON.stringify(contextJsLib.runWithPrincipals(), null, 4);
-    var runWithBranchResult = JSON.stringify(contextJsLib.runWithBranch(), null, 4);
+    var getContextResult = JSON.stringify(contextJsLib.getContext(), null, 4);
+    var getContextAsAnonymousResult = JSON.stringify(contextJsLib.getContextAsAnonymous(), null, 4);
+    var getContextWithAdditionalRoleResult = JSON.stringify(contextJsLib.getContextWithAdditionalRole(), null, 4);
+    var getContextWithMasterBranchResult = JSON.stringify(contextJsLib.getContextWithMasterBranch(), null, 4);
+    var getContextWithSystemRepositoryResult = JSON.stringify(contextJsLib.getContextWithSystemRepository(), null, 4);
 
     var params = {
-        runWithUserResult: runWithUserResult,
-        runWithPrincipalsResult: runWithPrincipalsResult,
-        runWithBranchResult: runWithBranchResult
+        getContextResult: getContextResult,
+        getContextAsAnonymousResult: getContextAsAnonymousResult,
+        getContextWithAdditionalRoleResult: getContextWithAdditionalRoleResult,
+        getContextWithMasterBranchResult: getContextWithMasterBranchResult,
+        getContextWithSystemRepositoryResult: getContextWithSystemRepositoryResult
     };
 
     var body = thymeleaf.render(view, params);
