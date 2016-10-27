@@ -1,4 +1,5 @@
 var contextLib = require('/lib/xp/context.js');
+var nodeLib = require('/lib/xp/node.js');
 var repoLib = require('/lib/xp/repo.js');
 
 exports.create = function (id) {
@@ -13,6 +14,22 @@ exports.create = function (id) {
     } else {
         var result = repoLib.create({
             id: id,
+            rootPermissions: [
+                {
+                    "principal": "role:admin",
+                    "allow": [
+                        "READ",
+                        "CREATE",
+                        "MODIFY",
+                        "DELETE",
+                        "PUBLISH",
+                        "READ_PERMISSIONS",
+                        "WRITE_PERMISSIONS"
+                    ],
+                    "deny": []
+                }
+            ],
+            rootChildOrder: "_timestamp ASC",
             settings: {
                 definitions: {
                     version: {
@@ -95,7 +112,17 @@ exports.create = function (id) {
         log.info('Repository [' + result.id + '] was created');
         return result;
     }
+};
 
+exports.getRootNode = function (repositoryId) {
+    return contextLib.run({
+        repository: repositoryId,
+        branch: 'master',
+    }, function () {
+        return nodeLib.get({
+            key: '/'
+        });
+    });
 };
 
 exports.list = function () {
