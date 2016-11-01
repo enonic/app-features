@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<content-type>
+<content-type xmlns="urn:enonic:xp:model:1.0">
   <display-name>OptionSet</display-name>
   <super-type>base:structured</super-type>
   <form>
     <option-set name="radioOptionSet">
       <label>Single selection</label>
       <expanded>false</expanded>
-      <occurrences minimum="0" maximum="1"/>
       <help-text>Single selection radio option set</help-text>
+      <occurrences minimum="0" maximum="1"/>
       <options minimum="1" maximum="1">
         <option name="option_1">
           <label>Option 1</label>
@@ -15,11 +15,12 @@
           <items>
             <input name="name" type="TextLine">
               <label>Name</label>
-              <occurrences minimum="1" maximum="1"/>
               <help-text>Text input</help-text>
+              <occurrences minimum="1" maximum="1"/>
             </input>
             <item-set name="minimum3">
               <label>Minimum 3</label>
+              <occurrences minimum="3" maximum="0"/>
               <items>
                 <input name="label" type="TextLine">
                   <label>Label</label>
@@ -30,7 +31,6 @@
                   <occurrences minimum="0" maximum="1"/>
                 </input>
               </items>
-              <occurrences minimum="3" maximum="0"/>
             </item-set>
           </items>
         </option>
@@ -43,8 +43,8 @@
     <option-set name="checkOptionSet">
       <label>Multi selection</label>
       <expanded>true</expanded>
-      <occurrences minimum="0" maximum="1"/>
       <help-text>Multi selection checkbox option set</help-text>
+      <occurrences minimum="0" maximum="1"/>
       <options minimum="1" maximum="3">
         <option name="option_1">
           <label>Option 1</label>
