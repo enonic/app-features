@@ -12,7 +12,6 @@
         <option name="option_1">
           <label>Option 1</label>
           <help-text>Help text for Option 1</help-text>
-          <default>false</default>
           <items>
             <input name="name" type="TextLine">
               <label>Name</label>
@@ -37,10 +36,7 @@
         </option>
         <option name="option_2">
           <label>Option 2</label>
-          <default>false</default>
           <help-text>Help text for Option 2</help-text>
-          <items>
-          </items>
         </option>
       </options>
     </option-set>
@@ -52,21 +48,15 @@
       <options minimum="1" maximum="3">
         <option name="option_1">
           <label>Option 1</label>
-          <default>false</default>
           <help-text>Help text for Option 1</help-text>
-          <items>
-          </items>
         </option>
         <option name="option_2">
           <label>Option 2</label>
           <default>true</default>
           <help-text>Help text for Option 2</help-text>
-          <items>
-          </items>
         </option>
         <option name="option_3">
           <label>Option 3</label>
-          <default>false</default>
           <help-text>Help text for Option 3</help-text>
           <items>
             <input name="imageselector" type="ImageSelector">
@@ -79,7 +69,6 @@
         </option>
         <option name="option_4">
           <label>Option 4</label>
-          <default>false</default>
           <help-text>Help text for Option 4</help-text>
           <items>
             <input name="double" type="Double">
