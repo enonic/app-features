@@ -7,7 +7,7 @@
       <label>Single selection</label>
       <expanded>false</expanded>
       <help-text>Single selection radio option set</help-text>
-      <occurrences minimum="0" maximum="1"/>
+      <occurrences minimum="1" maximum="1"/>
       <options minimum="1" maximum="1">
         <option name="option_1">
           <label>Option 1</label>
@@ -44,7 +44,7 @@
       <label>Multi selection</label>
       <expanded>true</expanded>
       <help-text>Multi selection checkbox option set</help-text>
-      <occurrences minimum="0" maximum="1"/>
+      <occurrences minimum="1" maximum="1"/>
       <options minimum="1" maximum="3">
         <option name="option_1">
           <label>Option 1</label>
