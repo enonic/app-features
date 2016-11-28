@@ -9,22 +9,26 @@ function handleGet(req) {
     var getResult = JSON.stringify(contentJsLib.get(), null, 4);
     var getChildrenResult = JSON.stringify(contentJsLib.getChildren(), null, 4);
     var queryResult = JSON.stringify(contentJsLib.query(), null, 4);
+    var publishResult = JSON.stringify(contentJsLib.publish(), null, 4);
     var modifyResult = JSON.stringify(contentJsLib.modify(), null, 4);
     var getPermissionsResultBefore = JSON.stringify(contentJsLib.getPermissions(), null, 4);
     var setPermissionsResult = JSON.stringify(contentJsLib.setPermissions(), null, 4);
     var getPermissionsResultAfter = JSON.stringify(contentJsLib.getPermissions(), null, 4);
     var deleteResult = JSON.stringify(contentJsLib.delete(), null, 4);
+    var publishResult2 = JSON.stringify(contentJsLib.publish(), null, 4);
 
     var params = {
         createResult: createResult,
         getResult: getResult,
         getChildrenResult: getChildrenResult,
+        publishResult: publishResult,
         queryResult: queryResult,
         modifyResult: modifyResult,
         getPermissionsResultBefore: getPermissionsResultBefore,
         setPermissionsResult: setPermissionsResult,
         getPermissionsResultAfter: getPermissionsResultAfter,
-        deleteResult: deleteResult
+        deleteResult: deleteResult,
+        publishResult2: publishResult2
     };
 
     var body = thymeleaf.render(view, params);

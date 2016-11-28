@@ -284,3 +284,20 @@ exports.getPermissions = function () {
 
     return result;
 };
+
+exports.publish = function () {
+    var contentLib = require('/lib/xp/content');
+    var result = contentLib.publish({
+        keys: ['/features/js-libraries/mycontent'],
+        sourceBranch: 'draft',
+        targetBranch: 'master'
+    });
+    if (result) {
+        log.info('Pushed ' + result.pushedContents.length + " content.");
+        log.info('Deleted ' + result.deletedContents.length + " content.");
+        log.info('Content that failed operation: ' + result.failedContents.length);
+    } else {
+        log.info('Operation failed.');
+    }
+    return result;
+};
