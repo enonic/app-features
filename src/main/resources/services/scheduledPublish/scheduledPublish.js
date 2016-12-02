@@ -18,12 +18,31 @@ function handleGet(req) {
 
     createContent('onlinecontent');
     publishContent('onlinecontent', '2016-01-01T00:00:00Z', '2018-01-01T00:00:00Z');
+    contentLib.modify({
+        key: '/onlinecontent',
+        branch: 'master',
+        editor: function (c) {
+            c.publish.to = '2018-02-01T00:00:00Z';
+            return c;
+        }
+    });
 
     createContent('expiredcontent');
     publishContent('expiredcontent', '2016-01-01T00:00:00Z', '2016-12-01T00:00:00Z');
 
     createContent('pendingcontent');
     publishContent('pendingcontent', '2018-01-01T00:00:00Z', '2019-01-01T00:00:00Z');
+
+
+    //try {
+    //    contentLib.delete({
+    //        key: '/expiredcontent',
+    //        branch: 'master'
+    //    });
+    //} catch (e) {
+    //    log.info('Exception on deleting expired content: ' + e);
+    //}
+
 
     var queryResult = contentLib.query({
         start: 0,
