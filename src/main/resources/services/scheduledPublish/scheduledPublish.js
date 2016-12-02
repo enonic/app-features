@@ -30,17 +30,7 @@ function handleGet(req) {
         count: -1,
         query: "displayName = 'My Content'"
     });
-    var masterQueryResult = contextLib.run({
-        branch: 'master'
-    }, function () {
-        return contentLib.query({
-            start: 0,
-            count: -1,
-            query: "displayName = 'My Content'"
-        })
-    });
-    var masterIncludeQueryResult = contextLib.run({
-        branch: 'master',
+    var queryIncludeScheduledResult = contextLib.run({
         attributes: {
             'includeScheduledPublished': true
         }
@@ -52,19 +42,27 @@ function handleGet(req) {
         })
     });
 
+    createContent('incorrectTimesContent');
+    try {
+        publishContent('incorrectTimesContent', '2017-01-01T00:00:00Z', '2016-01-01T00:00:00Z');
+    } catch (e) {
+        log.info('Exception on publish content with incorrect publish times: ' + e);
+    }
+
+
     deleteAndPublishContent('defaultcontent');
     deleteAndPublishContent('content');
     deleteAndPublishContent('soonContent');
     deleteAndPublishContent('onlinecontent');
     deleteAndPublishContent('expiredcontent');
     deleteAndPublishContent('pendingcontent');
+    deleteAndPublishContent('incorrectTimesContent');
 
     return {
         contentType: 'application/json',
         body: {
             queryResult: queryResult,
-            masterQueryResult: masterQueryResult,
-            masterIncludeQueryResult: masterIncludeQueryResult
+            queryIncludeScheduledResult: queryIncludeScheduledResult
         }
     };
 }
@@ -127,7 +125,8 @@ function publishContent(name, from, to) {
 
 function deleteAndPublishContent(name) {
     contentLib.delete({
-        key: '/' + name
+        key: '/' + name,
+        branch: 'draft'
     });
     contentLib.publish({
         keys: ['/' + name],
