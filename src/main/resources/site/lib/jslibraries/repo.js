@@ -115,13 +115,13 @@ exports.create = function (id) {
 };
 
 exports.getRootNode = function (repositoryId) {
-    return contextLib.run({
-        repository: repositoryId,
-        branch: 'master',
-    }, function () {
-        return nodeLib.get({
-            key: '/'
-        });
+    var repo = nodeLib.connect({
+        repoId: repositoryId,
+        branch: 'master'
+    });
+
+    return repo.get({
+        key: '/'
     });
 };
 
@@ -146,7 +146,7 @@ exports.createBranch = function (repositoryId, branchId) {
         repository: repositoryId
     }, function () {
         return repoLib.createBranch({
-            id: branchId
+            branchId: branchId
         });
     });
 };

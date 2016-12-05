@@ -13,6 +13,8 @@ function handleGet(req) {
     var moveResult = JSON.stringify(nodeJsLib.move(), null, 4);
     var moveAndRenameResult = JSON.stringify(nodeJsLib.moveAndRename(), null, 4);
     var deleteResult = JSON.stringify(nodeJsLib.delete(), null, 4);
+    var diffResult = JSON.stringify(nodeJsLib.diff(), null, 4);
+    var pushResult = JSON.stringify(nodeJsLib.push(), null, 4);
 
     var params = {
         createResult: createResult,
@@ -22,7 +24,9 @@ function handleGet(req) {
         renameResult: renameResult,
         moveResult: moveResult,
         moveAndRenameResult: moveAndRenameResult,
-        deleteResult: deleteResult
+        deleteResult: deleteResult,
+        diffResult: diffResult,
+        pushResult: pushResult
     };
 
     var body = thymeleaf.render(view, params);
