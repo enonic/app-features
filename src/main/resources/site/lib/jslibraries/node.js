@@ -17,7 +17,6 @@ var connect = function () {
 };
 
 var cleanUp = function () {
-
     var repo = repoLib.get({
         id: testRepoId
     });
@@ -29,13 +28,11 @@ var cleanUp = function () {
     }
 };
 
-function createMyNameNode() {
-    initialize();
-
+function createNode(name) {
     var repo = connect();
 
     var result = repo.create({
-        _name: "my-name",
+        _name: name,
         displayName: "This is brand new node",
         someData: {
             cars: [
@@ -78,17 +75,16 @@ function createMyNameNode() {
     return result;
 }
 exports.create = function () {
-    var node = createMyNameNode();
+    initialize();
+    var node = createNode('my-node');
     cleanUp();
     return node;
 };
 
 exports.getNodeByKey = function () {
     initialize();
-    createMyNameNode();
-    var node = get({
-        key: '/my-name'
-    });
+    createNode('my-name');
+    var node = connect().get('/my-name');
     cleanUp();
 
     return node;
@@ -96,82 +92,53 @@ exports.getNodeByKey = function () {
 
 exports.getMissingNodeByKey = function () {
     initialize();
-    createMyNameNode();
-    var node = get({
-        key: 'missing'
-    });
-    cleanUp();
-    return node;
+    return connect().get('missing');
 };
 
 exports.getNodesByKeys = function () {
     initialize();
-    createMyNameNode();
-    var node = get({
-        keys: ['/my-name', 'missing']
-    });
-    cleanUp();
-    return node;
+    createNode('node1');
+    createNode('node2');
+    return connect().get('/node1', '/node2');
 };
 
 exports.rename = function () {
     initialize();
-    createMyNameNode();
+    createNode('my-name');
     var repo = connect();
     return repo.move({
         source: '/my-name',
         target: 'new-name'
     });
-    cleanUp();
 };
 
 exports.move = function () {
     initialize();
+    createNode('my-name');
+    createNode('parent');
+
     var repo = connect();
-
-    createMyNameNode();
-
-    repo.create({
-        _name: "parent"
-    });
-
-    var result = repo.move({
+    return repo.move({
         source: '/my-name',
         target: '/parent/'
     });
-
-    cleanUp();
-
-    return result;
 };
 
 exports.moveAndRename = function () {
     initialize();
+    createNode('my-name');
+    createNode('new-parent');
 
     var repo = connect();
-
-    createMyNameNode();
-
-    return repo.create({
-        _name: "new-parent"
-    });
-
-    var movedNode = repo.move({
+    return repo.move({
         source: '/my-name',
         target: '/new-parent/newer-name'
     });
-    repo.delete({
-        key: "/parent"
-    });
-
-    cleanUp();
-
-    return movedNode;
 };
 
 exports.delete = function () {
     initialize();
-    createMyNameNode();
+    createNode('my-name');
     var repo = connect();
     return repo.delete({
         keys: ['/my-name', 'missing']
@@ -180,19 +147,17 @@ exports.delete = function () {
 
 exports.diff = function () {
     initialize();
-    createMyNameNode();
+    createNode('my-name');
     var repo = connect();
-    var diff = repo.diff({
+    return repo.diff({
         key: '/my-name',
         target: 'draft'
     });
-    cleanUp();
-    return diff;
 };
 
 exports.push = function () {
     initialize();
-    createMyNameNode();
+    createNode('my-name');
 
     var anotherBranch = repoLib.createBranch({
         repoId: testRepoId,
@@ -201,17 +166,27 @@ exports.push = function () {
 
     var repo = connect();
 
-    var push = repo.push({
+    return repo.push({
         key: '/my-name',
         target: 'anotherBranch'
     });
-
-    cleanUp();
-    return push;
 };
 
+exports.getChildren = function () {
+    initialize();
+    createNode('my-name');
 
-function get(params) {
     var repo = connect();
-    return repo.get(params);
-}
+    repo.create({
+        _name: "child1",
+        _parentPath: "/my-name"
+    });
+    repo.create({
+        _name: "child2",
+        _parentPath: "/my-name"
+    });
+
+    return repo.getChildren({
+        parentKey: "/my-name"
+    });
+};

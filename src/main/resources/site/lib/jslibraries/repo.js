@@ -120,9 +120,7 @@ exports.getRootNode = function (repositoryId) {
         branch: 'master'
     });
 
-    return repo.get({
-        key: '/'
-    });
+    return repo.get('/');
 };
 
 exports.list = function () {

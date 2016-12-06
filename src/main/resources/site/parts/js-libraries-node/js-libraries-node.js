@@ -15,6 +15,7 @@ function handleGet(req) {
     var deleteResult = JSON.stringify(nodeJsLib.delete(), null, 4);
     var diffResult = JSON.stringify(nodeJsLib.diff(), null, 4);
     var pushResult = JSON.stringify(nodeJsLib.push(), null, 4);
+    //var getChildrenResult = JSON.stringify(nodeJsLib.getChildren(), null, 4);
 
     var params = {
         createResult: createResult,
@@ -27,6 +28,7 @@ function handleGet(req) {
         deleteResult: deleteResult,
         diffResult: diffResult,
         pushResult: pushResult
+        // getChildrenResult: getChildrenResult
     };
 
     var body = thymeleaf.render(view, params);
