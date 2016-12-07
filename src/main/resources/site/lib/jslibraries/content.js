@@ -34,6 +34,17 @@ exports.create = function () {
             myItemSet: {
                 'textLine': 'textLineContent',
                 'long': 123
+            },
+            checkOptionSet: {
+                option_2: {
+                    contentSelector: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b'
+                }
+            },
+            radioOptionSet: {
+                option_3: {
+                    textarea: 'My Text Area',
+                    long: 123
+                }
             }
         },
         x: {
