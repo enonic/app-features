@@ -139,10 +139,9 @@ exports.moveAndRename = function () {
 exports.delete = function () {
     initialize();
     createNode('my-name');
+    createNode('my-name2');
     var repo = connect();
-    return repo.delete({
-        keys: ['/my-name', 'missing']
-    });
+    return repo.delete('/my-name', '/my-name2', 'missing');
 };
 
 exports.diff = function () {
@@ -202,7 +201,7 @@ exports.query = function () {
 
     var repo = connect();
     repo.refresh();
-    
+
     return repo.query({
         query: "fulltext('_name', '_name')"
     });
