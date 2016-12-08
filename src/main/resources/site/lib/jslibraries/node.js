@@ -17,14 +17,10 @@ var connect = function () {
 };
 
 var cleanUp = function () {
-    var repo = repoLib.get({
-        id: testRepoId
-    });
+    var repo = repoLib.get(testRepoId);
 
     if (repo) {
-        repoLib.delete({
-            id: testRepoId
-        });
+        repoLib.delete(testRepoId);
     }
 };
 

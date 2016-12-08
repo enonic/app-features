@@ -39,6 +39,7 @@ dependencies {
     include "com.enonic.xp:lib-io:${xpVersion}"
     include "com.enonic.xp:lib-repo:${xpVersion}"
     include "com.enonic.xp:lib-node:${xpVersion}"
+    include "com.enonic.xp:lib-value:${xpVersion}"
 
     testCompile 'junit:junit:4.10'
     testCompile "com.enonic.xp:testing:${xpVersion}"
