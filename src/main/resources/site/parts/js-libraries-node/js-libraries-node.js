@@ -17,7 +17,6 @@ function handleGet(req) {
     var pushResult = JSON.stringify(nodeJsLib.push(), null, 4);
     var findChildrenResult = JSON.stringify(nodeJsLib.findChildren(), null, 4);
     var queryResult = JSON.stringify(nodeJsLib.query(), null, 4);
-
     /*  var createResult = {};
      var getNodeByKeyResult = {};
      var getMissingNodeByKeyResult = {};

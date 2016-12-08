@@ -4,9 +4,7 @@ var repoLib = require('/lib/xp/repo.js');
 
 exports.create = function (id) {
 
-    var repo = repoLib.get({
-        id: id
-    });
+    var repo = repoLib.get(id);
 
     if (repo) {
         log.info('Repository [' + id + '] already exists');
@@ -128,18 +126,18 @@ exports.list = function () {
 };
 
 exports.get = function (id) {
-    return repoLib.get({
-        id: id
-    });
+    return repoLib.get(id);
 };
 
 exports.delete = function (id) {
-    return repoLib.delete({
-        id: id
-    });
+    return repoLib.delete(id);
 };
 
 exports.createBranch = function (repositoryId, branchId) {
+
+    repoLib.delete(repositoryId);
+    exports.create(repositoryId);
+
     return contextLib.run({
         repository: repositoryId
     }, function () {
