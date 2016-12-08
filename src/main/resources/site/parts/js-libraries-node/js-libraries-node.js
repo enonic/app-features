@@ -15,8 +15,20 @@ function handleGet(req) {
     var deleteResult = JSON.stringify(nodeJsLib.delete(), null, 4);
     var diffResult = JSON.stringify(nodeJsLib.diff(), null, 4);
     var pushResult = JSON.stringify(nodeJsLib.push(), null, 4);
-    //var getChildrenResult = JSON.stringify(nodeJsLib.getChildren(), null, 4);
+    var findChildrenResult = JSON.stringify(nodeJsLib.findChildren(), null, 4);
+    var queryResult = JSON.stringify(nodeJsLib.query(), null, 4);
 
+    /*  var createResult = {};
+     var getNodeByKeyResult = {};
+     var getMissingNodeByKeyResult = {};
+     var getNodesByKeysResult = {};
+     var renameResult = {};
+     var moveResult = {};
+     var moveAndRenameResult = {};
+     var deleteResult = {};
+     var diffResult = {};
+     var pushResult = {};
+     */
     var params = {
         createResult: createResult,
         getNodeByKeyResult: getNodeByKeyResult,
@@ -27,8 +39,9 @@ function handleGet(req) {
         moveAndRenameResult: moveAndRenameResult,
         deleteResult: deleteResult,
         diffResult: diffResult,
-        pushResult: pushResult
-        // getChildrenResult: getChildrenResult
+        pushResult: pushResult,
+        findChildrenResult: findChildrenResult,
+        queryResult: queryResult
     };
 
     var body = thymeleaf.render(view, params);

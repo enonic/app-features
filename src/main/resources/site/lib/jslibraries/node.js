@@ -172,7 +172,7 @@ exports.push = function () {
     });
 };
 
-exports.getChildren = function () {
+exports.findChildren = function () {
     initialize();
     createNode('my-name');
 
@@ -186,7 +186,26 @@ exports.getChildren = function () {
         _parentPath: "/my-name"
     });
 
-    return repo.getChildren({
+    repo.refresh();
+
+    return repo.findChildren({
         parentKey: "/my-name"
     });
 };
+
+exports.query = function () {
+    initialize();
+    createNode("my-name");
+    createNode("my-name-name");
+    createNode("my-other-name");
+    createNode("my-third-name");
+
+    var repo = connect();
+    repo.refresh();
+    
+    return repo.query({
+        query: "fulltext('_name', '_name')"
+    });
+
+};
+
