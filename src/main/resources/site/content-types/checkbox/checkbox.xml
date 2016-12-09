@@ -4,11 +4,27 @@
   <super-type>base:structured</super-type>
   <form>
     <input name="checkbox" type="Checkbox">
-      <label>To check or not to check</label>
+      <label>Left-aligned checkbox (default)</label>
       <indexed>true</indexed>
       <custom-text>Custom text</custom-text>
       <occurrences minimum="0" maximum="1"/>
-      <help-text>..that's the question!</help-text>
+      <help-text>That's the help text!</help-text>
+    </input>
+    <input name="checkbox2" type="Checkbox">
+      <label>Right-aligned checkbox</label>
+      <indexed>true</indexed>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <alignment>right</alignment>
+      </config>
+    </input>
+    <input name="checkbox3" type="Checkbox">
+      <label>Bottom-aligned checkbox</label>
+      <indexed>true</indexed>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <alignment>bottom</alignment>
+      </config>
     </input>
   </form>
 </content-type>

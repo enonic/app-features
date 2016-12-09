@@ -1,0 +1,11 @@
+fieldset.unpublish-form label {
+    font-weight: bold;
+}
+
+span.unpublishresultmsg.fail {
+    color: darkred;
+}
+
+span.unpublishresultmsg.success {
+    color: forestgreen;
+}
