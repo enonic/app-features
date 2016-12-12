@@ -28,10 +28,12 @@ function handleGet(req) {
     var getExpiredContentDraft = getContent(expiredContent, 'draft');
     var getPendingContentDraft = getContent(pendingContent, 'draft');
     var getContentDraft = getContent(content, 'draft');
+    var getChildrenDraft = getChildren('draft');
     var getDefaultContentMaster = getContent(defaultContent, 'master');
     var getExpiredContentMaster = getContent(expiredContent, 'master');
     var getPendingContentMaster = getContent(pendingContent, 'master');
     var getContentMaster = getContent(content, 'master');
+    var getChildrenMaster = getChildren('master');
 
     deleteContent(defaultContent);
     deleteContent(expiredContent);
@@ -48,10 +50,12 @@ function handleGet(req) {
         getExpiredContentDraft: JSON.stringify(getExpiredContentDraft, null, 2),
         getPendingContentDraft: JSON.stringify(getPendingContentDraft, null, 2),
         getContentDraft: JSON.stringify(getContentDraft, null, 2),
+        getChildrenDraft: JSON.stringify(getChildrenDraft, null, 2),
         getDefaultContentMaster: JSON.stringify(getDefaultContentMaster, null, 2),
         getExpiredContentMaster: JSON.stringify(getExpiredContentMaster, null, 2),
         getPendingContentMaster: JSON.stringify(getPendingContentMaster, null, 2),
-        getContentMaster: JSON.stringify(getContentMaster, null, 2)
+        getContentMaster: JSON.stringify(getContentMaster, null, 2),
+        getChildrenMaster: JSON.stringify(getChildrenMaster, null, 2)
     };
 
     var body = thymeleaf.render(view, params);
@@ -77,6 +81,13 @@ function createContent(name) {
 function getContent(content, branch) {
     return contentLib.get({
         key: content._id,
+        branch: branch
+    });
+}
+
+function getChildren(branch) {
+    return contentLib.getChildren({
+        key: '/features/js-libraries/schedule-publish',
         branch: branch
     });
 }
