@@ -136,7 +136,7 @@
     <option-set name="radioOptionSet">
       <label>Single-selection OptionSet</label>
       <occurrences minimum="1" maximum="1"/>
-      <options minimum="1" maximum="1" >
+      <options minimum="1" maximum="1">
         <option name="option_1">
           <label>Option 1</label>
           <items></items>

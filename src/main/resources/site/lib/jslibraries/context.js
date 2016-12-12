@@ -1,66 +1,46 @@
-exports.runWithUser = function () {
+var contextLib = require('/lib/xp/context');
 
-    //Documentation BEGIN
-    var authLib = require('/lib/xp/auth');
-    var contextLib = require('/lib/xp/context');
-
-    var result = contextLib.run({
-        user: {
-            login: 'su',
-            userStore: 'system'
-        }
-    }, authLib.getUser);
-
-    if (result) {
-        log.info('Current user name: ' + result.displayName);
-    } else {
-        log.info('No current user');
-    }
-    //Documentation END
-
-    log.info('RunWithUser result: ' + JSON.stringify(result, null, 4));
-
+exports.getContext = function () {
+    var result = contextLib.get();
+    log.info('GetContext result: ' + JSON.stringify(result, null, 4));
     return result;
 };
 
-exports.runWithPrincipals = function () {
+exports.getContextAsAnonymous = function () {
 
-    //Documentation BEGIN
-    var authLib = require('/lib/xp/auth');
-    var contextLib = require('/lib/xp/context');
+    var result = contextLib.run({
+        user: {
+            login: 'anonymous',
+            userStore: 'system'
+        }
+    }, contextLib.get);
+    log.info('GetContext as anonymous result: ' + JSON.stringify(result, null, 4));
+    return result;
+};
+
+exports.getContextWithAdditionalRole = function () {
 
     var result = contextLib.run({
         principals: ["role:system.myrole"]
     }, contextLib.get);
-    //Documentation END
-
-    log.info('RunWithPrincipal result: ' + JSON.stringify(result, null, 4));
-
+    log.info('GetContext with additional role result: ' + JSON.stringify(result, null, 4));
     return result;
 };
 
-exports.runWithBranch = function () {
-
-    //Documentation BEGIN
-    var contentLib = require('/lib/xp/content');
-    var contextLib = require('/lib/xp/context');
-
-    function getNumberOfContents() {
-        return {
-            total: contentLib.query({count: 0}).total
-        }
-    }
+exports.getContextWithMasterBranch = function () {
 
     var result = contextLib.run({
         branch: 'master'
-    }, getNumberOfContents);
+    }, contextLib.get);
+    log.info('GetContext on master branch result: ' + JSON.stringify(result, null, 4));
+    return result;
+};
 
-    if (result) {
-        log.info('Number of contents on master: ' + result.total);
-    }
-    //Documentation END
+exports.getContextWithSystemRepository = function () {
 
-    log.info('RunWithBranch result: ' + JSON.stringify(result, null, 4));
-
+    var result = contextLib.run({
+        repository: 'system'
+    }, contextLib.get);
+    log.info('GetContext on system repository result: ' + JSON.stringify(result, null, 4));
     return result;
 };
