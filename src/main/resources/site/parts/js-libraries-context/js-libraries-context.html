@@ -1,17 +1,35 @@
 <h1>Lib Content</h1>
 
-<div>
-    <h2>RunWith results</h2>
+<div style="display:flex;">
+    <div>
+        <h3>Context: </h3>
 
-    <h3>GetUser run with user: su</h3>
+        <pre data-th-text="${getContextResult}"></pre>
+    </div>
 
-    <p data-th-text="${runWithUserResult}"></p>
+    <div>
+        <h3>Context as anonymous user: </h3>
 
-    <h3>GetContext run with principals: role:system.myrole</h3>
+        <pre data-th-text="${getContextAsAnonymousResult}"></pre>
+    </div>
 
-    <p data-th-text="${runWithPrincipalsResult}"></p>
+    <div>
+        <h3>Context with additional principal</h3>
 
-    <h3>Number of contents run with branch: master </h3>
+        <pre data-th-text="${getContextWithAdditionalRoleResult}"></pre>
+    </div>
 
-    <p data-th-text="${runWithBranchResult}"></p>
+    <div>
+        <h3>Context with branch: master</h3>
+
+        <pre data-th-text="${getContextWithMasterBranchResult}"></pre>
+    </div>
+
+    <div>
+        <h3>Context with repository: system</h3>
+
+        <pre data-th-text="${getContextWithSystemRepositoryResult}"></pre>
+    </div>
+
+
 </div>
