@@ -134,15 +134,8 @@ exports.delete = function (id) {
 };
 
 exports.createBranch = function (repositoryId, branchId) {
-
-    repoLib.delete(repositoryId);
-    exports.create(repositoryId);
-
-    return contextLib.run({
-        repository: repositoryId
-    }, function () {
-        return repoLib.createBranch({
-            branchId: branchId
-        });
+    return repoLib.createBranch({
+        repoId: repositoryId,
+        branchId: branchId
     });
 };
