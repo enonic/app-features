@@ -36,11 +36,17 @@ exports.create = function () {
                 'long': 123
             },
             checkOptionSet: {
+                _selected: ["option_2", "option_3"],
                 option_2: {
                     contentSelector: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b'
+                },
+                option_3: {
+                    textarea: 'My Another Text Area',
+                    long: 555
                 }
             },
             radioOptionSet: {
+                _selected: "option_3",
                 option_3: {
                     textarea: 'My Text Area',
                     long: 123
@@ -225,6 +231,12 @@ exports.modify = function () {
         c.language = 'en';
         c.data.myCheckbox = false;
         c.data["myTime"] = "11:00";
+        c.data.checkOptionSet = {
+            _selected: ["option_2"],
+                option_2: {
+                contentSelector: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b'
+            }
+        };
         return c;
     }
 
