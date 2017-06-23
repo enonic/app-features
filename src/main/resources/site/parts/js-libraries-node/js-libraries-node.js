@@ -6,6 +6,7 @@ var view = resolve('js-libraries-node.html');
 function handleGet(req) {
 
     var createResult = JSON.stringify(nodeJsLib.create(), null, 4);
+    var modifyResult = JSON.stringify(nodeJsLib.modify(), null, 4);
     var getNodeByKeyResult = JSON.stringify(nodeJsLib.getNodeByKey(), null, 4);
     var getMissingNodeByKeyResult = JSON.stringify(nodeJsLib.getMissingNodeByKey(), null, 4);
     var getNodesByKeysResult = JSON.stringify(nodeJsLib.getNodesByKeys(), null, 4);
@@ -30,6 +31,7 @@ function handleGet(req) {
      */
     var params = {
         createResult: createResult,
+        modifyResult: modifyResult,
         getNodeByKeyResult: getNodeByKeyResult,
         getMissingNodeByKeyResult: getMissingNodeByKeyResult,
         getNodesByKeysResult: getNodesByKeysResult,

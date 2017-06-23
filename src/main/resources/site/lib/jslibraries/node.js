@@ -70,9 +70,37 @@ function createNode(name) {
 
     return result;
 }
+
+function modifyNode(key) {
+    var repo = connect();
+
+    var result = repo.modify({
+        key: key,
+        editor: function (node) {
+            node.someData.cars.push('peugeot');
+            return node;
+        }
+    });
+
+    return result;
+}
+
 exports.create = function () {
     initialize();
     var node = createNode('my-node');
+    cleanUp();
+    return node;
+};
+
+exports.modify = function () {
+    initialize();
+    var node = createNode('my-node');
+    var numberClassBefore = node.someData.numberOfUselessGadgets.getClass();
+    node = modifyNode(node._id);
+    var numberClassAfter = node.someData.numberOfUselessGadgets.getClass();
+    if (numberClassBefore !== numberClassAfter) {
+        throw 'Number class was ' + numberClassBefore + ' and is now ' + numberClassAfter;
+    }
     cleanUp();
     return node;
 };
