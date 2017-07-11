@@ -40,15 +40,55 @@
       <occurrences minimum="0" maximum="0"/>
       <config/>
     </input>
+    <input name="myImageSelector2" type="ImageSelector">
+      <label>ImageSelector</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+          <flat>true</flat>
+      </config>
+    </input>
     <input name="myLong" type="Long">
       <label>Long</label>
       <occurrences minimum="0" maximum="0"/>
     </input>
     <input name="myRelationship" type="ContentSelector">
-      <label>Relationship (like)</label>
+      <label>Content selector (flat)</label>
       <occurrences minimum="0" maximum="0"/>
       <config>
         <relationship-type>system:reference</relationship-type>
+        <flat>true</flat>
+      </config>
+    </input>
+    <input name="myRelationship2" type="ContentSelector">
+      <label>Content selector (tree-structured)</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <relationship-type>system:reference</relationship-type>
+      </config>
+    </input>
+    <input name="myRelationship3" type="ContentSelector">
+      <label>Content selector (flat, filtered)</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <relationship-type>system:reference</relationship-type>
+        <allowContentType>landing-page</allowContentType>
+        <flat>true</flat>
+      </config>
+    </input>
+    <input name="myRelationship4" type="ContentSelector">
+      <label>Content selector (tree-structured, filtered)</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <relationship-type>system:reference</relationship-type>
+        <allowContentType>landing-page</allowContentType>
+      </config>
+    </input>
+    <input name="myRelationship5" type="ContentSelector">
+      <label>Content selector (tree-structured, with status)</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <relationship-type>system:reference</relationship-type>
+        <showStatus>true</showStatus>
       </config>
     </input>
     <input name="myRadioButtons" type="RadioButton">
