@@ -36,13 +36,13 @@
       <occurrences minimum="0" maximum="0"/>
     </input>
     <input name="myImageSelector" type="ImageSelector">
-      <label>ImageSelector</label>
+      <label>Image selector (tree-structured)</label>
       <occurrences minimum="0" maximum="0"/>
       <config/>
     </input>
     <input name="myImageSelector2" type="ImageSelector">
-      <label>ImageSelector</label>
-      <occurrences minimum="0" maximum="0"/>
+      <label>Image selector (flat)</label>
+      <occurrences minimum="1" maximum="1"/>
       <config>
           <flat>true</flat>
       </config>
