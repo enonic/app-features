@@ -38,13 +38,19 @@
     <input name="myImageSelector" type="ImageSelector">
       <label>Image selector (tree-structured)</label>
       <occurrences minimum="0" maximum="0"/>
-      <config/>
+      <config>
+        <treeMode>true</treeMode>
+      </config>
     </input>
     <input name="myImageSelector2" type="ImageSelector">
-      <label>Image selector (flat)</label>
+      <label>Image selector (flat - by default)</label>
+      <occurrences minimum="1" maximum="1"/>
+    </input>
+    <input name="myImageSelector3" type="ImageSelector">
+      <label>Image selector (flat - manually)</label>
       <occurrences minimum="1" maximum="1"/>
       <config>
-          <flat>true</flat>
+        <treeMode>false</treeMode>
       </config>
     </input>
     <input name="myLong" type="Long">
@@ -56,7 +62,6 @@
       <occurrences minimum="0" maximum="0"/>
       <config>
         <relationship-type>system:reference</relationship-type>
-        <flat>true</flat>
       </config>
     </input>
     <input name="myRelationship2" type="ContentSelector">
@@ -64,6 +69,7 @@
       <occurrences minimum="0" maximum="0"/>
       <config>
         <relationship-type>system:reference</relationship-type>
+        <treeMode>true</treeMode>
       </config>
     </input>
     <input name="myRelationship3" type="ContentSelector">
@@ -72,7 +78,6 @@
       <config>
         <relationship-type>system:reference</relationship-type>
         <allowContentType>landing-page</allowContentType>
-        <flat>true</flat>
       </config>
     </input>
     <input name="myRelationship4" type="ContentSelector">
@@ -81,6 +86,7 @@
       <config>
         <relationship-type>system:reference</relationship-type>
         <allowContentType>landing-page</allowContentType>
+        <treeMode>true</treeMode>
       </config>
     </input>
     <input name="myRelationship5" type="ContentSelector">
@@ -89,6 +95,7 @@
       <config>
         <relationship-type>system:reference</relationship-type>
         <showStatus>true</showStatus>
+        <treeMode>true</treeMode>
       </config>
     </input>
     <input name="myRadioButtons" type="RadioButton">
