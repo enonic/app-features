@@ -28,5 +28,28 @@
       <occurrences minimum="2" maximum="4"/>
       <config/>
     </input>
+    <input name="imageSelectorTree" type="ImageSelector">
+      <label>Tree mode</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <treeMode>true</treeMode>
+      </config>
+    </input>
+    <input name="imageSelectorFlat-IconDisabled" type="ImageSelector">
+      <label>Flat mode, disable toggle icon</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <treeMode>false</treeMode>
+        <hideToggleIcon>true</hideToggleIcon>
+      </config>
+    </input>
+    <input name="imageSelectorTree-IconDisabled" type="ImageSelector">
+      <label>Tree mode, disable toggle icon</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <treeMode>true</treeMode>
+        <hideToggleIcon>true</hideToggleIcon>
+      </config>
+    </input>
   </form>
 </content-type>
