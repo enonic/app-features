@@ -57,5 +57,28 @@
         <allowPath>${site}/input-types/date-and-time/*</allowPath>
       </config>
     </input>
+    <input name="contentSelectorTree" type="ContentSelector">
+      <label>Tree mode</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <treeMode>true</treeMode>
+      </config>
+    </input>
+    <input name="contentSelectorFlat-IconDisabled" type="ContentSelector">
+      <label>Flat mode, disable toggle icon</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <treeMode>false</treeMode>
+        <hideToggleIcon>true</hideToggleIcon>
+      </config>
+    </input>
+    <input name="contentSelectorTree-IconDisabled" type="ContentSelector">
+      <label>Tree mode, disable toggle icon</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <treeMode>true</treeMode>
+        <hideToggleIcon>true</hideToggleIcon>
+      </config>
+    </input>
   </form>
 </content-type>
