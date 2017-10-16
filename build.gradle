@@ -36,11 +36,7 @@ dependencies {
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
     jcenter()
     xp.enonicRepo()
-    maven {
-        url 'http://repo.enonic.com/public'
-    }
 }
