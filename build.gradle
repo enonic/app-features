@@ -1,19 +1,7 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        jcenter()
-        maven {
-            url 'http://repo.enonic.net/public'
-        }
-    }
-
-    dependencies {
-        classpath "com.enonic.xp:gradle-plugin:${xpVersion}"
-    }
+plugins {
+    id 'maven'
+    id 'com.enonic.xp.app' version '1.0.13'
 }
-
-apply plugin: 'maven'
-apply plugin: 'com.enonic.xp.app'
 
 app {
     name = 'com.enonic.app.features'
@@ -49,15 +37,17 @@ dependencies {
 repositories {
     mavenLocal()
     mavenCentral()
+    jcenter()
+    xp.enonicRepo()
     maven {
         url 'http://repo.enonic.com/public'
     }
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository( url: 'http://repo.enonic.com/artifactory/public' )
-        }
-    }
-}
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository( url: 'http://repo.enonic.com/artifactory/public' )
+//        }
+//    }
+//}
