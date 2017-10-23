@@ -1,4 +1,4 @@
-var assert = require('/lib/xp/assert');
+var assert = require('/lib/xp/testing');
 
 var requestMock = {
     params: {

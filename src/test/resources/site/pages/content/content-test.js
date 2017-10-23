@@ -1,4 +1,4 @@
-var assert = require('/lib/xp/assert');
+var assert = require('/lib/xp/testing');
 var portalMock = require('/lib/xp/mock/portal');
 var contentMock = require('/lib/xp/mock/content');
 
