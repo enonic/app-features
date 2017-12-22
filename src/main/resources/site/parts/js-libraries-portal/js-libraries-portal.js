@@ -3,34 +3,40 @@ var thymeleaf = require('/lib/xp/thymeleaf');
 var portalJsLib = require('/lib/jslibraries/portal');
 var view = resolve('js-libraries-portal.html');
 
-function handleGet(req) {
-
-    var assetUrlResult = portalJsLib.assetUrl();
-    var attachmentUrlResult = portalJsLib.attachmentUrl();
-    var componentUrlResult = portalJsLib.componentUrl();
-    var imageUrlResult = portalJsLib.imageUrl();
+function handleGet() {
     var pageUrlResult = portalJsLib.pageUrl();
-    var serviceUrlResult = portalJsLib.serviceUrl();
-    var idProviderUrlResult = portal.idProviderUrl();
-    var loginUrlResult = portal.loginUrl({redirect: pageUrlResult});
-    var logoutUrlResult = portal.logoutUrl({redirect: pageUrlResult});
-    var processHtmlResult = JSON.stringify(portalJsLib.processHtml(), null, 4);
-    var getUserStoreKeyResult = portal.getUserStoreKey();
-    var imagePlaceholder = portal.imagePlaceholder({width: 64,height: 32});
 
     var params = {
-        assetUrlResult: assetUrlResult,
-        attachmentUrlResult: attachmentUrlResult,
-        componentUrlResult: componentUrlResult,
-        imageUrlResult: imageUrlResult,
-        pageUrlResult: pageUrlResult,
-        serviceUrlResult: serviceUrlResult,
-        idProviderUrlResult: idProviderUrlResult,
-        loginUrlResult: loginUrlResult,
-        logoutUrlResult: logoutUrlResult,
-        processHtmlResult: processHtmlResult,
-        getUserStoreKeyResult: getUserStoreKeyResult,
-        imagePlaceholder: imagePlaceholder
+        assetUrlResultDefault: portalJsLib.assetUrl(),
+        assetUrlResultContent: portalJsLib.assetUrl(true),
+        assetUrlResultRoot: portalJsLib.assetUrl(false),
+        attachmentUrlResultDefault: portalJsLib.attachmentUrl(),
+        attachmentUrlResultContent: portalJsLib.attachmentUrl(true),
+        attachmentUrlResultRoot: portalJsLib.attachmentUrl(false),
+        componentUrlResultDefault: portalJsLib.componentUrl(),
+        componentUrlResultContent: portalJsLib.componentUrl(true),
+        componentUrlResultRoot: portalJsLib.componentUrl(false),
+        imageUrlResultDefault: portalJsLib.imageUrl(),
+        imageUrlResultContent: portalJsLib.imageUrl(true),
+        imageUrlResultRoot: portalJsLib.imageUrl(false),
+        pageUrlResultDefault: portalJsLib.pageUrl(),
+        pageUrlResultContent: portalJsLib.pageUrl(true),
+        pageUrlResultRoot: portalJsLib.pageUrl(false),
+        serviceUrlResultDefault: portalJsLib.serviceUrl(),
+        serviceUrlResultContent: portalJsLib.serviceUrl(),
+        serviceUrlResultRoot: portalJsLib.serviceUrl(false),
+        idProviderUrlResultDefault: portal.idProviderUrl(),
+        idProviderUrlResultContent: portal.idProviderUrl(true),
+        idProviderUrlResultRoot: portal.idProviderUrl(false),
+        loginUrlResultDefault: portal.loginUrl({redirect: pageUrlResult}),
+        loginUrlResultContent: portal.loginUrl({redirect: pageUrlResult, contentPath: true}),
+        loginUrlResultRoot: portal.loginUrl({redirect: pageUrlResult, contentPath: false}),
+        logoutUrlResultDefault: portal.logoutUrl({redirect: pageUrlResult}),
+        logoutUrlResultContent: portal.logoutUrl({redirect: pageUrlResult, contentPath: true}),
+        logoutUrlResultRoot: portal.logoutUrl({redirect: pageUrlResult, contentPath: false}),
+        processHtmlResult: JSON.stringify(portalJsLib.processHtml(), null, 4),
+        getUserStoreKeyResult: portal.getUserStoreKey(),
+        imagePlaceholder: portal.imagePlaceholder({width: 64,height: 32})
     };
 
     var body = thymeleaf.render(view, params);

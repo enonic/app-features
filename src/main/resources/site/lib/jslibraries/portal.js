@@ -1,10 +1,11 @@
-exports.assetUrl = function () {
+exports.assetUrl = function (contentPath) {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
 
     var url = portal.assetUrl({
-        path: 'error/css/custom.css'
+        path: 'error/css/custom.css',
+        contentPath: contentPath
     });
     //Documentation END
 
