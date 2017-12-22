@@ -14,14 +14,15 @@ exports.assetUrl = function (contentPath) {
     return url;
 };
 
-exports.attachmentUrl = function () {
+exports.attachmentUrl = function (contentPath) {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
 
     var url = portal.attachmentUrl({
         id: "5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b",
-        download: true
+        download: true,
+        contentPath: contentPath
     });
     //Documentation END
 
@@ -30,13 +31,14 @@ exports.attachmentUrl = function () {
     return url;
 };
 
-exports.componentUrl = function () {
+exports.componentUrl = function (contentPath) {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
 
     var url = portal.componentUrl({
-        component: 'main/0'
+        component: 'main/0',
+        contentPath: contentPath
     });
     //Documentation END
 
@@ -45,7 +47,7 @@ exports.componentUrl = function () {
     return url;
 };
 
-exports.imageUrl = function () {
+exports.imageUrl = function (contentPath) {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
@@ -53,7 +55,8 @@ exports.imageUrl = function () {
     var url = portal.imageUrl({
         id: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b',
         scale: 'block(1024,768)',
-        filter: 'rounded(5);sharpen()'
+        filter: 'rounded(5);sharpen()',
+        contentPath: contentPath
     });
     //Documentation END
 
@@ -62,13 +65,14 @@ exports.imageUrl = function () {
     return url;
 };
 
-exports.pageUrl = function () {
+exports.pageUrl = function (contentPath) {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
 
     var url = portal.pageUrl({
         path: '/features/js-libraries/portal',
+        contentPath: contentPath,
         params: {
             a: 1,
             b: [1, 2]
@@ -81,13 +85,14 @@ exports.pageUrl = function () {
     return url;
 };
 
-exports.serviceUrl = function () {
+exports.serviceUrl = function (contentPath) {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
 
     var url = portal.serviceUrl({
         service: 'test',
+        contentPath: contentPath,
         params: {
             a: 1,
             b: 2
