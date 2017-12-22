@@ -14,15 +14,14 @@ exports.assetUrl = function (contentPath) {
     return url;
 };
 
-exports.attachmentUrl = function (contentPath) {
+exports.attachmentUrl = function () {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
 
     var url = portal.attachmentUrl({
         id: "5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b",
-        download: true,
-        contentPath: contentPath
+        download: true
     });
     //Documentation END
 
@@ -31,14 +30,13 @@ exports.attachmentUrl = function (contentPath) {
     return url;
 };
 
-exports.componentUrl = function (contentPath) {
+exports.componentUrl = function () {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
 
     var url = portal.componentUrl({
-        component: 'main/0',
-        contentPath: contentPath
+        component: 'main/0'
     });
     //Documentation END
 
@@ -65,14 +63,13 @@ exports.imageUrl = function (contentPath) {
     return url;
 };
 
-exports.pageUrl = function (contentPath) {
+exports.pageUrl = function () {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
 
     var url = portal.pageUrl({
         path: '/features/js-libraries/portal',
-        contentPath: contentPath,
         params: {
             a: 1,
             b: [1, 2]
