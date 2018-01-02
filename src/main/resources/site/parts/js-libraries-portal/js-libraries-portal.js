@@ -17,7 +17,7 @@ function handleGet() {
         imageUrlResultRoot: portalJsLib.imageUrl(false),
         pageUrlResult: portalJsLib.pageUrl(),
         serviceUrlResultDefault: portalJsLib.serviceUrl(),
-        serviceUrlResultContent: portalJsLib.serviceUrl(),
+        serviceUrlResultContent: portalJsLib.serviceUrl(true),
         serviceUrlResultRoot: portalJsLib.serviceUrl(false),
         idProviderUrlResultDefault: portal.idProviderUrl(),
         idProviderUrlResultContent: portal.idProviderUrl({contentPath: true}),
