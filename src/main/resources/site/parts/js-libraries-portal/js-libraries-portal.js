@@ -28,9 +28,18 @@ function handleGet() {
         logoutUrlResultDefault: portal.logoutUrl({redirect: pageUrlResult}),
         logoutUrlResultContent: portal.logoutUrl({redirect: pageUrlResult, contentPath: true}),
         logoutUrlResultRoot: portal.logoutUrl({redirect: pageUrlResult, contentPath: false}),
+        applicationUrlMinResult: portalJsLib.applicationUrl(),
+        applicationUrlMaxResult: portalJsLib.applicationUrl({
+            application: 'com.enonic.app.superhero',
+            path: '/subpath',
+            params: {
+                a: 1,
+                b: [2, "3"]
+            }
+        }),
         processHtmlResult: JSON.stringify(portalJsLib.processHtml(), null, 4),
         getUserStoreKeyResult: portal.getUserStoreKey(),
-        imagePlaceholder: portal.imagePlaceholder({width: 64,height: 32})
+        imagePlaceholder: portal.imagePlaceholder({width: 64, height: 32})
     };
 
     var body = thymeleaf.render(view, params);

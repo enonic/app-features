@@ -102,6 +102,19 @@ exports.serviceUrl = function (contentPath) {
     return url;
 };
 
+exports.applicationUrl = function (params) {
+
+    //Documentation BEGIN
+    var portal = require('/lib/xp/portal');
+
+    var url = portal.applicationUrl(params);
+    //Documentation END
+
+    log.info('ApplicationUrl result: ' + JSON.stringify(url, null, 4));
+
+    return url;
+};
+
 exports.processHtml = function () {
 
     //Documentation BEGIN
