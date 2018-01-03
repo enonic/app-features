@@ -51,6 +51,10 @@
 
     <h2>ApplicationUrl result</h2>
 
+    <span><a data-th-href="${portal.applicationUrl({'_path=/subpath'})}"
+             data-th-text="${portal.applicationUrl()}"></a> (view function without params)</span><br/>
+    <span><a data-th-href="${portal.applicationUrl({ '_application=com.enonic.app.superhero', '_path=/subpath'})}"
+             data-th-text="${portal.applicationUrl({ '_application=com.enonic.app.superhero', '_path=/subpath'})}"></a> (view function)</span><br/>
     <span><a data-th-href="${applicationUrlMinResult}" data-th-text="${applicationUrlMinResult}"></a> (without params)</span><br/>
     <span><a data-th-href="${applicationUrlMaxResult}" data-th-text="${applicationUrlMaxResult}"></a></span><br/>
 
