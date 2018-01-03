@@ -8,26 +8,26 @@ function handleGet() {
 
     var params = {
         assetUrlResultDefault: portalJsLib.assetUrl(),
-        assetUrlResultContent: portalJsLib.assetUrl(true),
-        assetUrlResultRoot: portalJsLib.assetUrl(false),
+        assetUrlResultRelative: portalJsLib.assetUrl('relative'),
+        assetUrlResultVhost: portalJsLib.assetUrl('vhost'),
         attachmentUrlResult: portalJsLib.attachmentUrl(),
         componentUrlResult: portalJsLib.componentUrl(),
         imageUrlResultDefault: portalJsLib.imageUrl(),
-        imageUrlResultContent: portalJsLib.imageUrl(true),
-        imageUrlResultRoot: portalJsLib.imageUrl(false),
+        imageUrlResultRelative: portalJsLib.imageUrl('relative'),
+        imageUrlResultVhost: portalJsLib.imageUrl('vhost'),
         pageUrlResult: portalJsLib.pageUrl(),
         serviceUrlResultDefault: portalJsLib.serviceUrl(),
-        serviceUrlResultContent: portalJsLib.serviceUrl(true),
-        serviceUrlResultRoot: portalJsLib.serviceUrl(false),
+        serviceUrlResultRelative: portalJsLib.serviceUrl('relative'),
+        serviceUrlResultVhost: portalJsLib.serviceUrl('vhost'),
         idProviderUrlResultDefault: portal.idProviderUrl(),
-        idProviderUrlResultContent: portal.idProviderUrl({contentPath: true}),
-        idProviderUrlResultRoot: portal.idProviderUrl({contentPath: false}),
+        idProviderUrlResultRelative: portal.idProviderUrl({contextPath: 'relative'}),
+        idProviderUrlResultVhost: portal.idProviderUrl({contextPath: 'vhost'}),
         loginUrlResultDefault: portal.loginUrl({redirect: pageUrlResult}),
-        loginUrlResultContent: portal.loginUrl({redirect: pageUrlResult, contentPath: true}),
-        loginUrlResultRoot: portal.loginUrl({redirect: pageUrlResult, contentPath: false}),
+        loginUrlResultRelative: portal.loginUrl({redirect: pageUrlResult, contextPath: 'relative'}),
+        loginUrlResultVhost: portal.loginUrl({redirect: pageUrlResult, contextPath: 'vhost'}),
         logoutUrlResultDefault: portal.logoutUrl({redirect: pageUrlResult}),
-        logoutUrlResultContent: portal.logoutUrl({redirect: pageUrlResult, contentPath: true}),
-        logoutUrlResultRoot: portal.logoutUrl({redirect: pageUrlResult, contentPath: false}),
+        logoutUrlResultRelative: portal.logoutUrl({redirect: pageUrlResult, contextPath: 'relative'}),
+        logoutUrlResultVhost: portal.logoutUrl({redirect: pageUrlResult, contextPath: 'vhost'}),
         processHtmlResult: JSON.stringify(portalJsLib.processHtml(), null, 4),
         getUserStoreKeyResult: portal.getUserStoreKey(),
         imagePlaceholder: portal.imagePlaceholder({width: 64,height: 32})
@@ -36,7 +36,7 @@ function handleGet() {
     var body = thymeleaf.render(view, params);
 
     return {
-        contentType: 'text/html',
+        RelativeType: 'text/html',
         body: body
     };
 }
