@@ -1,11 +1,11 @@
-exports.assetUrl = function (contentPath) {
+exports.assetUrl = function (contextPath) {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
 
     var url = portal.assetUrl({
         path: 'error/css/custom.css',
-        contentPath: contentPath
+        contextPath: contextPath
     });
     //Documentation END
 
@@ -45,7 +45,7 @@ exports.componentUrl = function () {
     return url;
 };
 
-exports.imageUrl = function (contentPath) {
+exports.imageUrl = function (contextPath) {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
@@ -54,7 +54,7 @@ exports.imageUrl = function (contentPath) {
         id: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b',
         scale: 'block(1024,768)',
         filter: 'rounded(5);sharpen()',
-        contentPath: contentPath
+        contextPath: contextPath
     });
     //Documentation END
 
@@ -82,14 +82,14 @@ exports.pageUrl = function () {
     return url;
 };
 
-exports.serviceUrl = function (contentPath) {
+exports.serviceUrl = function (contextPath) {
 
     //Documentation BEGIN
     var portal = require('/lib/xp/portal');
 
     var url = portal.serviceUrl({
         service: 'test',
-        contentPath: contentPath,
+        contextPath: contextPath,
         params: {
             a: 1,
             b: 2
