@@ -1,0 +1,47 @@
+<h1>View functions</h1>
+
+<div>
+    <h2>Asset URL</h2>
+    <a data-th-href="${portal.assetUrl({'_path=error/css/custom.css'})}"
+       data-th-text="${portal.assetUrl({'_path=error/css/custom.css'})}"></a>
+
+    <h2>Attachment URL</h2>
+    <a data-th-href="${portal.attachmentUrl({'_id=5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b', '_download=true'})}"
+       data-th-text="${portal.attachmentUrl({'_id=5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b', '_download=true'})}"></a>
+
+    <h2>Component URL</h2>
+    <a data-th-href="${portal.componentUrl({'_component=main/0'})}"
+       data-th-text="${portal.componentUrl({'_component=main/0'})}"></a>
+
+    <h2>Image URL</h2>
+    <a data-th-href="${portal.imageUrl({'_id=5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b', '_scale=block(1024,768)', 'filter=rounded(5);sharpen()'})}"
+       data-th-text="${portal.imageUrl({'_id=5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b', '_scale=block(1024,768)', 'filter=rounded(5);sharpen()'})}"></a>
+
+    <h2>Page URL</h2>
+    <a data-th-href="${portal.pageUrl({'_path=/features/js-libraries/view-functions', 'a=1'})}"
+       data-th-text="${portal.pageUrl({'_path=/features/js-libraries/view-functions', 'a=1'})}"></a>
+
+    <h2>Service URL</h2>
+    <a data-th-href="${portal.serviceUrl({'_service=test', 'a=1'})}"
+       data-th-text="${portal.serviceUrl({'_service=test', 'a=1'})}"></a>
+
+    <h2>IdProvider URL</h2>
+    <a data-th-href="${portal.idProviderUrl({'_userStore=system'})}"
+       data-th-text="${portal.idProviderUrl({'_userStore=system'})}"></a>
+
+    <h2>Login URL</h2>
+    <a data-th-href="${portal.loginUrl({'_redirect=/portal/draft/features/js-libraries/view-functions'})}"
+       data-th-text="${portal.loginUrl({'_redirect=/portal/draft/features/js-libraries/view-functions'})}"></a>
+
+    <h2>Logout URL</h2>
+    <a data-th-href="${portal.logoutUrl({'_redirect=/portal/draft/features/js-libraries/view-functions'})}"
+       data-th-text="${portal.logoutUrl({'_redirect=/portal/draft/features/js-libraries/view-functions'})}"></a>
+
+    <h2>Image placeholder</h2>
+    <img data-th-src="${portal.imagePlaceholder({'width=10','height=10'})}"/>
+
+    <h2>Localize</h2>
+    <div data-th-text="${portal.localize({'_key=complex_message','_locale=no'})}">Not translated</div>
+
+
+</div>

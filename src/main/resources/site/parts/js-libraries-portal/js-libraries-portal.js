@@ -15,7 +15,7 @@ function handleGet() {
         imageUrlResultDefault: portalJsLib.imageUrl(),
         imageUrlResultContent: portalJsLib.imageUrl('relative'),
         imageUrlResultRoot: portalJsLib.imageUrl('vhost'),
-        pageUrlResult: portalJsLib.pageUrl(),
+        pageUrlResult: pageUrlResult,
         serviceUrlResultDefault: portalJsLib.serviceUrl(),
         serviceUrlResultContent: portalJsLib.serviceUrl('relative'),
         serviceUrlResultRoot: portalJsLib.serviceUrl('vhost'),
