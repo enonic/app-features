@@ -20,6 +20,8 @@ exports.create = function () {
             myGeoPoint: '59.91,10.75',
             myHtmlArea: '<p>htmlAreaContent</p>',
             myImageSelector: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b',
+            myImageSelector2: '3d37979c-3269-48b3-ab02-9e7efe69e744',
+            myImageSelector3: 'a3cc4a32-a278-4fc6-bc9b-4e8b337003dd',
             myLong: 123,
             myRelationship: 'features',
             myRadioButtons: 'option1',
