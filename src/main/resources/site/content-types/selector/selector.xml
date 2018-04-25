@@ -65,19 +65,25 @@
       </config>
     </input>
     <input name="contentSelectorFlat-IconDisabled" type="ContentSelector">
-      <label>Flat mode, disable toggle icon</label>
+      <label>Flat mode, disabled toggle icon</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
         <treeMode>false</treeMode>
         <hideToggleIcon>true</hideToggleIcon>
       </config>
     </input>
-    <input name="contentSelectorTree-IconDisabled" type="ContentSelector">
-      <label>Tree mode, disable toggle icon</label>
+    <input name="contentSelectorFlat-IconDisabled2" type="ContentSelector">
+      <label>All content types starting with "c" (filtered with regex)</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <allowContentType>${app}:c*</allowContentType>
+      </config>
+    </input>
+    <input name="myMediaSelector" type="MediaSelector">
+      <label>Media selector</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
         <treeMode>true</treeMode>
-        <hideToggleIcon>true</hideToggleIcon>
       </config>
     </input>
   </form>
