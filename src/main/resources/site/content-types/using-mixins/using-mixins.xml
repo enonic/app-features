@@ -2,6 +2,7 @@
 <content-type>
   <display-name>Using Mixins</display-name>
   <super-type>base:structured</super-type>
+  <x-data mixin="address"/>
   <form>
     <item-set name="addresses">
       <label>Addresses</label>
