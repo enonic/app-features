@@ -29,6 +29,7 @@ dependencies {
     include "com.enonic.xp:lib-node:${xpVersion}"
     include "com.enonic.xp:lib-value:${xpVersion}"
     include "com.enonic.xp:lib-task:${xpVersion}"
+    include "com.enonic.xp:lib-cluster:${xpVersion}"
     include "com.enonic.lib:lib-http-client:1.0.0"
     
 
