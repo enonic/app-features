@@ -21,7 +21,6 @@ exports.create = function () {
             myHtmlArea: '<p>htmlAreaContent</p>',
             myImageSelector: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b',
             myImageSelector2: '3d37979c-3269-48b3-ab02-9e7efe69e744',
-            myImageSelector3: 'a3cc4a32-a278-4fc6-bc9b-4e8b337003dd',
             myLong: 123,
             myRelationship: 'features',
             myRadioButtons: 'option1',
@@ -235,7 +234,7 @@ exports.modify = function () {
         c.data["myTime"] = "11:00";
         c.data.checkOptionSet = {
             _selected: ["option_2"],
-                option_2: {
+            option_2: {
                 contentSelector: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b'
             }
         };
@@ -258,6 +257,15 @@ exports.modify = function () {
 
     log.info('Modify result: ' + JSON.stringify(result, null, 4));
 
+    return result;
+};
+
+exports.getVersions = function () {
+    var contentLib = require('/lib/xp/content');
+    var result = contentLib.getVersions({
+        key: '/features/js-libraries/mycontent'
+    });
+    log.info('GetVersions result: ' + JSON.stringify(result, null, 4));
     return result;
 };
 
@@ -326,3 +334,4 @@ exports.publish = function () {
     }
     return result;
 };
+
