@@ -42,7 +42,7 @@ exports.post = function (req) {
     var role = req.params.role || '';
     var userKey = req.params.userKey || '';
     var scope = req.params.scope || '';
-    var hasRole, errorMsg, findUsersResult;
+    var hasRole, errorMsg, findUsersResult, findPrincipalsResult;
 
     var user = auth.getUser();
     var profile = getProfile(userKey, scope == '' ? null : scope);
@@ -71,8 +71,17 @@ exports.post = function (req) {
             var newProfile = JSON.parse(req.params.profile);
             return newProfile;
         });
+    } else if (action === 'findPrincipals') {
+        findPrincipalsResult = auth.findPrincipals({
+            type: req.params.type == '' ? null : req.params.type,
+            userStore: req.params.userStore == '' ? null : req.params.userStore,
+            start: req.params.start == '' ? null : req.params.start,
+            count: req.params.count == '' ? null : req.params.count,
+            name: req.params.name == '' ? null : req.params.name,
+            searchText: req.params.searchText == '' ? null : req.params.searchText
+        });
     } else if (action === 'findUsers') {
-        var findUsersResult = auth.findUsers({
+        findUsersResult = auth.findUsers({
             start: req.params.start == '' ? null : req.params.start,
             count: req.params.count == '' ? null : req.params.count,
             query: req.params.query == '' ? null : req.params.query,
@@ -97,7 +106,11 @@ exports.post = function (req) {
         query: req.params.query,
         sort: req.params.sort,
         includeParams: req.params.includeProfile == "true",
-        findUsersResult: findUsersResult ? JSON.stringify(findUsersResult, null, 2) : ''
+        type: req.params.type,
+        name: req.params.name,
+        searchText: req.params.searchText,
+        findUsersResult: findUsersResult ? JSON.stringify(findUsersResult, null, 2) : '',
+        findPrincipalsResult: findPrincipalsResult ? JSON.stringify(findPrincipalsResult, null, 2) : '',
     };
 
     var view = resolve('auth.html');
@@ -118,6 +131,7 @@ function getProfile(userKey, scope) {
     }
     return null;
 }
+
 function modifyProfile(userKey, scope, editor) {
     if (userKey) {
         return auth.modifyProfile({

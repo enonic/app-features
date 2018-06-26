@@ -36,27 +36,38 @@ $(function () {
         postForm(form, 'findUsers');
     });
 
+    $(document).on('click', 'form button[name="findPrincipals"]', function (e) {
+        e.preventDefault();
+        var form = $(this).closest('form');
+        var fieldSet = $(this).closest('#auth-find-principal');
+        postForm(form, 'findPrincipals', fieldSet);
+    });
+
 });
 
-function postForm(form, action) {
+function postForm(form, action, fieldSet) {
+    fieldSet = fieldSet || form;
     $.ajax({
         url: form.attr('action'),
         method: "POST",
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         data: {
             action: action,
-            user: form.find('input[name="user"]').val(),
-            pwd: form.find('input[name="pwd"]').val(),
-            userStore: form.find('input[name="userStore"]').val(),
-            role: form.find('input[name="role"]').val(),
-            userKey: form.find('input[name="userKey"]').val(),
-            scope: form.find('input[name="scope"]').val(),
-            profile: form.find('textarea[name="profile"]').val(),
-            start: form.find('input[name="start"]').val(),
-            count: form.find('input[name="count"]').val(),
-            query: form.find('input[name="query"]').val(),
-            sort: form.find('input[name="sort"]').val(),
-            includeProfile: form.find('input[name="includeProfile"]').is(':checked')
+            user: fieldSet.find('input[name="user"]').val(),
+            pwd: fieldSet.find('input[name="pwd"]').val(),
+            userStore: fieldSet.find('input[name="userStore"]').val(),
+            role: fieldSet.find('input[name="role"]').val(),
+            userKey: fieldSet.find('input[name="userKey"]').val(),
+            scope: fieldSet.find('input[name="scope"]').val(),
+            profile: fieldSet.find('textarea[name="profile"]').val(),
+            start: fieldSet.find('input[name="start"]').val(),
+            count: fieldSet.find('input[name="count"]').val(),
+            query: fieldSet.find('input[name="query"]').val(),
+            sort: fieldSet.find('input[name="sort"]').val(),
+            includeProfile: fieldSet.find('input[name="includeProfile"]').is(':checked'),
+            type: fieldSet.find('input[name="type"]').val(),
+            name: fieldSet.find('input[name="name"]').val(),
+            searchText: fieldSet.find('input[name="searchText"]').val()
         }
     }).done(function (resp) {
         form.closest('.auth-part').replaceWith(resp);

@@ -123,6 +123,50 @@
                 </p>
             </fieldset>
         </div>
+
+        <div>
+            <fieldset id="auth-find-principal" class="auth-user-details">
+                <legend>Find Principals</legend>
+                <p>
+                    <label>Type</label>
+                    <input name="type" type="text" data-th-value="${type}"/>
+                </p>
+
+                <p>
+                    <label>User store</label>
+                    <input name="userStore" type="text" data-th-value="${userStore}"/>
+                </p>
+
+                <p>
+                    <label>Start</label>
+                    <input name="start" type="text" data-th-value="${start}"/>
+                </p>
+
+                <p>
+                    <label>Count</label>
+                    <input name="count" type="text" data-th-value="${count}"/>
+                </p>
+
+                <p>
+                    <label>Name</label>
+                    <input name="name" type="text" data-th-value="${name}"/>
+                </p>
+
+                <p>
+                    <label>Search text</label>
+                    <input name="searchText" type="text" data-th-value="${searchText}"/>
+                </p>
+
+                <p>
+                    <button type="button" name="findPrincipals">Find</button>
+                </p>
+
+                <p>
+                    <label>Result:</label><br/>
+                    <textarea data-th-text="${findPrincipalsResult}" rows="10" cols="80" readonly></textarea>
+                </p>
+            </fieldset>
+        </div>
     </form>
 
 </div>
