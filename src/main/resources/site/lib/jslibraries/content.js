@@ -260,9 +260,9 @@ exports.modify = function () {
     return result;
 };
 
-exports.getVersions = function () {
+exports.findVersions = function () {
     var contentLib = require('/lib/xp/content');
-    var result = contentLib.getVersions({
+    var result = contentLib.findVersions({
         key: '/features/js-libraries/mycontent'
     });
     log.info('GetVersions result: ' + JSON.stringify(result, null, 4));
