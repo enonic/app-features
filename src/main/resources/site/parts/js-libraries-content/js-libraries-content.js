@@ -12,6 +12,7 @@ function handleGet(req) {
     var publishResult = JSON.stringify(contentJsLib.publish(), null, 4);
     var modifyResult = JSON.stringify(contentJsLib.modify(), null, 4);
     var findVersionsResult = JSON.stringify(contentJsLib.findVersions(), null, 4);
+    var getActiveVersionsResult = JSON.stringify(contentJsLib.getActiveVersions(), null, 4);
     var getPermissionsResultBefore = JSON.stringify(contentJsLib.getPermissions(), null, 4);
     var setPermissionsResult = JSON.stringify(contentJsLib.setPermissions(), null, 4);
     var getPermissionsResultAfter = JSON.stringify(contentJsLib.getPermissions(), null, 4);
@@ -26,6 +27,7 @@ function handleGet(req) {
         queryResult: queryResult,
         modifyResult: modifyResult,
         findVersionsResult: findVersionsResult,
+        getActiveVersionsResult: getActiveVersionsResult,
         getPermissionsResultBefore: getPermissionsResultBefore,
         setPermissionsResult: setPermissionsResult,
         getPermissionsResultAfter: getPermissionsResultAfter,

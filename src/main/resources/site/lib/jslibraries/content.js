@@ -265,7 +265,17 @@ exports.findVersions = function () {
     var result = contentLib.findVersions({
         key: '/features/js-libraries/mycontent'
     });
-    log.info('GetVersions result: ' + JSON.stringify(result, null, 4));
+    log.info('FindVersions result: ' + JSON.stringify(result, null, 4));
+    return result;
+};
+
+exports.getActiveVersions = function () {
+    var contentLib = require('/lib/xp/content');
+    var result = contentLib.getActiveVersions({
+        key: '/features/js-libraries/mycontent',
+        branches: ['draft', 'master']
+    });
+    log.info('GetActiveVersions result: ' + JSON.stringify(result, null, 4));
     return result;
 };
 
