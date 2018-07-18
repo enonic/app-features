@@ -260,6 +260,33 @@ exports.modify = function () {
     return result;
 };
 
+exports.modify2 = function () {
+
+    //Documentation BEGIN
+    function editor(c) {
+        c.displayName = 'Modified again';
+        return c;
+    }
+
+    var contentLib = require('/lib/xp/content');
+
+    var result = contentLib.modify({
+        key: '/features/js-libraries/mycontent',
+        editor: editor
+    });
+
+    if (result) {
+        log.info('Content modified. New title is ' + result.displayName);
+    } else {
+        log.info('Content not found');
+    }
+    //Documentation END
+
+    log.info('Modify result: ' + JSON.stringify(result, null, 4));
+
+    return result;
+};
+
 exports.findVersions = function () {
     var contentLib = require('/lib/xp/content');
     var result = contentLib.findVersions({
@@ -276,6 +303,16 @@ exports.getActiveVersions = function () {
         branches: ['draft', 'master']
     });
     log.info('GetActiveVersions result: ' + JSON.stringify(result, null, 4));
+    return result;
+};
+
+exports.setActiveVersion = function (versionId) {
+    var contentLib = require('/lib/xp/content');
+    var result = contentLib.setActiveVersion({
+        key: '/features/js-libraries/mycontent',
+        versionId: versionId
+    });
+    log.info('SetActiveVersions result: ' + JSON.stringify(result, null, 4));
     return result;
 };
 
