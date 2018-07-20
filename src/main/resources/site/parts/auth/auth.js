@@ -6,11 +6,15 @@ var auth = require('/lib/xp/auth');
 exports.get = function (req) {
     var user = auth.getUser();
     var postUrl = portal.componentUrl({});
+    var directMemberships = getMemberships(user && user.key);
+    var transitiveMemberships = getMemberships(user && user.key, true);
     var profile = getProfile(user && user.key);
 
     var params = {
         postUrl: postUrl,
         user: user,
+        directMemberships: directMemberships,
+        transitiveMemberships: transitiveMemberships,
         userStore: 'system',
         role: 'system.admin',
         profile: JSON.stringify(profile, null, 2)
@@ -45,6 +49,8 @@ exports.post = function (req) {
     var hasRole, errorMsg, findUsersResult, findPrincipalsResult;
 
     var user = auth.getUser();
+    var directMemberships = getMemberships(user && user.key);
+    var transitiveMemberships = getMemberships(user && user.key, true);
     var profile = getProfile(userKey, scope == '' ? null : scope);
     if (action === 'logout') {
         auth.logout();
@@ -95,6 +101,8 @@ exports.post = function (req) {
     var params = {
         postUrl: postUrl,
         user: user,
+        directMemberships: directMemberships,
+        transitiveMemberships: transitiveMemberships,
         userStore: userStore,
         role: role,
         hasRole: hasRole,
@@ -121,6 +129,16 @@ exports.post = function (req) {
         body: body
     };
 };
+
+function getMemberships(userKey, transitive) {
+    if (userKey) {
+        return auth.getMemberships(userKey, transitive).map(function(membership) {
+            return membership.key;
+        })
+        
+    }
+    return null;
+}
 
 function getProfile(userKey, scope) {
     if (userKey) {
