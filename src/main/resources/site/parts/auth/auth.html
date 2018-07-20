@@ -19,6 +19,17 @@
             </fieldset>
             <br/>
         </div>
+        
+        <div data-th-if="${transitiveMemberships}">
+            <fieldset class="auth-user-details">
+                <legend>Memberships</legend>
+                <ul>
+                    <li><label>Direct memberships:</label> <span data-th-text="${directMemberships}"></span></li>
+                    <li><label>Transitive memberships:</label> <span data-th-text="${transitiveMemberships}"></span></li>
+                </ul>
+            </fieldset>
+            <br/>
+        </div>
 
         <div>
             <fieldset class="auth-user-details">
