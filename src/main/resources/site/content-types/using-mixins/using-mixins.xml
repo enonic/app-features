@@ -12,8 +12,8 @@
           <occurrences minimum="0" maximum="1"/>
           <help-text>Give this address a label</help-text>
         </input>
-        <inline mixin="com.enonic.app.features:address"/>
-        <inline mixin="com.enonic.app.features:norwegian-county"/>
+        <mixin name="com.enonic.app.features:address"/>
+        <mixin name="com.enonic.app.features:norwegian-county"/>
       </items>
       <occurrences minimum="0" maximum="0"/>
     </item-set>
