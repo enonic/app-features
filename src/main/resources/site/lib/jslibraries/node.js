@@ -216,6 +216,17 @@ exports.findChildren = function () {
     });
 };
 
+exports.setChildOrder = function () {
+    initialize();
+    createNode('my-name');
+
+    var repo = connect();
+    return repo.setChildOrder({
+        key: '/my-name',
+        childOrder: 'field DESC'
+    });
+};
+
 exports.query = function () {
     initialize();
     createNode("my-name");
