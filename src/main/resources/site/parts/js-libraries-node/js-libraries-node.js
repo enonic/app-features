@@ -1,4 +1,3 @@
-var portal = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
 var nodeJsLib = require('/lib/jslibraries/node');
 var view = resolve('js-libraries-node.html');
@@ -17,6 +16,7 @@ function handleGet(req) {
     var diffResult = JSON.stringify(nodeJsLib.diff(), null, 4);
     var pushResult = JSON.stringify(nodeJsLib.push(), null, 4);
     var findChildrenResult = JSON.stringify(nodeJsLib.findChildren(), null, 4);
+    var setChildOrderResult = JSON.stringify(nodeJsLib.setChildOrder(), null, 4);
     var queryResult = JSON.stringify(nodeJsLib.query(), null, 4);
     /*  var createResult = {};
      var getNodeByKeyResult = {};
@@ -42,6 +42,7 @@ function handleGet(req) {
         diffResult: diffResult,
         pushResult: pushResult,
         findChildrenResult: findChildrenResult,
+        setChildOrderResult: setChildOrderResult,
         queryResult: queryResult
     };
 
