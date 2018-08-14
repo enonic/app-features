@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mixin>
+<x-data xmlns="urn:enonic:xp:model:1.0">
   <display-name>Menu</display-name>
   <items>
     <input type="Checkbox" name="menuItem">
@@ -13,4 +13,4 @@
       <occurrences minimum="0" maximum="1"/>
     </input>
   </items>
-</mixin>
+</x-data>

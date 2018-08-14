@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-  <x-data mixin="menu-item"/>
+  <x-data name="menu-item"/>
   <config>
     <input name="backgroundColor" type="RadioButton">
       <label>Page background</label>
