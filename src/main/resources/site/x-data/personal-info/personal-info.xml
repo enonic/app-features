@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x-data xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Name</display-name>
-  <description>Name</description>
+  <display-name>Personal info</display-name>
+  <description>Personal info</description>
   <items>
     <input type="TextLine" name="givenName">
-      <label>Given Name</label>
+      <label>First Name</label>
       <occurrences minimum="1" maximum="1"/>
     </input>
     <input type="TextLine" name="surname">

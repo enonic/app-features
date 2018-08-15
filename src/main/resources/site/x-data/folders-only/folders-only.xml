@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<x-data xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Address</display-name>
+<x-data>
+  <display-name>Extra data (folders only)</display-name>
+  <help-text>This x-data is only available for folders</help-text>
+  <allowContentType>base:folder</allowContentType>
   <items>
     <input type="TextLine" name="street">
-      <label>Street</label>
+      <label>Field 1</label>
       <indexed>true</indexed>
       <custom-text/>
       <help-text/>
       <occurrences minimum="0" maximum="2"/>
     </input>
     <input type="TextLine" name="postalCode">
-      <label>Postal code</label>
+      <label>Field 2</label>
       <indexed>true</indexed>
       <custom-text/>
       <help-text/>
       <occurrences minimum="1" maximum="1"/>
     </input>
     <input type="TextLine" name="postalPlace">
-      <label>Postal place</label>
+      <label>Field 3</label>
       <indexed>true</indexed>
       <custom-text/>
       <help-text/>
