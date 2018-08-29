@@ -18,6 +18,8 @@ function handleGet(req) {
     var findChildrenResult = JSON.stringify(nodeJsLib.findChildren(), null, 4);
     var setChildOrderResult = JSON.stringify(nodeJsLib.setChildOrder(), null, 4);
     var queryResult = JSON.stringify(nodeJsLib.query(), null, 4);
+    var findVersions = JSON.stringify(nodeJsLib.findVersions(), null, 4);
+    var setActiveVersion = JSON.stringify(nodeJsLib.setActiveVersion(), null, 4);
     /*  var createResult = {};
      var getNodeByKeyResult = {};
      var getMissingNodeByKeyResult = {};
@@ -43,7 +45,9 @@ function handleGet(req) {
         pushResult: pushResult,
         findChildrenResult: findChildrenResult,
         setChildOrderResult: setChildOrderResult,
-        queryResult: queryResult
+        queryResult: queryResult,
+        findVersions: findVersions,
+        setActiveVersion: setActiveVersion
     };
 
     var body = thymeleaf.render(view, params);
