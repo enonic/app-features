@@ -243,3 +243,43 @@ exports.query = function () {
 
 };
 
+exports.findVersions = function () {
+    initialize();
+    var node = createNode("my-name");
+    node = modifyNode(node._id);
+
+    var repo = connect();
+    repo.refresh();
+
+    return repo.findVersions({
+        key: node._id
+    });
+};
+
+exports.setActiveVersion = function () {
+    initialize();
+    var node = createNode("my-name");
+    node = modifyNode(node._id);
+
+    var repo = connect();
+    repo.refresh();
+
+    var findVersions = repo.findVersions({
+        key: node._id
+    });
+
+    return {
+        findVersions: findVersions,
+        getActiveVersionBefore: repo.getActiveVersion({
+            key: node._id
+        }),
+        setActiveVersion: repo.setActiveVersion({
+            key: node._id,
+            versionId: findVersions.hits[1].versionId
+        }),
+        getActiveVersionAfter: repo.getActiveVersion({
+            key: node._id
+        })
+    };
+};
+

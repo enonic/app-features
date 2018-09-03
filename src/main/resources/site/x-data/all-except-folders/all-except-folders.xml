@@ -2,7 +2,7 @@
 <x-data>
   <display-name>Extra data (all except folders)</display-name>
   <help-text>This x-data is available for all content types EXCEPT folders</help-text>
-  <allowContentType>((?!base:folder).)*$</allowContentType>
+  <allowContentType>^(?!base:folder$).*</allowContentType>
   <items>
     <input type="TextLine" name="street">
       <label>Field 1</label>
