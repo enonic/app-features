@@ -4,7 +4,7 @@ exports.parseparams = function (params) {
         ids, start, count;
 
     try {
-        ids = JSON.parse(params['ids']) || []
+        ids = params['ids'].split(',') || []
     } catch (e) {
         log.warning('Invalid parameter ids: %s, using []', params['ids']);
         ids = [];
@@ -54,8 +54,6 @@ exports.parseparams = function (params) {
 exports.createresults = function (items, params, total) {
 
     var body = {};
-
-    log.info('Creating results with params: %s', params);
 
     var hitCount = 0, include;
     body.hits = items.sort(function (hit1, hit2) {
