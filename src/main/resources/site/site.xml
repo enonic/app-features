@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
   <x-data name="menu-item"/>
+  <x-data name="all-except-folders" allowContentTypes="^(?!base:folder$).*" optional="true"/>
+  <x-data name="folders-only" allowContentTypes="base:folder" optional="true"/>
   <config>
     <input name="backgroundColor" type="RadioButton">
       <label>Page background</label>

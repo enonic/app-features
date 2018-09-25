@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x-data>
-  <display-name>Extra data (folders only)</display-name>
+  <display-name>X-data (folders only)</display-name>
   <help-text>This x-data is only available for folders</help-text>
   <allowContentType>base:folder</allowContentType>
   <items>
