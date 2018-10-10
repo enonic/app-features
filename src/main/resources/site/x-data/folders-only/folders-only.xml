@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<x-data>
+<x-data xmlns="urn:enonic:xp:model:1.0">
   <display-name>X-data (folders only)</display-name>
-  <help-text>This x-data is only available for folders</help-text>
-  <allowContentType>base:folder</allowContentType>
-  <items>
+  <form>
     <input type="TextLine" name="street">
       <label>Field 1</label>
       <indexed>true</indexed>
@@ -25,5 +23,5 @@
       <help-text/>
       <occurrences minimum="0" maximum="1"/>
     </input>
-  </items>
+  </form>
 </x-data>

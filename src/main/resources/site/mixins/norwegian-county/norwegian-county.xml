@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mixin>
+<mixin xmlns="urn:enonic:xp:model:1.0">
   <display-name>Norwegian counties</display-name>
-  <items>
+  <form>
     <input type="RadioButton" name="norwegianCounty">
       <label>Norwegian county</label>
       <custom-text/>
@@ -29,5 +29,5 @@
         <option value="19">Finnmark</option>
       </config>
     </input>
-  </items>
+  </form>
 </mixin>

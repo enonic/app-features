@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<part>
+<part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Cities Distance Facet</display-name>
-  <config>
-  </config>
+  <form>
+  </form>
 </part>

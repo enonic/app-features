@@ -2,7 +2,7 @@
 <x-data xmlns="urn:enonic:xp:model:1.0">
   <display-name>Personal info</display-name>
   <description>Personal info</description>
-  <items>
+  <form>
     <input type="TextLine" name="givenName">
       <label>First Name</label>
       <occurrences minimum="1" maximum="1"/>
@@ -11,5 +11,5 @@
       <label>Surname</label>
       <occurrences minimum="1" maximum="1"/>
     </input>
-  </items>
+  </form>
 </x-data>

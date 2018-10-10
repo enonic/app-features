@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<part>
+<part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Image filters test</display-name>
-  <config>
+  <form>
     <input type="ContentSelector" name="imageFolder">
       <label>Image Folder</label>
       <custom-text/>
@@ -11,5 +11,5 @@
         <allowContentType>base:folder</allowContentType>
       </config>
     </input>
-  </config>
+  </form>
 </part>

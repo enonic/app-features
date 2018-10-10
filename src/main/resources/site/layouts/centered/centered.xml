@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<layout>
+<layout xmlns="urn:enonic:xp:model:1.0">
   <display-name>Centered</display-name>
-  <config/>
+  <form/>
   <regions>
     <region name="center"/>
   </regions>
