@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mixin>
+<mixin xmlns="urn:enonic:xp:model:1.0">
   <display-name>Address</display-name>
-  <items>
+  <form>
     <input type="TextLine" name="street">
       <label>Street</label>
       <indexed>true</indexed>
@@ -23,5 +23,5 @@
       <help-text/>
       <occurrences minimum="0" maximum="1"/>
     </input>
-  </items>
+  </form>
 </mixin>

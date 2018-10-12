@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x-data xmlns="urn:enonic:xp:model:1.0">
   <display-name>Menu</display-name>
-  <items>
+  <form>
     <input type="Checkbox" name="menuItem">
       <label>Menu item</label>
       <help-text>Check this to include this Page in the menu</help-text>
@@ -12,5 +12,5 @@
       <help-text>Name to be used in menu. Optional</help-text>
       <occurrences minimum="0" maximum="1"/>
     </input>
-  </items>
+  </form>
 </x-data>
