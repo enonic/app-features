@@ -55,7 +55,7 @@
             <property-set name="siteConfig">
                 <string name="applicationKey">com.enonic.app.features</string>
                 <property-set name="config">
-                    <string name="backgroundColor"></string>
+                    <string name="backgroundColor">white</string>
                 </property-set>
             </property-set>
         </property-set>
