@@ -16,10 +16,9 @@
     </input>
   </form>
 
-  <filters>
-    <response-filter name="bgcolor-filter" order="10"/>
-    <response-filter name="branch-filter" order="10"/>
-    <response-filter name="app-header-filter" order="10"/>
-  </filters>
-
+  <processors>
+    <response-processor name="bgcolor-filter" order="10"/>
+    <response-processor name="branch-filter" order="10"/>
+    <response-processor name="app-header-filter" order="10"/>
+  </processors>
 </site>

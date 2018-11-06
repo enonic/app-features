@@ -1,6 +1,6 @@
 var portal = require('/lib/xp/portal');
 
-exports.responseFilter = function (req, res) {
+exports.responseProcessor = function (req, res) {
 
     var isHtml = (res.contentType.lastIndexOf('text/html', 0) === 0);
     if (isHtml && res.body) {
