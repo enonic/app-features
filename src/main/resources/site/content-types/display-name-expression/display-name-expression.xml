@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <content-type>
-  <display-name>Display Name Script</display-name>
-  <content-display-name-script>${firstName} ${middleName} ${lastName}</content-display-name-script>
+  <display-name>Display Name Expression</display-name>
+  <display-name-expression>${firstName} ${middleName} ${lastName}</display-name-expression>
   <super-type>base:structured</super-type>
   <form>
     <input name="firstName" type="TextLine">
