@@ -1,0 +1,198 @@
+<node>
+    <id>1f515b3e-c8d5-4cca-af93-fc85453ec009</id>
+    <childOrder>modifiedtime DESC</childOrder>
+    <nodeType>content</nodeType>
+    <timestamp>2018-12-14T09:00:05.506Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
+    <permissions>
+        <principal key="user:system:anonymous">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.authenticated">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
+    <data>
+        <boolean name="valid">true</boolean>
+        <string name="displayName">Lists</string>
+        <string name="type">com.enonic.app.features:htmlarea</string>
+        <string name="owner">user:system:su</string>
+        <dateTime name="modifiedTime">2015-07-07T11:42:46.309Z</dateTime>
+        <string name="modifier">user:system:su</string>
+        <string name="creator">user:system:su</string>
+        <dateTime name="createdTime">2015-07-07T11:40:29.969Z</dateTime>
+        <property-set name="data">
+            <string name="htmlarea_text">&lt;h2&gt;A Description List&lt;/h2&gt;
+&lt;dl&gt;
+&lt;dt&gt;Coffee&lt;/dt&gt;
+&lt;dd&gt;- black hot drink&lt;/dd&gt;
+&lt;dt&gt;Milk&lt;/dt&gt;
+&lt;dd&gt;- white cold drink&lt;/dd&gt;
+                &lt;/dl&gt;</string>
+            <string name="htmlarea_text2">&lt;h2&gt;A Nested List&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Coffee&lt;/li&gt;
+&lt;li&gt;Tea
+&lt;ul&gt;
+&lt;li&gt;Black tea&lt;/li&gt;
+&lt;li&gt;Green tea&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;
+                &lt;p&gt;&amp;nbsp;&lt;/p&gt;</string>
+            <string name="htmlarea_text2">&lt;h2&gt;A Nested List&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Coffee&lt;/li&gt;
+&lt;li&gt;Tea
+&lt;ul&gt;
+&lt;li&gt;Black tea&lt;/li&gt;
+&lt;li&gt;Green tea
+&lt;ul&gt;
+&lt;li&gt;China&lt;/li&gt;
+&lt;li&gt;Africa&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Milk&lt;/li&gt;
+                &lt;/ul&gt;</string>
+            <string name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;Horizontal List&lt;/h2&gt;
+&lt;ul id="menu"&gt;
+&lt;li&gt;&lt;a href="../../../../../../html/default.asp"&gt;HTML&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="../../../../../../css/default.asp"&gt;CSS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="../../../../../../js/default.asp"&gt;JavaScript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="../../../../../../php/default.asp"&gt;PHP&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;</string>
+            <string name="htmlarea_text3">&lt;p&gt;&lt;/p&gt;
+&lt;h2&gt;Horizontal List&lt;/h2&gt;
+&lt;ul id="menu"&gt;
+&lt;li&gt;HTML&lt;/li&gt;
+&lt;li&gt;CSS&lt;/li&gt;
+&lt;li&gt;JavaScript&lt;/li&gt;
+&lt;li&gt;PHP&lt;/li&gt;
+                &lt;/ul&gt;</string>
+        </property-set>
+        <property-set name="x">
+            <property-set name="com-enonic-app-features">
+                <property-set name="menu-item">
+                    <boolean name="menuItem">false</boolean>
+                    <string isNull="true" name="menuName"/>
+                </property-set>
+            </property-set>
+        </property-set>
+    </data>
+    <indexConfigs>
+        <analyzer>document_index_default</analyzer>
+        <defaultConfig>
+            <decideByType>true</decideByType>
+            <enabled>true</enabled>
+            <nGram>false</nGram>
+            <fulltext>false</fulltext>
+            <includeInAllText>false</includeInAllText>
+        </defaultConfig>
+        <pathIndexConfigs>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>x</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>site</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>type</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
+            </pathIndexConfig>
+        </pathIndexConfigs>
+    </indexConfigs>
+</node>
