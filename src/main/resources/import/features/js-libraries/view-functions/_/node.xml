@@ -2,7 +2,7 @@
     <id>5c15b187-e3ab-4d87-88b2-ffb84bd1c7bb</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2018-03-27T07:34:44.763Z</timestamp>
+    <timestamp>2018-12-21T12:51:03.281Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="user:system:anonymous">
@@ -65,22 +65,26 @@
                 </property-set>
             </property-set>
         </property-set>
-        <property-set name="page">
-            <string name="controller">com.enonic.app.features:default</string>
-            <reference isNull="true" name="template"/>
-            <property-set name="region">
-                <string name="name">main</string>
-                <property-set name="component">
-                    <string name="type">PartComponent</string>
-                    <property-set name="PartComponent">
-                        <string name="name">js-libraries-view-functions</string>
-                        <string name="template">com.enonic.app.features:js-libraries-view-functions</string>
-                        <property-set name="config"/>
-                    </property-set>
+        <property-set name="components">
+            <string name="type">page</string>
+            <string name="path">/</string>
+            <property-set name="page">
+                <string name="descriptor">com.enonic.app.features:default</string>
+                <boolean name="customized">true</boolean>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-features"/>
                 </property-set>
             </property-set>
-            <property-set name="config"/>
-            <boolean name="customized">true</boolean>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/0</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.features:js-libraries-view-functions</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-features"/>
+                </property-set>
+            </property-set>
         </property-set>
     </data>
     <indexConfigs>
@@ -224,36 +228,6 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>creator</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>createdTime</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>modifiedTime</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
                 <path>modifier</path>
             </pathIndexConfig>
             <pathIndexConfig>
@@ -315,6 +289,36 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>data</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>creator</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>createdTime</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifiedTime</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>

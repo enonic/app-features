@@ -2,7 +2,7 @@
     <id>00909a46-5b7c-4ece-ac1f-cf010c02f3b7</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-08-06T12:00:18.552Z</timestamp>
+    <timestamp>2018-12-21T12:51:06.647Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="user:system:anonymous">
@@ -60,26 +60,31 @@
                 </property-set>
             </property-set>
         </property-set>
-        <property-set name="page">
-            <string isNull="true" name="controller"/>
-            <reference name="template">f5e15d67-4c9b-49d4-9d74-93adc65d9074</reference>
-            <property-set name="region">
-                <string name="name">main</string>
-                <property-set name="component">
-                    <string name="type">PartComponent</string>
-                    <property-set name="PartComponent">
-                        <string name="name">City Creation</string>
-                        <string name="template">com.enonic.app.features:city-creation</string>
-                        <property-set name="config"/>
-                    </property-set>
+        <property-set name="components">
+            <string name="type">page</string>
+            <string name="path">/</string>
+            <property-set name="page">
+                <string name="descriptor">com.enonic.app.features:default</string>
+                <boolean name="customized">true</boolean>
+            </property-set>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/0</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.features:city-creation</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-features"/>
                 </property-set>
-                <property-set name="component">
-                    <string name="type">PartComponent</string>
-                    <property-set name="PartComponent">
-                        <string name="name">Cities List</string>
-                        <string name="template">com.enonic.app.features:cities-list</string>
-                        <property-set name="config"/>
-                    </property-set>
+            </property-set>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/1</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.features:cities-list</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-features"/>
                 </property-set>
             </property-set>
         </property-set>
@@ -126,16 +131,6 @@
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>true</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>data</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
                     <decideByType>false</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
@@ -163,6 +158,16 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>type</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>
