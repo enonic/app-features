@@ -2,7 +2,7 @@
     <id>features:_templates</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2018-12-14T09:00:03.896Z</timestamp>
+    <timestamp>2018-12-21T12:51:04.311Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="user:system:anonymous">

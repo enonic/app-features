@@ -2,7 +2,7 @@
     <id>da67cc4c-b931-4a44-b600-c8878f572bd8</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2018-12-14T09:00:03.940Z</timestamp>
+    <timestamp>2018-12-21T12:51:04.351Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="user:system:anonymous">
@@ -67,8 +67,7 @@
             <string name="path">/</string>
             <property-set name="page">
                 <string name="descriptor">com.enonic.app.features:main</string>
-                <reference isNull="true" name="template"/>
-                <boolean name="customized">false</boolean>
+                <boolean name="customized">true</boolean>
                 <property-set name="config">
                     <property-set name="com-enonic-app-features"/>
                 </property-set>
