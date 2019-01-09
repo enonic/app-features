@@ -1,0 +1,22 @@
+<styles css="styles/styles.css" xmlns="urn:enonic:xp:model:1.0">
+  <image name="editor-style-image-cinema">
+    <display-name>Cinema</display-name>
+    <aspect-ratio>21:9</aspect-ratio>
+  </image>
+  <image name="editor-style-image-tall">
+    <display-name>Tall</display-name>
+    <aspect-ratio>9:16</aspect-ratio>
+  </image>
+  <image name="editor-style-image-portrait">
+    <display-name>Avatar</display-name>
+    <aspect-ratio>1:1</aspect-ratio>
+    <filter>rounded(1000)</filter>
+  </image>
+  <image name="editor-style-image-sepia">
+    <display-name>Old photo</display-name>
+    <filter>sepia(25)</filter>
+  </image>
+  <image name="editor-style-image-funky">
+    <display-name>Slightly drunk</display-name>
+  </image>
+</styles>
