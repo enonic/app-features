@@ -57,7 +57,7 @@ function postForm(form, action) {
             username: form.find('input[name="username"]').val(),
             displayname: form.find('input[name="displayname"]').val(),
             email: form.find('input[name="email"]').val(),
-            userstore: form.find('input[name="userstore"]').val(),
+            idProvider: form.find('input[name="idProvider"]').val(),
             searchText: form.find('input[name="searchText"]').val(),
             user: type === 'user',
             group: type === 'group',

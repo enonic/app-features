@@ -29,7 +29,7 @@ function handleGet() {
         logoutUrlResultContent: portal.logoutUrl({redirect: pageUrlResult, contextPath: 'relative'}),
         logoutUrlResultRoot: portal.logoutUrl({redirect: pageUrlResult, contextPath: 'vhost'}),
         processHtmlResult: JSON.stringify(portalJsLib.processHtml(), null, 4),
-        getUserStoreKeyResult: portal.getUserStoreKey(),
+        getIdProviderKeyResult: portal.getIdProviderKey(),
         imagePlaceholder: portal.imagePlaceholder({width: 64,height: 32})
     };
 

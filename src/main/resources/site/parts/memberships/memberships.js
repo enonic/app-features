@@ -40,7 +40,7 @@ exports.post = function (req) {
     var username = req.params.username || '';
     var displayname = req.params.displayname || '';
     var email = req.params.email || '';
-    var userstore = req.params.userstore || '';
+    var idProvider = req.params.idProvider || '';
     var searchText = req.params.searchText || '';
     var typeParam = '';
     if (req.params.user === 'true') {
@@ -63,7 +63,7 @@ exports.post = function (req) {
         } else {
             results = auth.findPrincipals({
                 type: typeParam,
-                userStore: userstore,
+                idProvider: idProvider,
                 start: 0,
                 count: 10,
                 name: username,
@@ -118,7 +118,7 @@ exports.post = function (req) {
         username: username,
         displayname: displayname,
         email: email,
-        userstore: userstore,
+        idProvider: idProvider,
         searchText: searchText,
         type: typeParam || 'any',
         memberships: memberships,
