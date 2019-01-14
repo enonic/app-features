@@ -15,7 +15,7 @@ exports.get = function (req) {
         user: user,
         directMemberships: directMemberships,
         transitiveMemberships: transitiveMemberships,
-        userStore: 'system',
+        idProvider: 'system',
         role: 'system.admin',
         profile: JSON.stringify(profile, null, 2)
     };
@@ -42,7 +42,7 @@ exports.post = function (req) {
     var action = req.params.action;
     var userName = req.params.user || '';
     var pwd = req.params.pwd || '';
-    var userStore = req.params.userStore || 'system';
+    var idProvider = req.params.idProvider || 'system';
     var role = req.params.role || '';
     var userKey = req.params.userKey || '';
     var scope = req.params.scope || '';
@@ -64,7 +64,7 @@ exports.post = function (req) {
         var loginResult = auth.login({
             user: userName,
             password: pwd,
-            userStore: userStore
+            idProvider: idProvider
         });
 
         if (loginResult.authenticated) {
@@ -80,7 +80,7 @@ exports.post = function (req) {
     } else if (action === 'findPrincipals') {
         findPrincipalsResult = auth.findPrincipals({
             type: req.params.type == '' ? null : req.params.type,
-            userStore: req.params.userStore == '' ? null : req.params.userStore,
+            idProvider: req.params.idProvider == '' ? null : req.params.idProvider,
             start: req.params.start == '' ? null : req.params.start,
             count: req.params.count == '' ? null : req.params.count,
             name: req.params.name == '' ? null : req.params.name,
@@ -103,7 +103,7 @@ exports.post = function (req) {
         user: user,
         directMemberships: directMemberships,
         transitiveMemberships: transitiveMemberships,
-        userStore: userStore,
+        idProvider: idProvider,
         role: role,
         hasRole: hasRole,
         errorMsg: errorMsg,

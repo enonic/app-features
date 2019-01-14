@@ -11,7 +11,7 @@ exports.getContextAsAnonymous = function () {
     var result = contextLib.run({
         user: {
             login: 'anonymous',
-            userStore: 'system'
+            idProvider: 'system'
         }
     }, contextLib.get);
     log.info('GetContext as anonymous result: ' + JSON.stringify(result, null, 4));

@@ -55,7 +55,7 @@ function postForm(form, action, fieldSet) {
             action: action,
             user: fieldSet.find('input[name="user"]').val(),
             pwd: fieldSet.find('input[name="pwd"]').val(),
-            userStore: fieldSet.find('input[name="userStore"]').val(),
+            idProvider: fieldSet.find('input[name="idProvider"]').val(),
             role: fieldSet.find('input[name="role"]').val(),
             userKey: fieldSet.find('input[name="userKey"]').val(),
             scope: fieldSet.find('input[name="scope"]').val(),
