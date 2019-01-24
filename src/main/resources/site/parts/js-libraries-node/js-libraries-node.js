@@ -6,6 +6,7 @@ function handleGet(req) {
 
     var createResult = JSON.stringify(nodeJsLib.create(), null, 4);
     var modifyResult = JSON.stringify(nodeJsLib.modify(), null, 4);
+    var commitResult = JSON.stringify(nodeJsLib.commit(), null, 4);
     var getNodeByKeyResult = JSON.stringify(nodeJsLib.getNodeByKey(), null, 4);
     var getMissingNodeByKeyResult = JSON.stringify(nodeJsLib.getMissingNodeByKey(), null, 4);
     var getNodesByKeysResult = JSON.stringify(nodeJsLib.getNodesByKeys(), null, 4);
@@ -20,20 +21,10 @@ function handleGet(req) {
     var queryResult = JSON.stringify(nodeJsLib.query(), null, 4);
     var findVersions = JSON.stringify(nodeJsLib.findVersions(), null, 4);
     var setActiveVersion = JSON.stringify(nodeJsLib.setActiveVersion(), null, 4);
-    /*  var createResult = {};
-     var getNodeByKeyResult = {};
-     var getMissingNodeByKeyResult = {};
-     var getNodesByKeysResult = {};
-     var renameResult = {};
-     var moveResult = {};
-     var moveAndRenameResult = {};
-     var deleteResult = {};
-     var diffResult = {};
-     var pushResult = {};
-     */
     var params = {
         createResult: createResult,
         modifyResult: modifyResult,
+        commitResult: commitResult,
         getNodeByKeyResult: getNodeByKeyResult,
         getMissingNodeByKeyResult: getMissingNodeByKeyResult,
         getNodesByKeysResult: getNodesByKeysResult,

@@ -85,6 +85,17 @@ function modifyNode(key) {
     return result;
 }
 
+function commitNode(key) {
+    var repo = connect();
+
+    var result = repo.commit({
+        keys: key,
+        message: 'Commit message'
+    });
+
+    return result;
+}
+
 exports.create = function () {
     initialize();
     var node = createNode('my-node');
@@ -103,6 +114,14 @@ exports.modify = function () {
     }
     cleanUp();
     return node;
+};
+
+exports.commit = function () {
+    initialize();
+    createNode('my-node');
+    var commit = commitNode('my-node');
+    cleanUp();
+    return commit;
 };
 
 exports.getNodeByKey = function () {
