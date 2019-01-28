@@ -9,7 +9,6 @@ exports.create = function () {
         displayName: 'My Content',
         requireValid: true,
         contentType: app.name + ':all-input-types',
-        branch: 'draft',
         language: 'no',
         data: {
             myCheckbox: true,
@@ -78,8 +77,7 @@ exports.get = function () {
     var contentLib = require('/lib/xp/content');
 
     var result = contentLib.get({
-        key: '/features/js-libraries/mycontent',
-        branch: 'draft'
+        key: '/features/js-libraries/mycontent'
     });
 
     if (result) {
@@ -103,8 +101,7 @@ exports.getChildren = function () {
         key: '/features/js-libraries/houses',
         start: 0,
         count: 2,
-        sort: '_modifiedTime ASC',
-        branch: 'draft'
+        sort: '_modifiedTime ASC'
     });
 
     log.info('Found ' + result.total + ' number of contents');
@@ -130,7 +127,6 @@ exports.query = function () {
         count: 2,
         sort: "modifiedTime DESC, geoDistance('data.location', '59.91,10.75')",
         query: "data.city = 'Oslo' AND fulltext('data.description', 'garden', 'AND') ",
-        branch: "draft",
         contentTypes: [
             app.name + ":house",
             app.name + ":apartment"
@@ -209,8 +205,7 @@ exports.delete = function () {
     var contentLib = require('/lib/xp/content');
 
     var result = contentLib.delete({
-        key: '/features/js-libraries/mycontent',
-        branch: 'draft'
+        key: '/features/js-libraries/mycontent'
     });
 
     if (result) {
