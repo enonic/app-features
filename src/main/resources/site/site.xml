@@ -21,4 +21,16 @@
     <response-processor name="branch-filter" order="10"/>
     <response-processor name="app-header-filter" order="10"/>
   </processors>
+
+  <mappings>
+    <mapping controller="/site/mappings/controller.js">
+      <pattern>/controller</pattern>
+    </mapping>
+    <mapping filter="/site/mappings/filter1.js">
+      <pattern>/filter1</pattern>
+    </mapping>
+    <mapping filter="/site/mappings/filter2.js">
+      <pattern>/</pattern>
+    </mapping>
+  </mappings>
 </site>
