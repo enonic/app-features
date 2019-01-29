@@ -1,4 +1,4 @@
-exports.filter = function (req, res, next) {
+exports.filter = function (req, next) {
     return {
         body: 'filter'
     };
