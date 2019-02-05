@@ -131,7 +131,7 @@
       <label>Time</label>
       <occurrences minimum="0" maximum="0"/>
     </input>
-    <field-set name="myFieldSet">
+    <field-set>
       <label>FieldSet</label>
       <items>
         <input name="myTextAreas" type="TextArea">

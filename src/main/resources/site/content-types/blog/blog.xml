@@ -3,7 +3,7 @@
   <display-name>Blog</display-name>
   <super-type>base:structured</super-type>
   <form>
-    <field-set name="blogFieldSet">
+    <field-set>
       <label>Blog</label>
       <items>
         <input name="heading" type="TextLine">
@@ -30,7 +30,7 @@
           </items>
           <occurrences minimum="0" maximum="1"/>
         </item-set>
-        <field-set name="metadata">
+        <field-set>
           <label>Metadata</label>
           <items>
             <input name="tags" type="Tag">

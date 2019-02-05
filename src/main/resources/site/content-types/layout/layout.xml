@@ -3,7 +3,7 @@
   <display-name>Layout</display-name>
   <super-type>base:structured</super-type>
   <form>
-    <field-set name="nameOfLayoutDoesNotAffectPathOfChildFormItems">
+    <field-set>
       <label>A FieldSet around an Input</label>
       <items>
         <input name="myInputWithPathUnaffectedByLayout" type="TextLine">
@@ -17,7 +17,7 @@
       <label>An Input after a layout</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
-    <field-set name="aFieldSetAroundAFormItemSet">
+    <field-set>
       <label>A FieldSet around a FormItemSet</label>
       <items>
         <item-set name="address">

@@ -3,7 +3,7 @@
   <display-name>FieldSet</display-name>
   <super-type>base:structured</super-type>
   <form>
-    <field-set name="documentFieldSet">
+    <field-set>
       <label>Document</label>
       <items>
         <input name="heading" type="TextLine">
