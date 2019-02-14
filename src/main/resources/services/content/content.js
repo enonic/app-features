@@ -1,6 +1,6 @@
 var portal = require('/lib/xp/portal');
 var contentSvc = require('/lib/xp/content');
-var stk = require('stk/stk');
+var stk = require('/lib/stk/stk');
 
 exports.post = handlePost;
 

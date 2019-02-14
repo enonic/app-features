@@ -1,4 +1,4 @@
-var thymeleaf = require('/lib/xp/thymeleaf');
+var thymeleaf = require('/lib/thymeleaf');
 
 var view404 = resolve('404.html');
 var viewGeneric = resolve('default.html');

@@ -1,5 +1,5 @@
 var portal = require('/lib/xp/portal');
-var thymeleaf = require('/lib/xp/thymeleaf');
+var thymeleaf = require('/lib/thymeleaf');
 var contentJsLib = require('/lib/jslibraries/content');
 var view = resolve('js-libraries-content.html');
 

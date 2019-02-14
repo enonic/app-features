@@ -1,9 +1,9 @@
 var portal = require('/lib/xp/portal');
-var thymeleaf = require('/lib/xp/thymeleaf');
+var thymeleaf = require('/lib/thymeleaf');
 var contentSvc = require('/lib/xp/content');
 
 var view = resolve('city-creation.page.html');
-var service = require('service.js').service;
+var service = require('/lib/service.js').service;
 
 function handleGet(req) {
     var cityServiceUrl = service.serviceUrl('city');

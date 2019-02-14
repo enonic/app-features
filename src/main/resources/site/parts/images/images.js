@@ -1,6 +1,6 @@
 var portal = require('/lib/xp/portal');
-var thymeleaf = require('/lib/xp/thymeleaf');
 var contentSvc = require('/lib/xp/content');
+var thymeleaf = require('/lib/thymeleaf');
 
 var scaleOptions = [
     {name: 'Scale Max', value: 'max(600)'},

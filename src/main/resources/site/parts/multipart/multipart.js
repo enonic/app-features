@@ -1,6 +1,6 @@
 var portal = require('/lib/xp/portal');
-var thymeleaf = require('/lib/xp/thymeleaf');
 var contentLib = require('/lib/xp/content');
+var thymeleaf = require('/lib/thymeleaf');
 
 exports.get = function (req) {
     var idsParam = req.params.ids;

@@ -1,7 +1,7 @@
 var portal = require('/lib/xp/portal');
 var contentLib = require('/lib/xp/content');
-var thymeleaf = require('/lib/xp/thymeleaf');
 var view = resolve('schedule-publish.html');
+var thymeleaf = require('/lib/thymeleaf');
 
 function handleGet(req) {
 
