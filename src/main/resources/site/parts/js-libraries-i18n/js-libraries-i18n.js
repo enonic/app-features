@@ -1,5 +1,5 @@
 var portal = require('/lib/xp/portal');
-var thymeleaf = require('/lib/xp/thymeleaf');
+var thymeleaf = require('/lib/thymeleaf');
 var i18nJsLib = require('/lib/jslibraries/i18n');
 var view = resolve('js-libraries-i18n.html');
 

@@ -17,8 +17,6 @@ dependencies {
     compile "com.enonic.xp:portal-api:${xpVersion}"
     include "com.enonic.xp:lib-content:${xpVersion}"
     include "com.enonic.xp:lib-portal:${xpVersion}"
-    include "com.enonic.xp:lib-thymeleaf:${xpVersion}"
-    include "com.enonic.xp:lib-mustache:${xpVersion}"
     include "com.enonic.xp:lib-i18n:${xpVersion}"
     include "com.enonic.xp:lib-mail:${xpVersion}"
     include "com.enonic.xp:lib-auth:${xpVersion}"
@@ -31,6 +29,8 @@ dependencies {
     include "com.enonic.xp:lib-task:${xpVersion}"
     include "com.enonic.xp:lib-cluster:${xpVersion}"
     include "com.enonic.lib:lib-http-client:1.0.0"
+    include 'com.enonic.lib:lib-thymeleaf:2.0.0-SNAPSHOT'
+    include 'com.enonic.lib:lib-mustache:2.0.0-SNAPSHOT'
     
 
     testCompile 'junit:junit:4.10'

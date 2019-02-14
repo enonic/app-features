@@ -1,5 +1,5 @@
 var websocket = require('/lib/xp/websocket');
-var thymeleaf = require('/lib/xp/thymeleaf');
+var thymeleaf = require('/lib/thymeleaf');
 
 function renderView() {
     var view = resolve('./chat.html');

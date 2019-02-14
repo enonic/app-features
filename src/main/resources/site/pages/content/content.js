@@ -1,10 +1,10 @@
 var portal = require('/lib/xp/portal');
-var thymeleaf = require('/lib/xp/thymeleaf');
 var contentSvc = require('/lib/xp/content');
+var thymeleaf = require('/lib/thymeleaf');
 
 var parentPath = './';
 var view = resolve(parentPath + 'content.page.html');
-var stk = require('stk/stk');
+var stk = require('/lib/stk/stk');
 
 function handleGet(req) {
     var site = portal.getSite();

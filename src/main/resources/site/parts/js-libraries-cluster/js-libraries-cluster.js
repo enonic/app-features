@@ -1,5 +1,5 @@
-var thymeleaf = require('/lib/xp/thymeleaf');
 var clusterLib = require('/lib/xp/cluster');
+var thymeleaf = require('/lib/thymeleaf');
 var view = resolve('js-libraries-cluster.html');
 
 function handleGet(req) {

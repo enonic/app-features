@@ -1,6 +1,6 @@
 var portal = require('/lib/xp/portal');
-var menuLib = require('menu.js');
-var thymeleaf = require('/lib/xp/thymeleaf');
+var menuLib = require('/lib/menu.js');
+var thymeleaf = require('/lib/thymeleaf');
 var parentPath = './';
 var view = resolve(parentPath + 'main.page.html');
 

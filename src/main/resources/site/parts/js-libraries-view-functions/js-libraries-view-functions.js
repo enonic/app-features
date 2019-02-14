@@ -1,4 +1,4 @@
-var thymeleaf = require('/lib/xp/thymeleaf');
+var thymeleaf = require('/lib/thymeleaf');
 var view = resolve('js-libraries-view-functions.html');
 
 function handleGet(req) {
