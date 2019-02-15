@@ -11,4 +11,4 @@ exports.sendParams = function () {
     return sendParams;
 };
 
-__.registerMock('/site/lib/xp/mail.js', mock);
+__.registerMock('/lib/xp/mail.js', mock);
