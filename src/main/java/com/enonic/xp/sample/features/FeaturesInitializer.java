@@ -94,6 +94,7 @@ public final class FeaturesInitializer
             source( source ).
             targetNodePath( NodePath.create( "/content" ).build() ).
             includeNodeIds( true ).
+            includePermissions( true ).
             dryRun( false ).
             build() );
 
@@ -101,22 +102,22 @@ public final class FeaturesInitializer
 
         createLargeTree();
 
-        // set permissions
-        final Content featuresContent = contentService.getByPath( featuresPath );
-        if ( featuresContent != null )
-        {
-            final UpdateContentParams setFeaturesPermissions = new UpdateContentParams().
-                contentId( featuresContent.getId() ).
-                editor( ( content ) -> {
-                    content.permissions = PERMISSIONS;
-                    content.inheritPermissions = false;
-                } );
-            contentService.update( setFeaturesPermissions );
-
-            contentService.applyPermissions( ApplyContentPermissionsParams.create().
-                contentId( featuresContent.getId() ).
-                build() );
-        }
+//        // set permissions
+//        final Content featuresContent = contentService.getByPath( featuresPath );
+//        if ( featuresContent != null )
+//        {
+//            final UpdateContentParams setFeaturesPermissions = new UpdateContentParams().
+//                contentId( featuresContent.getId() ).
+//                editor( ( content ) -> {
+//                    content.permissions = PERMISSIONS;
+//                    content.inheritPermissions = false;
+//                } );
+//            contentService.update( setFeaturesPermissions );
+//
+//            contentService.applyPermissions( ApplyContentPermissionsParams.create().
+//                contentId( featuresContent.getId() ).
+//                build() );
+//        }
     }
 
     private void logImport( final NodeImportResult nodeImportResult )
