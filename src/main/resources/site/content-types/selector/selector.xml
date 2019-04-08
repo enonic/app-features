@@ -3,50 +3,35 @@
   <display-name>Selector</display-name>
   <super-type>base:structured</super-type>
   <form>
-    <input name="imageSelector" type="ImageSelector">
-      <label>Allow children</label>
+    <input name="allowAllInSite" type="ContentSelector">
+      <label>Allow all items from this site</label>
+      <occurrences minimum="0" maximum="0"/>
+    </input>
+    <input name="allowAll" type="ContentSelector">
+      <label>Allow all content items</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <relationship>system:reference</relationship>
+        <allowPath>*</allowPath>
+      </config>
+    </input>
+    <input name="allowSiteImages" type="ImageSelector">
+      <label>Allow all images from this site</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
+    <input name="allowChildImages" type="ImageSelector">
+      <label>Allow all images under current content (./*)</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
-        <allowPath>./</allowPath>
-      </config>
-    </input>
-    <input name="imageSelectorSite" type="ImageSelector">
-      <label>allow all on site</label>
-      <occurrences minimum="0" maximum="1"/>
-      <config>
-        <allowPath>${site}</allowPath>
-      </config>
-    </input>
-    <input name="allowArticle" type="ContentSelector">
-      <label>Allow articles</label>
-      <occurrences minimum="0" maximum="0"/>
-      <config>
-        <relationship>system:reference</relationship>
-        <allowType>article</allowType>
-      </config>
-    </input>
-    <input name="allowCurrentFolder" type="ContentSelector">
-      <label>Allow ./</label>
-      <occurrences minimum="0" maximum="0"/>
-      <config>
-        <relationship>system:reference</relationship>
-        <allowPath>./</allowPath>
-      </config>
-    </input>
-    <input name="allowCurrentAndChildFolder" type="ContentSelector">
-      <label>Allow ./*</label>
-      <occurrences minimum="0" maximum="0"/>
-      <config>
-        <relationship>system:reference</relationship>
         <allowPath>./*</allowPath>
       </config>
     </input>
-    <input name="allowAllOnCurrentSite" type="ContentSelector">
-      <label>Allow ${site}/</label>
+    <input name="allowArticle" type="ContentSelector">
+      <label>Allow articles from current site</label>
       <occurrences minimum="0" maximum="0"/>
       <config>
         <relationship>system:reference</relationship>
-        <allowPath>${site}/*</allowPath>
+        <allowContentType>article</allowContentType>
       </config>
     </input>
     <input name="allowCurrentSite_input-types_date-and-time" type="ContentSelector">
