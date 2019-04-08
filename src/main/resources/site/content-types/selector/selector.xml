@@ -15,19 +15,26 @@
         <allowPath>*</allowPath>
       </config>
     </input>
-    <input name="allowSiteImages" type="ImageSelector">
-      <label>Allow all images from this site</label>
+    <input name="allowImagesInSite" type="ImageSelector">
+      <label>Allow images from this site</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <allowPath>${site}/*</allowPath>
+      </config>
+    </input>
+    <input name="allowAllImages" type="ImageSelector">
+      <label>Allow all images</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
-    <input name="allowChildImages" type="ImageSelector">
-      <label>Allow all images under current content (./*)</label>
+    <input name="allowChildren" type="ContentSelector">
+      <label>Allow child content (./*)</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
         <allowPath>./*</allowPath>
       </config>
     </input>
     <input name="allowArticle" type="ContentSelector">
-      <label>Allow articles from current site</label>
+      <label>Allow articles from this site</label>
       <occurrences minimum="0" maximum="0"/>
       <config>
         <relationship>system:reference</relationship>
