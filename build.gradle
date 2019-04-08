@@ -28,11 +28,11 @@ dependencies {
     include "com.enonic.xp:lib-value:${xpVersion}"
     include "com.enonic.xp:lib-task:${xpVersion}"
     include "com.enonic.xp:lib-cluster:${xpVersion}"
-    include "com.enonic.lib:lib-http-client:1.0.0"
-    include 'com.enonic.lib:lib-thymeleaf:2.0.0-SNAPSHOT'
-    include 'com.enonic.lib:lib-mustache:2.0.0-SNAPSHOT'
-    
+    include "com.enonic.lib:lib-http-client:2.0.0-B1"
+    include 'com.enonic.lib:lib-thymeleaf:2.0.0-B2'
+    include 'com.enonic.lib:lib-mustache:2.0.0-B2'
 
+    testCompile "org.mockito:mockito-core:+"
     testCompile 'junit:junit:4.10'
     testCompile "com.enonic.xp:testing:${xpVersion}"
 }
