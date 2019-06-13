@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <content-type>
   <display-name>Article</display-name>
-  <content-display-name-script>$('title')</content-display-name-script>
+  <display-name-expression>${title}</display-name-expression>
   <super-type>base:structured</super-type>
   <form>
     <input name="title" type="TextLine">
