@@ -1,5 +1,5 @@
 var portal = require('/lib/xp/portal');
-var menuLib = require('/lib/menu.js');
+var menuLib = require('/lib/menu');
 var thymeleaf = require('/lib/thymeleaf');
 var parentPath = './';
 var view = resolve(parentPath + 'no-region.page.html');
@@ -15,7 +15,7 @@ function handleGet(req) {
         site: site,
         reqContent: reqContent,
         editable: editMode,
-        siteMenuItems: menuLib.getSiteMenu(10)
+        siteMenuItems: menuLib.getMenuTree(10)
     };
     var body = thymeleaf.render(view, params);
 
