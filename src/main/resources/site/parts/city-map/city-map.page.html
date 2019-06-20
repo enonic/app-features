@@ -1,18 +1,21 @@
-<script th:inline="javascript">
-    function initialize() {
-        var latitude = /*[[${cityLatitude}]]*/ 'lat';
-        var longitude = /*[[${cityLongitude}]]*/ 'lng';
-        var mapCanvas = document.getElementById('map-canvas');
-        var mapOptions = {
-            center: new google.maps.LatLng(latitude, longitude),
-            zoom: 12,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        var map = new google.maps.Map(mapCanvas, mapOptions)
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
 <div>
     <h2 data-th-text="${cityMapGreeting}">City Map</h2>
+    <div id="map-canvas">Reload the page to see the content</div>
+
+    <script th:inline="javascript">
+        function initialize() {
+            var latitude = /*[[${cityLatitude}]]*/ 'lat';
+            var longitude = /*[[${cityLongitude}]]*/ 'lng';
+            var mapCanvas = document.getElementById('map-canvas');
+            var mapOptions = {
+                center: new google.maps.LatLng(latitude, longitude),
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            if (mapCanvas) {
+                var map = new google.maps.Map(mapCanvas, mapOptions)
+            }
+        };
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 </div>
-<div id="map-canvas"></div>

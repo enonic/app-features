@@ -48,7 +48,7 @@ function handleGet(req) {
         contentType: 'text/html',
         body: body,
         "pageContributions": {
-            headEnd: "<style>#map-canvas {width: 600px; height: 400px; }</style><script src='https://maps.googleapis.com/maps/api/js'></script>"
+            headEnd: "<style>#map-canvas {width: 600px; height: 400px; }</style><script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyChk5dtsBgSpViE_ZUpMsufxSWzd9yQA74'></script>"
         }
     };
 }
