@@ -133,6 +133,23 @@ exports.getNodeByKey = function () {
     return node;
 };
 
+exports.exists = function () {
+    initialize();
+    createNode('my-name');
+    var node = connect().exists('/my-name');
+    cleanUp();
+
+    return node;
+};
+
+exports.existsMissing = function () {
+    initialize();
+    var node = connect().exists('/my-name');
+    cleanUp();
+
+    return node;
+};
+
 exports.getMissingNodeByKey = function () {
     initialize();
     return connect().get('missing');

@@ -92,6 +92,25 @@ exports.get = function () {
     return result;
 };
 
+exports.exists = function (key) {
+
+    //Documentation BEGIN
+    var contentLib = require('/lib/xp/content');
+
+    var result = contentLib.exists({
+        key: key
+    });
+
+    if (result) {
+        log.info('Content found');
+    } else {
+        log.info('Content was not found');
+    }
+    //Documentation END
+
+    return result;
+};
+
 exports.getChildren = function () {
 
     //Documentation BEGIN

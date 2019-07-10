@@ -7,6 +7,8 @@ function handleGet(req) {
 
     var createResult = JSON.stringify(contentJsLib.create(), null, 4);
     var getResult = JSON.stringify(contentJsLib.get(), null, 4);
+    var existsResult = JSON.stringify(contentJsLib.exists('/features/js-libraries/mycontent'), null, 4);
+    var existsUnknownResult = JSON.stringify(contentJsLib.exists('unknown'), null, 4);
     var getChildrenResult = JSON.stringify(contentJsLib.getChildren(), null, 4);
     var queryResult = JSON.stringify(contentJsLib.query(), null, 4);
     var publishResult = JSON.stringify(contentJsLib.publish(), null, 4);
@@ -20,6 +22,8 @@ function handleGet(req) {
     var params = {
         createResult: createResult,
         getResult: getResult,
+        existsResult: existsResult,
+        existsUnknownResult: existsUnknownResult,
         getChildrenResult: getChildrenResult,
         publishResult: publishResult,
         queryResult: queryResult,
