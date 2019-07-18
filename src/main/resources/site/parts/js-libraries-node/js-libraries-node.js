@@ -21,6 +21,7 @@ function handleGet(req) {
     var findChildrenResult = JSON.stringify(nodeJsLib.findChildren(), null, 4);
     var setChildOrderResult = JSON.stringify(nodeJsLib.setChildOrder(), null, 4);
     var queryResult = JSON.stringify(nodeJsLib.query(), null, 4);
+    var suggestionsResult = JSON.stringify(nodeJsLib.suggestions(), null, 4);
     var findVersions = JSON.stringify(nodeJsLib.findVersions(), null, 4);
     var setActiveVersion = JSON.stringify(nodeJsLib.setActiveVersion(), null, 4);
     var params = {
@@ -41,6 +42,7 @@ function handleGet(req) {
         findChildrenResult: findChildrenResult,
         setChildOrderResult: setChildOrderResult,
         queryResult: queryResult,
+        suggestionsResult: suggestionsResult,
         findVersions: findVersions,
         setActiveVersion: setActiveVersion
     };

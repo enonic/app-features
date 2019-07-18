@@ -24,11 +24,12 @@ var cleanUp = function () {
     }
 };
 
-function createNode(name) {
+function createNode(name, params) {
     var repo = connect();
 
     var result = repo.create({
         _name: name,
+        _parentPath: params && params.parentPath,
         displayName: "This is brand new node",
         someData: {
             cars: [
@@ -275,6 +276,58 @@ exports.query = function () {
 
     return repo.query({
         query: "fulltext('_name', '_name')"
+    });
+
+};
+
+exports.suggestions = function () {
+    initialize();
+    createNode("my-name");
+    createNode("my-name2");
+    createNode("node1", {parentPath: "/my-name"});
+    createNode("node2", {parentPath: "/my-name2"});
+    createNode("node3", {parentPath: "/my-name2"});
+
+    var repo = connect();
+    repo.refresh();
+
+    return repo.query({
+        suggestions: {
+            "my-exact-suggestion": {
+                "text": "/my-name",
+                "term": {
+                    "field": "_parentpath"
+                }
+            },
+            "my-min-suggestion": {
+                "text": "/me-name",
+                "term": {
+                    "field": "_parentpath"
+                }
+            },
+            "my-byfrequency-suggestion": {
+                "text": "/me-name",
+                "term": {
+                    "field": "_parentpath",
+                    "size": 1,
+                    "sort": "frequency",
+                }
+            },
+            "my-popular-suggestion": {
+                "text": "/my-name",
+                "term": {
+                    "field": "_parentpath",
+                    "suggestMode": "popular"
+                }
+            },
+            "my-maxedits-suggestion": {
+                "text": "/me-name",
+                "term": {
+                    "field": "_parentpath",
+                    "maxEdits": 1
+                }
+            }
+        }
     });
 
 };
