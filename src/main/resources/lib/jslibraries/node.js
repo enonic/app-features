@@ -282,11 +282,9 @@ exports.query = function () {
 
 exports.suggestions = function () {
     initialize();
-    createNode("my-name");
-    createNode("my-name2");
-    createNode("node1", {parentPath: "/my-name"});
-    createNode("node2", {parentPath: "/my-name2"});
-    createNode("node3", {parentPath: "/my-name2"});
+    createNode("name");
+    createNode("named");
+    createNode("named", {parentPath: "/named"});
 
     var repo = connect();
     repo.refresh();
@@ -294,36 +292,36 @@ exports.suggestions = function () {
     return repo.query({
         suggestions: {
             "my-exact-suggestion": {
-                "text": "/my-name",
+                "text": "name",
                 "term": {
-                    "field": "_parentpath"
+                    "field": "_name"
                 }
             },
             "my-min-suggestion": {
-                "text": "/me-name",
+                "text": "namf",
                 "term": {
-                    "field": "_parentpath"
+                    "field": "_name"
                 }
             },
             "my-byfrequency-suggestion": {
-                "text": "/me-name",
+                "text": "namf",
                 "term": {
-                    "field": "_parentpath",
+                    "field": "_name",
                     "size": 1,
                     "sort": "frequency",
                 }
             },
             "my-popular-suggestion": {
-                "text": "/my-name",
+                "text": "name",
                 "term": {
-                    "field": "_parentpath",
+                    "field": "_name",
                     "suggestMode": "popular"
                 }
             },
             "my-maxedits-suggestion": {
-                "text": "/me-name",
+                "text": "namf",
                 "term": {
-                    "field": "_parentpath",
+                    "field": "_name",
                     "maxEdits": 1
                 }
             }
