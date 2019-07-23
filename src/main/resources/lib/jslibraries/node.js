@@ -24,11 +24,12 @@ var cleanUp = function () {
     }
 };
 
-function createNode(name) {
+function createNode(name, params) {
     var repo = connect();
 
     var result = repo.create({
         _name: name,
+        _parentPath: params && params.parentPath,
         displayName: "This is brand new node",
         someData: {
             cars: [
@@ -275,6 +276,56 @@ exports.query = function () {
 
     return repo.query({
         query: "fulltext('_name', '_name')"
+    });
+
+};
+
+exports.suggestions = function () {
+    initialize();
+    createNode("name");
+    createNode("named");
+    createNode("named", {parentPath: "/named"});
+
+    var repo = connect();
+    repo.refresh();
+
+    return repo.query({
+        suggestions: {
+            "my-exact-suggestion": {
+                "text": "name",
+                "term": {
+                    "field": "_name"
+                }
+            },
+            "my-min-suggestion": {
+                "text": "namf",
+                "term": {
+                    "field": "_name"
+                }
+            },
+            "my-byfrequency-suggestion": {
+                "text": "namf",
+                "term": {
+                    "field": "_name",
+                    "size": 1,
+                    "sort": "frequency",
+                }
+            },
+            "my-popular-suggestion": {
+                "text": "name",
+                "term": {
+                    "field": "_name",
+                    "suggestMode": "popular"
+                }
+            },
+            "my-maxedits-suggestion": {
+                "text": "namf",
+                "term": {
+                    "field": "_name",
+                    "maxEdits": 1
+                }
+            }
+        }
     });
 
 };
