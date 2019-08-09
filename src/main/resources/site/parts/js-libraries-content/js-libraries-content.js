@@ -11,6 +11,7 @@ function handleGet(req) {
     var existsUnknownResult = JSON.stringify(contentJsLib.exists('unknown'), null, 4);
     var getChildrenResult = JSON.stringify(contentJsLib.getChildren(), null, 4);
     var queryResult = JSON.stringify(contentJsLib.query(), null, 4);
+    var highlightResult = JSON.stringify(contentJsLib.highlight(), null, 4);
     var publishResult = JSON.stringify(contentJsLib.publish(), null, 4);
     var modifyResult = JSON.stringify(contentJsLib.modify(), null, 4);
     var getPermissionsResultBefore = JSON.stringify(contentJsLib.getPermissions(), null, 4);
@@ -32,7 +33,8 @@ function handleGet(req) {
         setPermissionsResult: setPermissionsResult,
         getPermissionsResultAfter: getPermissionsResultAfter,
         deleteResult: deleteResult,
-        publishResult2: publishResult2
+        publishResult2: publishResult2,
+        highlightResult: highlightResult
     };
 
     var body = thymeleaf.render(view, params);

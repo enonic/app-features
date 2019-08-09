@@ -4,7 +4,7 @@ var view = resolve('js-libraries-node.html');
 
 function handleGet(req) {
 
-    var createResult = JSON.stringify(nodeJsLib.create(), null, 4);
+   /* var createResult = JSON.stringify(nodeJsLib.create(), null, 4);
     var modifyResult = JSON.stringify(nodeJsLib.modify(), null, 4);
     var commitResult = JSON.stringify(nodeJsLib.commit(), null, 4);
     var getNodeByKeyResult = JSON.stringify(nodeJsLib.getNodeByKey(), null, 4);
@@ -21,11 +21,12 @@ function handleGet(req) {
     var findChildrenResult = JSON.stringify(nodeJsLib.findChildren(), null, 4);
     var setChildOrderResult = JSON.stringify(nodeJsLib.setChildOrder(), null, 4);
     var queryResult = JSON.stringify(nodeJsLib.query(), null, 4);
-    var suggestionsResult = JSON.stringify(nodeJsLib.suggestions(), null, 4);
-    var findVersions = JSON.stringify(nodeJsLib.findVersions(), null, 4);
-    var setActiveVersion = JSON.stringify(nodeJsLib.setActiveVersion(), null, 4);
+    var suggestionsResult = JSON.stringify(nodeJsLib.suggestions(), null, 4);*/
+    var highlightResult = JSON.stringify(nodeJsLib.highlight(), null, 4);
+   /* var findVersions = JSON.stringify(nodeJsLib.findVersions(), null, 4);
+    var setActiveVersion = JSON.stringify(nodeJsLib.setActiveVersion(), null, 4);*/
     var params = {
-        createResult: createResult,
+   /*     createResult: createResult,
         modifyResult: modifyResult,
         commitResult: commitResult,
         getNodeByKeyResult: getNodeByKeyResult,
@@ -42,9 +43,10 @@ function handleGet(req) {
         findChildrenResult: findChildrenResult,
         setChildOrderResult: setChildOrderResult,
         queryResult: queryResult,
-        suggestionsResult: suggestionsResult,
+        suggestionsResult: suggestionsResult,*/
+        highlightResult: highlightResult/*,
         findVersions: findVersions,
-        setActiveVersion: setActiveVersion
+        setActiveVersion: setActiveVersion*/
     };
 
     var body = thymeleaf.render(view, params);

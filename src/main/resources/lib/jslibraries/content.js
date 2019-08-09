@@ -275,6 +275,41 @@ exports.modify = function () {
     return result;
 };
 
+exports.highlight = function () {
+
+    //Documentation BEGIN
+    var contentLib = require('/lib/xp/content');
+
+    var result = contentLib.query({
+        query: "data.description LIKE '*garden*' ",
+        count: 10,
+        highlight: {
+            fragmenter: "simple",
+            fragmentSize: 5,
+            numberOfFragments: 5,
+            order: "none",
+            requireFieldMatch: true,
+            fields: {
+                "data.description": {
+                    preTag:"<a>",
+                    postTag:"<b>"
+                }
+            }
+        }
+    });
+
+    log.info('Found ' + result.total + ' number of contents');
+
+    for (var i = 0; i < result.hits.length; i++) {
+        var content = result.hits[i];
+        log.info('Content ' + content._name + ' found');
+    }
+
+    log.info('Highlight result: ' + JSON.stringify(result, null, 4));
+
+    return result.highlight;
+};
+
 exports.setPermissions = function () {
 
     //Documentation BEGIN

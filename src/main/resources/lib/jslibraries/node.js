@@ -330,6 +330,36 @@ exports.suggestions = function () {
 
 };
 
+exports.highlight = function () {
+    initialize();
+    createNode("name");
+
+    var repo = connect();
+    repo.refresh();
+
+    return repo.query({
+        query: "_name = 'name' OR displayName LIKE '*'",
+        highlight: {
+            fragmenter: "simple",
+            fragmentSize: 5,
+            numberOfFragments: 5,
+            noMatchSize: 2,
+            order: "none",
+            requireFieldMatch: false,
+            fields: {
+                "displayname._ngram": {
+                    preTag: "<c>",
+                    postTag: "<d>"
+                },
+                "displayName": {
+                    preTag: "<a>",
+                    postTag: "<b>"
+                }
+            }
+        }
+    });
+};
+
 exports.findVersions = function () {
     initialize();
     var node = createNode("my-name");
