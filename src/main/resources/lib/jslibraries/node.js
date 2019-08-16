@@ -330,6 +330,26 @@ exports.suggestions = function () {
 
 };
 
+exports.highlight = function () {
+    initialize();
+    createNode("name");
+
+    var repo = connect();
+    repo.refresh();
+
+    return repo.query({
+        query: "ngram('displayName', 'bran', 'AND')",
+        highlight: {
+            fields: {
+                "displayName": {
+                    preTag: "<before>",
+                    postTag: "<after>"
+                }
+            }
+        }
+    });
+};
+
 exports.findVersions = function () {
     initialize();
     var node = createNode("my-name");
