@@ -202,6 +202,15 @@ exports.query = function () {
                     field: "data.price"
                 }
             }
+        },
+        highlight: {
+            fields: {
+                "data.city": {},
+                "data.description": {
+                    preTag: "<b>",
+                    postTag: "</b>"
+                }
+            }
         }
     });
 
@@ -249,7 +258,7 @@ exports.modify = function () {
         c.data["myTime"] = "11:00";
         c.data.checkOptionSet = {
             _selected: ["option_2"],
-                option_2: {
+            option_2: {
                 contentSelector: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b'
             }
         };
