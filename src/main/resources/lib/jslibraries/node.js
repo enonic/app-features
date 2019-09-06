@@ -338,9 +338,9 @@ exports.highlight = function () {
     repo.refresh();
 
     return repo.query({
-        query: "ngram('displayName', 'bran', 'AND')",
+        query: "_name = 'name' OR displayName LIKE '*'",
         highlight: {
-            fields: {
+            properties: {
                 "displayName": {
                     preTag: "<before>",
                     postTag: "<after>"

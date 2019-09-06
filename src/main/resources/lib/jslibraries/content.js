@@ -202,15 +202,6 @@ exports.query = function () {
                     field: "data.price"
                 }
             }
-        },
-        highlight: {
-            fields: {
-                "data.city": {},
-                "data.description": {
-                    preTag: "<b>",
-                    postTag: "</b>"
-                }
-            }
         }
     });
 
@@ -258,7 +249,7 @@ exports.modify = function () {
         c.data["myTime"] = "11:00";
         c.data.checkOptionSet = {
             _selected: ["option_2"],
-            option_2: {
+                option_2: {
                 contentSelector: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b'
             }
         };
@@ -282,6 +273,41 @@ exports.modify = function () {
     log.info('Modify result: ' + JSON.stringify(result, null, 4));
 
     return result;
+};
+
+exports.highlight = function () {
+
+    //Documentation BEGIN
+    var contentLib = require('/lib/xp/content');
+
+    var result = contentLib.query({
+        query: "data.description LIKE '*garden*' ",
+        count: 10,
+        highlight: {
+            fragmenter: "simple",
+            fragmentSize: 5,
+            numberOfFragments: 5,
+            order: "none",
+            requireFieldMatch: true,
+            properties: {
+                "data.description": {
+                    preTag:"<a>",
+                    postTag:"<b>"
+                }
+            }
+        }
+    });
+
+    log.info('Found ' + result.total + ' number of contents');
+
+    for (var i = 0; i < result.hits.length; i++) {
+        var content = result.hits[i];
+        log.info('Content ' + content._name + ' found');
+    }
+
+    log.info('Highlight result: ' + JSON.stringify(result, null, 4));
+
+    return result.highlight;
 };
 
 exports.setPermissions = function () {
