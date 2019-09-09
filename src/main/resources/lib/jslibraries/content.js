@@ -204,7 +204,7 @@ exports.query = function () {
             }
         },
         highlight: {
-            fields: {
+            properties: {
                 "data.city": {},
                 "data.description": {
                     preTag: "<b>",

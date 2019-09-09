@@ -340,7 +340,7 @@ exports.highlight = function () {
     return repo.query({
         query: "ngram('displayName', 'bran', 'AND')",
         highlight: {
-            fields: {
+            properties: {
                 "displayName": {
                     preTag: "<before>",
                     postTag: "<after>"
