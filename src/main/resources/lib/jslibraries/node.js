@@ -363,6 +363,27 @@ exports.findVersions = function () {
     });
 };
 
+exports.getByVersionIds = function () {
+    initialize();
+    var node = createNode("my-name");
+    node = modifyNode(node._id);
+
+    var repo = connect();
+    repo.refresh();
+
+    var versions = repo.findVersions({
+        key: node._id
+    });
+
+    var params = versions.hits.map(hit => {
+        return {
+            key: node._id,
+            versionId: hit.versionId
+        };
+    });
+    return repo.get(params);
+};
+
 exports.setActiveVersion = function () {
     initialize();
     var node = createNode("my-name");
