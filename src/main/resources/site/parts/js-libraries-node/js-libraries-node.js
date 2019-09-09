@@ -24,6 +24,7 @@ function handleGet(req) {
     var suggestionsResult = JSON.stringify(nodeJsLib.suggestions(), null, 4);
     var highlightResult = JSON.stringify(nodeJsLib.highlight(), null, 4);
     var findVersions = JSON.stringify(nodeJsLib.findVersions(), null, 4);
+    var getByVersionIds = JSON.stringify(nodeJsLib.getByVersionIds(), null, 4);
     var setActiveVersion = JSON.stringify(nodeJsLib.setActiveVersion(), null, 4);
     var params = {
         createResult: createResult,
@@ -46,6 +47,7 @@ function handleGet(req) {
         suggestionsResult: suggestionsResult,
         highlightResult: highlightResult,
         findVersions: findVersions,
+        getByVersionIds: getByVersionIds,
         setActiveVersion: setActiveVersion
     };
 
