@@ -7,12 +7,12 @@
     <display-name>Tall</display-name>
     <aspect-ratio>9:16</aspect-ratio>
   </image>
-  <image name="editor-style-image-portrait">
+  <image name="editor-style-image-avatar">
     <display-name>Avatar</display-name>
     <aspect-ratio>1:1</aspect-ratio>
     <filter>rounded(1000)</filter>
   </image>
-  <image name="editor-style-image-sepia">
+  <image name="editor-style-image-old">
     <display-name>Old photo</display-name>
     <filter>sepia(25)</filter>
   </image>
