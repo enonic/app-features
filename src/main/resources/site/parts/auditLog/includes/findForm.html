@@ -1,0 +1,75 @@
+<div data-th-fragment="findForm">
+    <form id="findAuditLogForm" action="#" data-th-action="${postUrl}" method="post">
+        <table>
+            <tr>
+                <td>
+                    <label>
+                        Start
+                        <input name="start" data-th-value="0" type="text">
+                    </label>
+                </td>
+                <td>
+                    <label>
+                        Count
+                        <input name="count" data-th-value="10" type="text">
+                    </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        From
+                        <input name="from" type="text">
+                    </label>
+                </td>
+                <td><label>
+                    To
+                    <input name="to" type="text">
+                </label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Type
+                        <input name="type" type="text">
+                    </label>
+                </td>
+                <td>
+                    <label>
+                        Source
+                        <input name="source" type="text">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>
+                        Audit Log Ids (split by comma)
+                        <input name="ids" type="text">
+                    </label>
+                </td>
+                <td>
+                    <label>
+                        User Keys (split by comma)
+                        <input name="users" type="text">
+                    </label>
+                </td>
+                <td>
+                    <label>
+                        Object URIs (split by comma)
+                        <input name="objects" type="text">
+                    </label>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <div>
+                <button type="button" name="findAuditLog">Find</button>
+                <button type="button" name="resetFindAuditLog">Reset</button>
+            </div>
+        </div>
+    </form>
+</div>

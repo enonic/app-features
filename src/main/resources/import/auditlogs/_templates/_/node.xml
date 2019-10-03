@@ -1,17 +1,17 @@
 <node>
-    <id>72941646-0295-43dc-a20c-c055821ee123</id>
+    <id>3bd12f56-63b3-4002-a76a-ccee6d6a9243</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2019-03-13T08:49:51.784Z</timestamp>
+    <timestamp>2019-10-03T13:30:27.800Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
-        <principal key="user:system:anonymous">
+        <principal key="role:cms.cm.app">
             <allow type="array">
                 <value>READ</value>
             </allow>
             <deny type="array"/>
         </principal>
-        <principal key="role:system.authenticated">
+        <principal key="role:system.admin">
             <allow type="array">
                 <value>READ</value>
                 <value>CREATE</value>
@@ -35,26 +35,20 @@
             </allow>
             <deny type="array"/>
         </principal>
-        <principal key="role:system.everyone">
-            <allow type="array">
-                <value>READ</value>
-            </allow>
-            <deny type="array"/>
-        </principal>
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Upload</string>
-        <string name="type">base:folder</string>
-        <string name="owner">user:system:su</string>
-        <dateTime name="modifiedTime">2015-10-05T12:09:31.285Z</dateTime>
-        <string name="modifier">user:system:su</string>
-        <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-10-05T12:09:24.974Z</dateTime>
+        <string name="displayName">Templates</string>
+        <string name="type">portal:template-folder</string>
+        <dateTime name="createdTime">2019-10-03T13:29:57.601Z</dateTime>
+        <string name="creator">user:system:asi</string>
+        <string name="modifier">user:system:asi</string>
+        <dateTime name="modifiedTime">2019-10-03T13:29:57.601Z</dateTime>
+        <string name="owner">user:system:asi</string>
         <property-set name="data"/>
-        <property-set name="x"/>
     </data>
     <indexConfigs>
+        <analyzer>document_index_default</analyzer>
         <defaultConfig>
             <decideByType>true</decideByType>
             <enabled>true</enabled>
@@ -67,24 +61,31 @@
                 <indexConfig>
                     <decideByType>false</decideByType>
                     <enabled>true</enabled>
-                    <nGram>true</nGram>
-                    <fulltext>true</fulltext>
-                    <includeInAllText>true</includeInAllText>
-                    <indexValueProcessors>
-                        <indexValueProcessor>htmlStripper</indexValueProcessor>
-                    </indexValueProcessors>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>data.htmlarea_text</path>
+                <path>data.siteConfig.applicationkey</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>false</decideByType>
+                    <decideByType>true</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>x</path>
+                <path>x.*</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment.text</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>

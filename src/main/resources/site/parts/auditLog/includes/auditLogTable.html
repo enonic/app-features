@@ -1,0 +1,22 @@
+<div data-th-fragment="auditLogTable">
+    <div class="audit-logs--container" style="height: 300px; overflow-y: auto;">
+        <div data-th-if="${auditLogs}" data-th-remove="tag">
+            <div class="audit-logs__container">
+                <table>
+                    <tr>
+                        <th># ID</th>
+                        <th>Type</th>
+                        <th>Source</th>
+                        <th>Message</th>
+                    </tr>
+                    <tr data-th-each="auditLog : ${auditLogs}">
+                        <td data-th-text="${auditLog._id}"></td>
+                        <td data-th-text="${auditLog.type}"></td>
+                        <td data-th-text="${auditLog.source}"></td>
+                        <td data-th-text="${auditLog.message}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
