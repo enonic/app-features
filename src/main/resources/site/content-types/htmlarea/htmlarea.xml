@@ -3,23 +3,17 @@
   <display-name>Html Area</display-name>
   <super-type>base:structured</super-type>
   <form>
-    <input name="htmlarea_text" type="HtmlArea">
-      <label>HTML Area</label>
+    <input type="Checkbox" name="menuItem">
+      <label>Menu item</label>
+      <help-text>Check this to include this Page in the menu</help-text>
       <occurrences minimum="0" maximum="1"/>
     </input>
     <input name="htmlarea_text2" type="HtmlArea">
       <label>HTML Area with customized toolbar</label>
-      <occurrences minimum="0" maximum="2"/>
+      <occurrences minimum="0" maximum="0"/>
       <config>
         <exclude>*</exclude>
         <include>JustifyLeft JustifyRight | Bold Italic</include>
-      </config>
-    </input>
-    <input name="htmlarea_text3" type="HtmlArea">
-      <label>HTML Area with limited allowed headings</label>
-      <occurrences minimum="0" maximum="0"/>
-      <config>
-        <allowHeadings>h2 h4 h6</allowHeadings>
       </config>
     </input>
   </form>

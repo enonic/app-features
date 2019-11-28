@@ -29,6 +29,7 @@ dependencies {
     include "com.enonic.xp:lib-task:${xpVersion}"
     include "com.enonic.xp:lib-cluster:${xpVersion}"
     include "com.enonic.xp:lib-auditlog:${xpVersion}"
+    include "com.enonic.xp:lib-event:${xpVersion}"
     include "com.enonic.lib:lib-http-client:2.0.0"
     include 'com.enonic.lib:lib-thymeleaf:2.0.0'
     include 'com.enonic.lib:lib-mustache:2.0.0'
