@@ -14,7 +14,6 @@ function doLog(params) {
             type: params.type,
             time: params.time || null,
             source: params.source || null,
-            message: params.message || null,
             user: params.user || null,
             objects: params.objects ? params.objects.split(',', -1) : [],
             data: JSON.parse(params.data || '{}')

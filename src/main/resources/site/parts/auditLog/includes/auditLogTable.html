@@ -7,13 +7,11 @@
                         <th># ID</th>
                         <th>Type</th>
                         <th>Source</th>
-                        <th>Message</th>
                     </tr>
                     <tr data-th-each="auditLog : ${auditLogs}">
                         <td data-th-text="${auditLog._id}"></td>
                         <td data-th-text="${auditLog.type}"></td>
                         <td data-th-text="${auditLog.source}"></td>
-                        <td data-th-text="${auditLog.message}"></td>
                     </tr>
                 </table>
             </div>
