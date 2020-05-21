@@ -1,5 +1,5 @@
 var portal = require('/lib/xp/portal');
-var httpClient = require('/lib/xp/http-client');
+var httpClient = require('/lib/http-client');
 var thymeleaf = require('/lib/thymeleaf');
 
 
@@ -94,7 +94,7 @@ exports.post = function (req) {
         }
         response = httpClient.request(req);
 
-        if (response.contentType == 'application/json') {
+        if (response.contentType === 'application/json') {
             var b = response.body;
             try {
                 b = JSON.stringify(JSON.parse(response.body), null, 4);

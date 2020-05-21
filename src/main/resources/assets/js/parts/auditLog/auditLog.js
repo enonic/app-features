@@ -10,7 +10,6 @@ $(function () {
             time: $form.find('input[name="auditLogTime"]').val(),
             source: $form.find('input[name="auditLogSource"]').val(),
             user: $form.find('input[name="auditLogUser"]').val(),
-            message: $form.find('input[name="auditLogMessage"]').val(),
             objects: $form.find('textarea[name="auditLogObjects"]').val(),
             data: $form.find('textarea[name="auditLogData"]').val()
         }, function (html) {
