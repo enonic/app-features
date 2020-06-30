@@ -26,7 +26,7 @@ function handleGet(req) {
                     "query": "_name != '" + currentCityName + "'",
                     "aggregations": {
                         "distance": {
-                            "geo_distance": {
+                            "geoDistance": {
                                 'field': "data.cityLocation",
                                 'unit': "km",
                                 'origin': {
