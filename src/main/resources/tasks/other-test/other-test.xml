@@ -2,5 +2,11 @@
 <task xmlns="urn:enonic:xp:model:1.0">
   <description>ANOTHER task</description>
   <form>
+    <input type="Long" name="count">
+      <label>Number of items to process</label>
+      <default>42</default>
+      <occurrences minimum="1" maximum="1"/>
+    </input>
+    <mixin name="com.enonic.app.features:address"/>
   </form>
 </task>
