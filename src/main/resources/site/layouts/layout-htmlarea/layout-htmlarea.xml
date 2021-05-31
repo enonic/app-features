@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<layout xmlns="urn:enonic:xp:model:1.0">
+  <display-name>Layout for HTML Area</display-name>
+  <form/>
+  <regions>
+    <region name="center"/>
+  </regions>
+  <config>
+    <allow-on-content-type>${app}:htmlarea</allow-on-content-type>
+  </config>
+</layout>

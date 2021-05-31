@@ -411,3 +411,18 @@ exports.setActiveVersion = function () {
     };
 };
 
+exports.getCommit = function () {
+    initialize();
+    var node = createNode("my-name");
+    node = modifyNode(node._id);
+
+    var repo = connect();
+    repo.refresh();
+
+    var commit = commitNode(node._id);
+
+    return repo.getCommit({
+        id: commit.id
+    });
+};
+

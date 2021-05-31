@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <content-type>
   <display-name>Article</display-name>
+  <description>This content type should be visible only under "Articles" folder</description>
   <display-name-expression>${title}</display-name-expression>
   <super-type>base:structured</super-type>
   <form>

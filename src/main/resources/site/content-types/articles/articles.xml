@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content-type>
+  <display-name>Articles</display-name>
+  <super-type>base:folder</super-type>
+  <description>Folder for articles</description>
+  <allow-child-content-type>${app}:article</allow-child-content-type>
+</content-type>

@@ -20,4 +20,7 @@
       <occurrences minimum="1" maximum="1"/>
     </input>
   </form>
+  <config>
+    <list-title-expression>${lastName}, ${firstName}</list-title-expression>
+  </config>
 </content-type>

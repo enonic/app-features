@@ -26,6 +26,7 @@ function handleGet(req) {
     var findVersions = JSON.stringify(nodeJsLib.findVersions(), null, 4);
     var getByVersionIds = JSON.stringify(nodeJsLib.getByVersionIds(), null, 4);
     var setActiveVersion = JSON.stringify(nodeJsLib.setActiveVersion(), null, 4);
+    var getCommit = JSON.stringify(nodeJsLib.getCommit(), null, 4);
     var params = {
         createResult: createResult,
         modifyResult: modifyResult,
@@ -48,7 +49,8 @@ function handleGet(req) {
         highlightResult: highlightResult,
         findVersions: findVersions,
         getByVersionIds: getByVersionIds,
-        setActiveVersion: setActiveVersion
+        setActiveVersion: setActiveVersion,
+        getCommit: getCommit
     };
 
     var body = thymeleaf.render(view, params);
