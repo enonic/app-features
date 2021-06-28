@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      publish: ${{ github.ref == 'refs/heads/master' && steps.publish_vars.outputs.repo != '' }}
+      publish: ${{ github.ref == 'refs/heads/master' && steps.publish_vars.outputs.repo != null }}
       repo: ${{ steps.publish_vars.outputs.repo }}
       release: ${{ steps.publish_vars.outputs.release }}
       tag_name: ${{ steps.publish_vars.outputs.tag_name }}
