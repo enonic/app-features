@@ -46,8 +46,8 @@ jobs:
           distribution: 'adopt'
 
       - run: |
-          echo ${{ publish_vars.outputs.publish }}
-          echo ${{ publish_vars.outputs.publish == 'true' }}
+          echo ${{ needs.publish_vars.outputs.publish }}
+          echo ${{ needs.publish_vars.outputs.publish == 'true' }}
 
       - uses: actions/cache@v2
         with:
