@@ -46,6 +46,8 @@ jobs:
           distribution: 'adopt'
 
       - run: |
+          echo ${{ needs.publish_vars.outputs.publish == '' }}
+          echo ${{ needs.publish_vars.outputs.publish == null }}
           echo ${{ needs.publish_vars.outputs.publish }}
           echo ${{ needs.publish_vars.outputs.publish == 'true' }}
 
