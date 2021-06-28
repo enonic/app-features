@@ -45,12 +45,6 @@ jobs:
           java-version: 11
           distribution: 'adopt'
 
-      - run: |
-          echo ${{ needs.publish_vars.outputs.publish == '' }}
-          echo ${{ needs.publish_vars.outputs.publish == null }}
-          echo ${{ needs.publish_vars.outputs.publish }}
-          echo ${{ needs.publish_vars.outputs.publish == 'true' }}
-
       - uses: actions/cache@v2
         with:
           path: |
