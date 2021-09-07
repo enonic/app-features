@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<content-type>
+  <display-name>Zip</display-name>
+  <super-type>base:structured</super-type>
+  <form>
+    <input name="file" type="AttachmentUploader">
+      <label>File</label>
+      <custom-text>file</custom-text>
+      <occurrences maximum="1" minimum="1"/>
+      <config/>
+    </input>
+  </form>
+</content-type>
