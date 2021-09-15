@@ -10,7 +10,7 @@ function doExecute(params) {
         result = createCronSchedule(params.schedulerName, params.schedulerDescription, params.schedulerDescriptor, params.schedulerSchedule);
         log.info('Create Schedule result: %s', JSON.stringify(result));
     } else if (params.operation === 'delete') {
-        result = deleteCronJobScheduler(params.name);
+        result = deleteCronJobScheduler(params.schedulerName);
         log.info('Delete Schedule result: %s', JSON.stringify(result));
     }
 
@@ -34,6 +34,7 @@ function createCronSchedule(name, description, descriptor, schedule) {
         schedule: {
             value: schedule,
             type: 'CRON',
+            timeZone: 'GMT-01:00'
         },
         enabled: true
     });
@@ -64,7 +65,7 @@ function updateCronJobSchedule(name, description, descriptor, enabled, schedule)
             edit.enabled = enabled;
             edit.schedule = {
                 type: 'CRON',
-                value: schedule,
+                value: schedule
             };
             return edit;
         }
