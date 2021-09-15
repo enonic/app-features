@@ -1,0 +1,24 @@
+<div data-th-fragment="schedulesTable">
+    <div class="schedules--container" style="height: 300px; overflow-y: auto;">
+        <div data-th-if="${schedules}" data-th-remove="tag">
+            <div class="schedules__container">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Descriptor</th>
+                        <th>Schedule</th>
+                        <th>Type</th>
+                    </tr>
+                    <tr data-th-each="schedule : ${schedules}">
+                        <td data-th-text="${schedule.name}"></td>
+                        <td data-th-text="${schedule.description}"></td>
+                        <td data-th-text="${schedule.descriptor}"></td>
+                        <td data-th-text="${schedule.schedule.value}"></td>
+                        <td data-th-text="${schedule.schedule.type}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
