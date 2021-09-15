@@ -1,6 +1,8 @@
 let libPortal = require('/lib/xp/portal');
 let libScheduler = require('/lib/xp/scheduler');
 let view = resolve('scheduler.html');
+let createFormView = resolve('includes/createForm.html');
+let deleteFormView = resolve('includes/deleteForm.html');
 
 let libThymeleaf = require('/lib/thymeleaf');
 
@@ -10,21 +12,18 @@ function doExecute(params) {
     if (params.operation === 'create') {
         result = createCronSchedule(params.schedulerName, params.schedulerDescription, params.schedulerDescriptor, params.schedulerSchedule);
         log.info('Create Schedule result: %s', JSON.stringify(result));
+        body = libThymeleaf.render(createFormView, {postUrl: libPortal.componentUrl({})});
     } else if (params.operation === 'delete') {
         result = deleteCronJobScheduler(params.schedulerName);
         log.info('Delete Schedule result: %s', JSON.stringify(result));
+        body = libThymeleaf.render(deleteFormView, {postUrl: libPortal.componentUrl({})});
     } else if (params.operation === 'modify') {
         result = modifyCronJobSchedule(params.schedulerName, params.schedulerDescription, params.schedulerDescriptor, true, params.schedulerSchedule);
         log.info('Modify Schedule result: %s', JSON.stringify(result));
-    // } else {
-    //     body = libThymeleaf.render(view, schedules);
+        body = libThymeleaf.render(view, libScheduler.list());
+    } else {
+        body = libThymeleaf.render(view, libScheduler.list());
     }
-
-    let schedules = {
-        schedules: listSchedules()
-    };
-
-    body = libThymeleaf.render(view, schedules);
 
     return {
         contentType: 'text/html',
@@ -44,10 +43,6 @@ function createCronSchedule(name, description, descriptor, schedule) {
         },
         enabled: true
     });
-}
-
-function listSchedules() {
-    return libScheduler.list();
 }
 
 function getSchedule(name) {
