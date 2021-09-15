@@ -1,24 +1,30 @@
 let libPortal = require('/lib/xp/portal');
 let libScheduler = require('/lib/xp/scheduler');
 let view = resolve('scheduler.html');
+
 let libThymeleaf = require('/lib/thymeleaf');
 
 function doExecute(params) {
     log.info('In doExecute for scheduler.js.  Parameters: %s', JSON.stringify(params));
-    let result;
+    let result, body;
     if (params.operation === 'create') {
         result = createCronSchedule(params.schedulerName, params.schedulerDescription, params.schedulerDescriptor, params.schedulerSchedule);
         log.info('Create Schedule result: %s', JSON.stringify(result));
     } else if (params.operation === 'delete') {
         result = deleteCronJobScheduler(params.schedulerName);
         log.info('Delete Schedule result: %s', JSON.stringify(result));
+    } else if (params.operation === 'modify') {
+        result = modifyCronJobSchedule(params.schedulerName, params.schedulerDescription, params.schedulerDescriptor, true, params.schedulerSchedule);
+        log.info('Modify Schedule result: %s', JSON.stringify(result));
+    // } else {
+    //     body = libThymeleaf.render(view, schedules);
     }
 
     let schedules = {
         schedules: listSchedules()
     };
 
-    let body = libThymeleaf.render(view, schedules);
+    body = libThymeleaf.render(view, schedules);
 
     return {
         contentType: 'text/html',
@@ -56,7 +62,7 @@ function getSchedule(name) {
     return job;
 }
 
-function updateCronJobSchedule(name, description, descriptor, enabled, schedule) {
+function modifyCronJobSchedule(name, description, descriptor, enabled, schedule) {
     return libScheduler.modify({
         name: name,
         editor: (edit) => {
@@ -65,7 +71,8 @@ function updateCronJobSchedule(name, description, descriptor, enabled, schedule)
             edit.enabled = enabled;
             edit.schedule = {
                 type: 'CRON',
-                value: schedule
+                value: schedule,
+                timeZone: 'GMT-03:00'
             };
             return edit;
         }
