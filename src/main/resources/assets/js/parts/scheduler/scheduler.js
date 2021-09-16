@@ -13,7 +13,7 @@ $(function () {
             schedulerType: 'CRON'
         }, function (html) {
             $form[0].reset();
-            $('.scheduler__create-form').replaceWith(html);
+            $('.schedules__container').replaceWith(html);
         });
     });
 
@@ -30,7 +30,7 @@ $(function () {
             schedulerType: 'CRON'
         }, function (html) {
             $form[0].reset();
-            $('.scheduler__modify-form').replaceWith(html);
+            $('.schedules__container').replaceWith(html);
         });
     });
 
@@ -43,7 +43,7 @@ $(function () {
             schedulerName: $form.find('input[name="schedulerName"]').val(),
         }, function (html) {
             $form[0].reset();
-            $('.scheduler__delete-form').replaceWith(html);
+            $('.schedules__container').replaceWith(html);
         });
     });
 
