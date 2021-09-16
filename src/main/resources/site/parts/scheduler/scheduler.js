@@ -5,7 +5,7 @@ let tableView = resolve('includes/schedulesTable.html');
 let libThymeleaf = require('/lib/thymeleaf');
 
 function doExecute(params) {
-    let result;
+    let result, body;
     if (params.operation === 'create') {
         result = createCronSchedule(params.schedulerName, params.schedulerDescription, params.schedulerDescriptor, params.schedulerSchedule);
         log.info('Create Schedule result: %s', JSON.stringify(result));
@@ -15,14 +15,22 @@ function doExecute(params) {
     } else if (params.operation === 'modify') {
         result = modifyCronJobSchedule(params.schedulerName, params.schedulerDescription, params.schedulerDescriptor, true, params.schedulerSchedule);
         log.info('Modify Schedule result: %s', JSON.stringify(result));
+    } else if (params.operation === 'get') {
+        result = getSchedule(params.name);
+        log.info('Get Schedule result: %s', JSON.stringify(result));
     }
 
-    let body = libThymeleaf.render(tableView, {schedules: libScheduler.list()});
-
-    return {
-        contentType: 'text/html',
-        body: body
-    };
+    if (params.operation === 'get') {
+        return {
+            contentType: 'application/json',
+            body: JSON.stringify(result)
+        }
+    } else {
+        return {
+            contentType: 'text/html',
+            body: libThymeleaf.render(tableView, {schedules: libScheduler.list()})
+        };
+    }
 }
 
 function createCronSchedule(name, description, descriptor, schedule) {
@@ -40,13 +48,13 @@ function createCronSchedule(name, description, descriptor, schedule) {
 }
 
 function getSchedule(name) {
-    let job = libScheduler.get(name);
+    let job = libScheduler.get({name: name});
 
-    // if (job) {
-    //     log.info('Job is found: ' + JSON.stringify(job));
-    // } else {
-    //     log.info('Job not found');
-    // }
+    if (job) {
+        log.info('Job is found: ' + JSON.stringify(job));
+    } else {
+        log.info('Job not found');
+    }
 
     return job;
 }
