@@ -1,0 +1,42 @@
+<div data-th-fragment="modifyForm">
+    <div class="scheduler__modify-form">
+        <form id="modifySchedulerForm" action="#" data-th-action="${postUrl}" method="post">
+            <div style="color:darkred;" data-th-if="${errorMsg != null}" data-th-text="${errorMsg}"></div>
+            <div style="color:darkgreen;" data-th-if="${msg != null}" data-th-text="${msg}"></div>
+            <table>
+                <tr>
+                    <td><label for="schedulerName">Schedule Name</label></td>
+                    <td><input id="schedulerName" name="schedulerName" type="text"
+                               style="width: 200px;" required="required"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><hr/></td>
+                </tr>
+                <tr>
+                    <td><label for="schedulerDescription">Description</label></td>
+                    <td><input id="schedulerDescription" name="schedulerDescription" type="text"
+                               style="width: 200px;" required="required"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="schedulerDescriptor">Descriptor</label></td>
+                    <td><input id="schedulerDescriptor" name="schedulerDescriptor" type="text"
+                               style="width: 200px;" required="required"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="schedulerSchedule">Schedule</label></td>
+                    <td><input id="schedulerSchedule" name="schedulerSchedule" type="text"
+                               style="width: 200px;" required="required"/>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <div>
+                    <button type="button" name="modifySchedule">Modify</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
