@@ -47,6 +47,18 @@ $(function () {
         });
     });
 
+    $(document).on('click', 'button[name="getSchedule"]', function (e) {
+        e.preventDefault();
+        var $form = $('form#getScheduleForm');
+
+        sendAndRender($form.attr('action'), {
+            operation: 'get',
+            name: $form.find('input[name="name"]').val()
+        }, function (json) {
+            $('.schedule__get-by-name').val(JSON.stringify(json, undefined, 4));
+        })
+    });
+
     function sendAndRender(action, data, callbackFn) {
         $.ajax({
             url: action,
