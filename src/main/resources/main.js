@@ -4,8 +4,8 @@ const clusterLib = require('/lib/xp/cluster');
 const exportLib = require('/lib/xp/export');
 
 const projectData = {
-    id: 'feature',
-    displayName: 'Feature',
+    id: 'features',
+    displayName: 'Features',
     description: 'Testing features for Enonic XP',
     language: 'en',
     readAccess: {
