@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <content-type>
-  <display-name>Zip</display-name>
+  <display-name>Zip file</display-name>
+  <description>Content type with built-in file validation</description>
   <super-type>base:structured</super-type>
   <form>
     <input name="file" type="AttachmentUploader">
