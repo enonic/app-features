@@ -22,7 +22,7 @@
             <item-set name="level-3">
               <label>Level 3</label>
               <items>
-                <input name="myTextLine" type="TextLine">
+                <input name="myTextLine" type="Long">
                   <label>My text line</label>
                   <indexed>true</indexed>
                   <occurrences minimum="1" maximum="1"/>
