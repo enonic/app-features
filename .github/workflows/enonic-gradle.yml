@@ -5,9 +5,11 @@ on: [ push ]
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    outputs:
+      release: ${{ steps.build-and-publish.release }}
     steps:
-      - uses: enonic/release-tools/build-and-publish@master
+      - id: build-and-publish
+        uses: enonic/release-tools/build-and-publish@master
         with:
           repoUser: ${{ secrets.ARTIFACTORY_USERNAME }}
           repoPassword: ${{ secrets.ARTIFACTORY_PASSWORD }}
