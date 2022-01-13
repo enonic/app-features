@@ -8,7 +8,9 @@ jobs:
 
     steps:
       - uses: enonic/release-tools/build-and-publish@master
-
+        with:
+          repoUser: ${{ secrets.ARTIFACTORY_PASSWORD }}
+          repoPassword: ${{ secrets.ARTIFACTORY_USERNAME }}
   release:
     runs-on: ubuntu-latest
 
@@ -17,3 +19,6 @@ jobs:
 
     steps:
       - uses: enonic/release-tools/release@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          zenhub-token: ${{ secrets.ZENHUB_TOKEN }}
