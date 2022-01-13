@@ -9,8 +9,8 @@ jobs:
     steps:
       - uses: enonic/release-tools/build-and-publish@master
         with:
-          repoUser: ${{ secrets.ARTIFACTORY_PASSWORD }}
-          repoPassword: ${{ secrets.ARTIFACTORY_USERNAME }}
+          repoUser: ${{ secrets.ARTIFACTORY_USERNAME }}
+          repoPassword: ${{ secrets.ARTIFACTORY_PASSWORD }}
   release:
     runs-on: ubuntu-latest
 
