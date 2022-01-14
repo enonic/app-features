@@ -21,4 +21,4 @@ Build all code skipping all tests:
 
 To publish the app to our repository:
 
-    ./gradlew clean build uploadArchives
+    ./gradlew publish
