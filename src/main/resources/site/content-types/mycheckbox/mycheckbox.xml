@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<content-type>
+  <display-name>MyCheckbox</display-name>
+  <super-type>base:structured</super-type>
+  <form>
+    <input name="mycheckbox" type="MyCheckbox">
+      <label>Left-aligned checkbox (default)</label>
+      <indexed>true</indexed>
+      <custom-text>Custom text</custom-text>
+      <occurrences minimum="0" maximum="1"/>
+      <help-text>That's the help text!</help-text>
+    </input>
+    <input name="mycheckbox2" type="MyCheckbox">
+      <label>Right-aligned checkbox</label>
+      <indexed>true</indexed>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <alignment>right</alignment>
+      </config>
+    </input>
+    <input name="mycheckbox3" type="MyCheckbox">
+      <label>Bottom-aligned checkbox</label>
+      <indexed>true</indexed>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <alignment>bottom</alignment>
+      </config>
+    </input>
+  </form>
+</content-type>
