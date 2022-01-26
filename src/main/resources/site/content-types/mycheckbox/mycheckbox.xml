@@ -3,14 +3,14 @@
   <display-name>MyCheckbox</display-name>
   <super-type>base:structured</super-type>
   <form>
-    <input name="mycheckbox" type="MyCheckbox">
+    <input name="mycheckbox" type="com.enonic.app.appcustominputtypes:MyCheckbox">
       <label>Left-aligned checkbox (default)</label>
       <indexed>true</indexed>
       <custom-text>Custom text</custom-text>
       <occurrences minimum="0" maximum="1"/>
       <help-text>That's the help text!</help-text>
     </input>
-    <input name="mycheckbox2" type="MyCheckbox">
+    <input name="mycheckbox2" type="com.enonic.app.appcustominputtypes:MyCheckbox">
       <label>Right-aligned checkbox</label>
       <indexed>true</indexed>
       <occurrences minimum="0" maximum="1"/>
@@ -18,7 +18,7 @@
         <alignment>right</alignment>
       </config>
     </input>
-    <input name="mycheckbox3" type="MyCheckbox">
+    <input name="mycheckbox3" type="com.enonic.app.appcustominputtypes:MyCheckbox">
       <label>Bottom-aligned checkbox</label>
       <indexed>true</indexed>
       <occurrences minimum="0" maximum="1"/>
