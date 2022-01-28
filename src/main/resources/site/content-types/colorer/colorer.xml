@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<content-type>
+  <display-name>Colorer</display-name>
+  <super-type>base:structured</super-type>
+  <form>
+    <input name="Colorer" type="com.enonic.app.appcustominputtypes:Colorer">
+      <label>Colorer</label>
+      <indexed>true</indexed>
+      <occurrences minimum="1" maximum="1"/>
+      <config>
+        <service>colorer</service>
+      </config>
+    </input>
+  </form>
+</content-type>
