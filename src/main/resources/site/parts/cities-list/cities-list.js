@@ -48,12 +48,14 @@ function handleGet(req) {
 
     var part = portal.getComponent();
     var title = part.config.title || '<please configure title>';
+    var bgcolor = part.config.bgcolor ? 'background-color:' + part.config.bgcolor : '';
 
     var params = {
         cities: cities.hits,
         currentCity: currentCityName,
         currentPage: currentPage,
-        title: title
+        title: title,
+        bgcolor: bgcolor
     };
     var body = thymeleaf.render(view, params);
 
