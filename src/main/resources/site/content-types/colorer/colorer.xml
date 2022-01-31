@@ -8,8 +8,17 @@
       <indexed>true</indexed>
       <occurrences minimum="1" maximum="1"/>
       <config>
-        <service>colorer</service>
+        <option value="#FF00FF"></option>
+        <option value="#F5F5F5"></option>
+        <option value="#87CEFA"></option>
+        <option value="#DAA520"></option>
+        <option value="#FF4500"></option>
       </config>
+    </input>
+    <input name="Colorer-clean" type="com.enonic.app.appcustominputtypes:Colorer">
+      <label>Colorer</label>
+      <indexed>true</indexed>
+      <occurrences minimum="1" maximum="1"/>
     </input>
   </form>
 </content-type>
