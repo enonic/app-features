@@ -36,7 +36,7 @@ dependencies {
     include 'com.enonic.lib:lib-mustache:2.0.0'
     include 'com.enonic.lib:lib-menu:3.0.0'
 
-    testCompile "org.mockito:mockito-core:4.3.1"
+    testCompile "org.mockito:mockito-core:4.4.0"
     testCompile 'junit:junit:4.13.2'
     testCompile "com.enonic.xp:testing:${xpVersion}"
 }
