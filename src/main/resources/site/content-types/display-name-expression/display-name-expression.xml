@@ -21,6 +21,6 @@
     </input>
   </form>
   <config>
-    <list-title-expression>${lastName}, ${firstName}</list-title-expression>
+    <list-title-expression>${data.lastName}, ${data.firstName}</list-title-expression>
   </config>
 </content-type>

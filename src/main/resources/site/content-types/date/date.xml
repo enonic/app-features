@@ -14,6 +14,7 @@
       <custom-text>Custom text</custom-text>
       <occurrences minimum="1" maximum="0"/>
       <help-text>..that's the question!</help-text>
+      <default>now</default>
     </input>
   </form>
 </content-type>

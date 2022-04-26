@@ -12,6 +12,7 @@
       <custom-text>Custom text</custom-text>
       <occurrences minimum="0" maximum="1"/>
       <help-text>..that's the question!</help-text>
+      <default>2022-03-01T15:30</default>
     </input>
     <input name="requiredDatetime" type="DateTime">
       <config>

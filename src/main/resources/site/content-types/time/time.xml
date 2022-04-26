@@ -16,6 +16,7 @@
       <custom-text>Custom text</custom-text>
       <occurrences minimum="1" maximum="0"/>
       <help-text>..that's the question!</help-text>
+      <default>15:30</default>
     </input>
   </form>
 </content-type>
