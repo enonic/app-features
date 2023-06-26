@@ -16,7 +16,7 @@ function handleGet(req) {
         reqContent: reqContent,
         mainRegion: reqContent.page.regions["main"],
         editable: editMode,
-        siteMenuItems: menuLib.getMenuTree(10)
+        siteMenuItems: menuLib.getMenuTree(10).menuItems
     };
     var body = thymeleaf.render(view, params);
 
