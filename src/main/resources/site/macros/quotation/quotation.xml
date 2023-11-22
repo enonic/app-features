@@ -3,12 +3,12 @@
   <description>Add quotation</description>
 
   <form>
-    <input name="text" type="TextLine">
-      <label>Text</label>
-      <occurrences minimum="1" maximum="1"/>
-    </input>
     <input name="name" type="TextLine">
       <label>Name</label>
+      <occurrences minimum="1" maximum="1"/>
+    </input>
+    <input name="body" type="HtmlArea">
+      <label>Body</label>
       <occurrences minimum="1" maximum="1"/>
     </input>
     <input name="image" type="ImageSelector">
