@@ -37,7 +37,7 @@ dependencies {
     include 'com.enonic.lib:lib-menu:4.2.1'
     include "com.enonic.lib:lib-text-encoding:2.1.1"
 
-    testImplementation "org.mockito:mockito-core:5.11.0"
+    testImplementation "org.mockito:mockito-core:5.12.0"
     testImplementation 'junit:junit:4.13.2'
     testImplementation "com.enonic.xp:testing:${xpVersion}"
 }
