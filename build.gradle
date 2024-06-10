@@ -32,7 +32,7 @@ dependencies {
     include "com.enonic.xp:lib-project:${xpVersion}"
     include "com.enonic.xp:lib-export:${xpVersion}"
     include "com.enonic.lib:lib-http-client:3.2.2"
-    include 'com.enonic.lib:lib-thymeleaf:2.1.0'
+    include 'com.enonic.lib:lib-thymeleaf:2.1.1'
     include 'com.enonic.lib:lib-mustache:2.1.1'
     include 'com.enonic.lib:lib-menu:4.2.1'
     include "com.enonic.lib:lib-text-encoding:2.1.1"
