@@ -48,3 +48,6 @@ repositories {
     mavenCentral()
     xp.enonicRepo('dev')
 }
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = sourceCompatibility
