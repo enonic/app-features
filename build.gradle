@@ -26,6 +26,7 @@ dependencies {
     include "com.enonic.xp:lib-repo:${xpVersion}"
     include "com.enonic.xp:lib-node:${xpVersion}"
     include "com.enonic.xp:lib-value:${xpVersion}"
+    include "com.enonic.xp:lib-scheduler:${xpVersion}"
     include "com.enonic.xp:lib-task:${xpVersion}"
     include "com.enonic.xp:lib-cluster:${xpVersion}"
     include "com.enonic.xp:lib-auditlog:${xpVersion}"
@@ -47,3 +48,6 @@ repositories {
     mavenCentral()
     xp.enonicRepo('dev')
 }
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = sourceCompatibility

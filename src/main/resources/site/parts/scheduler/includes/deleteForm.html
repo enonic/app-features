@@ -1,0 +1,21 @@
+<div data-th-fragment="deleteForm">
+    <div class="scheduler__delete-form">
+        <form id="deleteSchedulerForm" action="#" data-th-action="${postUrl}" method="post">
+            <div style="color:darkred;" data-th-if="${errorMsg != null}" data-th-text="${errorMsg}"></div>
+            <div style="color:darkgreen;" data-th-if="${msg != null}" data-th-text="${msg}"></div>
+            <table>
+                <tr>
+                    <td><label for="schedulerName">Name</label></td>
+                    <td><input id="schedulerName" name="schedulerName" type="text"
+                               style="width: 200px;" required="required"/>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <div>
+                    <button type="button" name="deleteSchedule">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
