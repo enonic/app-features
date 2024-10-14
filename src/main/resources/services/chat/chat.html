@@ -3,7 +3,7 @@
     <title>Chat - Customer Module</title>
     <link type="text/css" rel="stylesheet" data-th-href="${portal.assetUrl({'_path=css/chat.css'})}"/>
     <script type="text/javascript">
-        var socket = new WebSocket("ws://localhost:8080/site/com.enonic.cms.default/draft/features/_/service/com.enonic.app.features/chat", "text");
+        var socket = new WebSocket('ws://localhost:8080/site/features/master/features/_/service/com.enonic.app.features/chat', 'text');
 
         socket.onmessage = function (event) {
             var el = document.getElementById('chatbox');
