@@ -10,7 +10,7 @@
 
 <body data-portal-component-type="page" data-th-class="${editable}? 'edit'">
 
-<div data-th-include="com.enonic.app.features:/site/view/fragments/menu.html :: siteMenu" data-th-remove="tag">Footer</div>
+<div data-th-insert="~{com.enonic.app.features:/site/view/fragments/menu.html :: siteMenu}" data-th-remove="tag">Footer</div>
 
 <div id="mainRegion" data-portal-region="main">
 
