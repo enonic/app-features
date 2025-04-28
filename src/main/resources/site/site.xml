@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site xmlns="urn:enonic:xp:model:1.0">
-  <x-data name="menu-item"/>
   <x-data name="all-except-folders" allowContentTypes="^(?!base:folder$).*" optional="true"/>
   <x-data name="folders-only" allowContentTypes="base:folder" optional="true"/>
   <form>

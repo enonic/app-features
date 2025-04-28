@@ -8,7 +8,7 @@ app {
     name = 'com.enonic.app.features'
     displayName = 'Features App'
     vendorName = 'Enonic AS'
-    vendorUrl = 'http://enonic.com'
+    vendorUrl = 'https://enonic.com'
     systemVersion = "${xpVersion}"
 }
 
@@ -35,11 +35,8 @@ dependencies {
     include "com.enonic.lib:lib-http-client:3.2.2"
     include 'com.enonic.lib:lib-thymeleaf:2.1.1'
     include 'com.enonic.lib:lib-mustache:2.1.1'
-    include 'com.enonic.lib:lib-menu:4.2.1'
     include "com.enonic.lib:lib-text-encoding:2.1.1"
 
-    testImplementation "org.mockito:mockito-core:5.17.0"
-    testImplementation 'junit:junit:4.13.2'
     testImplementation "com.enonic.xp:testing:${xpVersion}"
 }
 
@@ -49,5 +46,8 @@ repositories {
     xp.enonicRepo('dev')
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = sourceCompatibility
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}

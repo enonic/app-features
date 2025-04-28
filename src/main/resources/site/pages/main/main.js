@@ -1,24 +1,24 @@
-var portal = require('/lib/xp/portal');
-var menuLib = require('/lib/menu');
-var thymeleaf = require('/lib/thymeleaf');
-var parentPath = './';
-var view = resolve(parentPath + 'main.page.html');
+const portal = require('/lib/xp/portal');
+const menuLib = require('/lib/menu');
+const thymeleaf = require('/lib/thymeleaf');
+const parentPath = './';
+const view = resolve(parentPath + 'main.page.html');
 
 function handleGet(req) {
 
-    var editMode = req.mode == 'edit';
+    const editMode = req.mode == 'edit';
 
-    var site = portal.getSite();
-    var reqContent = portal.getContent();
-    var params = {
+    const site = portal.getSite();
+    const reqContent = portal.getContent();
+
+    const params = {
         context: req,
-        site: site,
-        reqContent: reqContent,
-        mainRegion: reqContent.page.regions["main"],
+        site,
+        reqContent,
         editable: editMode,
-        siteMenuItems: menuLib.getMenuTree(10).menuItems
+        siteMenuItems: menuLib.getMenuTree()
     };
-    var body = thymeleaf.render(view, params);
+    const body = thymeleaf.render(view, params);
 
     return {
         contentType: 'text/html',
