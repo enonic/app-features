@@ -5,12 +5,12 @@
     TODO: Breadcrumbs
 </div>
 
-<div data-th-fragment="siteMenu">
+<div data-th-fragment="siteMenu" data-th-if="${siteMenuItems}">
     Menu:
     <nav>
         <ul>
             <li data-th-each="menuItem : ${siteMenuItems}">
-                <a href="#" data-th-href="${portal.pageUrl({'_path=' + menuItem.path})}" data-th-text="${menuItem.displayName}" data-th-class="${menuItem.path == path ? 'active' : ''}">Page title</a>
+                <a href="#" data-th-href="${portal.pageUrl({'_path=' + menuItem.path})}" data-th-text="${menuItem.title}" data-th-class="${menuItem.path == path ? 'active' : ''}">Page title</a>
             </li>
         </ul>
     </nav>
