@@ -277,15 +277,14 @@ exports.modify = function () {
     return result;
 };
 
-exports.setPermissions = function () {
+exports.applyPermissions = function () {
 
     //Documentation BEGIN
     var contentLib = require('/lib/xp/content');
 
     var result = contentLib.applyPermissions({
         key: '/features/js-libraries/mycontent',
-        inheritPermissions: false,
-        overwriteChildPermissions: true,
+        scope: 'TREE',
         permissions: [{
             principal: 'user:system:anonymous',
             allow: ['READ'],
@@ -294,13 +293,13 @@ exports.setPermissions = function () {
     });
 
     if (result) {
-        log.info('Content permissions updated.');
+        log.info('Content permissions applied.');
     } else {
         log.info('Content not found');
     }
     //Documentation END
 
-    log.info('SetPermissions result: ' + JSON.stringify(result, null, 4));
+    log.info('ApplyPermissions result: ' + JSON.stringify(result, null, 4));
 
     return result;
 };
