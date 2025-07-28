@@ -53,13 +53,6 @@ exports.create = function () {
                     long: 123
                 }
             }
-        },
-        x: {
-            "com-enonic-app-features": {
-                "menu-item": {
-                    "menuItem": true
-                }
-            }
         }
     });
 
@@ -289,7 +282,7 @@ exports.setPermissions = function () {
     //Documentation BEGIN
     var contentLib = require('/lib/xp/content');
 
-    var result = contentLib.setPermissions({
+    var result = contentLib.applyPermissions({
         key: '/features/js-libraries/mycontent',
         inheritPermissions: false,
         overwriteChildPermissions: true,
@@ -342,7 +335,6 @@ exports.publish = function () {
     });
     if (result) {
         log.info('Pushed ' + result.pushedContents.length + " content.");
-        log.info('Deleted ' + result.deletedContents.length + " content.");
         log.info('Content that failed operation: ' + result.failedContents.length);
     } else {
         log.info('Operation failed.');

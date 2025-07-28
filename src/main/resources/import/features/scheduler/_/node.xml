@@ -95,10 +95,6 @@
             <dateTime isNull="true" name="from"/>
             <dateTime isNull="true" name="to"/>
         </property-set>
-        <property-set name="workflow">
-            <string name="state">IN_PROGRESS</string>
-            <property-set name="checks"/>
-        </property-set>
         <property-set name="data"/>
         <property-set name="x">
             <property-set name="com-enonic-app-features">

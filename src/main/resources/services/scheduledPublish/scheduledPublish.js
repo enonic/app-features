@@ -119,13 +119,6 @@ function createContent(name) {
                 'textLine': 'textLineContent',
                 'long': 123
             }
-        },
-        x: {
-            "com-enonic-app-features": {
-                "menu-item": {
-                    "menuItem": true
-                }
-            }
         }
     });
 }
