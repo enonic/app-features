@@ -16,7 +16,7 @@ function createModel(req) {
     }, () => libs.portal.processHtml({value: macroBody}));
 
     return {
-        quotation: {
+        quote: {
             name: req.params.name,
             text: processedMacroBody,
         }
@@ -42,11 +42,11 @@ function getImageUrlInContext(imageId, repoId) {
 }
 
 exports.macro = function (req) {
-    const view = resolve('quotation.html');
+    const view = resolve('quote.html');
     const model = createModel(req);
 
-    if (model.quotation.image) {
-        model.quotation.image = getImageUrlInContext(model.quotation.image, req.request.repositoryId);
+    if (model.quote.image) {
+        model.quote.image = getImageUrlInContext(model.quote.image, req.request.repositoryId);
     }
 
     return {

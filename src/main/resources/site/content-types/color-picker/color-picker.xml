@@ -11,7 +11,7 @@
             </config>
         </input>
         <input name="my-color-picker-2" type="CustomSelector">
-            <label>Color picker</label>
+            <label>Color picker (gallery mode)</label>
             <occurrences minimum="1" maximum="5"/>
             <config>
                 <service>colorPicker</service>
