@@ -6,7 +6,8 @@ exports.get = function (req) {
 
     return {
         body: thymeleaf.render(resolve('./centered.html'), {
-            centerRegion: component.regions["center"]
+            centerRegion: component.regions["center"],
+            resourcesPath:portal.assetUrl({ path: '' }),
         })
     };
 

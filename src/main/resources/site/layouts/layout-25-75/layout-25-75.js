@@ -13,7 +13,7 @@ function handleGet(req) {
         path: content.path,
         name: content.name,
         editable: editMode,
-        resourcesPath: portal.assetUrl({}),
+        resourcesPath:portal.assetUrl({ path: '' }),
         component: component,
         leftRegion: component.regions["left"],
         rightRegion: component.regions["right"]
