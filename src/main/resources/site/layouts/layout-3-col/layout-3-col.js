@@ -13,7 +13,7 @@ exports.get = function (req) {
         path: content.path,
         name: content.name,
         editable: editMode,
-        resourcesPath: portal.assetUrl({}),
+        resourcesPath:portal.assetUrl({ path: '' }),
         component: component,
         leftRegion: component.regions["left"],
         centerRegion: component.regions["center"],
