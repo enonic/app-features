@@ -38,6 +38,9 @@ dependencies {
     include "com.enonic.lib:lib-text-encoding:2.1.1"
 
     testImplementation "com.enonic.xp:testing:${xpVersion}"
+    testImplementation(platform("org.junit:junit-bom:6.0.2"))
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 repositories {
@@ -49,5 +52,10 @@ repositories {
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+test {
+    useJUnitPlatform {
     }
 }
