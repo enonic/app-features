@@ -1,0 +1,30 @@
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+displayName: "Article"
+description: "This content type should be visible only under \"Articles\" folder"
+form:
+  - type: "TextLine"
+    name: "title"
+    label: "Title"
+    helpText: "Article title"
+    occurrences:
+      min: 1
+      max: 1
+  - type: "TextLine"
+    name: "preface"
+    label: "Preface"
+    helpText: "Preface of the article"
+    occurrences:
+      min: 0
+      max: 1
+  - type: "TextArea"
+    name: "body"
+    label: "Body"
+    helpText: "Body of the article"
+    occurrences:
+      min: 1
+      max: 1
+config:
+  displayNameExpression: "${title}"

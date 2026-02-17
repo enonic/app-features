@@ -1,0 +1,13 @@
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+displayName: "Custom Selector"
+form:
+  - type: "CustomSelector"
+    name: "my-custom-selector-1"
+    label: "Custom Selector (0-2)"
+    occurrences:
+      min: 0
+      max: 2
+    service: "customSelector"

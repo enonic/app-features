@@ -1,0 +1,27 @@
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+displayName: "Display Name Expression"
+form:
+  - type: "TextLine"
+    name: "firstName"
+    label: "First name"
+    occurrences:
+      min: 1
+      max: 1
+  - type: "TextLine"
+    name: "middleName"
+    label: "Middle name"
+    occurrences:
+      min: 0
+      max: 0
+  - type: "TextLine"
+    name: "lastName"
+    label: "Last name"
+    occurrences:
+      min: 1
+      max: 1
+config:
+  displayNameExpression: "${firstName} ${middleName} ${lastName}"
+  listTitleExpression: "${data.lastName}, ${data.firstName}"

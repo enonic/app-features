@@ -1,0 +1,7 @@
+displayName: "Layout for HTML Area"
+form: [ ]
+regions:
+  - "center"
+config:
+  - name: "allowOnContentType"
+    value: "${app}:htmlarea"

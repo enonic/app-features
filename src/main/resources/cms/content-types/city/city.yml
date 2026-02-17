@@ -1,0 +1,27 @@
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+displayName: "City"
+form:
+  - type: "GeoPoint"
+    name: "cityLocation"
+    label: "City location"
+    helpText: "Location of the city"
+    occurrences:
+      min: 1
+      max: 1
+  - type: "ImageSelector"
+    name: "cityImage"
+    label: "City image"
+    helpText: "Image from the city"
+    occurrences:
+      min: 0
+      max: 1
+  - type: "CheckBox"
+    name: "officeLocation"
+    label: "Enonic office location"
+    helpText: "If this checkbox is checked, this city contains an Enonic office"
+    occurrences:
+      min: 0
+      max: 1

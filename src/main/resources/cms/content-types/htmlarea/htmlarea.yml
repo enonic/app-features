@@ -1,0 +1,27 @@
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+displayName: "Html Area"
+form:
+  - type: "HtmlArea"
+    name: "htmlarea_text"
+    label: "HTML Area"
+    occurrences:
+      min: 0
+      max: 1
+  - type: "HtmlArea"
+    name: "htmlarea_text2"
+    label: "HTML Area with customized toolbar"
+    occurrences:
+      min: 0
+      max: 2
+    exclude: "*"
+    include: "JustifyLeft JustifyRight | Bold Italic"
+  - type: "HtmlArea"
+    name: "htmlarea_text3"
+    label: "HTML Area with limited allowed headings"
+    occurrences:
+      min: 0
+      max: 0
+    allowHeadings: "h2 h4 h6"

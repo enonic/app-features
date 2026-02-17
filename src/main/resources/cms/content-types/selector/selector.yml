@@ -1,0 +1,94 @@
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+displayName: "Selector"
+form:
+  - type: "ContentSelector"
+    name: "allowAllInSite"
+    label: "Allow all items from this site"
+    occurrences:
+      min: 0
+      max: 0
+  - type: "ContentSelector"
+    name: "allowAll"
+    label: "Allow all content items"
+    occurrences:
+      min: 0
+      max: 0
+    attributes:
+      relationshipType: "system:reference"
+    allowPath:
+      - "*"
+  - type: "ImageSelector"
+    name: "allowImagesInSite"
+    label: "Allow images from this site"
+    occurrences:
+      min: 0
+      max: 1
+    allowPath:
+      - "${site}/*"
+  - type: "ImageSelector"
+    name: "allowAllImages"
+    label: "Allow all images"
+    occurrences:
+      min: 0
+      max: 1
+  - type: "ContentSelector"
+    name: "allowChildren"
+    label: "Allow child content (./*)"
+    occurrences:
+      min: 0
+      max: 1
+    allowPath:
+      - "./*"
+  - type: "ContentSelector"
+    name: "allowArticle"
+    label: "Allow articles from this site"
+    occurrences:
+      min: 0
+      max: 0
+    attributes:
+      relationshipType: "system:reference"
+    allowContentType:
+      - "article"
+  - type: "ContentSelector"
+    name: "allowCurrentSite_input-types_date-and-time"
+    label: "Allow ${site}/input-types/date-and-time"
+    occurrences:
+      min: 0
+      max: 0
+    attributes:
+      relationshipType: "system:reference"
+    allowPath:
+      - "${site}/input-types/date-and-time/*"
+  - type: "ContentSelector"
+    name: "contentSelectorTree"
+    label: "Tree mode"
+    occurrences:
+      min: 0
+      max: 1
+    treeMode: true
+  - type: "ContentSelector"
+    name: "contentSelectorFlat-IconDisabled"
+    label: "Flat mode, disabled toggle icon"
+    occurrences:
+      min: 0
+      max: 1
+    treeMode: false
+    hideToggleIcon: true
+  - type: "ContentSelector"
+    name: "contentSelectorFlat-IconDisabled2"
+    label: "All content types starting with \"c\" (filtered with regex)"
+    occurrences:
+      min: 0
+      max: 1
+    allowContentType:
+      - "${app}:c*"
+  - type: "MediaSelector"
+    name: "myMediaSelector"
+    label: "Media selector"
+    occurrences:
+      min: 0
+      max: 1
+    treeMode: true

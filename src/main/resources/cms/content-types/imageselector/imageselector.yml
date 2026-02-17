@@ -1,0 +1,53 @@
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+displayName: "Image selector"
+form:
+  - type: "ImageSelector"
+    name: "imageselector_min0_max1"
+    label: "One not required"
+    occurrences:
+      min: 0
+      max: 1
+  - type: "ImageSelector"
+    name: "imageselector_min1_max1"
+    label: "One required"
+    occurrences:
+      min: 1
+      max: 1
+  - type: "ImageSelector"
+    name: "imageselector_min0_max0"
+    label: "Infinite"
+    occurrences:
+      min: 0
+      max: 0
+  - type: "ImageSelector"
+    name: "imageselector_min2_max4"
+    label: "Min 2, Max 4"
+    occurrences:
+      min: 2
+      max: 4
+  - type: "ImageSelector"
+    name: "imageSelectorTree"
+    label: "Tree mode"
+    occurrences:
+      min: 0
+      max: 1
+    treeMode: true
+  - type: "ImageSelector"
+    name: "imageSelectorFlat-IconDisabled"
+    label: "Flat mode, disable toggle icon"
+    occurrences:
+      min: 0
+      max: 1
+    treeMode: false
+    hideToggleIcon: true
+  - type: "ImageSelector"
+    name: "imageSelectorTree-IconDisabled"
+    label: "Tree mode, disable toggle icon"
+    occurrences:
+      min: 0
+      max: 1
+    treeMode: true
+    hideToggleIcon: true

@@ -1,0 +1,101 @@
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+displayName: "OptionSet"
+form:
+  - type: "OptionSet"
+    name: "radioOptionSet"
+    expanded: false
+    label: "Single selection"
+    helpText: "Single selection radio option set"
+    occurrences:
+      min: 1
+      max: 1
+    options:
+      - name: "option_1"
+        label: "Option 1"
+        helpText: "Help text for Option 1"
+        defaultOption: false
+        items:
+          - type: "TextLine"
+            name: "name"
+            label: "Name"
+            helpText: "Text input"
+            occurrences:
+              min: 1
+              max: 1
+          - type: "ItemSet"
+            name: "minimum3"
+            label: "Minimum 3"
+            occurrences:
+              min: 3
+              max: 0
+            items:
+              - type: "TextLine"
+                name: "label"
+                label: "Label"
+                occurrences:
+                  min: 0
+                  max: 1
+              - type: "TextLine"
+                name: "value"
+                label: "Value"
+                occurrences:
+                  min: 0
+                  max: 1
+      - name: "option_2"
+        label: "Option 2"
+        helpText: "Help text for Option 2"
+        defaultOption: false
+    selected:
+      min: 1
+      max: 1
+  - type: "OptionSet"
+    name: "checkOptionSet"
+    expanded: true
+    label: "Multi selection"
+    helpText: "Multi selection checkbox option set"
+    occurrences:
+      min: 1
+      max: 1
+    options:
+      - name: "option_1"
+        label: "Option 1"
+        helpText: "Help text for Option 1"
+        defaultOption: false
+      - name: "option_2"
+        label: "Option 2"
+        helpText: "Help text for Option 2"
+        defaultOption: true
+      - name: "option_3"
+        label: "Option 3"
+        helpText: "Help text for Option 3"
+        defaultOption: false
+        items:
+          - type: "ImageSelector"
+            name: "imageselector"
+            label: "Image selector"
+            occurrences:
+              min: 1
+              max: 1
+      - name: "option_4"
+        label: "Option 4"
+        helpText: "Help text for Option 4"
+        defaultOption: false
+        items:
+          - type: "Double"
+            name: "double"
+            label: "Double"
+            occurrences:
+              min: 1
+              max: 1
+          - type: "Long"
+            name: "long"
+            label: "Long"
+            occurrences:
+              min: 0
+              max: 1
+    selected:
+      min: 1
+      max: 3
