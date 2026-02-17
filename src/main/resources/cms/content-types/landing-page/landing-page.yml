@@ -1,0 +1,6 @@
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+displayName: "Landing page"
+form: [ ]

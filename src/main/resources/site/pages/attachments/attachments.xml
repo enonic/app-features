@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<page xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Attachment functions example</display-name>
-  <form/>
-  <regions>
-    <region name="main"/>
-  </regions>
-</page>

@@ -1,0 +1,10 @@
+displayName: "Create Content Example"
+form:
+  - type: "ContentSelector"
+    name: "targetFolder"
+    label: "Target Folder"
+    occurrences:
+      min: 1
+      max: 1
+    allowContentType:
+      - "base:folder"

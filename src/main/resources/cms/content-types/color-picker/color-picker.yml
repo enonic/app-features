@@ -1,0 +1,21 @@
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+displayName: "Color Picker"
+form:
+  - type: "CustomSelector"
+    name: "my-color-picker-1"
+    label: "Color picker"
+    occurrences:
+      min: 1
+      max: 5
+    service: "colorPicker"
+  - type: "CustomSelector"
+    name: "my-color-picker-2"
+    label: "Color picker (gallery mode)"
+    occurrences:
+      min: 1
+      max: 5
+    service: "colorPicker"
+    galleryMode: true

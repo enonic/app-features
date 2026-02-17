@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<part xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Html Area Example</display-name>
-  <form>
-  </form>
-  <config>
-    <allow-on-content-type>${app}:htmlarea</allow-on-content-type>
-  </config>
-</part>

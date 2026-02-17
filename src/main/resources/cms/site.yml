@@ -1,0 +1,20 @@
+processors:
+  - name: "bgcolor-filter"
+    order: 10
+  - name: "branch-filter"
+    order: 10
+  - name: "app-header-filter"
+    order: 10
+mappings:
+  - controller: "/cms/mappings/controller.js"
+    order: 50
+    invertPattern: false
+    pattern: "/controller"
+  - filter: "/cms/mappings/filter1.js"
+    order: 50
+    invertPattern: false
+    pattern: "/filter1"
+  - filter: "/cms/mappings/filter2.js"
+    order: 50
+    invertPattern: false
+    pattern: "/"

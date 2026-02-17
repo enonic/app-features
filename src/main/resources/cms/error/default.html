@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title data-th-text="${'Error '+ errorCode}">Error xxx</title>
+    <link href="../../assets/error/css/custom.css" data-th-href="${portal.assetUrl({'_path=error/css/custom.css'})}" rel="stylesheet"/>
+</head>
+<body>
+<br/>
+<img src="../../assets/error/img/nick-hanging-from-cloud.svg"
+     data-th-src="${portal.assetUrl({'_path=error/img/nick-hanging-from-cloud.svg'})}"/>
+<h1>Oops, something went wrong!</h1>
+<p>
+    But no worries, our minions are on it! Get a coffee and come back in 5 minutes, or go to the <a href="/"
+                                                                                                    data-th-href="${portal.pageUrl({'_path=/features'})}">frontpage</a>.
+</p>
+<pre data-th-text="${'( System got an error '+ errorCode+ '. )'}">( System got an error xxx. )</pre>
+</body>
+</html>

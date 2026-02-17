@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<task xmlns="urn:enonic:xp:model:1.0">
-  <description>My test task</description>
-  <form>
-  </form>
-</task>

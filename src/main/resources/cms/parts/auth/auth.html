@@ -1,0 +1,184 @@
+<div class="auth-part">
+    <h2>Auth Lib Demo</h2>
+
+    <form action="#" id="formid" data-th-action="${postUrl}" method="post">
+        <div data-th-if="${user}">
+            <fieldset class="auth-user-details">
+                <legend>User logged in</legend>
+                <ul>
+                    <li><label>Username:</label> <span data-th-text="${user.login}"></span></li>
+                    <li><label>Display name:</label> <span data-th-text="${user.displayName}"></span></li>
+                    <li><label>Key:</label> <span data-th-text="${user.key}"></span></li>
+                    <li><label>Email:</label> <span data-th-text="${user.email}"></span></li>
+                    <li><label>Modified time:</label> <span data-th-text="${user.modifiedTime}"></span></li>
+                    <li><label>Account:</label> <span data-th-text="${user.disabled} ? 'disabled' : 'enabled'"></span></li>
+                </ul>
+                <p>
+                    <button type="button" name="logout">Logout</button>
+                </p>
+            </fieldset>
+            <br/>
+        </div>
+
+        <div data-th-if="${transitiveMemberships}">
+            <fieldset class="auth-user-details">
+                <legend>Memberships</legend>
+                <ul>
+                    <li><label>Direct memberships:</label> <span data-th-text="${directMemberships}"></span></li>
+                    <li><label>Transitive memberships:</label> <span data-th-text="${transitiveMemberships}"></span></li>
+                </ul>
+            </fieldset>
+            <br/>
+        </div>
+
+        <div>
+            <fieldset class="auth-user-details">
+                <p>
+                    <label>ID Provider</label>
+                    <input name="idProvider" type="text" data-th-value="${idProvider}"/>
+                </p>
+
+                <p>
+                    <label>Username</label>
+                    <input name="user" type="text" value=""/>
+                </p>
+
+                <p>
+                    <label>Password</label>
+                    <input name="pwd" type="password" value=""/>
+                </p>
+                <span style="color:darkred;" data-th-if="${errorMsg != null}" data-th-text="${errorMsg}"></span>
+
+                <p>
+                    <button type="button" name="login">Login</button>
+                </p>
+            </fieldset>
+            <br/>
+        </div>
+
+        <div>
+            <fieldset class="auth-user-details">
+                <p>
+                    <label>Role</label>
+                    <input name="role" type="text" data-th-value="${role}"/>
+                    <span data-th-if="${hasRole == true}">Yes</span>
+                    <span data-th-if="${hasRole == false}">No</span>
+                </p>
+
+                <p>
+                    <button type="button" name="hasRole">Has Role?</button>
+                </p>
+            </fieldset>
+            <br/>
+        </div>
+
+        <div>
+            <fieldset class="auth-user-details">
+                <legend>Profile</legend>
+                <p>
+                    <label>User key</label>
+                    <input name="userKey" type="text" data-th-value="${user != null} ? ${user.key}"/>
+                </p>
+
+                <p>
+                    <label>Scope</label>
+                    <input name="scope" type="text" data-th-value="${scope}"/>
+                </p>
+
+                <p>
+                    <textarea form="formid" name="profile" data-th-text="${profile}" rows="10" cols="80"></textarea>
+                </p>
+
+                <p>
+                    <button type="button" name="getProfile">Get</button>
+                    <button type="button" name="modifyProfile">Modify</button>
+                </p>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset class="auth-user-details">
+                <legend>Find User</legend>
+                <p>
+                    <label>Start</label>
+                    <input name="start" type="text" data-th-value="${start}"/>
+                </p>
+
+                <p>
+                    <label>Count</label>
+                    <input name="count" type="text" data-th-value="${count}"/>
+                </p>
+
+                <p>
+                    <label>Query</label>
+                    <input name="query" type="text" data-th-value="${query}"/>
+                </p>
+
+                <p>
+                    <label>Sort</label>
+                    <input name="sort" type="text" data-th-value="${sort}"/>
+                </p>
+
+                <p>
+                    <label>Include profile</label>
+                    <input name="includeProfile" type="checkbox" data-th-checked="${includeProfile}"/>
+                </p>
+
+                <p>
+                    <button type="button" name="findUsers">Find</button>
+                </p>
+
+                <p>
+                    <label>Result:</label><br/>
+                    <textarea data-th-text="${findUsersResult}" rows="10" cols="80" readonly></textarea>
+                </p>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset id="auth-find-principal" class="auth-user-details">
+                <legend>Find Principals</legend>
+                <p>
+                    <label>Type</label>
+                    <input name="type" type="text" data-th-value="${type}"/>
+                </p>
+
+                <p>
+                    <label>ID Provider</label>
+                    <input name="idProvider" type="text" data-th-value="${idProvider}"/>
+                </p>
+
+                <p>
+                    <label>Start</label>
+                    <input name="start" type="text" data-th-value="${start}"/>
+                </p>
+
+                <p>
+                    <label>Count</label>
+                    <input name="count" type="text" data-th-value="${count}"/>
+                </p>
+
+                <p>
+                    <label>Name</label>
+                    <input name="name" type="text" data-th-value="${name}"/>
+                </p>
+
+                <p>
+                    <label>Search text</label>
+                    <input name="searchText" type="text" data-th-value="${searchText}"/>
+                </p>
+
+                <p>
+                    <button type="button" name="findPrincipals">Find</button>
+                </p>
+
+                <p>
+                    <label>Result:</label><br/>
+                    <textarea data-th-text="${findPrincipalsResult}" rows="10" cols="80" readonly></textarea>
+                </p>
+            </fieldset>
+        </div>
+    </form>
+
+</div>
+
