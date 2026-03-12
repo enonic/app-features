@@ -1,5 +1,5 @@
 var thymeleaf = require('/lib/thymeleaf');
-
+const portal = require('/lib/xp/portal');
 var view404 = resolve('404.html');
 var viewGeneric = resolve('default.html');
 
@@ -9,7 +9,11 @@ exports.handle404 = function (err) {
         return null;
     }
 
-    var params = {};
+    var params = {
+        cssUrl: portal.assetUrl({path: 'error/css/custom.css'}),
+        imgNotFoundUrl: portal.assetUrl({path: 'error/img/no-nick.svg'}),
+        siteRootUrl: portal.pageUrl({path: '/features'}),
+    };
     var body = thymeleaf.render(view404, params);
 
     return {
@@ -27,7 +31,10 @@ exports.handleError = function (err) {
     }
 
     var params = {
-        errorCode: err.status
+        errorCode: err.status,
+        cssUrl: portal.assetUrl({path: 'error/css/custom.css'}),
+        imgErrorUrl: portal.assetUrl({path: 'error/img/nick-hanging-from-cloud.svg'}),
+        siteRootUrl: portal.pageUrl({path: '/features'}),
     };
     var body = thymeleaf.render(viewGeneric, params);
 
