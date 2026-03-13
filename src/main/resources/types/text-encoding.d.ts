@@ -8,3 +8,5 @@ declare module '/lib/text-encoding' {
         encode(input: string): Uint8Array;
     }
 }
+
+export {};

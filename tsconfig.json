@@ -32,6 +32,10 @@
       "/lib/xp/task": ["node_modules/@enonic-types/lib-task"],
       "/lib/xp/value": ["node_modules/@enonic-types/lib-value"],
       "/lib/xp/websocket": ["node_modules/@enonic-types/lib-websocket"],
+      "/lib/thymeleaf": ["src/main/resources/types/thymeleaf.d.ts"],
+      "/lib/http-client": ["src/main/resources/types/http-client.d.ts"],
+      "/lib/mustache": ["src/main/resources/types/mustache.d.ts"],
+      "/lib/text-encoding": ["src/main/resources/types/text-encoding.d.ts"],
       "/lib/*": ["src/main/resources/lib/*"]
     }
   },
