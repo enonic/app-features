@@ -2,7 +2,7 @@ import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 const thymeleaf = require('/lib/thymeleaf') as any;
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     const attachmentName = req.params.name;
     const contentPath = req.params.contentPath;
     let attachments: any, attachment: any, attachmentStream: any;
@@ -44,4 +44,4 @@ export const get = function(req: any) {
     };
 };
 
-export { get as post };
+export { GET as POST };

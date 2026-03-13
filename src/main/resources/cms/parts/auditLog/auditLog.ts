@@ -92,7 +92,7 @@ function doExecute(params: any) {
     }
 }
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     return {
         contentType: 'text/html',
         body: libThymeleaf.render(partView, {
@@ -108,6 +108,6 @@ export const get = function(req: any) {
     };
 };
 
-export const post = function(req: any) {
+export const POST = function(req: any) {
     return doExecute(req.params);
 };

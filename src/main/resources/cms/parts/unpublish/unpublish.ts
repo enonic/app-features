@@ -2,7 +2,7 @@ import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 const thymeleaf = require('/lib/thymeleaf') as any;
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     const view = resolve('unpublish.html');
     const body = thymeleaf.render(view, {
         postUrl: portal.componentUrl({})
@@ -23,7 +23,7 @@ export const get = function(req: any) {
     };
 };
 
-export const post = function(req: any) {
+export const POST = function(req: any) {
     const keys = (req.params.keys || '').split(',');
 
     const unpublishParams = {

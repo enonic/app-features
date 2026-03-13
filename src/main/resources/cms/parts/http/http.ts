@@ -2,7 +2,7 @@ import * as portal from '/lib/xp/portal';
 const httpClient = require('/lib/http-client') as any;
 const thymeleaf = require('/lib/thymeleaf') as any;
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     const postUrl = portal.componentUrl({});
 
     const params = {
@@ -33,7 +33,7 @@ export const get = function(req: any) {
     };
 };
 
-export const post = function(req: any) {
+export const POST = function(req: any) {
     const p = req.params;
     const url = p.url;
     const method = p.method;

@@ -66,4 +66,4 @@ function handlePost(req: any) {
     };
 }
 
-export { handlePost as post };
+export { handlePost as POST };

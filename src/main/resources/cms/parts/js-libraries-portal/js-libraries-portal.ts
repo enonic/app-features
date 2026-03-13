@@ -42,4 +42,4 @@ function handleGet() {
     };
 }
 
-export { handleGet as get };
+export { handleGet as GET };

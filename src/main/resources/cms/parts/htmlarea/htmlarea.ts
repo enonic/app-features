@@ -1,7 +1,7 @@
 import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 
-export const get = function() {
+export const GET = function() {
     const content = portal.getContent() as any;
     const view = resolve('htmlarea.html');
 

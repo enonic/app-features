@@ -107,4 +107,4 @@ function deleteContent(content: any) {
     });
 }
 
-export { handleGet as get };
+export { handleGet as GET };

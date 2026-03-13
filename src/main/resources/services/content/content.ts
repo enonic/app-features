@@ -2,7 +2,7 @@ import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
 import * as stk from '/lib/stk/stk';
 
-export { handlePost as post };
+export { handlePost as POST };
 
 function handlePost(req: any) {
     const contentData = req.params;

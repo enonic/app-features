@@ -13,7 +13,7 @@ function renderView() {
     };
 }
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     if (!req.webSocket) {
         return renderView();
     }

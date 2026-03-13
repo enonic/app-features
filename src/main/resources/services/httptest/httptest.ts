@@ -9,10 +9,10 @@ function handleReq(req: any) {
     };
 }
 
-export { handleReq as get };
-export { handleReq as post };
-export { handleReq as put };
-export { handleReq as patch };
-export { handleReq as delete };
-export { handleReq as head };
-export { handleReq as options };
+export { handleReq as GET };
+export { handleReq as POST };
+export { handleReq as PUT };
+export { handleReq as PATCH };
+export { handleReq as DELETE };
+export { handleReq as HEAD };
+export { handleReq as OPTIONS };

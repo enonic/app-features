@@ -2,7 +2,7 @@ import * as portal from '/lib/xp/portal';
 import * as ioLib from '/lib/xp/io';
 const thymeleaf = require('/lib/thymeleaf') as any;
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     const postUrl = portal.componentUrl({});
 
     const sampleHtmlRes = ioLib.getResource('/site/parts/sanitize/example1.html');
@@ -40,7 +40,7 @@ export const get = function(req: any) {
     };
 };
 
-export const post = function(req: any) {
+export const POST = function(req: any) {
     const html = req.params.html;
 
     const cleanHtml = portal.sanitizeHtml(html);

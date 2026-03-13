@@ -2,7 +2,7 @@ import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 const thymeleaf = require('/lib/thymeleaf') as any;
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     const idsParam = req.params.ids;
     const ids = idsParam ? idsParam.split(',') : [];
 
@@ -26,7 +26,7 @@ export const get = function(req: any) {
     };
 };
 
-export const post = function(req: any) {
+export const POST = function(req: any) {
     const multipartForm = portal.getMultipartForm();
     log.info('Multipart %s', multipartForm);
     const contentIds = createMedia(multipartForm);

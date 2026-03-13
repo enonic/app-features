@@ -2,7 +2,7 @@ import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as contentSvc from '/lib/xp/content';
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     const component = portal.getComponent() as any;
     const targetFolder = component.config.targetFolder;
     let parentPath = '';
@@ -40,7 +40,7 @@ export const get = function(req: any) {
     };
 };
 
-export const post = function(req: any) {
+export const POST = function(req: any) {
     const name = req.params.name;
     const displayName = req.params.displayName;
     const parentPath = req.params.parent;

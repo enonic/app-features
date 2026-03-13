@@ -27,4 +27,4 @@ function callback() {
     return 'Hello from context';
 }
 
-export { handleGet as get };
+export { handleGet as GET };

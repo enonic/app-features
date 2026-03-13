@@ -4,7 +4,7 @@ const thymeleaf = require('/lib/thymeleaf') as any;
 
 const view = resolve('moveContent.html');
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     const postUrl = portal.componentUrl({});
 
     const params = {
@@ -25,7 +25,7 @@ export const get = function(req: any) {
     };
 };
 
-export const post = function(req: any) {
+export const POST = function(req: any) {
     const source = req.params.source;
     const target = req.params.target;
 

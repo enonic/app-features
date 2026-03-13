@@ -16,4 +16,4 @@ function handleGet(req: any) {
     };
 }
 
-export { handleGet as get };
+export { handleGet as GET };

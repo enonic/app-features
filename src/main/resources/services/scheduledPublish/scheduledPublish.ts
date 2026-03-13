@@ -135,4 +135,4 @@ function deleteAndPublishContent(name: any) {
     } as any);
 }
 
-export { handleGet as get };
+export { handleGet as GET };

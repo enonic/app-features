@@ -2,7 +2,7 @@ import * as portal from '/lib/xp/portal';
 import * as mail from '/lib/xp/mail';
 const thymeleaf = require('/lib/thymeleaf') as any;
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     const postUrl = portal.componentUrl({});
     const result = req.params.result;
 
@@ -26,7 +26,7 @@ export const get = function(req: any) {
     };
 };
 
-export const post = function(req: any) {
+export const POST = function(req: any) {
     const subject = req.params.subject;
     const from = req.params.from;
     const to = req.params.to;

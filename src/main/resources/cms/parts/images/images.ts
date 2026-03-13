@@ -37,7 +37,7 @@ const filterOptions = [
     {name: 'Colorize HSB', value: 'hsbcolorize(0xFFFFFFFF)'}
 ];
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     const images = getImages();
     for (let i = 0; i < images.length; i++) {
         const img = images[i];
@@ -67,7 +67,7 @@ export const get = function(req: any) {
     };
 };
 
-export const post = function(req: any) {
+export const POST = function(req: any) {
     const filter = req.params.filter;
     const scale = req.params.scale;
 

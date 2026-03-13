@@ -2,7 +2,7 @@ import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as auth from '/lib/xp/auth';
 
-export const get = function(req: any) {
+export const GET = function(req: any) {
     const user = auth.getUser();
     const postUrl = portal.componentUrl({});
     const directMemberships = getMemberships(user && (user as any).key);
@@ -37,7 +37,7 @@ export const get = function(req: any) {
     };
 };
 
-export const post = function(req: any) {
+export const POST = function(req: any) {
     const action = req.params.action;
     const userName = req.params.user || '';
     const pwd = req.params.pwd || '';
