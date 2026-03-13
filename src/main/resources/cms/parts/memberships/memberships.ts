@@ -32,15 +32,15 @@ export const GET = function(req: Request) {
 
 export const POST = function(req: Request) {
     const action = req.params.action as string;
-    const key = req.params.key as string || '';
-    const removeParam = req.params.remove as string || '';
+    const key = (req.params.key || '') as string;
+    const removeParam = (req.params.remove || '') as string;
     const removeKeys = removeParam.trim() ? removeParam.split(',') : [];
-    const addKey = req.params.add as string || '';
-    const username = req.params.username as string || '';
-    const displayname = req.params.displayname as string || '';
-    const email = req.params.email as string || '';
-    const idProvider = req.params.idProvider as string || '';
-    const searchText = req.params.searchText as string || '';
+    const addKey = (req.params.add || '') as string;
+    const username = (req.params.username || '') as string;
+    const displayname = (req.params.displayname || '') as string;
+    const email = (req.params.email || '') as string;
+    const idProvider = (req.params.idProvider || '') as string;
+    const searchText = (req.params.searchText || '') as string;
     let typeParam = '';
     if (req.params.user === 'true') {
         typeParam = 'user';

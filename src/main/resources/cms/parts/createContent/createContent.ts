@@ -55,8 +55,8 @@ export const POST = function(req: Request) {
     let dataStrResult = dataStr;
     let xDataStrResult = xDataStr;
     try {
-        const data = JSON.parse(dataStr as string);
-        const xdata = JSON.parse(xDataStr as string);
+        const data = JSON.parse(dataStr);
+        const xdata = JSON.parse(xDataStr);
 
         const createResult = contentSvc.create({
             name: name,
