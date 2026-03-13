@@ -59,3 +59,25 @@ test {
     useJUnitPlatform {
     }
 }
+
+// TypeScript type checking tasks
+task npmInstall(type: Exec) {
+    group = 'verification'
+    description = 'Install npm dependencies for TypeScript type checking'
+    commandLine 'npm', 'install'
+    inputs.file('package.json')
+    outputs.dir('node_modules')
+}
+
+task typecheck(type: Exec) {
+    group = 'verification'
+    description = 'Run TypeScript type checking'
+    dependsOn npmInstall
+    commandLine 'npm', 'run', 'typecheck'
+    inputs.files('tsconfig.json', 'package.json')
+    inputs.dir('src/main/resources')
+    outputs.upToDateWhen { true }
+}
+
+// Add typecheck to the check task
+check.dependsOn typecheck
