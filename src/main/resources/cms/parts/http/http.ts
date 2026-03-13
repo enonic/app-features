@@ -1,8 +1,9 @@
 import * as portal from '/lib/xp/portal';
 const httpClient = require('/lib/http-client') as any;
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
-export const GET = function(req: any) {
+export const GET = function(req: Request) {
     const postUrl = portal.componentUrl({});
 
     const params = {
@@ -33,7 +34,7 @@ export const GET = function(req: any) {
     };
 };
 
-export const POST = function(req: any) {
+export const POST = function(req: Request) {
     const p = req.params;
     const url = p.url;
     const method = p.method;
@@ -158,7 +159,7 @@ export const POST = function(req: any) {
     };
 };
 
-function getHeaders(req: any) {
+function getHeaders(req: Request) {
     const p = req.params;
     let headers: any = null;
     let i = 1;
@@ -175,7 +176,7 @@ function getHeaders(req: any) {
     return headers;
 }
 
-function getParams(req: any) {
+function getParams(req: Request) {
     const p = req.params;
     let params: any = null;
     let i = 1;

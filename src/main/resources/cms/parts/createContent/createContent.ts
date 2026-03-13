@@ -1,8 +1,9 @@
 import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as contentSvc from '/lib/xp/content';
+import type { Request } from '@enonic-types/core';
 
-export const GET = function(req: any) {
+export const GET = function(req: Request) {
     const component = portal.getComponent() as any;
     const targetFolder = component.config.targetFolder;
     let parentPath = '';
@@ -40,13 +41,13 @@ export const GET = function(req: any) {
     };
 };
 
-export const POST = function(req: any) {
-    const name = req.params.name;
-    const displayName = req.params.displayName;
-    const parentPath = req.params.parent;
-    const contentType = req.params.contentType || 'base:unstructured';
-    const dataStr = req.params.contentData || '{}';
-    const xDataStr = req.params.contentXData || '{}';
+export const POST = function(req: Request) {
+    const name = req.params.name as string;
+    const displayName = req.params.displayName as string;
+    const parentPath = req.params.parent as string;
+    const contentType = req.params.contentType as string || 'base:unstructured';
+    const dataStr = req.params.contentData as string || '{}';
+    const xDataStr = req.params.contentXData as string || '{}';
 
     let errorMsg: any;
     let msg: any;
@@ -54,8 +55,8 @@ export const POST = function(req: any) {
     let dataStrResult = dataStr;
     let xDataStrResult = xDataStr;
     try {
-        const data = JSON.parse(dataStr);
-        const xdata = JSON.parse(xDataStr);
+        const data = JSON.parse(dataStr as string);
+        const xdata = JSON.parse(xDataStr as string);
 
         const createResult = contentSvc.create({
             name: name,

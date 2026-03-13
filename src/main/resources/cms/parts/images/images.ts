@@ -1,6 +1,7 @@
 import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
 const scaleOptions = [
     {name: 'Scale Max', value: 'max(600)'},
@@ -37,7 +38,7 @@ const filterOptions = [
     {name: 'Colorize HSB', value: 'hsbcolorize(0xFFFFFFFF)'}
 ];
 
-export const GET = function(req: any) {
+export const GET = function(req: Request) {
     const images = getImages();
     for (let i = 0; i < images.length; i++) {
         const img = images[i];
@@ -67,16 +68,16 @@ export const GET = function(req: any) {
     };
 };
 
-export const POST = function(req: any) {
-    const filter = req.params.filter;
-    const scale = req.params.scale;
+export const POST = function(req: Request) {
+    const filter = req.params.filter as string;
+    const scale = req.params.scale as string;
 
     const images = getImages();
     for (let i = 0; i < images.length; i++) {
         const img = images[i];
         img.url = portal.imageUrl({
             id: img.id,
-            scale: scale,
+            scale: scale as any,
             filter: filter
         });
     }

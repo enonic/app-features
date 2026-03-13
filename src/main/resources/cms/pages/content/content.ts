@@ -2,11 +2,12 @@ import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as stk from '/lib/stk/stk';
+import type { Request } from '@enonic-types/core';
 
 const parentPath = './';
 const view = resolve(parentPath + 'content.page.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const site = portal.getSite();
     const content = portal.getContent() as any;
     const postUrl = stk.serviceUrl("content", {});
@@ -16,7 +17,7 @@ function handleGet(req: any) {
         stk.log("Loading content with Id " + req.params.contentId);
 
         const result = contentSvc.get({
-            key: req.params.contentId
+            key: req.params.contentId as string
         });
 
         stk.log(result);

@@ -1,10 +1,11 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('schedule-publish.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const defaultContent = createContent("Default content");
     const expiredContent = createContent("Expired content");
     const pendingContent = createContent("Pending content");

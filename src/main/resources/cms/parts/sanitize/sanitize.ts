@@ -1,8 +1,9 @@
 import * as portal from '/lib/xp/portal';
 import * as ioLib from '/lib/xp/io';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
-export const GET = function(req: any) {
+export const GET = function(req: Request) {
     const postUrl = portal.componentUrl({});
 
     const sampleHtmlRes = ioLib.getResource('/site/parts/sanitize/example1.html');
@@ -40,8 +41,8 @@ export const GET = function(req: any) {
     };
 };
 
-export const POST = function(req: any) {
-    const html = req.params.html;
+export const POST = function(req: Request) {
+    const html = req.params.html as string;
 
     const cleanHtml = portal.sanitizeHtml(html);
 

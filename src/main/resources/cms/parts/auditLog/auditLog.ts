@@ -2,6 +2,7 @@ import * as libPortal from '/lib/xp/portal';
 import * as libContent from '/lib/xp/content';
 const libThymeleaf = require('/lib/thymeleaf') as any;
 import * as auditLib from '/lib/xp/auditlog';
+import type { Request } from '@enonic-types/core';
 
 const partView = resolve('auditLog.html');
 const createView = resolve('./includes/createForm.html');
@@ -92,7 +93,7 @@ function doExecute(params: any) {
     }
 }
 
-export const GET = function(req: any) {
+export const GET = function(req: Request) {
     return {
         contentType: 'text/html',
         body: libThymeleaf.render(partView, {
@@ -108,6 +109,6 @@ export const GET = function(req: any) {
     };
 };
 
-export const POST = function(req: any) {
+export const POST = function(req: Request) {
     return doExecute(req.params);
 };

@@ -1,10 +1,11 @@
 import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as contentSvc from '/lib/xp/content';
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('cities-list.page.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     let currentCityName: any;
     let cities: any;
 

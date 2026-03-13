@@ -1,6 +1,7 @@
 import * as portal from '/lib/xp/portal';
+import type { Request } from '@enonic-types/core';
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const site = portal.getSite();
 
     return {

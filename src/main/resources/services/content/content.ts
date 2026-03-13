@@ -1,10 +1,11 @@
 import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
 import * as stk from '/lib/stk/stk';
+import type { Request } from '@enonic-types/core';
 
 export { handlePost as POST };
 
-function handlePost(req: any) {
+function handlePost(req: Request) {
     const contentData = req.params;
     let contentCreated = null;
     const contentItem = stk.content.get(contentData.content_ID) as any;

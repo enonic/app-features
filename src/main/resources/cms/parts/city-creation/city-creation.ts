@@ -2,11 +2,12 @@ import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as contentSvc from '/lib/xp/content';
 import * as serviceLib from '/lib/service';
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('city-creation.page.html');
 const service = serviceLib.service;
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const cityServiceUrl = service.serviceUrl('city');
     const content = portal.getContent() as any;
 

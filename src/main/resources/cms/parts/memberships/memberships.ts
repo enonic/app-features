@@ -1,8 +1,9 @@
 import * as portal from '/lib/xp/portal';
 import * as auth from '/lib/xp/auth';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
-export const GET = function(req: any) {
+export const GET = function(req: Request) {
     const user = auth.getUser();
     const postUrl = portal.componentUrl({});
 
@@ -29,17 +30,17 @@ export const GET = function(req: any) {
     };
 };
 
-export const POST = function(req: any) {
-    const action = req.params.action;
-    const key = req.params.key || '';
-    const removeParam = req.params.remove || '';
+export const POST = function(req: Request) {
+    const action = req.params.action as string;
+    const key = req.params.key as string || '';
+    const removeParam = req.params.remove as string || '';
     const removeKeys = removeParam.trim() ? removeParam.split(',') : [];
-    const addKey = req.params.add || '';
-    const username = req.params.username || '';
-    const displayname = req.params.displayname || '';
-    const email = req.params.email || '';
-    const idProvider = req.params.idProvider || '';
-    const searchText = req.params.searchText || '';
+    const addKey = req.params.add as string || '';
+    const username = req.params.username as string || '';
+    const displayname = req.params.displayname as string || '';
+    const email = req.params.email as string || '';
+    const idProvider = req.params.idProvider as string || '';
+    const searchText = req.params.searchText as string || '';
     let typeParam = '';
     if (req.params.user === 'true') {
         typeParam = 'user';
@@ -54,7 +55,7 @@ export const POST = function(req: any) {
     if (action === 'search') {
         if (key) {
             try {
-                principal = auth.getPrincipal(key);
+                principal = auth.getPrincipal(key as any);
             } catch (e) {
                 //
             }
@@ -74,31 +75,31 @@ export const POST = function(req: any) {
     }
     if (action === 'remove' && key && removeKeys.length) {
         try {
-            principal = auth.getPrincipal(key);
+            principal = auth.getPrincipal(key as any);
         } catch (e) {
         }
 
-        auth.removeMembers(key, removeKeys);
+        auth.removeMembers(key as any, removeKeys as any);
         infoMsg = 'Members removed';
     }
     if (action === 'add' && key && addKey) {
         try {
-            principal = auth.getPrincipal(key);
+            principal = auth.getPrincipal(key as any);
         } catch (e) {
         }
 
         log.info('%s %s', key, addKey);
-        auth.addMembers(key, [addKey]);
+        auth.addMembers(key as any, [addKey as any]);
         infoMsg = 'Member ' + addKey + ' added to ' + key;
     }
 
     if (principal) {
         type = principal.type;
         if (type !== 'user') {
-            members = auth.getMembers(key);
+            members = auth.getMembers(key as any);
             log.info('Members %s', members);
         }
-        memberships = auth.getMemberships(key);
+        memberships = auth.getMemberships(key as any);
         log.info('Memberships %s', memberships);
 
     } else if (!results) {

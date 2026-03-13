@@ -1,10 +1,11 @@
 import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
+import type { Request } from '@enonic-types/core';
 
-function handlePost(req: any) {
-    const parentPath = req.params.parentPath;
-    const cityName = req.params.cityName;
-    const cityLocation = req.params.cityLocation;
+function handlePost(req: Request) {
+    const parentPath = req.params.parentPath as string;
+    const cityName = req.params.cityName as string;
+    const cityLocation = req.params.cityLocation as string;
 
     if (cityName && cityLocation) {
         const city = getCity(cityName);

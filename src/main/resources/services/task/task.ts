@@ -1,7 +1,8 @@
 import * as portal from '/lib/xp/portal';
 import * as taskLib from '/lib/xp/task';
+import type { Request } from '@enonic-types/core';
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const steps = ['one', 'two', 'three'];
 
     const taskId = (taskLib as any).submit({

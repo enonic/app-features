@@ -1,6 +1,7 @@
 import * as portal from '/lib/xp/portal';
+import type { Request } from '@enonic-types/core';
 
-function handleReq(req: any) {
+function handleReq(req: Request) {
     log.info('REQUEST: %s', req);
 
     return {

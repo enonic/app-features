@@ -1,9 +1,10 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
-export const GET = function(req: any) {
-    const idsParam = req.params.ids;
+export const GET = function(req: Request) {
+    const idsParam = req.params.ids as string;
     const ids = idsParam ? idsParam.split(',') : [];
 
     const postUrl = portal.componentUrl({});
@@ -26,7 +27,7 @@ export const GET = function(req: any) {
     };
 };
 
-export const POST = function(req: any) {
+export const POST = function(req: Request) {
     const multipartForm = portal.getMultipartForm();
     log.info('Multipart %s', multipartForm);
     const contentIds = createMedia(multipartForm);

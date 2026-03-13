@@ -1,9 +1,10 @@
 import * as clusterLib from '/lib/xp/cluster';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('js-libraries-cluster.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const params = {
         isMaster: clusterLib.isMaster()
     };

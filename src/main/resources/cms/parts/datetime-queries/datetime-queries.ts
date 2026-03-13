@@ -1,10 +1,11 @@
 import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as contentSvc from '/lib/xp/content';
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('datetime-queries.page.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const d = new Date();
     const nowISO = d.toISOString();
     const now = nowISO.slice(0, -1);

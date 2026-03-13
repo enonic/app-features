@@ -2,10 +2,11 @@ import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as nodeJsLib from '/lib/jslibraries/node';
 import * as repoJsLib from '/lib/jslibraries/repo';
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('js-libraries-repo.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const createFeaturesRepoResult = JSON.stringify(repoJsLib.create('features-repo'), null, 4);
     const getFeaturesRepoResult = JSON.stringify(repoJsLib.get('features-repo'), null, 4);
     const getFeaturesRepoRootNodeResult = JSON.stringify(repoJsLib.getRootNode('features-repo'), null, 4);

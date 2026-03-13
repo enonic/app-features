@@ -1,6 +1,7 @@
+import type { Request } from '@enonic-types/core';
 import * as portal from '/lib/xp/portal';
 
-export const responseProcessor = function(req: any, res: any) {
+export const responseProcessor = function(req: Request, res: any) {
     const isHtml = (res.contentType.lastIndexOf('text/html', 0) === 0);
     if (isHtml) {
         addPageContribution(res, 'bodyEnd', '<input type="hidden" name="branch" value="' + req.branch + '"/>');

@@ -1,8 +1,9 @@
 import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as auth from '/lib/xp/auth';
+import type { Request } from '@enonic-types/core';
 
-export const GET = function(req: any) {
+export const GET = function(req: Request) {
     const user = auth.getUser();
     const postUrl = portal.componentUrl({});
     const directMemberships = getMemberships(user && (user as any).key);
@@ -37,14 +38,14 @@ export const GET = function(req: any) {
     };
 };
 
-export const POST = function(req: any) {
-    const action = req.params.action;
-    const userName = req.params.user || '';
-    const pwd = req.params.pwd || '';
-    const idProvider = req.params.idProvider || 'system';
-    const role = req.params.role || '';
-    const userKey = req.params.userKey || '';
-    const scope = req.params.scope || '';
+export const POST = function(req: Request) {
+    const action = req.params.action as string;
+    const userName = req.params.user as string || '';
+    const pwd = req.params.pwd as string || '';
+    const idProvider = req.params.idProvider as string || 'system';
+    const role = req.params.role as string || '';
+    const userKey = req.params.userKey as string || '';
+    const scope = req.params.scope as string || '';
     let hasRole: any, errorMsg: any, findUsersResult: any, findPrincipalsResult: any;
 
     let user: any = auth.getUser();
@@ -74,7 +75,7 @@ export const POST = function(req: any) {
         log.info('LOGIN %s', loginResult);
     } else if (action === 'modifyProfile') {
         profile = modifyProfile(userKey, scope == '' ? null : scope, function(c: any) {
-            const newProfile = JSON.parse(req.params.profile);
+            const newProfile = JSON.parse(req.params.profile as string);
             return newProfile;
         });
     } else if (action === 'findPrincipals') {

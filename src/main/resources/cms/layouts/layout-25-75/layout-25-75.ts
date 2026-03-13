@@ -1,7 +1,8 @@
 import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const editMode = req.mode == 'edit';
 
     const content = portal.getContent() as any;

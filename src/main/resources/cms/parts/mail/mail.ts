@@ -1,8 +1,9 @@
 import * as portal from '/lib/xp/portal';
 import * as mail from '/lib/xp/mail';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
-export const GET = function(req: any) {
+export const GET = function(req: Request) {
     const postUrl = portal.componentUrl({});
     const result = req.params.result;
 
@@ -26,7 +27,7 @@ export const GET = function(req: any) {
     };
 };
 
-export const POST = function(req: any) {
+export const POST = function(req: Request) {
     const subject = req.params.subject;
     const from = req.params.from;
     const to = req.params.to;

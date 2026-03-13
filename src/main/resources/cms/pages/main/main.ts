@@ -1,11 +1,12 @@
 import * as portal from '/lib/xp/portal';
 import * as menuLib from '/lib/menu';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
 const parentPath = './';
 const view = resolve(parentPath + 'main.page.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const editMode = req.mode == 'edit';
 
     const site = portal.getSite();

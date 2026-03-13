@@ -1,10 +1,11 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('reference-resolver.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const getSite = portal.getSite();
     const thisContent = portal.getContent() as any;
 

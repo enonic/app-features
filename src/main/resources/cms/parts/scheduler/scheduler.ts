@@ -1,6 +1,7 @@
 import * as libPortal from '/lib/xp/portal';
 import * as libScheduler from '/lib/xp/scheduler';
 const libThymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('scheduler.html');
 const tableView = resolve('includes/schedulesTable.html');
@@ -85,7 +86,7 @@ function deleteCronJobScheduler(name: any) {
     });
 }
 
-export const GET = function(req: any) {
+export const GET = function(req: Request) {
     return {
         contentType: 'text/html',
         body: libThymeleaf.render(view, {
@@ -101,6 +102,6 @@ export const GET = function(req: any) {
     };
 };
 
-export const POST = function(req: any) {
+export const POST = function(req: Request) {
     return doExecute(req.params);
 };

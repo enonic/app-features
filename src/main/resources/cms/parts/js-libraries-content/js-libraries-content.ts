@@ -1,10 +1,11 @@
 import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as contentJsLib from '/lib/jslibraries/content';
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('js-libraries-content.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const createResult = JSON.stringify(contentJsLib.create(), null, 4);
     const getResult = JSON.stringify(contentJsLib.get(), null, 4);
     const existsResult = JSON.stringify(contentJsLib.exists('/features/js-libraries/mycontent'), null, 4);

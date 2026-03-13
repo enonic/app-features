@@ -1,8 +1,9 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
-export const GET = function(req: any) {
+export const GET = function(req: Request) {
     const view = resolve('publish.html');
     const body = thymeleaf.render(view, {
         postUrl: portal.componentUrl({})
@@ -23,10 +24,10 @@ export const GET = function(req: any) {
     };
 };
 
-export const POST = function(req: any) {
+export const POST = function(req: Request) {
     const includeChildren = req.params.includeChildren == 'true';
     const includeDependencies = req.params.includeDependencies == 'true';
-    const keys = (req.params.keys || '').split(',');
+    const keys = (req.params.keys as string || '').split(',');
     const sourceBranch = req.params.sourceBranch;
     const targetBranch = req.params.targetBranch;
 

@@ -1,8 +1,9 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 import * as contextLib from '/lib/xp/context';
+import type { Request } from '@enonic-types/core';
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
 
     createContent('defaultcontent');
     publishContent('defaultcontent');

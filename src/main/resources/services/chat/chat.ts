@@ -1,5 +1,6 @@
 import * as websocket from '/lib/xp/websocket';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
 function renderView() {
     const view = resolve('./chat.html');
@@ -13,7 +14,7 @@ function renderView() {
     };
 }
 
-export const GET = function(req: any) {
+export const GET = function(req: Request) {
     if (!req.webSocket) {
         return renderView();
     }

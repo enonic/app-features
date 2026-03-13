@@ -1,9 +1,10 @@
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as contentSvc from '/lib/xp/content';
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('city-map.page.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     let cityName: any;
     let cityLocation: any;
 

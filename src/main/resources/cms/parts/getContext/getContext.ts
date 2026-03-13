@@ -1,9 +1,10 @@
 import * as contextLib from '/lib/xp/context';
 const thymeleaf = require('/lib/thymeleaf') as any;
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('getContext.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const context = contextLib.get();
 
     const contextString = JSON.stringify(context);

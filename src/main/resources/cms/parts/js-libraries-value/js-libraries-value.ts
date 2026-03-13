@@ -2,10 +2,11 @@ import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as valueLib from '/lib/xp/value';
 import * as ioLib from '/lib/xp/io';
+import type { Request } from '@enonic-types/core';
 
 const view = resolve('js-libraries-value.html');
 
-function handleGet(req: any) {
+function handleGet(req: Request) {
     const geoPointResult = valueLib.geoPoint(10, 12);
     const getPointStringResult = valueLib.geoPointString('10,12');
     const instantResult = valueLib.instant('2016-12-06T15:54:30Z');
