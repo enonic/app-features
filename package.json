@@ -1,0 +1,30 @@
+{
+  "name": "com.enonic.app.features",
+  "version": "8.0.0-SNAPSHOT",
+  "description": "Features App for Enonic XP",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@enonic-types/core": "8.0.0-A2",
+    "@enonic-types/lib-auth": "8.0.0-A2",
+    "@enonic-types/lib-content": "8.0.0-A2",
+    "@enonic-types/lib-context": "8.0.0-A2",
+    "@enonic-types/lib-portal": "8.0.0-A2",
+    "@enonic-types/lib-i18n": "8.0.0-A2",
+    "@enonic-types/lib-mail": "8.0.0-A2",
+    "@enonic-types/lib-websocket": "8.0.0-A2",
+    "@enonic-types/lib-io": "8.0.0-A2",
+    "@enonic-types/lib-repo": "8.0.0-A2",
+    "@enonic-types/lib-node": "8.0.0-A2",
+    "@enonic-types/lib-value": "8.0.0-A2",
+    "@enonic-types/lib-scheduler": "8.0.0-A2",
+    "@enonic-types/lib-task": "8.0.0-A2",
+    "@enonic-types/lib-cluster": "8.0.0-A2",
+    "@enonic-types/lib-auditlog": "8.0.0-A2",
+    "@enonic-types/lib-project": "8.0.0-A2",
+    "@enonic-types/lib-export": "8.0.0-A2",
+    "@enonic-types/global": "8.0.0-A2",
+    "typescript": "^5.7.3"
+  }
+}

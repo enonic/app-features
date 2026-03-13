@@ -16,3 +16,5 @@ npm-debug.log
 .tab
 .tmp
 generated-java
+node_modules/
+package-lock.json
