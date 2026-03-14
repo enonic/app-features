@@ -3,7 +3,8 @@
   "version": "8.0.0-SNAPSHOT",
   "description": "Features App for Enonic XP",
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "build": "tsc",
+    "check": "tsc --noEmit"
   },
   "devDependencies": {
     "@enonic-types/core": "8.0.0-A2",
