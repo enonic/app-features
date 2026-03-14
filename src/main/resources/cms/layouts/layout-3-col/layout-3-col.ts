@@ -1,12 +1,12 @@
 import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import type { LayoutComponent, Request } from '@enonic-types/core';
 
 export const GET = function(req: Request) {
     const editMode = req.mode == 'edit';
 
     const content = portal.getContent() as any;
-    const component = portal.getComponent() as any;
+    const component = portal.getComponent<LayoutComponent>();
 
     const view = resolve('layout-3-col.html');
     const body = thymeleaf.render(view, {

@@ -1,9 +1,9 @@
 import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import type { LayoutComponent, Request } from '@enonic-types/core';
 
 export const GET = function(req: Request) {
-    const component = portal.getComponent() as any;
+    const component = portal.getComponent<LayoutComponent>();
 
     return {
         body: thymeleaf.render(resolve('./centered.html'), {
