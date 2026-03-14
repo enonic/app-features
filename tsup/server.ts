@@ -73,7 +73,7 @@ export default function buildServerConfig(): Options {
       .includes(process.env.LOG_LEVEL_FROM_GRADLE || ''),
 
     shims: false,
-    splitting: true,
+    splitting: false,
     sourcemap: false,
     target: 'es5',
     tsconfig: `${DIR_SRC}/tsconfig.json`,
