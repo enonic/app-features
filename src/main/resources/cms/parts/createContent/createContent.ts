@@ -1,11 +1,11 @@
 import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as contentSvc from '/lib/xp/content';
-import type { Request } from '@enonic-types/core';
+import type { PartComponent, Request } from '@enonic-types/core';
 
 export const GET = function(req: Request) {
-    const component = portal.getComponent() as any;
-    const targetFolder = component.config.targetFolder;
+    const component = portal.getComponent<PartComponent>();
+    const targetFolder = component?.config.targetFolder as string | undefined;
     let parentPath = '';
     if (targetFolder) {
         const folder = contentSvc.get({

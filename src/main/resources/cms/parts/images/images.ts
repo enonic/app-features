@@ -1,7 +1,7 @@
 import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
 const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import type { PartComponent, Request } from '@enonic-types/core';
 
 const scaleOptions = [
     {name: 'Scale Max', value: 'max(600)'},
@@ -91,9 +91,9 @@ export const POST = function(req: Request) {
 };
 
 function getImages() {
-    const component = portal.getComponent() as any;
+    const component = portal.getComponent<PartComponent>();
 
-    const imageFolderId = component.config.imageFolder;
+    const imageFolderId = component?.config.imageFolder as string | undefined;
     const images: any[] = [];
     if (imageFolderId) {
         const result = contentSvc.getChildren({

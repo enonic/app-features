@@ -1,7 +1,7 @@
 import * as portal from '/lib/xp/portal';
 const thymeleaf = require('/lib/thymeleaf') as any;
 import * as contentSvc from '/lib/xp/content';
-import type { Request } from '@enonic-types/core';
+import type { PartComponent, Request } from '@enonic-types/core';
 
 const view = resolve('cities-list.page.html');
 
@@ -44,8 +44,8 @@ function handleGet(req: Request) {
         path: content._path
     });
 
-    const part = portal.getComponent() as any;
-    const title = part.config.title || '<please configure title>';
+    const part = portal.getComponent<PartComponent>();
+    const title = part?.config.title as string | undefined || '<please configure title>';
 
     const params = {
         cities: cities.hits,

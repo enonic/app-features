@@ -1,7 +1,7 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import type { PartComponent, Request } from '@enonic-types/core';
 
 export const GET = function(req: Request) {
     const idsParam = req.params.ids as string;
@@ -86,8 +86,8 @@ function createMedia(multipartForm: any) {
 
 function getDefaultFolderPath() {
     let uploadFolder: any;
-    const component = portal.getComponent() as any;
-    const uploadFolderId = component.config.targetFolder;
+    const component = portal.getComponent<PartComponent>();
+    const uploadFolderId = component?.config.targetFolder as string | undefined;
     if (uploadFolderId) {
         uploadFolder = contentLib.get({
             key: uploadFolderId
