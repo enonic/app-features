@@ -224,14 +224,14 @@ export function push() {
 
     repoLib.createBranch({
         repoId: testRepoId,
-        branchId: 'anotherBranch'
+        branchId: 'another-branch'
     });
 
     const repo = connect();
 
     return (repo as any).push({
         key: '/my-name',
-        target: 'anotherBranch'
+        target: 'another-branch'
     });
 }
 

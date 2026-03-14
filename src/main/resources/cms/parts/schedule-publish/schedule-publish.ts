@@ -11,18 +11,20 @@ function handleGet(req: Request) {
     const pendingContent = createContent("Pending content");
     const content = createContent("Content");
 
+    let now = Date.now();
+
     publishContent(defaultContent);
     publishContent(expiredContent, {
-        from: new Date().toISOString(),
-        to: new Date().toISOString()
+        from: new Date(now).toISOString(),
+        to: new Date(now + 1).toISOString()
     });
     publishContent(pendingContent, {
         from: '2018-01-01T13:37:00.000Z',
         to: '2019-01-01T13:37:00.000Z'
     });
     publishContent(content, {
-        from: new Date().toISOString(),
-        to: '2018-01-01T13:37:00.000Z'
+        from: new Date(now).toISOString(),
+        to: new Date(now + 365 * 24 * 60 * 60 * 1000).toISOString()
     });
 
     const getDefaultContentDraft = getContent(defaultContent, 'draft');
@@ -103,7 +105,7 @@ function publishContent(content: any, schedule?: any) {
 }
 
 function deleteContent(content: any) {
-    return contentLib.delete({
+    return contentLib.deleteContent({
         key: content._path
     });
 }
