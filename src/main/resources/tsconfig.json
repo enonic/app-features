@@ -1,0 +1,19 @@
+{
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "**/*.d.ts",
+    "assets/**/*.*"
+  ],
+  "compilerOptions": {
+    "paths": {
+      "/lib/xp/*": ["../../../node_modules/@enonic-types/lib-*"],
+      "/*": ["./*"]
+    },
+    "skipLibCheck": true,
+    "types": [
+      "@enonic-types/global"
+    ]
+  }
+}

@@ -2,9 +2,11 @@
   "name": "com.enonic.app.features",
   "version": "8.0.0-SNAPSHOT",
   "description": "Features App for Enonic XP",
+  "private": true,
   "scripts": {
-    "build": "tsc",
-    "check": "tsc --noEmit"
+    "build": "node tsup/build.js src/main/resources build/resources/main",
+    "check": "node tsup/check.js src/main/resources",
+    "check:types": "node tsup/check.js src/main/resources"
   },
   "devDependencies": {
     "@enonic-types/core": "8.0.0-A2",
@@ -26,6 +28,10 @@
     "@enonic-types/lib-project": "8.0.0-A2",
     "@enonic-types/lib-export": "8.0.0-A2",
     "@enonic-types/global": "8.0.0-A2",
-    "typescript": "^5.7.3"
+    "@swc/core": "^1.15.3",
+    "@types/node": "^24.10.1",
+    "glob": "^11.0.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
   }
 }
