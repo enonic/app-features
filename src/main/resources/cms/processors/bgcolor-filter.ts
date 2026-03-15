@@ -1,10 +1,10 @@
-import type { Request } from '@enonic-types/core';
+import type {Request} from '@enonic-types/core';
 import * as portal from '/lib/xp/portal';
 
-export const responseProcessor = function(req: Request, res: any) {
+export const responseProcessor = function (req: Request, res: any) {
     const isHtml = (res.contentType.lastIndexOf('text/html', 0) === 0);
     if (isHtml && res.body) {
-        const siteConfig = portal.getSiteConfig() as any;
+        const siteConfig = portal.getSiteConfig();
         let bgColor = "#FFFFFF";
         switch (siteConfig.backgroundColor) {
         case 'grey':

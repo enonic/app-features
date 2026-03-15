@@ -3,13 +3,28 @@
     "**/*.ts"
   ],
   "exclude": [
-    "**/*.d.ts",
     "assets/**/*.*"
   ],
   "compilerOptions": {
     "paths": {
-      "/lib/xp/*": ["../../../node_modules/@enonic-types/lib-*"],
-      "/*": ["./*"]
+      "/lib/xp/*": [
+        "../../../node_modules/@enonic-types/lib-*"
+      ],
+      "/lib/thymeleaf": [
+        "./types/thymeleaf"
+      ],
+      "/lib/http-client": [
+        "./types/http-client"
+      ],
+      "/lib/text-encoding": [
+        "./types/text-encoding"
+      ],
+      "/lib/mustache": [
+        "./types/mustache"
+      ],
+      "/*": [
+        "./*"
+      ]
     },
     "skipLibCheck": true,
     "types": [

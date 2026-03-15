@@ -1,11 +1,11 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {Request} from '@enonic-types/core';
 
 const view = resolve('moveContent.html');
 
-export const GET = function(req: Request) {
+export const GET = function (req: Request) {
     const postUrl = portal.componentUrl({});
 
     const params = {
@@ -26,7 +26,7 @@ export const GET = function(req: Request) {
     };
 };
 
-export const POST = function(req: Request) {
+export const POST = function (req: Request) {
     const source = req.params.source as string;
     const target = req.params.target as string;
 
@@ -36,7 +36,7 @@ export const POST = function(req: Request) {
         const moveResult = contentLib.move({
             source: source,
             target: target
-        }) as any;
+        });
 
         msg = 'Content moved to: ' + moveResult._path;
     } catch (e: any) {

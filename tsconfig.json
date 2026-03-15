@@ -3,7 +3,6 @@
     "**/*.ts"
   ],
   "exclude": [
-    "**/*.d.ts",
     "src/**/*.*"
   ],
   "compilerOptions": {

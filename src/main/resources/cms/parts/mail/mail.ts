@@ -1,15 +1,15 @@
 import * as portal from '/lib/xp/portal';
 import * as mail from '/lib/xp/mail';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {Request} from '@enonic-types/core';
 
-export const GET = function(req: Request) {
+export const GET = function (req: Request) {
     const postUrl = portal.componentUrl({});
     const result = req.params.result;
 
     const params = {
         postUrl: postUrl,
-        pageRedirect: (portal.getContent() as any)._path,
+        pageRedirect: portal.getContent()._path,
         result: result
     };
 
@@ -27,14 +27,14 @@ export const GET = function(req: Request) {
     };
 };
 
-export const POST = function(req: Request) {
-    const subject = req.params.subject;
-    const from = req.params.from;
+export const POST = function (req: Request) {
+    const subject = requireSingleString(req.params, 'subject');
+    const from = requireSingleString(req.params, 'from');
     const to = req.params.to;
     const cc = req.params.cc;
     const bcc = req.params.bcc;
-    const replyTo = req.params.replyTo;
-    const body = req.params.body;
+    const replyTo = requireSingleString(req.params, 'replyTo');
+    const body = requireSingleString(req.params, 'body');
     const pageRedirect = req.params.pageRedirect;
 
     const sendResult = mail.send({
@@ -46,14 +46,14 @@ export const POST = function(req: Request) {
         replyTo: replyTo,
         body: body,
         attachments: getAttachments()
-    } as any);
+    });
 
     const redirectUrl = portal.pageUrl({
-        path: pageRedirect,
+        path: pageRedirect as string,
         params: {
             result: sendResult
         }
-    } as any);
+    });
 
     return {
         redirect: redirectUrl
@@ -61,22 +61,35 @@ export const POST = function(req: Request) {
 };
 
 function getAttachments() {
-    const file1 = portal.getMultipartItem('file1') as any;
-    const file2 = portal.getMultipartItem('file2') as any;
+    const file1 = portal.getMultipartItem('file1');
+    const file2 = portal.getMultipartItem('file2');
     const attachments: any[] = [];
     if (file1 && file1.size > 0) {
         attachments.push({
             fileName: file1.fileName,
-            mimeType: file1.mimeType,
+            mimeType: file1.contentType,
             data: portal.getMultipartStream('file1')
         });
     }
     if (file2 && file2.size > 0) {
         attachments.push({
             fileName: file2.fileName,
-            mimeType: file2.mimeType,
+            mimeType: file2.contentType,
             data: portal.getMultipartStream('file2')
         });
     }
     return attachments;
+}
+
+function requireSingleString<
+    T extends Record<string, string | string[] | undefined>,
+    K extends keyof T
+>(obj: T, key: K): string {
+    const value = obj[key];
+
+    if (typeof value === "string") {
+        return value;
+    }
+
+    throw new Error(`${String(key)} must be a single string`);
 }

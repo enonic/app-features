@@ -1,7 +1,6 @@
-import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 import * as contextLib from '/lib/xp/context';
-import type { Request } from '@enonic-types/core';
+import type {Request} from '@enonic-types/core';
 
 function handleGet(req: Request) {
 
@@ -19,14 +18,13 @@ function handleGet(req: Request) {
 
     createContent('onlinecontent');
     publishContent('onlinecontent', '2016-01-01T00:00:00Z', '2018-01-01T00:00:00Z');
-    contentLib.modify({
+    contentLib.update({
         key: '/onlinecontent',
-        branch: 'master',
-        editor: function(c: any) {
+        editor: function (c: any) {
             c.publish.to = '2018-02-01T00:00:00Z';
             return c;
         }
-    } as any);
+    });
 
     createContent('expiredcontent');
     publishContent('expiredcontent', '2016-01-01T00:00:00Z', '2016-12-01T00:00:00Z');
@@ -38,17 +36,17 @@ function handleGet(req: Request) {
         start: 0,
         count: -1,
         query: "displayName = 'My Content'"
-    } as any);
+    });
     const queryIncludeScheduledResult = contextLib.run({
         attributes: {
             'includeScheduledPublished': true
         }
-    } as any, function() {
+    }, function () {
         return contentLib.query({
             start: 0,
             count: -1,
             query: "displayName = 'My Content'"
-        } as any);
+        });
     });
 
     createContent('incorrectTimesContent');
@@ -82,7 +80,6 @@ function createContent(name: any) {
         displayName: 'My Content',
         requireValid: true,
         contentType: app.name + ':all-input-types',
-        branch: 'draft',
         language: 'no',
         data: {
             myCheckbox: true,
@@ -109,31 +106,26 @@ function createContent(name: any) {
                 'long': 123
             }
         }
-    } as any);
+    });
 }
 
 function publishContent(name: any, from?: any, to?: any) {
     contentLib.publish({
         keys: ['/' + name],
-        sourceBranch: 'draft',
-        targetBranch: 'master',
         schedule: from ? {
             from: from,
             to: to ? to : undefined
         } : undefined
-    } as any);
+    });
 }
 
 function deleteAndPublishContent(name: any) {
     contentLib.delete({
         key: '/' + name,
-        branch: 'draft'
-    } as any);
+    });
     contentLib.publish({
-        keys: ['/' + name],
-        sourceBranch: 'draft',
-        targetBranch: 'master'
-    } as any);
+        keys: ['/' + name]
+    });
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

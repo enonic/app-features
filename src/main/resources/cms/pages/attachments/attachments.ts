@@ -1,9 +1,9 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {Request} from '@enonic-types/core';
 
-export const GET = function(req: Request) {
+export const GET = function (req: Request) {
     const attachmentName = req.params.name as string;
     const contentPath = req.params.contentPath as string;
     let attachments: any, attachment: any, attachmentStream: any;
@@ -45,4 +45,4 @@ export const GET = function(req: Request) {
     };
 };
 
-export { GET as POST };
+export {GET as POST};

@@ -1,7 +1,6 @@
-import * as portal from '/lib/xp/portal';
-const thymeleaf = require('/lib/thymeleaf') as any;
+import * as thymeleaf from '/lib/thymeleaf';
 import * as i18nJsLib from '/lib/jslibraries/i18n';
-import type { Request } from '@enonic-types/core';
+import type {Request} from '@enonic-types/core';
 
 const view = resolve('js-libraries-i18n.html');
 
@@ -16,4 +15,4 @@ function handleGet(req: Request) {
     };
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

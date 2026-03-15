@@ -2,7 +2,7 @@ import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
 
 export const content = {
-    get: function(key?: any): any {
+    get: function (key?: any): any {
         let result: any;
         if (typeof key == 'undefined') {
             result = portal.getContent();
@@ -14,11 +14,11 @@ export const content = {
         return result;
     },
 
-    exists: function(path: any): boolean {
+    exists: function (path: any): boolean {
         return content.get(path) ? true : false;
     },
 
-    getProperty: function(key: any, property: any): any {
+    getProperty: function (key: any, property: any): any {
         if (!key || !property) {
             return null;
         }
@@ -26,10 +26,10 @@ export const content = {
         return result ? result[property] : null;
     },
 
-    getPath: function(contentKey: any, noDefault?: any): any {
+    getPath: function (contentKey: any, noDefault?: any): any {
         let defaultContent: any = '';
         if (noDefault) {
-            defaultContent = { _path: null };
+            defaultContent = {_path: null};
         } else {
             defaultContent = portal.getContent();
         }
@@ -41,15 +41,15 @@ export const content = {
                 contentPath = c._path;
             }
         }
-        return contentPath ? contentPath : (defaultContent as any)._path;
+        return contentPath ? contentPath : defaultContent._path;
     },
 
-    getParentPath: function(path: any): string {
+    getParentPath: function (path: any): string {
         const pathArray = path.split('/');
         return pathArray.slice(0, pathArray.length - 1).join('/');
     },
 
-    getParent: function(key: any): any {
+    getParent: function (key: any): any {
         const c = content.get(key);
         const parentPath = content.getParentPath(c._path);
         return parentPath.length < 1 ? null : content.get(parentPath);

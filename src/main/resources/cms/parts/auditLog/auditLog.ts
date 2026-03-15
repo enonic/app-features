@@ -1,8 +1,7 @@
 import * as libPortal from '/lib/xp/portal';
-import * as libContent from '/lib/xp/content';
-const libThymeleaf = require('/lib/thymeleaf') as any;
+import * as libThymeleaf from '/lib/thymeleaf';
 import * as auditLib from '/lib/xp/auditlog';
-import type { Request } from '@enonic-types/core';
+import type {Request} from '@enonic-types/core';
 
 const partView = resolve('auditLog.html');
 const createView = resolve('./includes/createForm.html');
@@ -18,7 +17,7 @@ function doLog(params: any) {
             user: params.user || null,
             objects: params.objects ? params.objects.split(',', -1) : [],
             data: JSON.parse(params.data || '{}')
-        } as any) as any;
+        });
         msg = 'Audit Log was created : ' + response._id;
     } catch (e: any) {
         errorMsg = 'Error: ' + e.message;
@@ -93,11 +92,11 @@ function doExecute(params: any) {
     }
 }
 
-export const GET = function(req: Request) {
+export const GET = function (req: Request) {
     return {
         contentType: 'text/html',
         body: libThymeleaf.render(partView, {
-            auditLogs: auditLib.find({} as any).hits,
+            auditLogs: auditLib.find({}).hits,
             postUrl: libPortal.componentUrl({})
         }),
         pageContributions: {
@@ -109,6 +108,6 @@ export const GET = function(req: Request) {
     };
 };
 
-export const POST = function(req: Request) {
+export const POST = function (req: Request) {
     return doExecute(req.params);
 };

@@ -3,21 +3,21 @@ import * as repoLib from '/lib/xp/repo';
 
 const testRepoId = "features-node-test-repo";
 
-const initialize = function() {
+const initialize = function () {
     cleanUp();
     repoLib.create({
         id: testRepoId
     });
 };
 
-const connect = function() {
+const connect = function () {
     return nodeLib.connect({
         repoId: testRepoId,
         branch: 'master'
     });
 };
 
-const cleanUp = function() {
+const cleanUp = function () {
     const repo = repoLib.get(testRepoId);
 
     if (repo) {
@@ -41,10 +41,10 @@ function createNode(name: any, params?: any) {
         },
         _indexConfig: {
             default: "minimal",
-            configs: {
+            configs: [{
                 path: "displayName",
                 config: "fulltext"
-            }
+            }]
         },
         _permissions: [
             {
@@ -68,7 +68,7 @@ function createNode(name: any, params?: any) {
                 "deny": []
             }
         ]
-    } as any);
+    });
 
     return result;
 }
@@ -76,21 +76,19 @@ function createNode(name: any, params?: any) {
 function modifyNode(key: any) {
     const repo = connect();
 
-    const result = (repo as any).modify({
+    return repo.update({
         key: key,
-        editor: function(node: any) {
+        editor: function (node: any) {
             node.someData.cars.push('peugeot');
             return node;
         }
     });
-
-    return result;
 }
 
 function commitNode(key: any) {
     const repo = connect();
 
-    const result = (repo as any).commit({
+    const result = repo.commit({
         keys: key,
         message: 'Commit message'
     });
@@ -138,7 +136,7 @@ export function getNodeByKey() {
 export function exists() {
     initialize();
     createNode('my-name');
-    const node = (connect() as any).exists('/my-name');
+    const node = connect().exists('/my-name');
     cleanUp();
 
     return node;
@@ -146,7 +144,7 @@ export function exists() {
 
 export function existsMissing() {
     initialize();
-    const node = (connect() as any).exists('/my-name');
+    const node = connect().exists('/my-name');
     cleanUp();
 
     return node;
@@ -161,7 +159,7 @@ export function getNodesByKeys() {
     initialize();
     createNode('node1');
     createNode('node2');
-    return (connect() as any).get('/node1', '/node2');
+    return connect().get('/node1', '/node2');
 }
 
 export function rename() {
@@ -203,18 +201,17 @@ export function deleteNodes() {
     createNode('my-name');
     createNode('my-name2');
     const repo = connect();
-    return (repo as any).delete('/my-name', '/my-name2', 'missing');
+    return repo.delete('/my-name', '/my-name2', 'missing');
 }
-
-export { deleteNodes as delete };
 
 export function diff() {
     initialize();
     createNode('my-name');
     const repo = connect();
-    return (repo as any).diff({
+    return repo.diff({
         key: '/my-name',
-        target: 'draft'
+        target: 'draft',
+        includeChildren: true
     });
 }
 
@@ -229,7 +226,7 @@ export function push() {
 
     const repo = connect();
 
-    return (repo as any).push({
+    return repo.push({
         key: '/my-name',
         target: 'another-branch'
     });
@@ -243,15 +240,129 @@ export function findChildren() {
     repo.create({
         _name: "child1",
         _parentPath: "/my-name"
-    } as any);
+    });
     repo.create({
         _name: "child2",
         _parentPath: "/my-name"
-    } as any);
+    });
 
-    (repo as any).refresh();
+    repo.refresh();
 
-    return (repo as any).findChildren({
+    return repo.findChildren({
         parentKey: "/my-name"
+    });
+}
+
+export function sort() {
+    initialize();
+    createNode('my-name');
+
+    const repo = connect();
+    repo.create({
+        _name: "child1",
+        _parentPath: "/my-name"
+    });
+    repo.create({
+        _name: "child2",
+        _parentPath: "/my-name"
+    });
+
+    repo.refresh();
+
+    return repo.sort({
+        key: "/my-name",
+        childOrder: "_name DESC"
+    });
+}
+
+export function query() {
+    initialize();
+    createNode('my-name');
+
+    const repo = connect();
+    repo.refresh();
+
+    return repo.query({
+        start: 0,
+        count: 10,
+        query: "displayName = 'This is brand new node'"
+    });
+}
+
+export function suggestions() {
+    initialize();
+    createNode('my-name');
+
+    const repo = connect();
+    repo.refresh();
+
+    return repo.query({
+        start: 0,
+        count: 0,
+        query: '',
+        suggestions: {
+            mySuggestion: {
+                text: 'this is brand',
+                term: {
+                    field: 'displayName',
+                    sort: 'frequency',
+                    suggestMode: 'always'
+                }
+            }
+        }
+    } as any);
+}
+
+export function highlight() {
+    initialize();
+    createNode('my-name');
+
+    const repo = connect();
+    repo.refresh();
+
+    return repo.query({
+        start: 0,
+        count: 10,
+        query: "fulltext('displayName', 'brand')",
+        highlight: {
+            properties: {
+                displayName: {}
+            }
+        }
+    });
+}
+
+export function findVersions() {
+    initialize();
+    const node = createNode('my-name');
+    modifyNode(node._id);
+
+    const repo = connect();
+
+    return repo.getVersions({
+        key: '/my-name'
+    });
+}
+
+export function getActiveVersion() {
+    initialize();
+    createNode('my-name');
+
+    const repo = connect();
+
+    return repo.getActiveVersion({
+        key: '/my-name'
+    });
+}
+
+export function getCommit() {
+    initialize();
+    createNode('my-name');
+    const c = commitNode('my-name');
+
+    const repo = connect();
+
+    return repo.getCommit({
+        id: c.id
     });
 }

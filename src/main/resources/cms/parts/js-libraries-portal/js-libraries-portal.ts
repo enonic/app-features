@@ -1,5 +1,5 @@
 import * as portal from '/lib/xp/portal';
-const thymeleaf = require('/lib/thymeleaf') as any;
+import * as thymeleaf from '/lib/thymeleaf';
 import * as portalJsLib from '/lib/jslibraries/portal';
 
 const view = resolve('js-libraries-portal.html');
@@ -8,27 +8,15 @@ function handleGet() {
     const pageUrlResult = portalJsLib.pageUrl();
 
     const params = {
-        assetUrlResultDefault: portalJsLib.assetUrl(),
-        assetUrlResultContent: portalJsLib.assetUrl('relative'),
-        assetUrlResultRoot: portalJsLib.assetUrl('vhost'),
+        assetUrlResult: portalJsLib.assetUrl(),
         attachmentUrlResult: portalJsLib.attachmentUrl(),
         componentUrlResult: portalJsLib.componentUrl(),
-        imageUrlResultDefault: portalJsLib.imageUrl(),
-        imageUrlResultContent: portalJsLib.imageUrl('relative'),
-        imageUrlResultRoot: portalJsLib.imageUrl('vhost'),
+        imageUrlResult: portalJsLib.imageUrl(),
         pageUrlResult: pageUrlResult,
-        serviceUrlResultDefault: portalJsLib.serviceUrl(),
-        serviceUrlResultContent: portalJsLib.serviceUrl('relative'),
-        serviceUrlResultRoot: portalJsLib.serviceUrl('vhost'),
-        idProviderUrlResultDefault: portal.idProviderUrl(),
-        idProviderUrlResultContent: portal.idProviderUrl({contextPath: 'relative'} as any),
-        idProviderUrlResultRoot: portal.idProviderUrl({contextPath: 'vhost'} as any),
-        loginUrlResultDefault: portal.loginUrl({redirect: pageUrlResult}),
-        loginUrlResultContent: portal.loginUrl({redirect: pageUrlResult, contextPath: 'relative'} as any),
-        loginUrlResultRoot: portal.loginUrl({redirect: pageUrlResult, contextPath: 'vhost'} as any),
-        logoutUrlResultDefault: portal.logoutUrl({redirect: pageUrlResult}),
-        logoutUrlResultContent: portal.logoutUrl({redirect: pageUrlResult, contextPath: 'relative'} as any),
-        logoutUrlResultRoot: portal.logoutUrl({redirect: pageUrlResult, contextPath: 'vhost'} as any),
+        serviceUrlResult: portalJsLib.serviceUrl(),
+        idProviderUrlResult: portal.idProviderUrl(),
+        loginUrlResult: portal.loginUrl({redirect: pageUrlResult}),
+        logoutUrlResult: portal.logoutUrl({redirect: pageUrlResult}),
         processHtmlResult: JSON.stringify(portalJsLib.processHtml(), null, 4),
         getIdProviderKeyResult: portal.getIdProviderKey(),
         imagePlaceholder: portal.imagePlaceholder({width: 64, height: 32})
@@ -42,4 +30,4 @@ function handleGet() {
     };
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

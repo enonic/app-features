@@ -1,13 +1,12 @@
-import * as portal from '/lib/xp/portal';
 import * as taskLib from '/lib/xp/task';
-import type { Request } from '@enonic-types/core';
+import type {Request} from '@enonic-types/core';
 
 function handleGet(req: Request) {
     const steps = ['one', 'two', 'three'];
 
-    const taskId = (taskLib as any).submit({
+    const taskId = taskLib.executeFunction({
         description: 'my test',
-        task: function() {
+        func: function () {
             log.info('Hello! ');
 
             for (let i = 0; i < steps.length; i++) {
@@ -30,7 +29,7 @@ function handleGet(req: Request) {
                 info: 'Done!'
             });
         }
-    } as any);
+    });
 
     return {
         contentType: 'text/plain',
@@ -38,4 +37,4 @@ function handleGet(req: Request) {
     };
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

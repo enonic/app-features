@@ -1,9 +1,8 @@
-export function assetUrl(contextPath?: any) {
+export function assetUrl() {
     const portal = require('/lib/xp/portal');
 
-    const url = (portal as any).assetUrl({
+    const url = portal.assetUrl({
         path: 'error/css/custom.css',
-        contextPath: contextPath
     });
 
     log.info('AssetUrl result: ' + JSON.stringify(url, null, 4));
@@ -36,14 +35,13 @@ export function componentUrl() {
     return url;
 }
 
-export function imageUrl(contextPath?: any) {
+export function imageUrl() {
     const portal = require('/lib/xp/portal');
 
-    const url = (portal as any).imageUrl({
+    const url = portal.imageUrl({
         id: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b',
         scale: 'block(1024,768)',
         filter: 'rounded(5);sharpen()',
-        contextPath: contextPath
     });
 
     log.info('ImageUrl result: ' + JSON.stringify(url, null, 4));
@@ -67,12 +65,11 @@ export function pageUrl() {
     return url;
 }
 
-export function serviceUrl(contextPath?: any) {
+export function serviceUrl() {
     const portal = require('/lib/xp/portal');
 
-    const url = (portal as any).serviceUrl({
+    const url = portal.serviceUrl({
         service: 'test',
-        contextPath: contextPath,
         params: {
             a: 1,
             b: 2

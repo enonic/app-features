@@ -4,10 +4,10 @@ import * as contentLib from '/lib/xp/content';
 const APPLICATION_NAME = 'com-enonic-app-menu';
 const MENU_ITEM_OBJECT_KEY = 'menu-item';
 
-export { getRootMenuTree as getMenuTree };
+export {getRootMenuTree as getMenuTree};
 
 function getRootMenuTree() {
-    const content = portalLib.getContent() as any;
+    const content = portalLib.getContent();
 
     return getChildMenuItems({
         parentPath: content._path,
@@ -39,7 +39,7 @@ function getChildMenuItems(params: any) {
             }
         },
         sort: params.parentChildOrder
-    } as any);
+    });
 
     children.hits.forEach((child: any) => {
         menuItems.push(createMenuItem(child));

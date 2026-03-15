@@ -1,7 +1,7 @@
 import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { PartComponent, Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {PartComponent, Request} from '@enonic-types/core';
 
 const scaleOptions = [
     {name: 'Scale Max', value: 'max(600)'},
@@ -38,7 +38,7 @@ const filterOptions = [
     {name: 'Colorize HSB', value: 'hsbcolorize(0xFFFFFFFF)'}
 ];
 
-export const GET = function(req: Request) {
+export const GET = function (req: Request) {
     const images = getImages();
     for (let i = 0; i < images.length; i++) {
         const img = images[i];
@@ -68,7 +68,7 @@ export const GET = function(req: Request) {
     };
 };
 
-export const POST = function(req: Request) {
+export const POST = function (req: Request) {
     const filter = req.params.filter as string;
     const scale = req.params.scale as string;
 
@@ -102,9 +102,9 @@ function getImages() {
         });
 
         for (let i = 0; i < result.hits.length; i++) {
-            const child = result.hits[i] as any;
+            const child = result.hits[i];
             if (child.type === "media:image") {
-                const media = (child.x as any).media || {};
+                const media = child.x.media || {};
                 const info = media['imageInfo'] || {};
                 images.push({
                     id: child._id,

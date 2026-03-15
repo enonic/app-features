@@ -1,7 +1,6 @@
-import * as portal from '/lib/xp/portal';
-const thymeleaf = require('/lib/thymeleaf') as any;
+import * as thymeleaf from '/lib/thymeleaf';
 import * as contentJsLib from '/lib/jslibraries/content';
-import type { Request } from '@enonic-types/core';
+import type {Request} from '@enonic-types/core';
 
 const view = resolve('js-libraries-content.html');
 
@@ -17,7 +16,7 @@ function handleGet(req: Request) {
     const getPermissionsResultBefore = JSON.stringify(contentJsLib.getPermissions(), null, 4);
     const applyPermissionsResult = JSON.stringify(contentJsLib.applyPermissions(), null, 4);
     const getPermissionsResultAfter = JSON.stringify(contentJsLib.getPermissions(), null, 4);
-    const deleteResult = JSON.stringify(contentJsLib.delete(), null, 4);
+    const deleteResult = JSON.stringify(contentJsLib.deleteContent(), null, 4);
     const publishResult2 = JSON.stringify(contentJsLib.publish(), null, 4);
 
     const params = {
@@ -44,4 +43,4 @@ function handleGet(req: Request) {
     };
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

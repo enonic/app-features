@@ -3,12 +3,6 @@
 This application is used for testing features for Enonic XP. It follows
 our main Enonic XP releases.
 
-## Releases
-
-Here's a list of released versions with compatibility notes:
-
-* [6.0.0](http://repo.enonic.com/public/com/enonic/app/features/6.0.0/features-6.0.0.jar) - Enonic XP 6.0.0
-
 ## Building
 
 Build all code and run all tests:

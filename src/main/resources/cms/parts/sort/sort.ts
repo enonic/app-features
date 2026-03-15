@@ -1,14 +1,14 @@
 import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {Request} from '@enonic-types/core';
 
 const view = resolve('sort-test.html');
 
 function handleGet(req: Request) {
     log.info("Request: %s", req);
 
-    const content = portal.getContent() as any;
+    const content = portal.getContent();
 
     log.info("Content: %s", req);
 
@@ -51,4 +51,4 @@ function handleGet(req: Request) {
     };
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

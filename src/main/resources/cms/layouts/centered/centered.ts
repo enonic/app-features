@@ -1,8 +1,8 @@
 import * as portal from '/lib/xp/portal';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { LayoutComponent, Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {LayoutComponent, Request} from '@enonic-types/core';
 
-export const GET = function(req: Request) {
+export const GET = function (req: Request) {
     const component = portal.getComponent<LayoutComponent>();
 
     return {

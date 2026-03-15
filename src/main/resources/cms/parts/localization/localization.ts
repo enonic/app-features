@@ -1,12 +1,12 @@
 import * as portal from '/lib/xp/portal';
 import * as i18n from '/lib/xp/i18n';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {Request} from '@enonic-types/core';
 
 const view = resolve('localization.html');
 
 function handleGet(req: Request) {
-    const content = portal.getContent() as any;
+    const content = portal.getContent();
     const currentPage = portal.pageUrl({
         path: content._path
     });
@@ -41,4 +41,4 @@ function handleGet(req: Request) {
     };
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

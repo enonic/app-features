@@ -1,6 +1,6 @@
 import * as clusterLib from '/lib/xp/cluster';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {Request} from '@enonic-types/core';
 
 const view = resolve('js-libraries-cluster.html');
 
@@ -17,4 +17,4 @@ function handleGet(req: Request) {
     };
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

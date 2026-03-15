@@ -1,19 +1,15 @@
-const libs = {
-    portal: require('/lib/xp/portal'),
-    context: require('/lib/xp/context'),
-    thymeleaf: require('/lib/thymeleaf') as any,
-    encoding: require('/lib/text-encoding') as any
-};
+import * as portal from '/lib/xp/portal';
+import * as context from '/lib/xp/context';
+import * as thymeleaf from '/lib/thymeleaf';
+import * as encoding from '/lib/text-encoding';
 
 function createModel(req: any) {
-    const macroBody = libs.encoding.htmlUnescape(req.body);
-    const processedMacroBody = libs.context.run({
+    const macroBody = encoding.htmlUnescape(req.body);
+    const processedMacroBody = context.run({
         repository: req.request.repositoryId,
         branch: "draft",
-        authInfo: {
-            principals: ["role:system.admin"]
-        }
-    } as any, () => libs.portal.processHtml({value: macroBody}));
+        principals: ["role:system.admin"]
+    }, () => portal.processHtml({value: macroBody}));
 
     return {
         quote: {
@@ -24,7 +20,7 @@ function createModel(req: any) {
 }
 
 function getImageUrl(imageId: any) {
-    return libs.portal.imageUrl({
+    return portal.imageUrl({
         id: imageId,
         scale: 'block(167,167)',
         format: 'jpeg'
@@ -32,24 +28,22 @@ function getImageUrl(imageId: any) {
 }
 
 function getImageUrlInContext(imageId: any, repoId: any) {
-    return libs.context.run({
+    return context.run({
         repository: repoId,
         branch: "draft",
-        authInfo: {
-            principals: ["role:system.admin"]
-        }
+        principals: ["role:system.admin"]
     } as any, () => getImageUrl(imageId));
 }
 
-export const macro = function(req: any) {
+export const macro = function (context: any) {
     const view = resolve('quote.html');
-    const model = createModel(req);
+    const model = createModel(context);
 
     if ((model.quote as any).image) {
-        (model.quote as any).image = getImageUrlInContext((model.quote as any).image, req.request.repositoryId);
+        (model.quote as any).image = getImageUrlInContext((model.quote as any).image, context.request.repositoryId);
     }
 
     return {
-        body: libs.thymeleaf.render(view, model)
+        body: thymeleaf.render(view, model)
     };
 };

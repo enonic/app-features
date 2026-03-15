@@ -1,7 +1,6 @@
-import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {Request} from '@enonic-types/core';
 
 const view = resolve('schedule-publish.html');
 
@@ -75,33 +74,28 @@ function createContent(name: any) {
         displayName: name,
         requireValid: true,
         contentType: 'base:folder',
-        branch: 'draft',
         language: 'no',
         data: {}
-    } as any);
+    });
 }
 
 function getContent(content: any, branch: any) {
     return contentLib.get({
-        key: content._id,
-        branch: branch
-    } as any);
+        key: content._id
+    });
 }
 
 function getChildren(branch: any) {
     return contentLib.getChildren({
-        key: '/features/js-libraries/schedule-publish',
-        branch: branch
-    } as any);
+        key: '/features/js-libraries/schedule-publish'
+    });
 }
 
 function publishContent(content: any, schedule?: any) {
     return contentLib.publish({
         keys: [content._id],
-        sourceBranch: 'draft',
-        targetBranch: 'master',
         schedule: schedule
-    } as any);
+    });
 }
 
 function deleteContent(content: any) {
@@ -110,4 +104,4 @@ function deleteContent(content: any) {
     });
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

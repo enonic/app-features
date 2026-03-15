@@ -1,18 +1,18 @@
 import * as portal from '/lib/xp/portal';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { LayoutComponent, Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {LayoutComponent, Request} from '@enonic-types/core';
 
 function handleGet(req: Request) {
     const editMode = req.mode == 'edit';
 
-    const content = portal.getContent() as any;
+    const content = portal.getContent();
     const component = portal.getComponent<LayoutComponent>();
 
     const view = resolve('layout-25-75.html');
     const body = thymeleaf.render(view, {
         title: content.displayName,
-        path: content.path,
-        name: content.name,
+        path: content._path,
+        name: content._name,
         editable: editMode,
         resourcesPath: portal.assetUrl({path: ''}),
         component: component,
@@ -26,4 +26,4 @@ function handleGet(req: Request) {
     };
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

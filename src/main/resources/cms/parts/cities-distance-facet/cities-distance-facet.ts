@@ -1,7 +1,7 @@
 import * as portal from '/lib/xp/portal';
-const thymeleaf = require('/lib/thymeleaf') as any;
+import * as thymeleaf from '/lib/thymeleaf';
 import * as contentSvc from '/lib/xp/content';
-import type { Request } from '@enonic-types/core';
+import type {Request} from '@enonic-types/core';
 
 const view = resolve('cities-distance-facet.part.html');
 
@@ -12,8 +12,8 @@ function handleGet(req: Request) {
     if (req.params.city) {
         const city = getCity(req.params.city);
         if (city) {
-            currentCityName = (city as any).displayName;
-            const cityLocation = (city as any).data.cityLocation;
+            currentCityName = city.displayName;
+            const cityLocation = city.data.cityLocation as string;
             const cityLocationVal = cityLocation || "NaN,NaN";
             const coordinates = cityLocationVal.split(",");
             cities = contentSvc.query({
@@ -22,7 +22,7 @@ function handleGet(req: Request) {
                 contentTypes: [
                     app.name + ':city'
                 ],
-                "sort": "geoDistance('data.cityLocation','" + (city as any).data.cityLocation + "')",
+                "sort": "geoDistance('data.cityLocation','" + city.data.cityLocation + "')",
                 "query": "_name != '" + currentCityName + "'",
                 "aggregations": {
                     "distance": {
@@ -38,7 +38,7 @@ function handleGet(req: Request) {
                         }
                     }
                 }
-            } as any);
+            });
         }
     }
 
@@ -53,17 +53,17 @@ function handleGet(req: Request) {
             contentTypes: [
                 app.name + ':city'
             ]
-        } as any);
+        });
     }
 
-    const content = portal.getContent() as any;
+    const content = portal.getContent();
     const currentPage = portal.pageUrl({
         path: content._path
     });
 
     let buckets: any;
-    if ((cities.aggregations as any).distance) {
-        buckets = (cities.aggregations as any).distance.buckets;
+    if (cities.aggregations.distance) {
+        buckets = cities.aggregations.distance.buckets;
     }
 
     const params = {
@@ -88,10 +88,10 @@ function handleGet(req: Request) {
                 app.name + ':city'
             ],
             "query": "_name = '" + cityName + "'"
-        } as any);
+        });
 
         return result.hits[0];
     }
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

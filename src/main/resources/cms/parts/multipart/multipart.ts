@@ -1,14 +1,14 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { PartComponent, Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {PartComponent, Request} from '@enonic-types/core';
 
-export const GET = function(req: Request) {
+export const GET = function (req: Request) {
     const idsParam = req.params.ids as string;
     const ids = idsParam ? idsParam.split(',') : [];
 
     const postUrl = portal.componentUrl({});
-    const redirectPageId = (portal.getContent() as any)._id;
+    const redirectPageId = portal.getContent()._id;
     const files = getCreatedContentFiles(ids);
 
     const params = {
@@ -27,7 +27,7 @@ export const GET = function(req: Request) {
     };
 };
 
-export const POST = function(req: Request) {
+export const POST = function (req: Request) {
     const multipartForm = portal.getMultipartForm();
     log.info('Multipart %s', multipartForm);
     const contentIds = createMedia(multipartForm);
@@ -38,7 +38,7 @@ export const POST = function(req: Request) {
         params: {
             ids: contentIds.join(',')
         }
-    } as any);
+    });
 
     return {
         redirect: redirectUrl
@@ -64,18 +64,17 @@ function createMedia(multipartForm: any) {
         const fileCount = multipartForm[name].length || 1;
 
         for (let idx = 0; idx < fileCount; idx++) {
-            part = portal.getMultipartItem(name, idx) as any;
+            part = portal.getMultipartItem(name, idx);
 
             if (part.fileName && part.size > 0) {
                 media = contentLib.createMedia({
                     name: part.fileName,
-                    parentPath: (uploadFolder as any)._path,
+                    parentPath: uploadFolder._path,
                     mimeType: part.contentType,
                     focalX: 0.5,
                     focalY: 0.5,
-                    branch: 'draft',
                     data: portal.getMultipartStream(name, idx)
-                } as any) as any;
+                });
                 log.info('Media created: %s', media);
                 contentIds.push(media._id);
             }
@@ -93,7 +92,7 @@ function getDefaultFolderPath() {
             key: uploadFolderId
         });
     }
-    return uploadFolder ? (uploadFolder as any)._path : '';
+    return uploadFolder ? uploadFolder._path : '';
 }
 
 function getCreatedContentFiles(ids: any[]) {
@@ -102,7 +101,7 @@ function getCreatedContentFiles(ids: any[]) {
     for (let i = 0; i < ids.length; i++) {
         uploadContent = contentLib.get({
             key: ids[i]
-        }) as any;
+        });
         if (uploadContent) {
             if (uploadContent.type === 'media:image') {
                 fileUrl = portal.imageUrl({

@@ -1,6 +1,6 @@
-const thymeleaf = require('/lib/thymeleaf') as any;
+import * as thymeleaf from '/lib/thymeleaf';
 import * as contentSvc from '/lib/xp/content';
-import type { Request } from '@enonic-types/core';
+import type {Request} from '@enonic-types/core';
 
 const view = resolve('city-map.page.html');
 
@@ -11,8 +11,8 @@ function handleGet(req: Request) {
     if (req.params.city) {
         const city = getCity(req.params.city);
         if (city) {
-            cityName = (city as any).displayName;
-            cityLocation = (city as any).data.cityLocation;
+            cityName = city.displayName;
+            cityLocation = city.data.cityLocation;
         }
     }
 
@@ -39,7 +39,7 @@ function handleGet(req: Request) {
                 app.name + ':city'
             ],
             "query": "_name = '" + cityName + "'"
-        } as any);
+        });
 
         return result.hits[0];
     }
@@ -53,4 +53,4 @@ function handleGet(req: Request) {
     };
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

@@ -1,9 +1,9 @@
 import * as portal from '/lib/xp/portal';
-const httpClient = require('/lib/http-client') as any;
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import * as httpClient from '/lib/http-client';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {Request} from '@enonic-types/core';
 
-export const GET = function(req: Request) {
+export const GET = function (req: Request) {
     const postUrl = portal.componentUrl({});
 
     const params = {
@@ -11,7 +11,7 @@ export const GET = function(req: Request) {
         method: 'get',
         url: req.scheme + '://' + req.host + ':' + req.port + portal.serviceUrl({
             service: 'httptest'
-        } as any),
+        }),
         headerName1: "Cookie",
         headerValue1: req.headers['Cookie']
     };
@@ -34,7 +34,7 @@ export const GET = function(req: Request) {
     };
 };
 
-export const POST = function(req: Request) {
+export const POST = function (req: Request) {
     const p = req.params;
     const url = p.url;
     const method = p.method;

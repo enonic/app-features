@@ -1,9 +1,9 @@
 import * as portal from '/lib/xp/portal';
 import * as auth from '/lib/xp/auth';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {Request} from '@enonic-types/core';
 
-export const GET = function(req: Request) {
+export const GET = function (req: Request) {
     const user = auth.getUser();
     const postUrl = portal.componentUrl({});
 
@@ -30,14 +30,13 @@ export const GET = function(req: Request) {
     };
 };
 
-export const POST = function(req: Request) {
+export const POST = function (req: Request) {
     const action = req.params.action as string;
-    const key = (req.params.key || '') as string;
+    const key = (req.params.key) as string;
     const removeParam = (req.params.remove || '') as string;
     const removeKeys = removeParam.trim() ? removeParam.split(',') : [];
     const addKey = (req.params.add || '') as string;
     const username = (req.params.username || '') as string;
-    const displayname = (req.params.displayname || '') as string;
     const email = (req.params.email || '') as string;
     const idProvider = (req.params.idProvider || '') as string;
     const searchText = (req.params.searchText || '') as string;
@@ -66,9 +65,8 @@ export const POST = function(req: Request) {
                 start: 0,
                 count: 10,
                 name: username,
-                displayName: displayname,
                 searchText: searchText
-            } as any);
+            });
             infoMsg = results.total + ' principals found.';
             log.info('Results \r\n %s', results);
         }
@@ -114,7 +112,6 @@ export const POST = function(req: Request) {
         group: type === 'group' || type === 'role' ? principal : null,
         principalKey: key,
         username: username,
-        displayname: displayname,
         email: email,
         idProvider: idProvider,
         searchText: searchText,

@@ -1,14 +1,14 @@
 import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
 import * as stk from '/lib/stk/stk';
-import type { Request } from '@enonic-types/core';
+import type {Request} from '@enonic-types/core';
 
-export { handlePost as POST };
+export {handlePost as POST};
 
 function handlePost(req: Request) {
     const contentData = req.params;
     let contentCreated = null;
-    const contentItem = stk.content.get(contentData.content_ID) as any;
+    const contentItem = stk.content.get(contentData.content_ID);
     let contentFolder: any;
     let saveLocation: any;
 
@@ -19,11 +19,10 @@ function handlePost(req: Request) {
             name: 'content',
             parentPath: contentItem._path,
             displayName: 'Content',
-            draft: true,
             requireValid: true,
             contentType: 'base:folder',
             data: {}
-        } as any);
+        });
 
         saveLocation = contentFolder._path;
     }
@@ -34,7 +33,6 @@ function handlePost(req: Request) {
         name: contentName,
         parentPath: saveLocation,
         displayName: contentName,
-        draft: true,
         requireValid: true,
         contentType: app.name + ':all-input-types',
         data: {
@@ -53,13 +51,13 @@ function handlePost(req: Request) {
             myTag: contentData.tag,
             myRadioButton: contentData.radio
         }
-    } as any) as any;
+    });
 
     if (newContent._id) {
         contentCreated = true;
-        stk.log('New content created with id ' + newContent._id);
+        stk.logStk('New content created with id ' + newContent._id);
     } else {
-        stk.log('Something went wrong creating content for ' + contentItem.displayName);
+        stk.logStk('Something went wrong creating content for ' + contentItem.displayName);
     }
 
     return {
@@ -69,6 +67,6 @@ function handlePost(req: Request) {
                 submitted: contentCreated ? 'ok' : null,
                 contentId: contentCreated ? newContent._id : null
             }
-        } as any)
+        })
     };
 }

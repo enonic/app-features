@@ -190,7 +190,7 @@ export function query() {
                 }
             }
         }
-    } as any);
+    });
 
     log.info('Found ' + result.total + ' number of contents');
 
@@ -221,8 +221,6 @@ export function deleteContent() {
 
     return result;
 }
-
-export { deleteContent as delete };
 
 export function modify() {
     function editor(c: any) {
@@ -289,7 +287,7 @@ export function getPermissions() {
     });
 
     if (result) {
-        log.info('Content inherits permissions: ' + (result as any).inheritPermissions);
+        log.info('Content permissions: ' + result.permissions);
     } else {
         log.info('Content not found');
     }
@@ -303,9 +301,7 @@ export function publish() {
     const contentLib = require('/lib/xp/content');
     const result = contentLib.publish({
         keys: ['/features/js-libraries/mycontent'],
-        sourceBranch: 'draft',
-        targetBranch: 'master'
-    } as any);
+    });
     if (result) {
         log.info('Pushed ' + result.pushedContents.length + " content.");
         log.info('Content that failed operation: ' + result.failedContents.length);

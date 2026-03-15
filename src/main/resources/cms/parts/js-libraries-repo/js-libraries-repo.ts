@@ -1,8 +1,6 @@
-import * as portal from '/lib/xp/portal';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import * as nodeJsLib from '/lib/jslibraries/node';
+import * as thymeleaf from '/lib/thymeleaf';
 import * as repoJsLib from '/lib/jslibraries/repo';
-import type { Request } from '@enonic-types/core';
+import type {Request} from '@enonic-types/core';
 
 const view = resolve('js-libraries-repo.html');
 
@@ -12,7 +10,7 @@ function handleGet(req: Request) {
     const getFeaturesRepoRootNodeResult = JSON.stringify(repoJsLib.getRootNode('features-repo'), null, 4);
     const createBranchResult = JSON.stringify(repoJsLib.createBranch('features-repo', 'features-branch'), null, 4);
     const listReposResult = JSON.stringify(repoJsLib.list(), null, 4);
-    const deleteFeaturesRepoResult = JSON.stringify(repoJsLib.delete('features-repo'), null, 4);
+    const deleteFeaturesRepoResult = JSON.stringify(repoJsLib.deleteRepo('features-repo'), null, 4);
     const listReposResult2 = JSON.stringify(repoJsLib.list(), null, 4);
 
     const params = {
@@ -33,4 +31,4 @@ function handleGet(req: Request) {
     };
 }
 
-export { handleGet as GET };
+export {handleGet as GET};

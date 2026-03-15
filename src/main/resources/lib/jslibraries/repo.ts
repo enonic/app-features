@@ -1,4 +1,3 @@
-import * as contextLib from '/lib/xp/context';
 import * as nodeLib from '/lib/xp/node';
 import * as repoLib from '/lib/xp/repo';
 
@@ -27,84 +26,7 @@ export function create(id: any) {
                 }
             ],
             rootChildOrder: "_timestamp ASC",
-            settings: {
-                definitions: {
-                    version: {
-                        settings: {
-                            "index": {
-                                "number_of_shards": 1,
-                                "number_of_replicas": 1
-                            },
-                            "analysis": {
-                                "analyzer": {
-                                    "keywordlowercase": {
-                                        "type": "custom",
-                                        "tokenizer": "keyword",
-                                        "filter": [
-                                            "lowercase"
-                                        ]
-                                    }
-                                }
-                            }
-                        },
-                        mapping: {
-                            "version": {
-                                "_all": {
-                                    "enabled": false
-                                },
-                                "_source": {
-                                    "enabled": true
-                                },
-                                "date_detection": false,
-                                "numeric_detection": false,
-                                "properties": {
-                                    "nodeid": {
-                                        "type": "string",
-                                        "store": "true",
-                                        "index": "not_analyzed"
-                                    },
-                                    "versionid": {
-                                        "type": "string",
-                                        "store": "true",
-                                        "index": "not_analyzed"
-                                    },
-                                    "timestamp": {
-                                        "type": "date",
-                                        "store": "true",
-                                        "index": "not_analyzed"
-                                    },
-                                    "nodepath": {
-                                        "type": "string",
-                                        "store": "true",
-                                        "index": "analyzed",
-                                        "analyzer": "keywordlowercase"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    branch: {
-                        settings: {
-                            "index": {
-                                "number_of_shards": 1,
-                                "number_of_replicas": 1
-                            },
-                            "analysis": {
-                                "analyzer": {
-                                    "keywordlowercase": {
-                                        "type": "custom",
-                                        "tokenizer": "keyword",
-                                        "filter": [
-                                            "lowercase"
-                                        ]
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        } as any);
+        });
 
         log.info('Repository [' + result.id + '] was created');
         return result;
@@ -131,8 +53,6 @@ export function get(id: any) {
 export function deleteRepo(id: any) {
     return repoLib.delete(id);
 }
-
-export { deleteRepo as delete };
 
 export function createBranch(repositoryId: any, branchId: any) {
     return repoLib.createBranch({

@@ -1,16 +1,16 @@
 import * as portal from '/lib/xp/portal';
-const thymeleaf = require('/lib/thymeleaf') as any;
+import * as thymeleaf from '/lib/thymeleaf';
 import * as contentSvc from '/lib/xp/content';
-import type { PartComponent, Request } from '@enonic-types/core';
+import type {PartComponent, Request} from '@enonic-types/core';
 
-export const GET = function(req: Request) {
+export const GET = function (req: Request) {
     const component = portal.getComponent<PartComponent>();
     const targetFolder = component?.config.targetFolder as string | undefined;
     let parentPath = '';
     if (targetFolder) {
         const folder = contentSvc.get({
             key: targetFolder
-        }) as any;
+        });
         parentPath = folder ? folder._path : '';
     }
 
@@ -41,7 +41,7 @@ export const GET = function(req: Request) {
     };
 };
 
-export const POST = function(req: Request) {
+export const POST = function (req: Request) {
     const name = req.params.name as string;
     const displayName = req.params.displayName as string;
     const parentPath = req.params.parent as string;
@@ -65,7 +65,7 @@ export const POST = function(req: Request) {
             contentType: contentType,
             data: data,
             x: xdata
-        } as any) as any;
+        });
 
         msg = 'Content created: ' + createResult._path;
         nameResult = createResult._name;

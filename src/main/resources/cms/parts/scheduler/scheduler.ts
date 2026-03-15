@@ -1,7 +1,7 @@
 import * as libPortal from '/lib/xp/portal';
 import * as libScheduler from '/lib/xp/scheduler';
-const libThymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import * as libThymeleaf from '/lib/thymeleaf';
+import type {Request} from '@enonic-types/core';
 
 const view = resolve('scheduler.html');
 const tableView = resolve('includes/schedulesTable.html');
@@ -48,7 +48,7 @@ function createCronSchedule(name: any, description: any, descriptor: any, schedu
             timeZone: 'GMT-01:00'
         },
         enabled: true
-    } as any);
+    });
 }
 
 function getSchedule(name: any) {
@@ -86,7 +86,7 @@ function deleteCronJobScheduler(name: any) {
     });
 }
 
-export const GET = function(req: Request) {
+export const GET = function (req: Request) {
     return {
         contentType: 'text/html',
         body: libThymeleaf.render(view, {
@@ -102,6 +102,6 @@ export const GET = function(req: Request) {
     };
 };
 
-export const POST = function(req: Request) {
+export const POST = function (req: Request) {
     return doExecute(req.params);
 };

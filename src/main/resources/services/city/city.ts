@@ -1,6 +1,6 @@
 import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
-import type { Request } from '@enonic-types/core';
+import type {Request} from '@enonic-types/core';
 
 function handlePost(req: Request) {
     const parentPath = req.params.parentPath as string;
@@ -24,15 +24,15 @@ function handlePost(req: Request) {
                 app.name + ':city'
             ],
             "query": "_name = '" + cityName + "'"
-        } as any);
+        });
 
         return result.hits[0];
     }
 
     function modifyCity(city: any, cityName: any, cityLocation: any) {
-        const result = contentSvc.modify({
+        const result = contentSvc.update({
             key: city._id,
-            editor: function(c: any) {
+            editor: function (c: any) {
                 c.data.cityLocation = cityLocation;
                 return c;
             }
@@ -46,13 +46,12 @@ function handlePost(req: Request) {
             name: cityName,
             parentPath: parentPath,
             displayName: cityName,
-            draft: false,
             requireValid: true,
             contentType: app.name + ':city',
             data: {
                 cityLocation: cityLocation
             }
-        } as any);
+        });
 
         return result;
     }
@@ -67,4 +66,4 @@ function handlePost(req: Request) {
     };
 }
 
-export { handlePost as POST };
+export {handlePost as POST};

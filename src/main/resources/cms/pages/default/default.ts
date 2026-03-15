@@ -1,7 +1,7 @@
 import * as portal from '/lib/xp/portal';
 import * as menuLib from '/lib/menu';
-const thymeleaf = require('/lib/thymeleaf') as any;
-import type { Request } from '@enonic-types/core';
+import * as thymeleaf from '/lib/thymeleaf';
+import type {Request} from '@enonic-types/core';
 
 const parentPath = './';
 const view = resolve(parentPath + 'default.page.html');
@@ -27,4 +27,4 @@ function handleGet(req: Request) {
     };
 }
 
-export { handleGet as GET };
+export {handleGet as GET};
