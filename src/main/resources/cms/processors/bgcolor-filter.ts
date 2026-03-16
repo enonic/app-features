@@ -1,7 +1,7 @@
-import type {Request} from '@enonic-types/core';
+import type {Request, MappedResponse} from '@enonic-types/core';
 import * as portal from '/lib/xp/portal';
 
-export const responseProcessor = function (req: Request, res: any) {
+export const responseProcessor = function (req: Request, res: MappedResponse) {
     const isHtml = (res.contentType.lastIndexOf('text/html', 0) === 0);
     if (isHtml && res.body) {
         const siteConfig = portal.getSiteConfig();
@@ -22,7 +22,7 @@ export const responseProcessor = function (req: Request, res: any) {
         default:
             bgColor = '#FFFFFF';
         }
-        res.body = res.body.replace(/<body([^>]+)>/ig, '<body$1 style="background-color:' + bgColor + '">');
+        res.body = (res.body as string).replace(/<body([^>]+)>/ig, '<body$1 style="background-color:' + bgColor + '">');
     }
 
     return res;

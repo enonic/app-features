@@ -1,12 +1,13 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 import * as thymeleaf from '/lib/thymeleaf';
-import type {Request} from '@enonic-types/core';
+import type {Request, ByteSource} from '@enonic-types/core';
 
 export const GET = function (req: Request) {
     const attachmentName = req.params.name as string;
     const contentPath = req.params.contentPath as string;
-    let attachments: any, attachment: any, attachmentStream: any;
+    let attachments: ReturnType<typeof contentLib.getAttachments> | undefined;
+    let attachmentStream: ByteSource | null;
 
     const pageUrl = portal.pageUrl({
         path: '/',

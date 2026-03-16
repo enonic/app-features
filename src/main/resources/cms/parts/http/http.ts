@@ -2,6 +2,7 @@ import * as portal from '/lib/xp/portal';
 import * as httpClient from '/lib/http-client';
 import * as thymeleaf from '/lib/thymeleaf';
 import type {Request} from '@enonic-types/core';
+import type {HttpRequestParams, HttpResponse} from '/lib/http-client';
 
 export const GET = function (req: Request) {
     const postUrl = portal.componentUrl({});
@@ -66,30 +67,30 @@ export const POST = function (req: Request) {
     const authUsername = p.authUsername;
     const authPassword = p.authPassword;
 
-    let errorMsg: any, infoMsg: any;
+    let errorMsg: string | undefined, infoMsg: string | undefined;
 
-    let response: any;
+    let response: HttpResponse | undefined;
     try {
-        const reqParams: any = {
-            url: url,
-            method: method,
-            contentType: contentType,
-            body: body,
-            connectTimeout: connectTimeout,
-            readTimeout: readTimeout,
+        const reqParams: HttpRequestParams = {
+            url: url as string,
+            method: method as string,
+            contentType: contentType as string,
+            body: body as string,
+            connectTimeout: connectTimeout as string | number,
+            readTimeout: readTimeout as string | number,
             headers: getHeaders(req),
             params: getParams(req),
             proxy: {
-                host: proxyHost,
-                port: proxyPort,
-                user: proxyUsername,
-                password: proxyPassword
+                host: proxyHost as string,
+                port: proxyPort as string | number,
+                user: proxyUsername as string,
+                password: proxyPassword as string
             }
         };
         if (authUsername) {
             reqParams.auth = {
-                user: authUsername,
-                password: authPassword
+                user: authUsername as string,
+                password: authPassword as string
             };
         }
         response = httpClient.request(reqParams);
@@ -161,16 +162,16 @@ export const POST = function (req: Request) {
 
 function getHeaders(req: Request) {
     const p = req.params;
-    let headers: any = null;
+    let headers: Record<string, string> | null = null;
     let i = 1;
-    let name: any, value: any;
+    let name: string | string[], value: string | string[];
     while (p['headerName' + i] && p['headerValue' + i]) {
         if (!headers) {
             headers = {};
         }
         name = p['headerName' + i];
         value = p['headerValue' + i];
-        headers[name] = value;
+        headers[name as string] = value as string;
         i++;
     }
     return headers;
@@ -178,16 +179,16 @@ function getHeaders(req: Request) {
 
 function getParams(req: Request) {
     const p = req.params;
-    let params: any = null;
+    let params: Record<string, string | string[]> | null = null;
     let i = 1;
-    let name: any, value: any;
+    let name: string | string[], value: string | string[];
     while (p['param' + i] && p['value' + i]) {
         if (!params) {
             params = {};
         }
         name = p['param' + i];
         value = p['value' + i];
-        params[name] = value;
+        params[name as string] = value;
         i++;
     }
     return params;

@@ -1,7 +1,8 @@
 import * as portal from '/lib/xp/portal';
 import * as auth from '/lib/xp/auth';
 import * as thymeleaf from '/lib/thymeleaf';
-import type {Request} from '@enonic-types/core';
+import type {Request, Principal, PrincipalKey, PrincipalType, GroupKey, RoleKey, UserKey} from '@enonic-types/core';
+import type {Group, Role, User, FindPrincipalsResult} from '@enonic-types/lib-auth';
 
 export const GET = function (req: Request) {
     const user = auth.getUser();
@@ -49,18 +50,22 @@ export const POST = function (req: Request) {
         typeParam = 'role';
     }
 
-    let errorMsg: any, infoMsg: any;
-    let principal: any, memberships: any, members: any, type: any, results: any;
+    let errorMsg: string | undefined, infoMsg: string | undefined;
+    let principal: Principal | null | undefined;
+    let memberships: (Group | Role)[] | undefined;
+    let members: (User | Group)[] | undefined;
+    let type: string | undefined;
+    let results: FindPrincipalsResult | undefined;
     if (action === 'search') {
         if (key) {
             try {
-                principal = auth.getPrincipal(key as any);
+                principal = auth.getPrincipal(key as PrincipalKey);
             } catch (e) {
                 //
             }
         } else {
             results = auth.findPrincipals({
-                type: typeParam as any,
+                type: typeParam as PrincipalType | undefined,
                 idProvider: idProvider,
                 start: 0,
                 count: 10,
@@ -73,31 +78,31 @@ export const POST = function (req: Request) {
     }
     if (action === 'remove' && key && removeKeys.length) {
         try {
-            principal = auth.getPrincipal(key as any);
+            principal = auth.getPrincipal(key as PrincipalKey);
         } catch (e) {
         }
 
-        auth.removeMembers(key as any, removeKeys as any);
+        auth.removeMembers(key as GroupKey | RoleKey, removeKeys as (UserKey | GroupKey)[]);
         infoMsg = 'Members removed';
     }
     if (action === 'add' && key && addKey) {
         try {
-            principal = auth.getPrincipal(key as any);
+            principal = auth.getPrincipal(key as PrincipalKey);
         } catch (e) {
         }
 
         log.info('%s %s', key, addKey);
-        auth.addMembers(key as any, [addKey as any]);
+        auth.addMembers(key as GroupKey | RoleKey, [addKey as UserKey | GroupKey]);
         infoMsg = 'Member ' + addKey + ' added to ' + key;
     }
 
     if (principal) {
         type = principal.type;
         if (type !== 'user') {
-            members = auth.getMembers(key as any);
+            members = auth.getMembers(key as GroupKey | RoleKey);
             log.info('Members %s', members);
         }
-        memberships = auth.getMemberships(key as any);
+        memberships = auth.getMemberships(key as UserKey | GroupKey);
         log.info('Memberships %s', memberships);
 
     } else if (!results) {

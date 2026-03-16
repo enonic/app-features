@@ -78,7 +78,7 @@ export function get() {
     return result;
 }
 
-export function exists(key: any) {
+export function exists(key: string) {
     const contentLib = require('/lib/xp/content');
 
     const result = contentLib.exists({
@@ -223,12 +223,12 @@ export function deleteContent() {
 }
 
 export function modify() {
-    function editor(c: any) {
+    function editor(c: ReturnType<typeof contentLib.get>) {
         c.displayName = 'Modified';
         c.language = 'en';
-        c.data.myCheckbox = false;
-        c.data["myTime"] = "11:00";
-        c.data.checkOptionSet = {
+        (c.data as Record<string, unknown>).myCheckbox = false;
+        (c.data as Record<string, unknown>)["myTime"] = "11:00";
+        (c.data as Record<string, unknown>).checkOptionSet = {
             _selected: ["option_2"],
             option_2: {
                 contentSelector: '5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b'

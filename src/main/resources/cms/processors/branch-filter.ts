@@ -1,7 +1,7 @@
-import type { Request } from '@enonic-types/core';
+import type { Request, MappedResponse } from '@enonic-types/core';
 import * as portal from '/lib/xp/portal';
 
-export const responseProcessor = function(req: Request, res: any) {
+export const responseProcessor = function(req: Request, res: MappedResponse) {
     const isHtml = (res.contentType.lastIndexOf('text/html', 0) === 0);
     if (isHtml) {
         addPageContribution(res, 'bodyEnd', '<input type="hidden" name="branch" value="' + req.branch + '"/>');
@@ -13,7 +13,7 @@ export const responseProcessor = function(req: Request, res: any) {
     return res;
 };
 
-const addPageContribution = function(response: any, tagPos: any, contribution: any) {
+const addPageContribution = function(response: MappedResponse, tagPos: keyof MappedResponse['pageContributions'], contribution: string) {
     const pageContributions = response.pageContributions || {};
     response.pageContributions = pageContributions;
     let contributions = pageContributions[tagPos] || [];

@@ -1,16 +1,16 @@
 import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/thymeleaf';
 import * as contentSvc from '/lib/xp/content';
-import type {Request} from '@enonic-types/core';
+import type {Request, Content, BucketsAggregationResult} from '@enonic-types/core';
 
 const view = resolve('cities-distance-facet.part.html');
 
 function handleGet(req: Request) {
-    let currentCityName: any;
-    let cities: any;
+    let currentCityName: string | undefined;
+    let cities: ReturnType<typeof contentSvc.query> | undefined;
 
     if (req.params.city) {
-        const city = getCity(req.params.city);
+        const city = getCity(req.params.city as string);
         if (city) {
             currentCityName = city.displayName;
             const cityLocation = city.data.cityLocation as string;
@@ -61,9 +61,9 @@ function handleGet(req: Request) {
         path: content._path
     });
 
-    let buckets: any;
-    if (cities.aggregations.distance) {
-        buckets = cities.aggregations.distance.buckets;
+    let buckets: BucketsAggregationResult['buckets'] | undefined;
+    if (cities && cities.aggregations.distance) {
+        buckets = (cities.aggregations.distance as BucketsAggregationResult).buckets;
     }
 
     const params = {
@@ -81,7 +81,7 @@ function handleGet(req: Request) {
         body: body
     };
 
-    function getCity(cityName: any) {
+    function getCity(cityName: string) {
         const result = contentSvc.query({
             count: 1,
             contentTypes: [

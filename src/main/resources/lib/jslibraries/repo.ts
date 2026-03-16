@@ -1,7 +1,7 @@
 import * as nodeLib from '/lib/xp/node';
 import * as repoLib from '/lib/xp/repo';
 
-export function create(id: any) {
+export function create(id: string) {
     const repo = repoLib.get(id);
 
     if (repo) {
@@ -33,7 +33,7 @@ export function create(id: any) {
     }
 }
 
-export function getRootNode(repositoryId: any) {
+export function getRootNode(repositoryId: string) {
     const repo = nodeLib.connect({
         repoId: repositoryId,
         branch: 'master'
@@ -46,15 +46,15 @@ export function list() {
     return repoLib.list();
 }
 
-export function get(id: any) {
+export function get(id: string) {
     return repoLib.get(id);
 }
 
-export function deleteRepo(id: any) {
+export function deleteRepo(id: string) {
     return repoLib.delete(id);
 }
 
-export function createBranch(repositoryId: any, branchId: any) {
+export function createBranch(repositoryId: string, branchId: string) {
     return repoLib.createBranch({
         repoId: repositoryId,
         branchId: branchId

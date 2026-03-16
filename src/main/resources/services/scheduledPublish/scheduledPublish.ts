@@ -20,8 +20,8 @@ function handleGet(req: Request) {
     publishContent('onlinecontent', '2016-01-01T00:00:00Z', '2018-01-01T00:00:00Z');
     contentLib.update({
         key: '/onlinecontent',
-        editor: function (c: any) {
-            c.publish.to = '2018-02-01T00:00:00Z';
+        editor: function (c) {
+            if (c && c.publish) { c.publish.to = '2018-02-01T00:00:00Z'; }
             return c;
         }
     });
@@ -73,7 +73,7 @@ function handleGet(req: Request) {
     };
 }
 
-function createContent(name: any) {
+function createContent(name: string) {
     contentLib.create({
         name: name,
         parentPath: '/',
@@ -109,7 +109,7 @@ function createContent(name: any) {
     });
 }
 
-function publishContent(name: any, from?: any, to?: any) {
+function publishContent(name: string, from?: string, to?: string) {
     contentLib.publish({
         keys: ['/' + name],
         schedule: from ? {
@@ -119,7 +119,7 @@ function publishContent(name: any, from?: any, to?: any) {
     });
 }
 
-function deleteAndPublishContent(name: any) {
+function deleteAndPublishContent(name: string) {
     contentLib.delete({
         key: '/' + name,
     });

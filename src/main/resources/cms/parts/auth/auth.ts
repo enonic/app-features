@@ -1,14 +1,15 @@
 import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/thymeleaf';
 import * as auth from '/lib/xp/auth';
-import type {Request} from '@enonic-types/core';
+import type {Request, User, UserKey, GroupKey, RoleKey, PrincipalKey, PrincipalType} from '@enonic-types/core';
+import type {Group, Role, FindPrincipalsResult} from '@enonic-types/lib-auth';
 
 export const GET = function (req: Request) {
     const user = auth.getUser();
     const postUrl = portal.componentUrl({});
-    const directMemberships = getMemberships(user && user.key);
-    const transitiveMemberships = getMemberships(user && user.key, true);
-    const profile = getProfile(user && user.key);
+    const directMemberships = getMemberships(user?.key as UserKey | undefined);
+    const transitiveMemberships = getMemberships(user?.key as UserKey | undefined, true);
+    const profile = getProfile(user?.key as string ?? '');
 
     const params = {
         postUrl: postUrl,
@@ -46,12 +47,13 @@ export const POST = function (req: Request) {
     const role = req.params.role as string || '';
     const userKey = req.params.userKey as string || '';
     const scope = req.params.scope as string || '';
-    let hasRole: any, errorMsg: any, findUsersResult: any, findPrincipalsResult: any;
+    let hasRole: boolean | undefined, errorMsg: string | undefined;
+    let findUsersResult: FindPrincipalsResult | undefined, findPrincipalsResult: FindPrincipalsResult | undefined;
 
-    let user: any = auth.getUser();
-    let directMemberships: any = getMemberships(user && user.key);
-    let transitiveMemberships: any = getMemberships(user && user.key, true);
-    let profile: any = getProfile(userKey, scope == '' ? null : scope);
+    let user: User | null = auth.getUser();
+    let directMemberships: string[] | null = getMemberships(user?.key as UserKey | undefined);
+    let transitiveMemberships: string[] | null = getMemberships(user?.key as UserKey | undefined, true);
+    let profile: Record<string, unknown> | null = getProfile(userKey, scope == '' ? null : scope);
 
     if (action === 'logout') {
         auth.logout();
@@ -74,27 +76,27 @@ export const POST = function (req: Request) {
         errorMsg = loginResult.message;
         log.info('LOGIN %s', loginResult);
     } else if (action === 'modifyProfile') {
-        profile = modifyProfile(userKey, scope == '' ? null : scope, function (c: any) {
+        profile = modifyProfile(userKey, scope == '' ? null : scope, function (c: Record<string, unknown>) {
             const newProfile = JSON.parse(req.params.profile as string);
             return newProfile;
         });
     } else if (action === 'findPrincipals') {
         findPrincipalsResult = auth.findPrincipals({
-            type: req.params.type == '' ? null : req.params.type,
-            idProvider: req.params.idProvider == '' ? null : requireSingleString(req.params, 'idProvider'),
-            start: req.params.start == '' ? null : parseInt(requireSingleString(req.params, 'start')),
-            count: req.params.count == '' ? null : parseInt(requireSingleString(req.params, 'count')),
-            name: req.params.name == '' ? null : requireSingleString(req.params, 'name'),
-            searchText: req.params.searchText == '' ? null : requireSingleString(req.params, 'searchText')
-        } as any);
+            type: req.params.type == '' ? undefined : req.params.type as PrincipalType,
+            idProvider: req.params.idProvider == '' ? undefined : requireSingleString(req.params, 'idProvider'),
+            start: req.params.start == '' ? undefined : parseInt(requireSingleString(req.params, 'start')),
+            count: req.params.count == '' ? undefined : parseInt(requireSingleString(req.params, 'count')),
+            name: req.params.name == '' ? undefined : requireSingleString(req.params, 'name'),
+            searchText: req.params.searchText == '' ? undefined : requireSingleString(req.params, 'searchText')
+        });
     } else if (action === 'findUsers') {
-        findUsersResult = (auth).findUsers({
-            start: req.params.start == '' ? null : parseInt(requireSingleString(req.params, 'start')),
-            count: req.params.count == '' ? null : parseInt(requireSingleString(req.params, 'count')),
-            query: req.params.query == '' ? null : requireSingleString(req.params, 'query'),
-            sort: req.params.sort == '' ? null : requireSingleString(req.params, 'sort'),
-            includeProfile: req.params.includeProfile == "true"
-        } as any);
+        findUsersResult = auth.findUsers({
+            start: req.params.start == '' ? undefined : parseInt(requireSingleString(req.params, 'start')),
+            count: req.params.count == '' ? undefined : parseInt(requireSingleString(req.params, 'count')),
+            query: req.params.query == '' ? '' : requireSingleString(req.params, 'query'),
+            sort: req.params.sort == '' ? undefined : requireSingleString(req.params, 'sort'),
+            includeProfile: req.params.includeProfile === "true"
+        });
     }
 
     const postUrl = portal.componentUrl({});
@@ -131,29 +133,29 @@ export const POST = function (req: Request) {
     };
 };
 
-function getMemberships(userKey: any, transitive?: any) {
+function getMemberships(userKey: UserKey | null | undefined, transitive?: boolean): string[] | null {
     if (userKey) {
-        return auth.getMemberships(userKey, transitive).map(function (membership: any) {
+        return auth.getMemberships(userKey, transitive).map(function (membership: Group | Role) {
             return membership.key;
         });
     }
     return null;
 }
 
-function getProfile(userKey: any, scope?: any) {
+function getProfile(userKey: string, scope?: string | null): Record<string, unknown> | null {
     if (userKey) {
         return auth.getProfile({
-            key: userKey,
-            scope: scope
+            key: userKey as UserKey,
+            scope: scope ?? undefined
         });
     }
     return null;
 }
 
-function modifyProfile(userKey: any, scope: any, editor: any) {
+function modifyProfile(userKey: string, scope: string | null, editor: (profile: Record<string, unknown>) => Record<string, unknown>): Record<string, unknown> | null {
     if (userKey) {
         return auth.modifyProfile({
-            key: userKey,
+            key: userKey as UserKey,
             scope: scope,
             editor: editor
         });

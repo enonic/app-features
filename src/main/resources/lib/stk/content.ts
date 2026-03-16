@@ -1,9 +1,10 @@
 import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
+import type {Content} from '@enonic-types/core';
 
 export const content = {
-    get: function (key?: any): any {
-        let result: any;
+    get: function (key?: string): Content | null {
+        let result: Content | null;
         if (typeof key == 'undefined') {
             result = portal.getContent();
         } else {
@@ -14,11 +15,11 @@ export const content = {
         return result;
     },
 
-    exists: function (path: any): boolean {
+    exists: function (path: string): boolean {
         return content.get(path) ? true : false;
     },
 
-    getProperty: function (key: any, property: any): any {
+    getProperty: function (key: string, property: keyof Content): unknown {
         if (!key || !property) {
             return null;
         }
@@ -26,15 +27,15 @@ export const content = {
         return result ? result[property] : null;
     },
 
-    getPath: function (contentKey: any, noDefault?: any): any {
-        let defaultContent: any = '';
+    getPath: function (contentKey: string, noDefault?: boolean): string | null {
+        let defaultContent: {_path: string | null} = {_path: ''};
         if (noDefault) {
             defaultContent = {_path: null};
         } else {
-            defaultContent = portal.getContent();
+            defaultContent = portal.getContent() ?? {_path: ''};
         }
 
-        let contentPath: any;
+        let contentPath: string | undefined;
         if (contentKey) {
             const c = content.get(contentKey);
             if (c) {
@@ -44,12 +45,12 @@ export const content = {
         return contentPath ? contentPath : defaultContent._path;
     },
 
-    getParentPath: function (path: any): string {
+    getParentPath: function (path: string): string {
         const pathArray = path.split('/');
         return pathArray.slice(0, pathArray.length - 1).join('/');
     },
 
-    getParent: function (key: any): any {
+    getParent: function (key: string): Content | null {
         const c = content.get(key);
         const parentPath = content.getParentPath(c._path);
         return parentPath.length < 1 ? null : content.get(parentPath);

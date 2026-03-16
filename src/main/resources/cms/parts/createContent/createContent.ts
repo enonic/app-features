@@ -49,8 +49,8 @@ export const POST = function (req: Request) {
     const dataStr = req.params.contentData as string || '{}';
     const xDataStr = req.params.contentXData as string || '{}';
 
-    let errorMsg: any;
-    let msg: any;
+    let errorMsg: string | undefined;
+    let msg: string | undefined;
     let nameResult = name;
     let dataStrResult = dataStr;
     let xDataStrResult = xDataStr;
