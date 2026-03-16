@@ -32,7 +32,7 @@ function getImageUrlInContext(imageId: any, repoId: any) {
         repository: repoId,
         branch: "draft",
         principals: ["role:system.admin"]
-    } as any, () => getImageUrl(imageId));
+    }, () => getImageUrl(imageId));
 }
 
 export const macro = function (context: any) {

@@ -8,7 +8,9 @@ export const GET = function (req: Request) {
     const contentPath = req.params.contentPath as string;
     let attachments: any, attachment: any, attachmentStream: any;
 
-    const pageUrl = portal.pageUrl({} as any);
+    const pageUrl = portal.pageUrl({
+        path: '/',
+    });
 
     if (contentPath) {
         attachments = contentLib.getAttachments(contentPath);

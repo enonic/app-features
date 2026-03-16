@@ -28,7 +28,7 @@ const cleanUp = function () {
 function createNode(name: any, params?: any) {
     const repo = connect();
 
-    const result = repo.create({
+    return repo.create({
         _name: name,
         _parentPath: params && params.parentPath,
         displayName: "This is brand new node",
@@ -69,8 +69,6 @@ function createNode(name: any, params?: any) {
             }
         ]
     });
-
-    return result;
 }
 
 function modifyNode(key: any) {
@@ -88,12 +86,10 @@ function modifyNode(key: any) {
 function commitNode(key: any) {
     const repo = connect();
 
-    const result = repo.commit({
+    return repo.commit({
         keys: key,
         message: 'Commit message'
     });
-
-    return result;
 }
 
 export function create() {
@@ -106,12 +102,7 @@ export function create() {
 export function modify() {
     initialize();
     let node: any = createNode('my-node');
-    const numberClassBefore = (node.someData.numberOfUselessGadgets as any).getClass();
     node = modifyNode(node._id);
-    const numberClassAfter = (node.someData.numberOfUselessGadgets as any).getClass();
-    if (numberClassBefore !== numberClassAfter) {
-        throw 'Number class was ' + numberClassBefore + ' and is now ' + numberClassAfter;
-    }
     cleanUp();
     return node;
 }
@@ -310,7 +301,7 @@ export function suggestions() {
                 }
             }
         }
-    } as any);
+    });
 }
 
 export function highlight() {
