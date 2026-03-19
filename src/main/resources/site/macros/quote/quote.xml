@@ -1,6 +1,6 @@
 <macro>
-  <display-name>Quotation</display-name>
-  <description>Add quotation</description>
+  <display-name>Quote</display-name>
+  <description>Add quote</description>
 
   <form>
     <input name="name" type="TextLine">
