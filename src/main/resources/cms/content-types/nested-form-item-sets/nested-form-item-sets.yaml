@@ -1,0 +1,59 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Nested Form Item Sets"
+form:
+  - type: "ItemSet"
+    name: "level-1"
+    label: "Level 1"
+    occurrences:
+      min: 0
+      max: 0
+    items:
+      - type: "TextLine"
+        name: "myTextLine"
+        label: "My text line"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "ItemSet"
+        name: "level-2"
+        label: "Level 2"
+        occurrences:
+          min: 1
+          max: 0
+        items:
+          - type: "TextLine"
+            name: "myTextLine"
+            label: "My text line"
+            occurrences:
+              min: 0
+              max: 1
+          - type: "ItemSet"
+            name: "level-3"
+            label: "Level 3"
+            occurrences:
+              min: 1
+              max: 0
+            items:
+              - type: "TextLine"
+                name: "myTextLine"
+                label: "My text line"
+                occurrences:
+                  min: 1
+                  max: 1
+              - type: "ItemSet"
+                name: "level-4"
+                label: "Level 4"
+                occurrences:
+                  min: 1
+                  max: 0
+                items:
+                  - type: "TextLine"
+                    name: "myTextLine"
+                    label: "My text line"
+                    occurrences:
+                      min: 1
+                      max: 1

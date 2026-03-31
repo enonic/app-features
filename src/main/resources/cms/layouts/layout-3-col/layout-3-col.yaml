@@ -1,0 +1,7 @@
+kind: "Layout"
+title: "3-col"
+form: [ ]
+regions:
+  - "left"
+  - "center"
+  - "right"

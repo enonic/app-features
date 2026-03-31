@@ -1,0 +1,10 @@
+kind: "ContentType"
+superType: "base:folder"
+abstract: false
+final: false
+allowChildContent: true
+title: "Articles"
+description: "Folder for articles"
+form: [ ]
+allowChildContentType:
+  - "${app}:article"

@@ -1,0 +1,22 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Time"
+form:
+  - type: "Time"
+    name: "time"
+    label: "Time"
+    helpText: "..that's the question!"
+    occurrences:
+      min: 0
+      max: 0
+  - type: "Time"
+    name: "requiredTime"
+    label: "Required Time"
+    helpText: "..that's the question!"
+    occurrences:
+      min: 1
+      max: 0
+    default: "15:30"
