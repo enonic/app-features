@@ -1,0 +1,6 @@
+kind: "Part"
+title: "Html Area Example"
+form: [ ]
+config:
+  - name: "allowOnContentType"
+    value: "${app}:htmlarea"

@@ -1,6 +1,0 @@
-displayName: "3-col"
-form: [ ]
-regions:
-  - "left"
-  - "center"
-  - "right"

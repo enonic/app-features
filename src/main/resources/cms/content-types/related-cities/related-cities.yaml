@@ -1,0 +1,55 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Related cities"
+form:
+  - type: "ItemSet"
+    name: "units"
+    label: "Department"
+    occurrences:
+      min: 0
+      max: 0
+    items:
+      - type: "TextLine"
+        name: "name"
+        label: "Name"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "HtmlArea"
+        name: "body"
+        label: "Info"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "ItemSet"
+        name: "cities"
+        label: "Cities"
+        occurrences:
+          min: 0
+          max: 0
+        items:
+          - type: "ContentSelector"
+            name: "city"
+            label: "City"
+            occurrences:
+              min: 1
+              max: 1
+            attributes:
+              relationshipType: "system:reference"
+            allowContentType:
+              - "city"
+          - type: "TextLine"
+            name: "rol"
+            label: "Role"
+            occurrences:
+              min: 0
+              max: 1
+          - type: "HtmlArea"
+            name: "description"
+            label: "Description"
+            occurrences:
+              min: 0
+              max: 1

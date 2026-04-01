@@ -1,0 +1,14 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Geo Location"
+form:
+  - type: "GeoPoint"
+    name: "geo-location"
+    label: "geo location"
+    helpText: "Where are you?"
+    occurrences:
+      min: 0
+      max: 0
