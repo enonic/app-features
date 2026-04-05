@@ -1,6 +1,7 @@
 import * as contentLib from '/lib/xp/content';
 import * as thymeleaf from '/lib/thymeleaf';
-import type {Request} from '@enonic-types/core';
+import type {Request, Content} from '@enonic-types/core';
+import type {Schedule} from '@enonic-types/lib-content';
 
 const view = resolve('schedule-publish.html');
 
@@ -68,7 +69,7 @@ function handleGet(req: Request) {
     };
 }
 
-function createContent(name: any) {
+function createContent(name: string) {
     return contentLib.create({
         parentPath: '/features/js-libraries/schedule-publish',
         displayName: name,
@@ -79,26 +80,26 @@ function createContent(name: any) {
     });
 }
 
-function getContent(content: any, branch: any) {
+function getContent(content: Content, _branch: string) {
     return contentLib.get({
         key: content._id
     });
 }
 
-function getChildren(branch: any) {
+function getChildren(_branch: string) {
     return contentLib.getChildren({
         key: '/features/js-libraries/schedule-publish'
     });
 }
 
-function publishContent(content: any, schedule?: any) {
+function publishContent(content: Content, schedule?: Schedule) {
     return contentLib.publish({
         keys: [content._id],
         schedule: schedule
     });
 }
 
-function deleteContent(content: any) {
+function deleteContent(content: Content) {
     return contentLib.deleteContent({
         key: content._path
     });

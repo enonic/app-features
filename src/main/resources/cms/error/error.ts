@@ -1,10 +1,11 @@
 import * as thymeleaf from '/lib/thymeleaf';
 import * as portal from '/lib/xp/portal';
+import type { ErrorRequest } from '@enonic-types/core';
 
 const view404 = resolve('404.html');
 const viewGeneric = resolve('default.html');
 
-export const handle404 = function (err: any) {
+export const handle404 = function (err: ErrorRequest) {
     const debugMode = err.request.params.debug === 'true';
     if (debugMode && (err.request.mode === 'preview' || err.request.mode === 'edit')) {
         return null;
@@ -23,7 +24,7 @@ export const handle404 = function (err: any) {
     };
 };
 
-export const handleError = function (err: any) {
+export const handleError = function (err: ErrorRequest) {
     log.error("Error:" + JSON.stringify(err, null, 2));
     const debugMode = err.request.params.debug === 'true';
     if (debugMode && (err.request.mode === 'preview' || err.request.mode === 'edit')) {

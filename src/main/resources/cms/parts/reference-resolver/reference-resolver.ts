@@ -1,7 +1,7 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 import * as thymeleaf from '/lib/thymeleaf';
-import type {Request} from '@enonic-types/core';
+import type {Request, Content} from '@enonic-types/core';
 
 const view = resolve('reference-resolver.html');
 
@@ -17,8 +17,8 @@ function handleGet(req: Request) {
         query: queryStr
     });
 
-    const incomingRefs: any[] = [];
-    incoming.hits.forEach(function (hit: any) {
+    const incomingRefs: Content[] = [];
+    incoming.hits.forEach(function (hit: Content) {
         incomingRefs.push(hit);
     });
 

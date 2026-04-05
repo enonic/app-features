@@ -1,6 +1,11 @@
 import * as portalLib from '/lib/xp/portal';
-const helper = require('/lib/custom-selector-helper') as any;
-import type { Request } from '@enonic-types/core';
+import type { Request, RequestParams } from '@enonic-types/core';
+
+interface CustomSelectorHelper {
+    parseparams(params: RequestParams): unknown;
+    createresults(items: unknown[], params: unknown): string;
+}
+const helper = require('/lib/custom-selector-helper') as CustomSelectorHelper;
 
 function handleGet(req: Request) {
     const params = helper.parseparams(req.params);

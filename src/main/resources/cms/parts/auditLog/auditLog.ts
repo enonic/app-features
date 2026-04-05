@@ -1,23 +1,17 @@
 import * as libPortal from '/lib/xp/portal';
 import * as libThymeleaf from '/lib/thymeleaf';
 import * as auditLib from '/lib/xp/auditlog';
-import type {Request} from '@enonic-types/core';
+import type {Request, RequestParams, UserKey} from '@enonic-types/core';
+import type {AuditLogParams, FindAuditLogParams} from '@enonic-types/lib-auditlog';
 
 const partView = resolve('auditLog.html');
 const createView = resolve('./includes/createForm.html');
 const tableView = resolve('./includes/auditLogTable.html');
 
-function doLog(params: any) {
-    let msg: any, errorMsg: any;
+function doLog(params: AuditLogParams<Record<string, unknown>>) {
+    let msg: string | undefined, errorMsg: string | undefined;
     try {
-        const response = auditLib.log({
-            type: params.type,
-            time: params.time || null,
-            source: params.source || null,
-            user: params.user || null,
-            objects: params.objects ? params.objects.split(',', -1) : [],
-            data: JSON.parse(params.data || '{}')
-        });
+        const response = auditLib.log(params);
         msg = 'Audit Log was created : ' + response._id;
     } catch (e: any) {
         errorMsg = 'Error: ' + e.message;
@@ -32,32 +26,34 @@ function doLog(params: any) {
     };
 }
 
-function doFind(params: any) {
-    const request: any = {
-        start: params.start && /^\d+$/.test(params.start) ? parseInt(params.start) : 0,
-        count: params.count && /^\d+$/.test(params.count) ? parseInt(params.count) : 10
+function doFind(params: RequestParams) {
+    const startStr = params.start as string;
+    const countStr = params.count as string;
+    const request: FindAuditLogParams = {
+        start: startStr && /^\d+$/.test(startStr) ? parseInt(startStr) : 0,
+        count: countStr && /^\d+$/.test(countStr) ? parseInt(countStr) : 10
     };
 
     if (params.from) {
-        request.from = params.from;
+        request.from = params.from as string;
     }
     if (params.to) {
-        request.to = params.to;
+        request.to = params.to as string;
     }
     if (params.type) {
-        request.type = params.type;
+        request.type = params.type as string;
     }
     if (params.source) {
-        request.source = params.source;
+        request.source = params.source as string;
     }
     if (params.ids) {
-        request.ids = params.ids.split(",", -1);
+        request.ids = (params.ids as string).split(",", -1);
     }
     if (params.users) {
-        request.users = params.users.split(",", -1);
+        request.users = (params.users as string).split(",", -1);
     }
     if (params.objects) {
-        request.objects = params.objects.split(",", -1);
+        request.objects = (params.objects as string).split(",", -1);
     }
 
     return {
@@ -68,9 +64,9 @@ function doFind(params: any) {
     };
 }
 
-function doGet(params: any) {
+function doGet(params: RequestParams) {
     const response = auditLib.get({
-        id: params.id
+        id: params.id as string
     });
 
     return {
@@ -79,10 +75,17 @@ function doGet(params: any) {
     };
 }
 
-function doExecute(params: any) {
-    switch (params.operation) {
+function doExecute(params: RequestParams) {
+    switch (params.operation as string) {
     case 'log':
-        return doLog(params);
+        return doLog({
+            type: params.type as string,
+            time: params.time as string || null,
+            source: params.source as string || null,
+            user: (params.user as string || null) as UserKey | null,
+            objects: params.objects ? (params.objects as string).split(',', -1) : [],
+            data: JSON.parse(params.data as string || '{}')
+        });
     case 'find':
         return doFind(params);
     case 'get':

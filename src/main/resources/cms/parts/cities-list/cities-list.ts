@@ -6,11 +6,11 @@ import type {PartComponent, Request} from '@enonic-types/core';
 const view = resolve('cities-list.page.html');
 
 function handleGet(req: Request) {
-    let currentCityName: any;
-    let cities: any;
+    let currentCityName: string | undefined;
+    let cities: ReturnType<typeof contentSvc.query> | undefined;
 
     if (req.params.city) {
-        const city = getCity(req.params.city);
+        const city = getCity(req.params.city as string);
         if (city) {
             currentCityName = city.displayName;
             cities = contentSvc.query({
@@ -55,7 +55,7 @@ function handleGet(req: Request) {
     };
     const body = thymeleaf.render(view, params);
 
-    function getCity(cityName: any) {
+    function getCity(cityName: string) {
         const result = contentSvc.query({
             count: 1,
             contentTypes: [

@@ -30,8 +30,8 @@ export const POST = function (req: Request) {
     const source = req.params.source as string;
     const target = req.params.target as string;
 
-    let errorMsg: any;
-    let msg: any;
+    let errorMsg: string | undefined;
+    let msg: string | undefined;
     try {
         const moveResult = contentLib.move({
             source: source,
