@@ -6,7 +6,7 @@ import type {Request} from '@enonic-types/core';
 export const GET = function (req: Request) {
     const postUrl = portal.componentUrl({});
 
-    const sampleHtmlRes = ioLib.getResource('/site/parts/sanitize/example1.html');
+    const sampleHtmlRes = ioLib.getResource('/cms/parts/sanitize/example1.html');
     const stream = sampleHtmlRes.getStream();
     const sampleHtml = ioLib.readText(stream);
 
