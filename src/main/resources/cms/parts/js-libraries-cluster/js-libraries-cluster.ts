@@ -6,7 +6,8 @@ const view = resolve('js-libraries-cluster.html');
 
 function handleGet(req: Request) {
     const params = {
-        isMaster: clusterLib.isMaster()
+        isMaster: clusterLib.isMaster(),
+        isLeader: clusterLib.isLeader()
     };
 
     const body = thymeleaf.render(view, params);
