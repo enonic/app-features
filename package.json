@@ -30,7 +30,7 @@
     "@enonic-types/global": "8.0.0-A2",
     "@swc/core": "^1.15.3",
     "@types/node": "^25.6.0",
-    "glob": "^11.0.0",
+    "glob": "^13.0.6",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   }
