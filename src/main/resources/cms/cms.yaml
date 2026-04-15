@@ -1,5 +1,5 @@
 kind: "CMS"
-mixin:
+mixins:
   - name: "com.enonic.app.features:all-except-folders"
     allowContentTypes: "^(?!base:folder$).*"
     optional: true
