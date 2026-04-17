@@ -28,6 +28,7 @@ dependencies {
     include libs.thymeleaf
     include libs.mustache
     include libs.text.encoding
+    include "com.enonic.xp:lib-sse:${xpVersion}"
 
     testImplementation "com.enonic.xp:testing:${xpVersion}"
     testImplementation(platform(libs.junit.bom))

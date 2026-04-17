@@ -1,4 +1,6 @@
 kind: "Site"
+apis:
+  - "com.enonic.app.features:sse"
 processors:
   - name: "bgcolor-filter"
     order: 10
@@ -11,6 +13,10 @@ mappings:
     order: 50
     invertPattern: false
     pattern: "/controller"
+  - controller: "/cms/mappings/sse-controller.js"
+    order: 50
+    invertPattern: false
+    pattern: "/sse-mapping"
   - filter: "/cms/mappings/filter1.js"
     order: 50
     invertPattern: false

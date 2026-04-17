@@ -1,0 +1,4 @@
+kind: "API"
+title: "SSE Demo"
+allow:
+  - "role:system.everyone"
