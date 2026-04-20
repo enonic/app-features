@@ -1,0 +1,78 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Blog"
+form:
+  - type: "FieldSet"
+    label: "Blog"
+    items:
+      - type: "TextLine"
+        name: "heading"
+        label: "Heading"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "ItemSet"
+        name: "authors"
+        label: "Authors"
+        occurrences:
+          min: 0
+          max: 1
+        items:
+          - type: "TextLine"
+            name: "author"
+            label: "Author"
+            occurrences:
+              min: 0
+              max: 0
+      - type: "ItemSet"
+        name: "topics"
+        label: "Topics"
+        occurrences:
+          min: 0
+          max: 1
+        items:
+          - type: "TextLine"
+            name: "topic"
+            label: "Topic"
+            occurrences:
+              min: 0
+              max: 0
+      - type: "FieldSet"
+        label: "Metadata"
+        items:
+          - type: "Tag"
+            name: "tags"
+            label: "Tags for tag cloud"
+            occurrences:
+              min: 0
+              max: 5
+      - type: "TextArea"
+        name: "preface"
+        label: "Preface"
+        helpText: "Preface"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "ItemSet"
+        name: "articleFieldSet"
+        label: "Article Content"
+        occurrences:
+          min: 1
+          max: 0
+        items:
+          - type: "TextLine"
+            name: "slide_title"
+            label: "Slide Title"
+            occurrences:
+              min: 0
+              max: 1
+          - type: "HtmlArea"
+            name: "article_text"
+            label: "Article Text"
+            helpText: "HTML Area"
+            occurrences:
+              min: 0
+              max: 1

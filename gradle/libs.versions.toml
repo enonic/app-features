@@ -1,0 +1,15 @@
+[versions]
+http-client = "3.2.2"
+thymeleaf = "3.0.0-SNAPSHOT"
+mustache = "2.1.1"
+text-encoding = "2.1.1"
+junit-bom = "6.0.3"
+
+[libraries]
+http-client = { module = "com.enonic.lib:lib-http-client", version.ref = "http-client" }
+thymeleaf = { module = "com.enonic.lib:lib-thymeleaf", version.ref = "thymeleaf" }
+mustache = { module = "com.enonic.lib:lib-mustache", version.ref = "mustache" }
+text-encoding = { module = "com.enonic.lib:lib-text-encoding", version.ref = "text-encoding" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit-bom" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }

@@ -1,0 +1,13 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Text Area"
+form:
+  - type: "TextArea"
+    name: "textarea"
+    label: "Text Area"
+    occurrences:
+      min: 0
+      max: 1

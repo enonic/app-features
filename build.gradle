@@ -1,47 +1,38 @@
 plugins {
     id 'maven-publish'
     id 'com.enonic.defaults' version '2.1.6'
-    id 'com.enonic.xp.app' version '4.0.0-A2'
+    id 'com.enonic.xp.app'
     id 'com.github.node-gradle.node' version '7.1.0'
 }
 
-app {
-    name = 'com.enonic.app.features'
-    displayName = 'Features App'
-    vendorName = 'Enonic AS'
-    vendorUrl = 'https://enonic.com'
-    systemVersion = "${xpVersion}"
-}
-
 dependencies {
-    implementation "com.enonic.xp:core-api:${xpVersion}"
-    implementation "com.enonic.xp:portal-api:${xpVersion}"
-    include "com.enonic.xp:lib-auth:${xpVersion}"
-    include "com.enonic.xp:lib-content:${xpVersion}"
-    include "com.enonic.xp:lib-context:${xpVersion}"
-    include "com.enonic.xp:lib-portal:${xpVersion}"
-    include "com.enonic.xp:lib-i18n:${xpVersion}"
-    include "com.enonic.xp:lib-mail:${xpVersion}"
-    include "com.enonic.xp:lib-websocket:${xpVersion}"
-    include "com.enonic.xp:lib-io:${xpVersion}"
-    include "com.enonic.xp:lib-repo:${xpVersion}"
-    include "com.enonic.xp:lib-node:${xpVersion}"
-    include "com.enonic.xp:lib-value:${xpVersion}"
-    include "com.enonic.xp:lib-scheduler:${xpVersion}"
-    include "com.enonic.xp:lib-task:${xpVersion}"
-    include "com.enonic.xp:lib-cluster:${xpVersion}"
-    include "com.enonic.xp:lib-auditlog:${xpVersion}"
-    include "com.enonic.xp:lib-project:${xpVersion}"
-    include "com.enonic.xp:lib-export:${xpVersion}"
-    include "com.enonic.lib:lib-http-client:3.2.2"
-    include 'com.enonic.lib:lib-thymeleaf:2.2.0-SNAPSHOT'
-    include 'com.enonic.lib:lib-mustache:2.1.1'
-    include "com.enonic.lib:lib-text-encoding:2.1.1"
+    implementation xplibs.api.script
+    include xplibs.auth
+    include xplibs.content
+    include xplibs.context
+    include xplibs.portal
+    include xplibs.i18n
+    include xplibs.mail
+    include xplibs.websocket
+    include xplibs.io
+    include xplibs.repo
+    include xplibs.node
+    include xplibs.value
+    include xplibs.scheduler
+    include xplibs.task
+    include xplibs.cluster
+    include xplibs.auditlog
+    include xplibs.project
+    include xplibs.export
+    include libs.http.client
+    include libs.thymeleaf
+    include libs.mustache
+    include libs.text.encoding
 
     testImplementation "com.enonic.xp:testing:${xpVersion}"
-    testImplementation(platform("org.junit:junit-bom:6.0.3"))
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation(platform(libs.junit.bom))
+    testImplementation libs.junit.jupiter
+    testRuntimeOnly libs.junit.platform.launcher
 }
 
 repositories {
@@ -53,12 +44,6 @@ repositories {
 node {
     download = true
     version = '22.15.1'
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
-    }
 }
 
 test {
@@ -78,7 +63,7 @@ tasks.register('npmBuild', NpmTask) {
     dependsOn npmInstall
     environment = [
         'FORCE_COLOR': 'true',
-        'NODE_ENV': project.hasProperty('dev') || project.hasProperty('development') ? 'development' : 'production'
+        'NODE_ENV': project.findProperty('env') == 'dev' ? 'development' : 'production'
     ]
     inputs.dir 'src/main/resources'
     outputs.dir 'build/resources/main'

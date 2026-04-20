@@ -1,0 +1,5 @@
+kind: "Page"
+title: "Attachment functions example"
+form: [ ]
+regions:
+  - "main"

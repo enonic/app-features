@@ -1,0 +1,15 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Reference-test"
+form:
+  - type: "ContentSelector"
+    name: "myRelation"
+    label: "References to other contents"
+    occurrences:
+      min: 0
+      max: 0
+    attributes:
+      relationshipType: "system:reference"

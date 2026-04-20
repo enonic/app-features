@@ -1,0 +1,20 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Radio buttons"
+form:
+  - type: "RadioButton"
+    name: "ss_radio"
+    label: "Radio buttons"
+    occurrences:
+      min: 0
+      max: 0
+    options:
+      - value: "o1"
+        label: "myOption 1"
+      - value: "o2"
+        label: "myOption 2"
+      - value: "o3"
+        label: "myOption 3"

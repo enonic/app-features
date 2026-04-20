@@ -1,0 +1,70 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Set In Set"
+form:
+  - type: "TextLine"
+    name: "first_name"
+    label: "First Name"
+    helpText: "First name"
+    occurrences:
+      min: 1
+      max: 1
+  - type: "TextLine"
+    name: "last_name"
+    label: "Last Name"
+    helpText: "Last name"
+    occurrences:
+      min: 1
+      max: 1
+  - type: "ItemSet"
+    name: "contact_info"
+    label: "Contact Info"
+    occurrences:
+      min: 0
+      max: 0
+    items:
+      - type: "TextLine"
+        name: "label"
+        label: "Label"
+        helpText: "Give this address a label"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "TextLine"
+        name: "street"
+        label: "Street"
+        helpText: "Street"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "TextLine"
+        name: "postal_code"
+        label: "Postal Code"
+        helpText: "Postal Code"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "TextLine"
+        name: "postal_address"
+        label: "Postal Address"
+        helpText: "Postal Address"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "ItemSet"
+        name: "phone_numbers"
+        label: "Phone Numbers"
+        occurrences:
+          min: 0
+          max: 1
+        items:
+          - type: "TextLine"
+            name: "phone_number"
+            label: "Phone Number"
+            helpText: "Should be prefixed with country calling code"
+            occurrences:
+              min: 0
+              max: 1

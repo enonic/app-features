@@ -1,0 +1,21 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Text Line"
+form:
+  - type: "TextLine"
+    name: "textline"
+    label: "Text Line"
+    helpText: "Some help text"
+    occurrences:
+      min: 0
+      max: 1
+  - type: "TextLine"
+    name: "requiredTextLine"
+    label: "Required Text Line"
+    helpText: "Some help text"
+    occurrences:
+      min: 1
+      max: 0

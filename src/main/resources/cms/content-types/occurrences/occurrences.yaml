@@ -1,0 +1,150 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Occurrences"
+form:
+  - type: "TextLine"
+    name: "textLineUnlimitedOccurrences"
+    label: "TextLine with min 0 and unlimited max"
+    occurrences:
+      min: 0
+      max: 0
+  - type: "TextLine"
+    name: "textLineUnrequiredMaxOne"
+    label: "TextLine with min 0 and max 1"
+    occurrences:
+      min: 0
+      max: 1
+  - type: "TextLine"
+    name: "textLineRequiredAndUnlimitedOccurrences"
+    label: "TextLine with min 1 and unlimited max"
+    occurrences:
+      min: 1
+      max: 0
+  - type: "Date"
+    name: "dateRequired"
+    label: "Date required"
+    occurrences:
+      min: 1
+      max: 0
+  - type: "DateTime"
+    name: "dateTimeRequired"
+    label: "DateTime required"
+    occurrences:
+      min: 1
+      max: 0
+  - type: "Time"
+    name: "timeRequired"
+    label: "Time required"
+    occurrences:
+      min: 1
+      max: 0
+  - type: "Long"
+    name: "longRequired"
+    label: "Long required"
+    occurrences:
+      min: 1
+      max: 0
+  - type: "TextLine"
+    name: "textLineMin2Max4"
+    label: "TextLine with min 2 and max 4"
+    occurrences:
+      min: 2
+      max: 4
+  - type: "ItemSet"
+    name: "formItemSetUnrequiredAndMaxOneOccurrence"
+    label: "Set with min 0 and max 1"
+    occurrences:
+      min: 0
+      max: 1
+    items:
+      - type: "TextLine"
+        name: "myText"
+        label: "My Text"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "TextLine"
+        name: "myOtherText"
+        label: "My other Text"
+        occurrences:
+          min: 0
+          max: 1
+  - type: "ItemSet"
+    name: "formItemSetRequiredAndMaxOneOccurrence"
+    label: "Set with min 1 and max 1"
+    occurrences:
+      min: 1
+      max: 1
+    items:
+      - type: "TextLine"
+        name: "myRequiredText"
+        label: "My required Text"
+        occurrences:
+          min: 1
+          max: 1
+      - type: "TextLine"
+        name: "myOtherText"
+        label: "My other Text"
+        occurrences:
+          min: 0
+          max: 1
+  - type: "ItemSet"
+    name: "formItemSetUnrequiredAndUnlimitedOccurrences"
+    label: "Set with min 0 and unlimited max"
+    occurrences:
+      min: 0
+      max: 0
+    items:
+      - type: "TextLine"
+        name: "myText"
+        label: "My Text"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "TextLine"
+        name: "myOtherText"
+        label: "My other Text"
+        occurrences:
+          min: 0
+          max: 1
+  - type: "ItemSet"
+    name: "formItemSetRequiredAndUnlimitedOccurrences"
+    label: "Set with min 1 and unlimited max"
+    occurrences:
+      min: 1
+      max: 0
+    items:
+      - type: "TextLine"
+        name: "myText"
+        label: "My Text"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "TextLine"
+        name: "myOtherText"
+        label: "My other Text"
+        occurrences:
+          min: 0
+          max: 1
+  - type: "ItemSet"
+    name: "formItemSetRequired2AndMax4Occurrences"
+    label: "Set with min 2 and max 4"
+    occurrences:
+      min: 2
+      max: 4
+    items:
+      - type: "TextLine"
+        name: "myText"
+        label: "My Text"
+        occurrences:
+          min: 0
+          max: 1
+      - type: "TextLine"
+        name: "myOtherText"
+        label: "My other Text"
+        occurrences:
+          min: 1
+          max: 1

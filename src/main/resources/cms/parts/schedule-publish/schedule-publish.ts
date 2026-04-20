@@ -1,6 +1,7 @@
 import * as contentLib from '/lib/xp/content';
+import * as contextLib from '/lib/xp/context';
 import * as thymeleaf from '/lib/thymeleaf';
-import type {Request, Content} from '@enonic-types/core';
+import type {Content, Request} from '@enonic-types/core';
 import type {Schedule} from '@enonic-types/lib-content';
 
 const view = resolve('schedule-publish.html');
@@ -38,16 +39,6 @@ function handleGet(req: Request) {
     const getContentMaster = getContent(content, 'master');
     const getChildrenMaster = getChildren('master');
 
-    deleteContent(defaultContent);
-    deleteContent(expiredContent);
-    deleteContent(pendingContent);
-    deleteContent(content);
-
-    publishContent(defaultContent);
-    publishContent(expiredContent);
-    publishContent(pendingContent);
-    publishContent(content);
-
     const params = {
         getDefaultContentDraft: JSON.stringify(getDefaultContentDraft, null, 2),
         getExpiredContentDraft: JSON.stringify(getExpiredContentDraft, null, 2),
@@ -80,28 +71,27 @@ function createContent(name: string) {
     });
 }
 
-function getContent(content: Content, _branch: string) {
-    return contentLib.get({
+function getContent(content: Content, branch: string) {
+    return contextLib.run({
+        branch: branch
+    }, () => contentLib.get({
         key: content._id
-    });
+    }));
 }
 
-function getChildren(_branch: string) {
-    return contentLib.getChildren({
+function getChildren(branch: string) {
+    return contextLib.run({
+        branch: branch
+    }, () => contentLib.getChildren({
         key: '/features/js-libraries/schedule-publish'
-    });
+    }));
 }
 
 function publishContent(content: Content, schedule?: Schedule) {
+
     return contentLib.publish({
         keys: [content._id],
         schedule: schedule
-    });
-}
-
-function deleteContent(content: Content) {
-    return contentLib.deleteContent({
-        key: content._path
     });
 }
 

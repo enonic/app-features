@@ -1,0 +1,21 @@
+kind: "Mixin"
+title: "X-data (folders only)"
+form:
+  - type: "TextLine"
+    name: "street"
+    label: "Field 1"
+    occurrences:
+      min: 0
+      max: 2
+  - type: "TextLine"
+    name: "postalCode"
+    label: "Field 2"
+    occurrences:
+      min: 1
+      max: 1
+  - type: "TextLine"
+    name: "postalPlace"
+    label: "Field 3"
+    occurrences:
+      min: 0
+      max: 1

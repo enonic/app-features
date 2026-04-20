@@ -1,0 +1,30 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Double"
+form:
+  - type: "Double"
+    name: "double"
+    label: "Double"
+    helpText: "..that's the question!"
+    occurrences:
+      min: 0
+      max: 1
+  - type: "Double"
+    name: "requiredDouble"
+    label: "Required Double"
+    helpText: "..that's the question!"
+    occurrences:
+      min: 1
+      max: 0
+  - type: "Double"
+    name: "doubleWithMax"
+    label: "Double with Max Value"
+    helpText: "Required double input with min 1 and max 10"
+    occurrences:
+      min: 1
+      max: 1
+    min: 1
+    max: 10
