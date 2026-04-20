@@ -2,6 +2,7 @@ import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
 import * as thymeleaf from '/lib/thymeleaf';
 import type {PartComponent, Request} from '@enonic-types/core';
+import type {ImageUrlParams} from '@enonic-types/lib-portal';
 
 const scaleOptions = [
     {name: 'Scale Max', value: 'max(600)'},
@@ -77,7 +78,7 @@ export const POST = function (req: Request) {
         const img = images[i];
         img.url = portal.imageUrl({
             id: img.id,
-            scale: scale as any,
+            scale: scale as ImageUrlParams['scale'],
             filter: filter
         });
     }
@@ -94,7 +95,7 @@ function getImages() {
     const component = portal.getComponent<PartComponent>();
 
     const imageFolderId = component?.config.imageFolder as string | undefined;
-    const images: any[] = [];
+    const images: {id: string; width: string | number; height: string | number; byteSize: string | number; url?: string}[] = [];
     if (imageFolderId) {
         const result = contentSvc.getChildren({
             key: imageFolderId,
@@ -105,12 +106,12 @@ function getImages() {
             const child = result.hits[i];
             if (child.type === "media:image") {
                 const media = child.x.media || {};
-                const info = media['imageInfo'] || {};
+                const info = (media['imageInfo'] || {}) as Record<string, unknown>;
                 images.push({
                     id: child._id,
-                    width: info.imageWidth || '?',
-                    height: info.imageHeight || '?',
-                    byteSize: info.byteSize || '?'
+                    width: info.imageWidth as string | number || '?',
+                    height: info.imageHeight as string | number || '?',
+                    byteSize: info.byteSize as string | number || '?'
                 });
             }
         }
@@ -118,7 +119,7 @@ function getImages() {
     return images;
 }
 
-function defaultImageUrl(contentId: any) {
+function defaultImageUrl(contentId: string) {
     return portal.imageUrl({
         id: contentId,
         scale: 'wide(600,400)'

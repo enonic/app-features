@@ -11,13 +11,13 @@ function handleGet(req: Request) {
     const cityServiceUrl = service.serviceUrl('city');
     const content = portal.getContent();
 
-    let cityName: any;
-    let cityLocation: any;
+    let cityName: string | undefined;
+    let cityLocation: string | undefined;
     if (req.params.city) {
-        const city = getCity(req.params.city);
+        const city = getCity(req.params.city as string);
         if (city) {
             cityName = city.displayName;
-            cityLocation = city.data.cityLocation;
+            cityLocation = (city.data as Record<string, unknown>).cityLocation as string;
         }
     }
 
@@ -32,7 +32,7 @@ function handleGet(req: Request) {
     };
     const body = thymeleaf.render(view, params);
 
-    function getCity(cityName: any) {
+    function getCity(cityName: string) {
         const result = contentSvc.query({
             count: 1,
             contentTypes: [

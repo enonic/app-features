@@ -1,6 +1,6 @@
 import * as websocket from '/lib/xp/websocket';
 import * as thymeleaf from '/lib/thymeleaf';
-import type {Request} from '@enonic-types/core';
+import type {Request, WebSocketEvent} from '@enonic-types/core';
 
 function renderView() {
     const view = resolve('./chat.html');
@@ -29,7 +29,7 @@ export const GET = function (req: Request) {
     };
 };
 
-export const webSocketEvent = function (event: any) {
+export const webSocketEvent = function (event: WebSocketEvent<Record<string, unknown>>) {
     if (event.type == 'open') {
         websocket.addToGroup('chat', event.session.id);
     }

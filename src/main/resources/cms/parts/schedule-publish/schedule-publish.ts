@@ -1,8 +1,8 @@
 import * as contentLib from '/lib/xp/content';
-import type {Schedule} from '/lib/xp/content';
 import * as contextLib from '/lib/xp/context';
 import * as thymeleaf from '/lib/thymeleaf';
 import type {Content, Request} from '@enonic-types/core';
+import type {Schedule} from '@enonic-types/lib-content';
 
 const view = resolve('schedule-publish.html');
 

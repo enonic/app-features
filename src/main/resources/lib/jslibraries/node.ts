@@ -1,5 +1,6 @@
 import * as nodeLib from '/lib/xp/node';
 import * as repoLib from '/lib/xp/repo';
+import type { Node as XpNode } from '@enonic-types/lib-node';
 
 const testRepoId = "features-node-test-repo";
 
@@ -25,7 +26,7 @@ const cleanUp = function () {
     }
 };
 
-function createNode(name: any, params?: any) {
+function createNode(name: string, params?: {parentPath?: string}) {
     const repo = connect();
 
     return repo.create({
@@ -71,19 +72,19 @@ function createNode(name: any, params?: any) {
     });
 }
 
-function modifyNode(key: any) {
+function modifyNode(key: string) {
     const repo = connect();
 
     return repo.update({
         key: key,
-        editor: function (node: any) {
-            node.someData.cars.push('peugeot');
+        editor: function (node: XpNode<Record<string, unknown>>) {
+            (node.someData as {cars: string[]}).cars.push('peugeot');
             return node;
         }
     });
 }
 
-function commitNode(key: any) {
+function commitNode(key: string) {
     const repo = connect();
 
     return repo.commit({
@@ -101,8 +102,8 @@ export function create() {
 
 export function modify() {
     initialize();
-    let node: any = createNode('my-node');
-    node = modifyNode(node._id);
+    let node = createNode('my-node');
+    node = modifyNode(node._id) as unknown as typeof node;
     cleanUp();
     return node;
 }

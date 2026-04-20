@@ -28,7 +28,6 @@ function handleGet(req: Request) {
 
     const params = {
         currentPage: currentPage,
-        // @ts-expect-error locales not yet in @enonic-types
         locales: req.locales,
         complex_message: complex_message,
         complex_message_no: complex_message_no,

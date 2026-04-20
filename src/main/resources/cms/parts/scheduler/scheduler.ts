@@ -1,26 +1,27 @@
 import * as libPortal from '/lib/xp/portal';
 import * as libScheduler from '/lib/xp/scheduler';
 import * as libThymeleaf from '/lib/thymeleaf';
-import type {Request} from '@enonic-types/core';
+import type {Request, RequestParams} from '@enonic-types/core';
+import type {ScheduledJob} from '@enonic-types/lib-scheduler';
 
 const view = resolve('scheduler.html');
 const tableView = resolve('includes/schedulesTable.html');
 
-function doExecute(params: any) {
-    let result: any, body: any;
+function doExecute(params: RequestParams) {
+    let result: ScheduledJob | boolean | null | undefined;
     if (params.operation === 'create') {
         result =
-            createCronSchedule(params.schedulerName, params.schedulerDescription, params.schedulerDescriptor, params.schedulerSchedule);
+            createCronSchedule(params.schedulerName as string, params.schedulerDescription as string, params.schedulerDescriptor as string, params.schedulerSchedule as string);
         log.info('Create Schedule result: %s', JSON.stringify(result));
     } else if (params.operation === 'delete') {
-        result = deleteCronJobScheduler(params.schedulerName);
+        result = deleteCronJobScheduler(params.schedulerName as string);
         log.info('Delete Schedule result: %s', JSON.stringify(result));
     } else if (params.operation === 'modify') {
-        result = modifyCronJobSchedule(params.schedulerName, params.schedulerDescription, params.schedulerDescriptor, true,
-            params.schedulerSchedule);
+        result = modifyCronJobSchedule(params.schedulerName as string, params.schedulerDescription as string, params.schedulerDescriptor as string, true,
+            params.schedulerSchedule as string);
         log.info('Modify Schedule result: %s', JSON.stringify(result));
     } else if (params.operation === 'get') {
-        result = getSchedule(params.name);
+        result = getSchedule(params.name as string);
         log.info('Get Schedule result: %s', JSON.stringify(result));
     }
 
@@ -37,7 +38,7 @@ function doExecute(params: any) {
     }
 }
 
-function createCronSchedule(name: any, description: any, descriptor: any, schedule: any) {
+function createCronSchedule(name: string, description: string, descriptor: string, schedule: string) {
     return libScheduler.create({
         name: name,
         description: description,
@@ -51,7 +52,7 @@ function createCronSchedule(name: any, description: any, descriptor: any, schedu
     });
 }
 
-function getSchedule(name: any) {
+function getSchedule(name: string) {
     const job = libScheduler.get({name: name});
 
     if (job) {
@@ -63,10 +64,10 @@ function getSchedule(name: any) {
     return job;
 }
 
-function modifyCronJobSchedule(name: any, description: any, descriptor: any, enabled: any, schedule: any) {
+function modifyCronJobSchedule(name: string, description: string, descriptor: string, enabled: boolean, schedule: string) {
     return libScheduler.modify({
         name: name,
-        editor: (edit: any) => {
+        editor: (edit: ScheduledJob) => {
             edit.descriptor = descriptor;
             edit.description = description;
             edit.enabled = enabled;
@@ -80,7 +81,7 @@ function modifyCronJobSchedule(name: any, description: any, descriptor: any, ena
     });
 }
 
-function deleteCronJobScheduler(name: any) {
+function deleteCronJobScheduler(name: string) {
     return libScheduler.delete({
         name: name
     });

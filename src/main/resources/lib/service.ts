@@ -1,7 +1,7 @@
 import * as portal from '/lib/xp/portal';
 
 export const service = {
-    serviceUrl: function (service: any, params?: any, module?: any): string {
+    serviceUrl: function (service: string, params?: object, module?: string): string {
         let url: string;
         if (params && module) {
             url = portal.serviceUrl({

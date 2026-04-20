@@ -17,7 +17,7 @@ function handlePost(req: Request) {
         }
     }
 
-    function getCity(cityName: any) {
+    function getCity(cityName: string) {
         const result = contentSvc.query({
             count: 1,
             contentTypes: [
@@ -29,10 +29,10 @@ function handlePost(req: Request) {
         return result.hits[0];
     }
 
-    function modifyCity(city: any, cityName: any, cityLocation: any) {
+    function modifyCity(city: ReturnType<typeof contentSvc.query>['hits'][number], cityName: string, cityLocation: string) {
         const result = contentSvc.update({
             key: city._id,
-            editor: function (c: any) {
+            editor: function (c) {
                 c.data.cityLocation = cityLocation;
                 return c;
             }
@@ -41,7 +41,7 @@ function handlePost(req: Request) {
         return result;
     }
 
-    function createCity(cityName: any, cityLocation: any) {
+    function createCity(cityName: string, cityLocation: string) {
         const result = contentSvc.create({
             name: cityName,
             parentPath: parentPath,

@@ -2,6 +2,7 @@ import * as portal from '/lib/xp/portal';
 import * as mail from '/lib/xp/mail';
 import * as thymeleaf from '/lib/thymeleaf';
 import type {Request} from '@enonic-types/core';
+import type {Attachment} from '@enonic-types/lib-mail';
 
 export const GET = function (req: Request) {
     const postUrl = portal.componentUrl({});
@@ -63,7 +64,7 @@ export const POST = function (req: Request) {
 function getAttachments() {
     const file1 = portal.getMultipartItem('file1');
     const file2 = portal.getMultipartItem('file2');
-    const attachments: any[] = [];
+    const attachments: Attachment[] = [];
     if (file1 && file1.size > 0) {
         attachments.push({
             fileName: file1.fileName,

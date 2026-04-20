@@ -1,7 +1,8 @@
 import * as portal from '/lib/xp/portal';
 import * as contentLib from '/lib/xp/content';
 import * as thymeleaf from '/lib/thymeleaf';
-import type {PartComponent, Request} from '@enonic-types/core';
+import type {PartComponent, Request, Content} from '@enonic-types/core';
+import type {MultipartForm} from '@enonic-types/lib-portal';
 
 export const GET = function (req: Request) {
     const idsParam = req.params.ids as string;
@@ -45,9 +46,11 @@ export const POST = function (req: Request) {
     };
 };
 
-function createMedia(multipartForm: any) {
-    let uploadFolder: any, media: any, part: any;
-    const contentIds: any[] = [];
+function createMedia(multipartForm: MultipartForm) {
+    let uploadFolder: Content | null | undefined;
+    let media: Content | null;
+    let part: ReturnType<typeof portal.getMultipartItem>;
+    const contentIds: string[] = [];
 
     const targetFolderPath = portal.getMultipartText('targetFolder');
     if (targetFolderPath) {
@@ -61,7 +64,8 @@ function createMedia(multipartForm: any) {
     }
 
     for (const name in multipartForm) {
-        const fileCount = multipartForm[name].length || 1;
+        const item = multipartForm[name];
+        const fileCount = Array.isArray(item) ? item.length : 1;
 
         for (let idx = 0; idx < fileCount; idx++) {
             part = portal.getMultipartItem(name, idx);
@@ -84,7 +88,7 @@ function createMedia(multipartForm: any) {
 }
 
 function getDefaultFolderPath() {
-    let uploadFolder: any;
+    let uploadFolder: Content | null | undefined;
     const component = portal.getComponent<PartComponent>();
     const uploadFolderId = component?.config.targetFolder as string | undefined;
     if (uploadFolderId) {
@@ -95,9 +99,10 @@ function getDefaultFolderPath() {
     return uploadFolder ? uploadFolder._path : '';
 }
 
-function getCreatedContentFiles(ids: any[]) {
-    let uploadContent: any, fileUrl: any, thumbUrl: any;
-    const files: any[] = [];
+function getCreatedContentFiles(ids: string[]) {
+    let uploadContent: Content | null;
+    let fileUrl: string, thumbUrl: string;
+    const files: {url: string; thumbUrl: string; type: string; name: string}[] = [];
     for (let i = 0; i < ids.length; i++) {
         uploadContent = contentLib.get({
             key: ids[i]

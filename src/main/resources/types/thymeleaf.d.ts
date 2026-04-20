@@ -1,5 +1,6 @@
 declare module '/lib/thymeleaf' {
-    export function render(view: any, model: any): string;
+    import type { ResourceKey } from '@enonic-types/core';
+    export function render(view: ResourceKey, model: Record<string, unknown>): string;
 }
 
 export {};

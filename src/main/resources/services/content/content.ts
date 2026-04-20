@@ -8,9 +8,9 @@ export {handlePost as POST};
 function handlePost(req: Request) {
     const contentData = req.params;
     let contentCreated = null;
-    const contentItem = stk.content.get(contentData.content_ID);
-    let contentFolder: any;
-    let saveLocation: any;
+    const contentItem = stk.content.get(contentData.content_ID as string);
+    let contentFolder: ReturnType<typeof contentSvc.create> | undefined;
+    let saveLocation: string;
 
     if (stk.content.exists(contentItem._path + '/content')) {
         saveLocation = contentItem._path + '/content';

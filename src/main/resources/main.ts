@@ -2,6 +2,7 @@ import * as projectLib from '/lib/xp/project';
 import * as contextLib from '/lib/xp/context';
 import * as clusterLib from '/lib/xp/cluster';
 import * as exportLib from '/lib/xp/export';
+import type { ImportNodesResult, ImportNodesError } from '@enonic-types/lib-export';
 
 const projectData = {
     id: 'features',
@@ -13,8 +14,8 @@ const projectData = {
     }
 }
 
-function runInContext(callback: any) {
-    let result: any;
+function runInContext(callback: () => unknown) {
+    let result: unknown;
     try {
         result = contextLib.run({
             principals: ["role:system.admin"],
@@ -58,7 +59,7 @@ function initializeProject() {
 }
 
 function createContent() {
-    const importNodes: any = exportLib.importNodes({
+    const importNodes: ImportNodesResult = exportLib.importNodes({
         source: resolve('/import'),
         targetNodePath: '/content',
         xslt: resolve('/import/replace_app.xsl'),
@@ -69,17 +70,17 @@ function createContent() {
     });
     log.info('-------------------');
     log.info('Imported nodes:');
-    importNodes.addedNodes.forEach((element: any) => log.info(element));
+    importNodes.addedNodes.forEach((element: string) => log.info(element));
     log.info('-------------------');
     log.info('Updated nodes:');
-    importNodes.updatedNodes.forEach((element: any) => log.info(element));
+    importNodes.updatedNodes.forEach((element: string) => log.info(element));
     log.info('-------------------');
     log.info('Imported binaries:');
-    importNodes.importedBinaries.forEach((element: any) => log.info(element));
+    importNodes.importedBinaries.forEach((element: string) => log.info(element));
     log.info('-------------------');
     if (importNodes.importErrors.length !== 0) {
         log.warning('Errors:');
-        importNodes.importErrors.forEach((element: any) => log.warning(element.message));
+        importNodes.importErrors.forEach((element: ImportNodesError) => log.warning(element.message));
         log.info('-------------------');
     }
 }

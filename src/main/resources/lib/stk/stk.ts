@@ -5,11 +5,11 @@ import * as contentModule from './content';
 export const data = dataModule.data;
 export const content = contentModule.content;
 
-export function logStk(data: any): void {
+export function logStk(data: unknown): void {
     log.info('STK log %s', JSON.stringify(data, null, 4));
 }
 
-export function serviceUrl(service: any, params?: any, module?: any): string {
+export function serviceUrl(service: string, params?: object, module?: string): string {
     let url: string;
     if (params && module) {
         url = portal.serviceUrl({
