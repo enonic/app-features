@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SSE Demo</title>
+</head>
+<body>
+    <h1>SSE Demo</h1>
+
+    <fieldset>
+        <legend>Source</legend>
+        <label>
+            <input type="radio" name="sse-source" value="api" data-th-attr="data-url=${apiUrl}" checked>
+            API
+        </label>
+        <label>
+            <input type="radio" name="sse-source" value="mapping" data-th-attr="data-url=${mappingUrl}">
+            Site mapping
+        </label>
+    </fieldset>
+
+    <p>
+        Listening on <code id="sse-url">—</code>
+    </p>
+    <div id="sse-status" style="font-size:1.5rem;padding:0.5rem 0">Connecting…</div>
+
+    <script data-th-src="${assetUrl}" defer></script>
+</body>
+</html>
