@@ -6,9 +6,56 @@ allowChildContent: true
 title: "OptionSet"
 form:
   - type: "OptionSet"
-    name: "radioOptionSet"
+    name: "radioOptionSet_0_1"
     expanded: false
-    label: "Single selection"
+    label: "Single selection (min 0, max 1)"
+    helpText: "Single selection radio option set"
+    occurrences:
+      min: 0
+      max: 1
+    options:
+      - name: "option_1"
+        label: "Option 1"
+        helpText: "Help text for Option 1"
+        selected: false
+        items:
+          - type: "TextLine"
+            name: "name"
+            label: "Name"
+            helpText: "Text input"
+            occurrences:
+              min: 1
+              max: 1
+          - type: "ItemSet"
+            name: "minimum3"
+            label: "Minimum 3"
+            occurrences:
+              min: 3
+              max: 0
+            items:
+              - type: "TextLine"
+                name: "label"
+                label: "Label"
+                occurrences:
+                  min: 0
+                  max: 1
+              - type: "TextLine"
+                name: "value"
+                label: "Value"
+                occurrences:
+                  min: 0
+                  max: 1
+      - name: "option_2"
+        label: "Option 2"
+        helpText: "Help text for Option 2"
+        selected: false
+    selection:
+      min: 1
+      max: 1
+  - type: "OptionSet"
+    name: "radioOptionSet_1_1"
+    expanded: false
+    label: "Single selection (min 1, max 1)"
     helpText: "Single selection radio option set"
     occurrences:
       min: 1
@@ -53,13 +100,156 @@ form:
       min: 1
       max: 1
   - type: "OptionSet"
-    name: "checkOptionSet"
+    name: "radioOptionSet_1_0"
+    expanded: false
+    label: "Single selection (min 1, max 0)"
+    helpText: "Single selection radio option set"
+    occurrences:
+      min: 1
+      max: 0
+    options:
+      - name: "option_1"
+        label: "Option 1"
+        helpText: "Help text for Option 1"
+        selected: false
+        items:
+          - type: "TextLine"
+            name: "name"
+            label: "Name"
+            helpText: "Text input"
+            occurrences:
+              min: 1
+              max: 1
+          - type: "ItemSet"
+            name: "minimum3"
+            label: "Minimum 3"
+            occurrences:
+              min: 3
+              max: 0
+            items:
+              - type: "TextLine"
+                name: "label"
+                label: "Label"
+                occurrences:
+                  min: 0
+                  max: 1
+              - type: "TextLine"
+                name: "value"
+                label: "Value"
+                occurrences:
+                  min: 0
+                  max: 1
+      - name: "option_2"
+        label: "Option 2"
+        helpText: "Help text for Option 2"
+        selected: false
+    selection:
+      min: 1
+      max: 1
+  - type: "OptionSet"
+    name: "checkOptionSet_0_1"
     expanded: true
-    label: "Multi selection"
+    label: "Multi selection (min 0, max 1)"
+    helpText: "Multi selection checkbox option set"
+    occurrences:
+      min: 0
+      max: 1
+    options:
+      - name: "option_1"
+        label: "Option 1"
+        helpText: "Help text for Option 1"
+        selected: false
+      - name: "option_2"
+        label: "Option 2"
+        helpText: "Help text for Option 2"
+        selected: true
+      - name: "option_3"
+        label: "Option 3"
+        helpText: "Help text for Option 3"
+        selected: false
+        items:
+          - type: "ImageSelector"
+            name: "imageselector"
+            label: "Image selector"
+            occurrences:
+              min: 1
+              max: 1
+      - name: "option_4"
+        label: "Option 4"
+        helpText: "Help text for Option 4"
+        selected: false
+        items:
+          - type: "Double"
+            name: "double"
+            label: "Double"
+            occurrences:
+              min: 1
+              max: 1
+          - type: "Long"
+            name: "long"
+            label: "Long"
+            occurrences:
+              min: 0
+              max: 1
+    selection:
+      min: 1
+      max: 3
+  - type: "OptionSet"
+    name: "checkOptionSet_1_1"
+    expanded: true
+    label: "Multi selection (min 1, max 1)"
     helpText: "Multi selection checkbox option set"
     occurrences:
       min: 1
       max: 1
+    options:
+      - name: "option_1"
+        label: "Option 1"
+        helpText: "Help text for Option 1"
+        selected: false
+      - name: "option_2"
+        label: "Option 2"
+        helpText: "Help text for Option 2"
+        selected: true
+      - name: "option_3"
+        label: "Option 3"
+        helpText: "Help text for Option 3"
+        selected: false
+        items:
+          - type: "ImageSelector"
+            name: "imageselector"
+            label: "Image selector"
+            occurrences:
+              min: 1
+              max: 1
+      - name: "option_4"
+        label: "Option 4"
+        helpText: "Help text for Option 4"
+        selected: false
+        items:
+          - type: "Double"
+            name: "double"
+            label: "Double"
+            occurrences:
+              min: 1
+              max: 1
+          - type: "Long"
+            name: "long"
+            label: "Long"
+            occurrences:
+              min: 0
+              max: 1
+    selection:
+      min: 1
+      max: 3
+  - type: "OptionSet"
+    name: "checkOptionSet_0_0"
+    expanded: true
+    label: "Multi selection (min 0, max 0)"
+    helpText: "Multi selection checkbox option set"
+    occurrences:
+      min: 0
+      max: 0
     options:
       - name: "option_1"
         label: "Option 1"
