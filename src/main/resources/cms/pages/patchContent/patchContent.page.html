@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Patch Content</title>
+    <style>
+        body { font-family: sans-serif; margin: 24px; }
+        .patch-page { max-width: 640px; }
+        fieldset { margin-bottom: 16px; padding: 12px 16px; }
+        legend { font-weight: bold; }
+        .row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+        .row label.toggle { min-width: 180px; }
+        .row input[type="text"] { flex: 1; padding: 4px 6px; }
+        .data-row input[type="text"] { flex: 1; }
+        .branches label { margin-right: 16px; }
+        .msg-ok { color: darkgreen; }
+        .msg-err { color: darkred; }
+        pre { background: #f4f4f4; padding: 12px; overflow: auto; }
+    </style>
+</head>
+<body data-portal-component-type="page">
+
+<div class="patch-page">
+    <h2>Patch Content</h2>
+
+    <form method="post">
+        <fieldset>
+            <legend>Target</legend>
+            <div class="row">
+                <label class="toggle" for="key">Content Key (path or id)</label>
+                <input id="key" name="key" type="text" data-th-value="${key}" placeholder="/path/to/content or content-id" required/>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Properties to patch</legend>
+
+            <div class="row">
+                <label class="toggle">
+                    <input name="updateDisplayName" type="checkbox" value="true" data-th-checked="${updateDisplayName}"/>
+                    Update displayName
+                </label>
+                <input name="displayName" type="text" data-th-value="${displayName}" placeholder="New display name"/>
+            </div>
+
+            <div class="row">
+                <label class="toggle">
+                    <input name="updateLanguage" type="checkbox" value="true" data-th-checked="${updateLanguage}"/>
+                    Update language
+                </label>
+                <input name="language" type="text" data-th-value="${language}" placeholder="en"/>
+            </div>
+
+            <div class="row">
+                <label class="toggle">
+                    <input name="updateOwner" type="checkbox" value="true" data-th-checked="${updateOwner}"/>
+                    Update owner
+                </label>
+                <input name="owner" type="text" data-th-value="${owner}" placeholder="user:system:admin"/>
+            </div>
+
+            <div class="row data-row">
+                <label class="toggle">
+                    <input name="updateData" type="checkbox" value="true" data-th-checked="${updateData}"/>
+                    Update data field
+                </label>
+                <input name="dataField" type="text" data-th-value="${dataField}" placeholder="field name"/>
+                <input name="dataValue" type="text" data-th-value="${dataValue}" placeholder="value"/>
+            </div>
+        </fieldset>
+
+        <fieldset class="branches">
+            <legend>Branches</legend>
+            <label>
+                <input name="branchMaster" type="checkbox" value="true" data-th-checked="${branchMaster}"/>
+                master
+            </label>
+            <label>
+                <input name="branchDraft" type="checkbox" value="true" data-th-checked="${branchDraft}"/>
+                draft
+            </label>
+            <div style="color:#666;font-size:0.9em;margin-top:6px;">Leaves branches empty to use the current context branch.</div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Options</legend>
+            <label>
+                <input name="skipSync" type="checkbox" value="true" data-th-checked="${skipSync}"/>
+                Skip sync to child projects
+            </label>
+        </fieldset>
+
+        <p data-th-if="${errorMsg != null}" class="msg-err" data-th-text="${errorMsg}"></p>
+        <p data-th-if="${msg != null}" class="msg-ok" data-th-text="${msg}"></p>
+
+        <p>
+            <button type="submit">Patch Content</button>
+        </p>
+    </form>
+
+    <div data-th-if="${result != null}">
+        <h3>Patch Result</h3>
+        <pre data-th-text="${result}"></pre>
+    </div>
+</div>
+
+</body>
+</html>
