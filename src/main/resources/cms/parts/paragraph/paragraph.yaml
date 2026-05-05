@@ -1,0 +1,11 @@
+kind: "Part"
+title: "Paragraph"
+description: "A rich text component"
+form:
+  - name: "text"
+    type: "HtmlArea"
+    label: "Text"
+    occurrences:
+      min: 1
+      max: 1
+    allowHeadings: "h1, h2, h3"

@@ -74,7 +74,6 @@ function createMedia(multipartForm: MultipartForm) {
                 media = contentLib.createMedia({
                     name: part.fileName,
                     parentPath: uploadFolder._path,
-                    mimeType: part.contentType,
                     focalX: 0.5,
                     focalY: 0.5,
                     data: portal.getMultipartStream(name, idx)
