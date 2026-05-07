@@ -104,12 +104,6 @@
                     <string isNull="true" name="direction"/>
                 </property-set>
             </property-set>
-            <property-set name="com-enonic-app-features">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
-            </property-set>
         </property-set>
         <property-set name="attachment">
             <string name="name">Castillo_de_Petrela_Petrela_Albania_2014-04-17_DD_09.JPG</string>

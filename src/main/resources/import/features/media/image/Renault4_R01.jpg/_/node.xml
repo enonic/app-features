@@ -105,12 +105,6 @@
                     <string isNull="true" name="direction"/>
                 </property-set>
             </property-set>
-            <property-set name="com-enonic-app-features">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
-            </property-set>
         </property-set>
         <property-set name="attachment">
             <string name="name">Renault4_R01.jpg</string>

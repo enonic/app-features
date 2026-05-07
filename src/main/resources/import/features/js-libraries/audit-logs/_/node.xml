@@ -61,10 +61,6 @@
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-app-features">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
                 <property-set name="all-except-folders"/>
             </property-set>
         </property-set>

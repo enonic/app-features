@@ -53,14 +53,6 @@
             <string name="media">the-irish-washerwoman.mp3</string>
             <string name="mimeType">audio/mp3</string>
         </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-app-features">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
-            </property-set>
-        </property-set>
         <property-set name="attachment">
             <string name="name">the-irish-washerwoman.mp3</string>
             <string name="label">source</string>

@@ -54,14 +54,6 @@
         <property-set name="data">
             <reference name="myRelation">ffc66af5-96bf-4b15-83a0-379fb83ae76f</reference>
         </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-app-features">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
-            </property-set>
-        </property-set>
     </data>
     <indexConfigs>
         <defaultConfig>

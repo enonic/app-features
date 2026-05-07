@@ -53,14 +53,6 @@
         <property-set name="data">
             <string name="supports">portal:site</string>
         </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-app-features">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
-            </property-set>
-        </property-set>
         <property-set name="components">
             <string name="type">page</string>
             <string name="path">/</string>

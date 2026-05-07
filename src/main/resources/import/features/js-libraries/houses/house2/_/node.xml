@@ -59,14 +59,6 @@
             <string name="description">House with garden</string>
             <localDate name="publish_date">2015-09-17Z</localDate>
         </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-app-features">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
-            </property-set>
-        </property-set>
     </data>
     <indexConfigs>
         <defaultConfig>

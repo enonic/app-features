@@ -75,14 +75,6 @@
                 &lt;footer&gt;Copyright &amp;copy; W3Schools.com&lt;/footer&gt;</string>
             <string name="htmlarea_text3">&lt;p&gt;empty&lt;/p&gt;</string>
         </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-app-features">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
-            </property-set>
-        </property-set>
     </data>
     <indexConfigs>
         <defaultConfig>

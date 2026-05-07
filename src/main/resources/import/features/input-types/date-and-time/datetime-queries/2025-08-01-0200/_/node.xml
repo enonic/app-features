@@ -55,14 +55,6 @@
             <localDateTime name="datetime">2025-08-01T02:00:00.000Z</localDateTime>
             <dateTime name="requiredDatetime">2025-08-01T00:00:00.000Z</dateTime>
         </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-app-features">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
-            </property-set>
-        </property-set>
     </data>
     <indexConfigs>
         <defaultConfig>

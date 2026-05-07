@@ -55,14 +55,6 @@
             <dateTime name="from">2016-12-12T13:08:08.058Z</dateTime>
         </property-set>
         <property-set name="data"/>
-        <property-set name="x">
-            <property-set name="com-enonic-app-features">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
-            </property-set>
-        </property-set>
         <property-set name="components">
             <string name="type">page</string>
             <string name="path">/</string>

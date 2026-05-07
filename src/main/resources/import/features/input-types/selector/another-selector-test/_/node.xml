@@ -52,14 +52,6 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-12-09T09:25:29.301Z</dateTime>
         <property-set name="data"/>
-        <property-set name="x">
-            <property-set name="com-enonic-app-features">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
-            </property-set>
-        </property-set>
     </data>
     <indexConfigs>
         <defaultConfig>
