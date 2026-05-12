@@ -2,6 +2,8 @@ import * as projectLib from '/lib/xp/project';
 import * as contextLib from '/lib/xp/context';
 import * as clusterLib from '/lib/xp/cluster';
 import * as exportLib from '/lib/xp/export';
+import * as contentLib from '/lib/xp/content';
+import * as ioLib from '/lib/xp/io';
 import type { ImportNodesResult, ImportNodesError } from '@enonic-types/lib-export';
 
 const projectData = {
@@ -52,10 +54,42 @@ function initializeProject() {
 
             log.info('Importing "' + projectData.id + '" data');
             runInContext(createContent);
+            runInContext(createAttachmentsContent);
         } else {
             log.error('Project "' + projectData.id + '" failed to be created');
         }
     }
+}
+
+function createAttachmentsContent() {
+    const content = contentLib.create({
+        name: 'my-attachment-content',
+        parentPath: '/features',
+        displayName: 'My Attachment Content',
+        contentType: app.name + ':attachments',
+        requireValid: false,
+        data: {
+            attachment1: 'my-file.txt',
+            attachment2: ['my-file2.txt', 'my-file3.txt']
+        }
+    });
+
+    const attachments = [
+        {name: 'my-file.txt', text: 'This is the first attachment.'},
+        {name: 'my-file2.txt', text: 'This is the second attachment.'},
+        {name: 'my-file3.txt', text: 'This is the third attachment.'}
+    ];
+
+    attachments.forEach(({name, text}) => {
+        contentLib.addAttachment({
+            key: content._id,
+            name: name,
+            mimeType: 'text/plain',
+            data: ioLib.newStream(text)
+        });
+    });
+
+    log.info('Attachment content created with id: ' + content._id);
 }
 
 function createContent() {
