@@ -1,8 +1,8 @@
 [versions]
-http-client = "3.2.2"
+http-client = "4.0.0-SNAPSHOT"
 thymeleaf = "3.0.0-SNAPSHOT"
-mustache = "2.1.1"
-text-encoding = "2.1.1"
+mustache = "3.0.0-SNAPSHOT"
+text-encoding = "3.0.0-SNAPSHOT"
 junit-bom = "6.0.3"
 
 [libraries]
