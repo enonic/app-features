@@ -1,6 +1,7 @@
 import * as libPortal from '/lib/xp/portal';
 import * as libThymeleaf from '/lib/thymeleaf';
 import * as auditLib from '/lib/xp/auditlog';
+import {assetUrl} from '/lib/enonic/asset';
 import type {Request, RequestParams, UserKey} from '@enonic-types/core';
 import type {AuditLogParams, FindAuditLogParams} from '@enonic-types/lib-auditlog';
 
@@ -104,8 +105,8 @@ export const GET = function (req: Request) {
         }),
         pageContributions: {
             bodyEnd: [
-                '<script src="' + libPortal.assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
-                '<script src="' + libPortal.assetUrl({path: 'js/parts/auditLog/auditLog.js'}) + '" type="text/javascript"></script>'
+                '<script src="' + assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/parts/auditLog/auditLog.js'}) + '" type="text/javascript"></script>'
             ]
         }
     };

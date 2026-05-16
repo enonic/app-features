@@ -1,6 +1,7 @@
 import * as libPortal from '/lib/xp/portal';
 import * as libScheduler from '/lib/xp/scheduler';
 import * as libThymeleaf from '/lib/thymeleaf';
+import {assetUrl} from '/lib/enonic/asset';
 import type {Request, RequestParams} from '@enonic-types/core';
 import type {ScheduledJob} from '@enonic-types/lib-scheduler';
 
@@ -96,8 +97,8 @@ export const GET = function (req: Request) {
         }),
         pageContributions: {
             bodyEnd: [
-                '<script src="' + libPortal.assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
-                '<script src="' + libPortal.assetUrl({path: 'js/parts/scheduler/scheduler.js'}) + '" type="text/javascript"></script>'
+                '<script src="' + assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/parts/scheduler/scheduler.js'}) + '" type="text/javascript"></script>'
             ]
         }
     };

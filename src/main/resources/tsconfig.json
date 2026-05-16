@@ -10,6 +10,9 @@
       "/lib/xp/*": [
         "../../../node_modules/@enonic-types/lib-*"
       ],
+      "/lib/enonic/asset": [
+        "../../../node_modules/@enonic-types/lib-asset"
+      ],
       "/lib/thymeleaf": [
         "./types/thymeleaf"
       ],

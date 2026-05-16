@@ -1,5 +1,6 @@
 import * as thymeleaf from '/lib/thymeleaf';
 import * as portal from '/lib/xp/portal';
+import {assetUrl} from '/lib/enonic/asset';
 import type { ErrorRequest } from '@enonic-types/core';
 
 const view404 = resolve('404.html');
@@ -12,8 +13,8 @@ export const handle404 = function (err: ErrorRequest) {
     }
 
     const params = {
-        cssUrl: portal.assetUrl({path: 'error/css/custom.css'}),
-        imgNotFoundUrl: portal.assetUrl({path: 'error/img/no-nick.svg'}),
+        cssUrl: assetUrl({path: 'error/css/custom.css'}),
+        imgNotFoundUrl: assetUrl({path: 'error/img/no-nick.svg'}),
         siteRootUrl: portal.pageUrl({path: '/features'}),
     };
     const body = thymeleaf.render(view404, params);
@@ -33,8 +34,8 @@ export const handleError = function (err: ErrorRequest) {
 
     const params = {
         errorCode: err.status,
-        cssUrl: portal.assetUrl({path: 'error/css/custom.css'}),
-        imgErrorUrl: portal.assetUrl({path: 'error/img/nick-hanging-from-cloud.svg'}),
+        cssUrl: assetUrl({path: 'error/css/custom.css'}),
+        imgErrorUrl: assetUrl({path: 'error/img/nick-hanging-from-cloud.svg'}),
         siteRootUrl: portal.pageUrl({path: '/features'}),
     };
     const body = thymeleaf.render(viewGeneric, params);

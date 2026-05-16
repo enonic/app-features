@@ -1,7 +1,7 @@
-export function assetUrl() {
-    const portal = require('/lib/xp/portal');
+import {assetUrl as assetLibAssetUrl} from '/lib/enonic/asset';
 
-    const url = portal.assetUrl({
+export function assetUrl() {
+    const url = assetLibAssetUrl({
         path: 'error/css/custom.css',
     });
 

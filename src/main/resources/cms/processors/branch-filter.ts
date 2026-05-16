@@ -1,5 +1,5 @@
 import type { Request, MappedResponse } from '@enonic-types/core';
-import * as portal from '/lib/xp/portal';
+import { assetUrl } from '/lib/enonic/asset';
 
 export const responseProcessor = function(req: Request, res: MappedResponse) {
     const isHtml = (res.contentType.lastIndexOf('text/html', 0) === 0);
@@ -7,7 +7,7 @@ export const responseProcessor = function(req: Request, res: MappedResponse) {
         addPageContribution(res, 'bodyEnd', '<input type="hidden" name="branch" value="' + req.branch + '"/>');
     }
 
-    const scriptUrl = portal.assetUrl({path: 'filters/branch-filter.js'});
+    const scriptUrl = assetUrl({path: 'filters/branch-filter.js'});
     addPageContribution(res, 'bodyEnd', '<script src="' + scriptUrl + '" type="text/javascript"></script>');
 
     return res;

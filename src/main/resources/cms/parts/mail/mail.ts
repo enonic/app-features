@@ -1,6 +1,7 @@
 import * as portal from '/lib/xp/portal';
 import * as mail from '/lib/xp/mail';
 import * as thymeleaf from '/lib/thymeleaf';
+import {assetUrl} from '/lib/enonic/asset';
 import type {Request} from '@enonic-types/core';
 import type {Attachment} from '@enonic-types/lib-mail';
 
@@ -22,7 +23,7 @@ export const GET = function (req: Request) {
         body: body,
         pageContributions: {
             headEnd: [
-                '<link rel="stylesheet" href="' + portal.assetUrl({path: 'css/parts/mail/mail.css'}) + '" type="text/css" />'
+                '<link rel="stylesheet" href="' + assetUrl({path: 'css/parts/mail/mail.css'}) + '" type="text/css" />'
             ]
         }
     };

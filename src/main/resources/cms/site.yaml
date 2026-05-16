@@ -1,5 +1,6 @@
 kind: "Site"
 apis:
+  - "asset"
   - "com.enonic.app.features:sse"
 processors:
   - name: "bgcolor-filter"

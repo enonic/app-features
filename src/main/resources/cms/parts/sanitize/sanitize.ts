@@ -1,6 +1,7 @@
 import * as portal from '/lib/xp/portal';
 import * as ioLib from '/lib/xp/io';
 import * as thymeleaf from '/lib/thymeleaf';
+import {assetUrl} from '/lib/enonic/asset';
 import type {Request} from '@enonic-types/core';
 
 export const GET = function (req: Request) {
@@ -23,19 +24,19 @@ export const GET = function (req: Request) {
         body: body,
         pageContributions: {
             headEnd: [
-                '<link rel="stylesheet" href="' + portal.assetUrl({path: 'css/parts/sanitize/codemirror.css'}) + '" type="text/css" />',
-                '<link rel="stylesheet" href="' + portal.assetUrl({path: 'css/parts/sanitize/sanitize.css'}) + '" type="text/css" />'
+                '<link rel="stylesheet" href="' + assetUrl({path: 'css/parts/sanitize/codemirror.css'}) + '" type="text/css" />',
+                '<link rel="stylesheet" href="' + assetUrl({path: 'css/parts/sanitize/sanitize.css'}) + '" type="text/css" />'
             ],
             bodyEnd: [
-                '<script src="' + portal.assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
-                '<script src="' + portal.assetUrl({path: 'js/parts/sanitize/codemirror.js'}) + '" type="text/javascript"></script>',
-                '<script src="' + portal.assetUrl({path: 'js/parts/sanitize/mode/css/css.js'}) + '" type="text/javascript"></script>',
-                '<script src="' + portal.assetUrl({path: 'js/parts/sanitize/mode/javascript/javascript.js'}) +
+                '<script src="' + assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/parts/sanitize/codemirror.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/parts/sanitize/mode/css/css.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/parts/sanitize/mode/javascript/javascript.js'}) +
                 '" type="text/javascript"></script>',
-                '<script src="' + portal.assetUrl({path: 'js/parts/sanitize/mode/xml/xml.js'}) + '" type="text/javascript"></script>',
-                '<script src="' + portal.assetUrl({path: 'js/parts/sanitize/mode/htmlmixed/htmlmixed.js'}) +
+                '<script src="' + assetUrl({path: 'js/parts/sanitize/mode/xml/xml.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/parts/sanitize/mode/htmlmixed/htmlmixed.js'}) +
                 '" type="text/javascript"></script>',
-                '<script src="' + portal.assetUrl({path: 'js/parts/sanitize/sanitize.js'}) + '" type="text/javascript"></script>'
+                '<script src="' + assetUrl({path: 'js/parts/sanitize/sanitize.js'}) + '" type="text/javascript"></script>'
             ]
         }
     };

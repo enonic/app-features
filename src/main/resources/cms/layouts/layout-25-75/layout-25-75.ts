@@ -1,5 +1,6 @@
 import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/thymeleaf';
+import {assetUrl} from '/lib/enonic/asset';
 import type {LayoutComponent, Request} from '@enonic-types/core';
 
 function handleGet(req: Request) {
@@ -14,7 +15,7 @@ function handleGet(req: Request) {
         path: content._path,
         name: content._name,
         editable: editMode,
-        resourcesPath: portal.assetUrl({path: ''}),
+        resourcesPath: assetUrl({path: ''}),
         component: component,
         leftRegion: component.regions["left"],
         rightRegion: component.regions["right"]
