@@ -1,4 +1,4 @@
-import * as portalLib from '/lib/xp/portal';
+import { assetUrl } from '/lib/enonic/asset';
 import type { Request, RequestParams } from '@enonic-types/core';
 
 interface CustomSelectorHelper {
@@ -24,7 +24,7 @@ function getItems() {
         id: 1,
         displayName: "Option number 1",
         description: "External SVG file is used as icon",
-        iconUrl: portalLib.assetUrl({path: 'images/number_1.svg'}),
+        iconUrl: assetUrl({path: 'images/number_1.svg'}),
         icon: null
     }, {
         id: 2,

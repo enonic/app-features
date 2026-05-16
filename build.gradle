@@ -28,6 +28,7 @@ dependencies {
     include libs.thymeleaf
     include libs.mustache
     include libs.text.encoding
+    include "com.enonic.lib:lib-asset:2.0.0-SNAPSHOT"
     include "com.enonic.xp:lib-sse:${xpVersion}"
 
     testImplementation "com.enonic.xp:testing:${xpVersion}"

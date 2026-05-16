@@ -1,6 +1,7 @@
 import * as portal from '/lib/xp/portal';
 import * as httpClient from '/lib/http-client';
 import * as thymeleaf from '/lib/thymeleaf';
+import {assetUrl} from '/lib/enonic/asset';
 import type {Request} from '@enonic-types/core';
 import type {HttpRequestParams, HttpResponse} from '/lib/http-client';
 
@@ -25,11 +26,11 @@ export const GET = function (req: Request) {
         body: body,
         pageContributions: {
             headEnd: [
-                '<link rel="stylesheet" href="' + portal.assetUrl({path: 'css/parts/http/http.css'}) + '" type="text/css" />'
+                '<link rel="stylesheet" href="' + assetUrl({path: 'css/parts/http/http.css'}) + '" type="text/css" />'
             ],
             bodyEnd: [
-                '<script src="' + portal.assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
-                '<script src="' + portal.assetUrl({path: 'js/parts/http/http.js'}) + '" type="text/javascript"></script>'
+                '<script src="' + assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/parts/http/http.js'}) + '" type="text/javascript"></script>'
             ]
         }
     };

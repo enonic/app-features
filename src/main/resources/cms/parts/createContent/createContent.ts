@@ -1,6 +1,7 @@
 import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/thymeleaf';
 import * as contentSvc from '/lib/xp/content';
+import {assetUrl} from '/lib/enonic/asset';
 import type {PartComponent, Request} from '@enonic-types/core';
 
 export const GET = function (req: Request) {
@@ -34,8 +35,8 @@ export const GET = function (req: Request) {
         body: body,
         pageContributions: {
             bodyEnd: [
-                '<script src="' + portal.assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
-                '<script src="' + portal.assetUrl({path: 'js/parts/createContent/createContent.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/parts/createContent/createContent.js'}) + '" type="text/javascript"></script>',
             ]
         }
     };
@@ -100,8 +101,8 @@ export const POST = function (req: Request) {
         body: body,
         pageContributions: {
             bodyEnd: [
-                '<script src="' + portal.assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
-                '<script src="' + portal.assetUrl({path: 'js/parts/createContent/createContent.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/parts/createContent/createContent.js'}) + '" type="text/javascript"></script>',
             ]
         }
     };

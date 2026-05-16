@@ -11,6 +11,7 @@
   "devDependencies": {
     "@enonic-types/core": "^8.0.0-B4",
     "@enonic-types/global": "^8.0.0-B4",
+    "@enonic-types/lib-asset": "^1.0.3",
     "@enonic-types/lib-auditlog": "^8.0.0-B4",
     "@enonic-types/lib-auth": "^8.0.0-B4",
     "@enonic-types/lib-cluster": "^8.0.0-B4",
