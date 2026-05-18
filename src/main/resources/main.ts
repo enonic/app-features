@@ -11,9 +11,7 @@ const projectData = {
     displayName: 'Features',
     description: 'Testing features for Enonic XP',
     language: 'en',
-    readAccess: {
-        public: true
-    }
+    publicRead: true
 }
 
 function runInContext(callback: () => unknown) {
