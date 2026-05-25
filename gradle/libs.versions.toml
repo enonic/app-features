@@ -3,7 +3,7 @@ http-client = "4.0.0-SNAPSHOT"
 thymeleaf = "3.0.0-SNAPSHOT"
 mustache = "3.0.0-SNAPSHOT"
 text-encoding = "3.0.0-SNAPSHOT"
-junit-bom = "6.0.3"
+junit-bom = "6.1.0"
 
 [libraries]
 http-client = { module = "com.enonic.lib:lib-http-client", version.ref = "http-client" }
