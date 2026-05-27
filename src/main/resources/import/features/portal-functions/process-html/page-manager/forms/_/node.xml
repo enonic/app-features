@@ -127,6 +127,19 @@
                 </indexConfig>
                 <path>attachment</path>
             </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <languages>
+                        <language>en</language>
+                    </languages>
+                </indexConfig>
+                <path>displayName</path>
+            </pathIndexConfig>
         </pathIndexConfigs>
         <allTextIndexConfig/>
     </indexConfigs>
