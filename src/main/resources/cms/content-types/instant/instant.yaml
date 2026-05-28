@@ -1,0 +1,14 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "Instant"
+form:
+  - type: "Instant"
+    name: "my_instant"
+    label: "DateTime with tz"
+    helpText: "Know exactly when it happens"
+    occurrences:
+      min: 1
+      max: 0
