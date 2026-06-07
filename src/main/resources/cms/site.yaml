@@ -2,6 +2,8 @@ kind: "Site"
 apis:
   - "asset"
   - "com.enonic.app.features:sse"
+  - "com.enonic.app.features:websocket"
+  - "com.enonic.app.features:websocket-public"
 processors:
   - name: "bgcolor-filter"
     order: 10

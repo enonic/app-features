@@ -1,0 +1,4 @@
+kind: "API"
+title: "WebSocket Session Demo"
+allow:
+  - "role:system.authenticated"

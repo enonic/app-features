@@ -1,0 +1,4 @@
+kind: "API"
+title: "WebSocket Session Demo (public)"
+allow:
+  - "role:system.everyone"

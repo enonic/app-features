@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WebSocket Session Demo</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        .ws-panels { display: flex; gap: 1rem; align-items: flex-start; flex-wrap: wrap; margin-top: 1rem; }
+        .ws-panel { border: 1px solid #ccc; border-radius: 6px; padding: 0 1rem 1rem; flex: 1 1 16rem; }
+        .ws-panel pre { background: #f6f6f6; padding: 0.5rem; overflow-x: auto; }
+        .ws-status { font-weight: bold; }
+        .ws-status.open { color: #1a7f37; }
+        .ws-status.closed { color: #b35900; }
+        .ws-status.terminated { color: #c00; }
+        .ws-log { list-style: none; padding: 0.5rem; margin: 0.5rem 0 0; background: #f6f6f6;
+                  font-family: monospace; font-size: 0.8rem; max-height: 12rem; overflow-y: auto; }
+    </style>
+</head>
+<body>
+<h1>WebSocket Session Demo</h1>
+<p>
+    WebSockets opened within an HTTP session are closed with code <code>1008</code> when that session ends —
+    both on logout and on idle-timeout expiry. The behavior is controlled per socket by the
+    <code>terminateOnSessionExit</code>, <code>sessionAccess</code> and <code>sessionAccessThrottleMs</code>
+    parameters of the controller's <code>webSocket</code> response.
+</p>
+
+<fieldset>
+    <legend>HTTP session</legend>
+    <div data-th-if="${user}">
+        <p>
+            Logged in as <strong data-th-text="${user.displayName}">user</strong>
+            (<code data-th-text="${user.key}">key</code>)
+        </p>
+        <p>
+            <button type="button" id="ws-logout" data-th-attr="data-url=${logoutUrl}">Logout</button>
+            <strong id="ws-logout-result"></strong>
+        </p>
+    </div>
+    <div data-th-unless="${user}">
+        <p><a data-th-href="${loginUrl}">Log in</a> via the ID provider, you will be redirected back here.</p>
+        <p><em>The three session sockets connect through an API that only allows
+            <code>role:system.authenticated</code> — while logged out their connections are rejected.
+            Only the <strong>public</strong> socket connects. Log in, then log out and watch them react.</em></p>
+    </div>
+</fieldset>
+
+<div class="ws-panels" id="ws-panels" data-th-attr="data-api-url=${apiUrl}">
+    <section class="ws-panel" data-mode="default">
+        <h3>default</h3>
+        <pre>webSocket: {
+    data: {...}
+}</pre>
+        <p>No session parameters — defaults apply: a socket opened within an HTTP session closes with <code>1008</code> when that session ends.</p>
+        <p><label><input type="checkbox" class="ws-ping" disabled/> ping every 5 s (does not refresh the session)</label></p>
+        <p class="ws-status">connecting…</p>
+        <p><button type="button" class="ws-send" disabled>Send message</button></p>
+        <ul class="ws-log"></ul>
+    </section>
+
+    <section class="ws-panel" data-mode="survivor">
+        <h3>survivor</h3>
+        <pre>webSocket: {
+    data: {...},
+    terminateOnSessionExit: false
+}</pre>
+        <p>Opts out of termination — the socket survives logout and session expiry.</p>
+        <p><label><input type="checkbox" class="ws-ping" disabled/> ping every 5 s (does not refresh the session)</label></p>
+        <p class="ws-status">connecting…</p>
+        <p><button type="button" class="ws-send" disabled>Send message</button></p>
+        <ul class="ws-log"></ul>
+    </section>
+
+    <section class="ws-panel" data-mode="keepalive">
+        <h3>keepalive</h3>
+        <pre>webSocket: {
+    data: {...},
+    sessionAccess: true,
+    sessionAccessThrottleMs: 10000
+}</pre>
+        <p>Inbound messages refresh the session (at most every 10 s). Still closes with <code>1008</code> when the session ends.</p>
+        <p><label><input type="checkbox" class="ws-ping" disabled/> ping every 5 s (refreshes the HTTP session)</label></p>
+        <p class="ws-status">connecting…</p>
+        <p><button type="button" class="ws-send" disabled>Send message</button></p>
+        <ul class="ws-log"></ul>
+    </section>
+
+    <section class="ws-panel" data-mode="public" data-th-attr="data-api-url=${publicApiUrl}">
+        <h3>public</h3>
+        <pre>allow: role:system.everyone
+
+webSocket: {
+    data: {...},
+    terminateOnSessionExit: false
+}</pre>
+        <p>Open to everyone — connects without login and never binds to the session.</p>
+        <p><label><input type="checkbox" class="ws-ping" disabled/> ping every 5 s (does not refresh the session)</label></p>
+        <p class="ws-status">connecting…</p>
+        <p><button type="button" class="ws-send" disabled>Send message</button></p>
+        <ul class="ws-log"></ul>
+    </section>
+</div>
+
+<p>
+    Note: sockets with no traffic for <code>websocket.idleTimeout</code> (default 5 min,
+    <code>com.enonic.xp.web.jetty.cfg</code>) are closed by the server with code <code>1001</code> —
+    that is the connection-level idle timeout, independent of the HTTP session. Turn the pings on to keep
+    connections busy; only the <em>keepalive</em> socket's pings refresh the session.
+</p>
+
+<details>
+    <summary>How to demo idle-timeout expiry</summary>
+    <p>
+        Set a short session timeout in <code>com.enonic.xp.web.jetty.cfg</code>:
+        <code>session.timeout = 1</code> (minutes), restart XP and log in here.
+        With the ping toggle ON, the keepalive socket's inbound messages keep the session alive
+        and all sockets stay open. Switch the pings OFF and stay idle: the session expires after
+        a minute and the scavenger (which sweeps at 1/10 of the session timeout, at least every
+        10&nbsp;s) invalidates it moments later — the <em>default</em> and <em>keepalive</em> sockets
+        close with <code>1008</code> while the <em>survivor</em> and <em>public</em> sockets stay open.
+    </p>
+</details>
+
+<script data-th-src="${scriptUrl}" defer></script>
+</body>
+</html>
