@@ -52,6 +52,7 @@ export default function buildServerConfig(): Options {
       '/lib/cache',
       '/lib/enonic/asset',
       '/lib/enonic/static',
+      '/lib/geoip',
       /^\/lib\/guillotine/,
       '/lib/graphql',
       '/lib/graphql-connection',

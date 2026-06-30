@@ -1,0 +1,11 @@
+kind: "Part"
+title: "GeoIP Lib example"
+description: "Resolves geo data for an IP via lib-geoip."
+form:
+  - type: "TextLine"
+    name: "ip"
+    label: "Sample IP"
+    helpText: "Defaults to the request's remote address. Override with a known sample like 67.161.18.244."
+    occurrences:
+      min: 0
+      max: 1

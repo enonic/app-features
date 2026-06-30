@@ -4,6 +4,7 @@ http-client = "4.0.0"
 thymeleaf = "3.0.0"
 mustache = "3.0.0"
 text-encoding = "3.0.0"
+geoip = "3.0.0"
 junit-bom = "6.1.1"
 
 [libraries]
@@ -12,6 +13,7 @@ http-client = { module = "com.enonic.lib:lib-http-client", version.ref = "http-c
 thymeleaf = { module = "com.enonic.lib:lib-thymeleaf", version.ref = "thymeleaf" }
 mustache = { module = "com.enonic.lib:lib-mustache", version.ref = "mustache" }
 text-encoding = { module = "com.enonic.lib:lib-text-encoding", version.ref = "text-encoding" }
+geoip = { module = "com.enonic.lib:lib-geoip", version.ref = "geoip" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit-bom" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
