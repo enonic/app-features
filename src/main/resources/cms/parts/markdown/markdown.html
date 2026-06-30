@@ -1,24 +1,66 @@
 <div class="markdown-part">
     <h2>Markdown Lib Demo</h2>
 
-    <form action="#" data-th-action="${postUrl}" method="post">
-        <fieldset>
-            <p>
-                <label>Markdown source</label><br/>
-                <textarea name="source" data-th-utext="${source}" rows="20" style="width: 600px; font-family: monospace;"></textarea>
-            </p>
+    <p>
+        Interactive sandbox plus a fixed set of demo cases covering the features and edge cases of
+        <code>com.enonic.lib:lib-markdown</code>.
+    </p>
 
-            <p>
-                <button type="submit">Render</button>
-            </p>
-        </fieldset>
-    </form>
+    <section id="interactive">
+        <h3>Interactive sandbox</h3>
+        <form action="#" data-th-action="${postUrl}" method="post">
+            <fieldset>
+                <p>
+                    <label>Markdown source</label><br/>
+                    <textarea name="source" data-th-utext="${source}" rows="20"
+                              style="width: 600px; font-family: monospace;"></textarea>
+                </p>
+
+                <p>
+                    <button type="submit">Render</button>
+                </p>
+            </fieldset>
+        </form>
+
+        <h4>Rendered HTML (raw)</h4>
+        <pre data-th-text="${rendered}" style="background:#f4f4f4; padding:10px; white-space: pre-wrap;"></pre>
+
+        <h4>Rendered HTML (live)</h4>
+        <div class="markdown-output" data-th-utext="${rendered}"></div>
+    </section>
 
     <hr/>
 
-    <h3>Rendered HTML (raw)</h3>
-    <pre data-th-text="${rendered}" style="background:#f4f4f4; padding:10px; white-space: pre-wrap;"></pre>
+    <section id="cases">
+        <h3>Use cases</h3>
+        <p>
+            Each case shows a Markdown input and the HTML produced by <code>markdown.render(input)</code>.
+            The <code>lib-markdown</code> 2.0.0 API exposes a single <code>render(string): string</code> function
+            with no configuration options, so behavior here is exactly what plain CommonMark-Java produces.
+        </p>
 
-    <h3>Rendered HTML (live)</h3>
-    <div class="markdown-output" data-th-utext="${rendered}"></div>
+        <div data-th-each="c : ${cases}" data-th-remove="tag">
+            <section data-th-id="'case-' + ${c.key}" class="markdown-case"
+                     style="border-top:1px solid #ccc; padding-top:10px; margin-top:20px;">
+                <h4 data-th-text="${c.title}"></h4>
+                <p class="case-desc" data-th-if="${c.hasDescription}" data-th-text="${c.description}"
+                   style="color:#555;"></p>
+
+                <p><strong>Source</strong></p>
+                <pre data-th-id="'source-' + ${c.key}" class="case-source"
+                     data-th-text="${c.source}"
+                     style="background:#f4f4f4; padding:10px; white-space: pre-wrap;"></pre>
+
+                <p><strong>Rendered HTML (raw)</strong></p>
+                <pre data-th-id="'raw-' + ${c.key}" class="case-raw"
+                     data-th-text="${c.rendered}"
+                     style="background:#eef; padding:10px; white-space: pre-wrap;"></pre>
+
+                <p><strong>Rendered HTML (live)</strong></p>
+                <div data-th-id="'rendered-' + ${c.key}" class="case-rendered"
+                     data-th-utext="${c.rendered}"
+                     style="border:1px dashed #ddd; padding:10px;"></div>
+            </section>
+        </div>
+    </section>
 </div>
