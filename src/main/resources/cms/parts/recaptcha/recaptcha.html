@@ -1,0 +1,50 @@
+<div class="recaptcha-part">
+    <h2>reCAPTCHA Lib Demo</h2>
+
+    <p>
+        This part exercises <code>lib-recaptcha</code>. The site key and secret key are read
+        from the site config (fields <code>recaptchaSiteKey</code> and
+        <code>recaptchaSecretKey</code>). Token verification is delegated to
+        <code>recaptcha.verify()</code>, which calls Google's <code>siteverify</code> endpoint.
+    </p>
+
+    <form method="POST" action="" data-th-action="${postUrl}" id="recaptchaForm">
+        <fieldset>
+            <legend>Submit a token</legend>
+
+            <p>
+                <label for="message">Message</label>
+                <input id="message" name="message" type="text" size="60"/>
+            </p>
+
+            <div data-th-if="${recaptchaIsConfigured and !editMode}"
+                 class="g-recaptcha"
+                 data-th-attr="data-sitekey=${siteKey}"></div>
+
+            <div data-th-if="${!recaptchaIsConfigured}"
+                 style="padding:0.5em; background:#fff3cd; border:1px solid #ffeeba;">
+                Configure <code>recaptchaSiteKey</code> and <code>recaptchaSecretKey</code>
+                in the site config to render the widget and verify tokens. The form is shown
+                here so the demo remains visible.
+            </div>
+
+            <div data-th-if="${editMode}"
+                 style="padding:0.5em; background:#e2e3e5; border:1px solid #d6d8db;">
+                Edit-mode preview: the reCAPTCHA widget is hidden in Content Studio edit mode.
+            </div>
+
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </fieldset>
+    </form>
+
+    <div data-th-if="${verification != null}">
+        <fieldset class="recaptcha-result">
+            <legend>Verification result</legend>
+            <p data-th-text="${verification.message}"
+               data-th-style="${verification.success} ? 'color:darkgreen;' : 'color:darkred;'"></p>
+            <pre data-th-if="${verification.raw != null}" data-th-text="${verification.raw}"></pre>
+        </fieldset>
+    </div>
+</div>

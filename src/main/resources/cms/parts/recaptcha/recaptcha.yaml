@@ -1,0 +1,4 @@
+kind: "Part"
+title: "reCAPTCHA"
+description: "Demo of lib-recaptcha"
+form: [ ]
