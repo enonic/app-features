@@ -25,6 +25,9 @@
       "/lib/mustache": [
         "./types/mustache"
       ],
+      "/lib/cache": [
+        "./types/cache"
+      ],
       "/*": [
         "./*"
       ]

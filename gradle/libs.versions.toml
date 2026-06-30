@@ -1,5 +1,6 @@
 [versions]
 asset = "2.0.0"
+cache = "3.0.0"
 http-client = "4.0.0"
 thymeleaf = "3.0.0"
 mustache = "3.0.0"
@@ -8,6 +9,7 @@ junit-bom = "6.1.1"
 
 [libraries]
 asset = { module = "com.enonic.lib:lib-asset", version.ref = "asset" }
+cache = { module = "com.enonic.lib:lib-cache", version.ref = "cache" }
 http-client = { module = "com.enonic.lib:lib-http-client", version.ref = "http-client" }
 thymeleaf = { module = "com.enonic.lib:lib-thymeleaf", version.ref = "thymeleaf" }
 mustache = { module = "com.enonic.lib:lib-mustache", version.ref = "mustache" }
