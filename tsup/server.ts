@@ -58,6 +58,8 @@ export default function buildServerConfig(): Options {
       '/lib/http-client',
       '/lib/license',
       '/lib/mustache',
+      '/lib/notifications',
+      '/lib/notifications-store',
       '/lib/router',
       '/lib/util',
       '/lib/vanilla',
