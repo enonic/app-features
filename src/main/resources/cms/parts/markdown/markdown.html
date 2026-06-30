@@ -1,0 +1,24 @@
+<div class="markdown-part">
+    <h2>Markdown Lib Demo</h2>
+
+    <form action="#" data-th-action="${postUrl}" method="post">
+        <fieldset>
+            <p>
+                <label>Markdown source</label><br/>
+                <textarea name="source" data-th-utext="${source}" rows="20" style="width: 600px; font-family: monospace;"></textarea>
+            </p>
+
+            <p>
+                <button type="submit">Render</button>
+            </p>
+        </fieldset>
+    </form>
+
+    <hr/>
+
+    <h3>Rendered HTML (raw)</h3>
+    <pre data-th-text="${rendered}" style="background:#f4f4f4; padding:10px; white-space: pre-wrap;"></pre>
+
+    <h3>Rendered HTML (live)</h3>
+    <div class="markdown-output" data-th-utext="${rendered}"></div>
+</div>
