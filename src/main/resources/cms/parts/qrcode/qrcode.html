@@ -1,0 +1,36 @@
+<div class="qrcode-part">
+    <h2>QR Code Lib Demo</h2>
+
+    <p>
+        Library: <a href="https://github.com/enonic/lib-qrcode" target="_blank">enonic/lib-qrcode</a> &mdash;
+        encodes the text below as a PNG QR Code via <code>qrcode.generateQrCode({text, size})</code>.
+        The PNG is base64-encoded and embedded as a data URI.
+    </p>
+
+    <form action="#" data-th-action="${postUrl}" method="get">
+        <fieldset>
+            <p>
+                <label>Text or URL&nbsp;</label>
+                <input name="text" type="text" data-th-value="${text}" size="60"/>
+            </p>
+            <p>
+                <label>Size (px)&nbsp;</label>
+                <input name="size" type="number" min="50" max="1000" data-th-value="${size}"/>
+            </p>
+            <p>
+                <button type="submit">Generate</button>
+            </p>
+        </fieldset>
+    </form>
+
+    <h3>Source text</h3>
+    <pre class="qrcode-source" data-th-text="${text}"></pre>
+
+    <h3>Generated QR Code</h3>
+    <p>
+        <img class="qrcode-image"
+             alt="QR Code"
+             data-th-src="${dataUri}"
+             data-th-attr="width=${sizeText},height=${sizeText}"/>
+    </p>
+</div>
