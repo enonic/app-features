@@ -25,6 +25,7 @@ dependencies {
     include xplibs.project
     include xplibs.export
     include libs.http.client
+    include libs.router
     include libs.thymeleaf
     include libs.mustache
     include libs.text.encoding

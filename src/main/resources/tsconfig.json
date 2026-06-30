@@ -13,6 +13,9 @@
       "/lib/enonic/asset": [
         "../../../node_modules/@enonic-types/lib-asset"
       ],
+      "/lib/router": [
+        "./types/router"
+      ],
       "/lib/thymeleaf": [
         "./types/thymeleaf"
       ],
