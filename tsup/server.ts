@@ -59,6 +59,7 @@ export default function buildServerConfig(): Options {
       '/lib/license',
       '/lib/mustache',
       '/lib/router',
+      '/lib/sql',
       '/lib/util',
       '/lib/vanilla',
       '/lib/text-encoding',

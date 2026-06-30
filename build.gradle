@@ -29,6 +29,8 @@ dependencies {
     include libs.mustache
     include libs.text.encoding
     include libs.asset
+    include libs.sql
+    include libs.h2
     include "com.enonic.xp:lib-sse:${xpVersion}"
 
     testImplementation "com.enonic.xp:testing:${xpVersion}"
