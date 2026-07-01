@@ -22,10 +22,10 @@
     </ul>
 
     <p style="padding:0.5em; background:#fff3cd; border:1px solid #ffeeba;">
-        <strong>Note:</strong> the form below only works when the page is opened in
-        <strong>Preview</strong> (or live) mode. When the part is rendered inline &mdash; such as in
-        Content Studio's edit view &mdash; the submit POSTs to the isolated component URL and does not
-        round-trip, so no verification result is produced. Open the preview to submit a token.
+        <strong>Note:</strong> the form below only works in <strong>Live</strong> mode. When the part
+        is rendered inline &mdash; such as in Content Studio's edit or preview view &mdash; the submit
+        POSTs to the isolated component URL and does not round-trip, so no verification result is
+        produced. Open the page in live mode to submit a token.
     </p>
 
     <form method="POST" action="" data-th-action="${postUrl}" id="recaptchaForm">

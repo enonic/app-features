@@ -54,7 +54,6 @@ repositories {
     mavenLocal()
     mavenCentral()
     xp.enonicRepo('dev')
-    maven { url 'https://jitpack.io' }
 }
 
 node {

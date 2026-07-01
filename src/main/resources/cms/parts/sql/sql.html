@@ -3,10 +3,9 @@
 
     <p>
         This part exercises <code>lib-sql</code> against an embedded H2 in-memory database. On every
-        request the part runs ten cases end-to-end: DDL, INSERT seed, SELECT, queryFirst, parameter
-        binding, UPDATE, DELETE, transaction commit, transaction rollback, error handling. The pooled
-        connection handle is cached across requests; the schema is dropped and recreated on each
-        request so the results are deterministic.
+        request the part runs seven cases end-to-end: DDL, INSERT seed, SELECT, queryFirst,
+        parameter binding, UPDATE, DELETE. The pooled connection handle is cached across requests;
+        the schema is dropped and recreated on each request so the results are deterministic.
     </p>
 
     <fieldset class="sql-details">
@@ -47,9 +46,6 @@
             </p>
             <p data-th-if="${section.status == 'error'}" style="color:darkred;">
                 <strong>ERROR:</strong> <span data-th-text="${section.info}"></span>
-            </p>
-            <p data-th-if="${section.error != null and section.status == 'ok'}" style="color:darkorange;">
-                <strong>Expected exception:</strong> <code data-th-text="${section.error}"></code>
             </p>
             <p data-th-if="${section.affected != null}">
                 <strong>Affected rows:</strong> <code data-th-text="${section.affected}"></code>

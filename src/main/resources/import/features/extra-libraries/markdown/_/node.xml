@@ -44,7 +44,7 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">markdown</string>
+        <string name="displayName">Markdown</string>
         <string name="type">com.enonic.app.features:landing-page</string>
         <string name="owner">user:system:su</string>
         <dateTime name="modifiedTime">2026-06-30T12:00:00.000Z</dateTime>

@@ -117,7 +117,11 @@ function render(req: Request, override: string | undefined) {
     }
 
     const remoteIp = req.remoteAddress;
-    const lookupIp = (override || configuredIp || remoteIp || KNOWN_SAMPLES[0].ip).trim();
+
+    // Default the ad-hoc lookup to the first known sample: the remote address on
+    // localhost is the loopback, which has no geolocation, so it makes a poor
+    // default. An explicit ?ip= or part config still takes precedence.
+    const lookupIp = (override || configuredIp || KNOWN_SAMPLES[0].ip).trim();
 
     let formResult: LocationData | null = null;
     let lookupError: string | undefined;

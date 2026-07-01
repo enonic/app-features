@@ -75,14 +75,6 @@ const PRESET_CASES: PresetCase[] = [
         description: 'Same payload, rendered at 600×600 pixels — print-quality output.',
         text: 'https://enonic.com',
         size: 600
-    },
-    {
-        key: 'empty',
-        label: 'Empty payload (edge case)',
-        category: 'edge',
-        description: 'Empty input — lib-qrcode defaults the text to an empty string and still returns a valid PNG stream.',
-        text: '',
-        size: 250
     }
 ];
 
@@ -180,13 +172,10 @@ export const GET = function (req: Request): {contentType: string; body: string |
     const renderedCases = PRESET_CASES.map(renderCase);
     const payloadCases = renderedCases.filter(c => c.category === 'payload');
     const sizeCases = renderedCases.filter(c => c.category === 'size');
-    const edgeCases = renderedCases.filter(c => c.category === 'edge');
-
     const view = resolve('qrcode.html');
     const body = thymeleaf.render(view, {
         payloadCases,
         sizeCases,
-        edgeCases,
         caseCount: String(renderedCases.length)
     });
 
