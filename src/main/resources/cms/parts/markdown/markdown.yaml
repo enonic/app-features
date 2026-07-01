@@ -1,0 +1,4 @@
+kind: "Part"
+title: "Markdown Lib example"
+description: "Renders a sample Markdown document via lib-markdown."
+form: [ ]

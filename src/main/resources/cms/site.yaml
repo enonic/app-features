@@ -12,6 +12,10 @@ processors:
   - name: "app-header-filter"
     order: 10
 mappings:
+  - controller: "/services/cors/cors.js"
+    order: 40
+    invertPattern: false
+    pattern: "/cors-demo"
   - controller: "/cms/mappings/controller.js"
     order: 50
     invertPattern: false

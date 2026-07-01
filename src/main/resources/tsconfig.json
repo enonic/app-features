@@ -13,6 +13,9 @@
       "/lib/enonic/asset": [
         "../../../node_modules/@enonic-types/lib-asset"
       ],
+      "/lib/enonic/cors": [
+        "./types/cors"
+      ],
       "/lib/thymeleaf": [
         "./types/thymeleaf"
       ],
@@ -27,6 +30,15 @@
       ],
       "/lib/recaptcha": [
         "./types/recaptcha"
+      ],
+      "/lib/qrcode": [
+        "./types/qrcode"
+      ],
+      "/lib/cache": [
+        "./types/cache"
+      ],
+      "/lib/markdown": [
+        "./types/markdown"
       ],
       "/*": [
         "./*"

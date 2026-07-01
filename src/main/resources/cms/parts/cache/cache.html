@@ -1,0 +1,43 @@
+<div class="cache-part">
+    <h2>lib-cache demo</h2>
+    <p>
+        Rendered at <span data-th-text="${renderedAt}" id="rendered-at">renderedAt</span>.
+        <a data-th-href="${reloadUrl}">Reload</a> |
+        <a data-th-href="${evictUrl}">Reload with ?evict=1</a>
+    </p>
+
+    <table border="1" cellspacing="0" cellpadding="6">
+        <thead>
+            <tr>
+                <th>Case</th>
+                <th>Key(s)</th>
+                <th>Before</th>
+                <th>After</th>
+                <th>HIT?</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-th-each="p : ${probes}">
+                <td>
+                    <strong data-th-text="${p.label}">label</strong><br/>
+                    <small data-th-text="${p.description}">desc</small>
+                </td>
+                <td><code data-th-text="${p.keyShown}">key</code></td>
+                <td><code data-th-text="${p.valueBefore}">before</code></td>
+                <td><code data-th-text="${p.valueAfter}">after</code></td>
+                <td>
+                    <span data-th-if="${p.hit}" style="color:darkgreen;font-weight:bold;">HIT</span>
+                    <span data-th-unless="${p.hit}" style="color:darkred;font-weight:bold;">MISS</span>
+                </td>
+                <td data-th-text="${p.note}">note</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        Probe id <code id="probe-id-get-or-create" data-th-text="${probes[0].valueAfter}">cached value</code> stays identical
+        across reloads until <strong>?evict=1</strong> is applied to <code>demo:remove</code> or the TTL elapses on
+        <code>demo:ttl</code> (TTL = <span data-th-text="${ttl}">N</span> seconds).
+    </p>
+</div>
