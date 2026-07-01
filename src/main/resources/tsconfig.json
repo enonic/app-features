@@ -13,6 +13,12 @@
       "/lib/enonic/asset": [
         "../../../node_modules/@enonic-types/lib-asset"
       ],
+      "/lib/enonic/static": [
+        "../../../node_modules/@enonic-types/lib-static"
+      ],
+      "/lib/enonic/cors": [
+        "./types/cors"
+      ],
       "/lib/thymeleaf": [
         "./types/thymeleaf"
       ],
@@ -27,6 +33,24 @@
       ],
       "/lib/geoip": [
         "./types/geoip"
+      ],
+      "/lib/notifications": [
+        "./types/notifications"
+      ],
+      "/lib/sql": [
+        "./types/sql"
+      ],
+      "/lib/recaptcha": [
+        "./types/recaptcha"
+      ],
+      "/lib/qrcode": [
+        "./types/qrcode"
+      ],
+      "/lib/cache": [
+        "./types/cache"
+      ],
+      "/lib/markdown": [
+        "./types/markdown"
       ],
       "/*": [
         "./*"
