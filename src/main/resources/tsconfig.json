@@ -30,8 +30,10 @@
       ],
       "/lib/qrcode": [
         "./types/qrcode"
+      ],
       "/lib/cache": [
         "./types/cache"
+      ],
       "/lib/markdown": [
         "./types/markdown"
       ],
