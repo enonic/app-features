@@ -1,0 +1,129 @@
+<div class="qrcode-part">
+    <h2>QR Code Lib Demo</h2>
+
+    <p>
+        Library: <a href="https://github.com/enonic/lib-qrcode" target="_blank">enonic/lib-qrcode</a> &mdash;
+        encodes any payload as a PNG QR Code via <code>qrcode.generateQrCode({text, size})</code>. The
+        library's only public function returns a binary PNG stream, so this demo shows the cases the API
+        actually supports: different payload types, different image sizes, and the two ways to deliver the
+        PNG to a browser (inline data URI vs. raw <code>image/png</code> response from a controller route).
+    </p>
+
+    <p>
+        <strong>API limitations vs. classic QR libraries:</strong> lib-qrcode 3.0.0 does not expose
+        error-correction levels (L/M/Q/H), output format selection (SVG), margin/quiet-zone, or scale
+        independently of size. Those parameters are not configurable; the lib uses sensible QRGen defaults.
+    </p>
+
+    <h3>1. Different payloads</h3>
+    <p>
+        Same controller call, varied input. Each card shows the text being encoded, its length,
+        the requested image size, an inline data-URI render, and a link to the raw <code>image/png</code>
+        endpoint that returns the binary stream directly.
+    </p>
+    <div class="qrcode-cases">
+        <div class="qrcode-case" data-th-each="c : ${payloadCases}" data-th-attr="data-case=${c.key},data-category=${c.category}">
+            <h4 data-th-text="${c.label}">case label</h4>
+            <p data-th-text="${c.description}">case description</p>
+            <p>
+                Payload (<span data-th-text="${c.textLength}">0</span> chars):
+                <code class="qrcode-payload" data-th-text="${c.displayText}">payload</code>
+            </p>
+            <p>
+                Size: <span class="qrcode-size" data-th-text="${c.pxSize}">0</span> px
+            </p>
+            <p data-th-unless="${c.error}">
+                <img class="qrcode-image"
+                     alt="QR Code"
+                     data-th-attr="data-case=${c.key},data-format=datauri,width=${c.pxSizeText},height=${c.pxSizeText}"
+                     data-th-src="${c.dataUri}"/>
+            </p>
+            <p class="qrcode-error" data-th-if="${c.error}" data-th-attr="data-case=${c.key}">
+                lib-qrcode could not encode this case: <span data-th-text="${c.error}">err</span>
+            </p>
+            <p>
+                Raw PNG endpoint:
+                <a class="qrcode-raw-png-link"
+                   data-th-attr="data-case=${c.key}"
+                   data-th-href="${c.rawPngUrl}"
+                   data-th-text="${c.rawPngUrl}">[raw png url]</a>
+            </p>
+            <p>
+                Data URI endpoint:
+                <a class="qrcode-datauri-link"
+                   data-th-attr="data-case=${c.key}"
+                   data-th-href="${c.dataUriUrl}"
+                   data-th-text="${c.dataUriUrl}">[datauri url]</a>
+            </p>
+        </div>
+    </div>
+
+    <h3>2. Different image sizes</h3>
+    <p>
+        Same URL payload, three image sizes. lib-qrcode 3.0.0 only exposes a <code>size</code>
+        parameter; margin/scale/error-correction-level are not configurable.
+    </p>
+    <div class="qrcode-cases">
+        <div class="qrcode-case" data-th-each="c : ${sizeCases}" data-th-attr="data-case=${c.key},data-category=${c.category}">
+            <h4 data-th-text="${c.label}">case label</h4>
+            <p data-th-text="${c.description}">case description</p>
+            <p>
+                Size: <span class="qrcode-size" data-th-text="${c.pxSize}">0</span> px
+            </p>
+            <p data-th-unless="${c.error}">
+                <img class="qrcode-image"
+                     alt="QR Code"
+                     data-th-attr="data-case=${c.key},data-format=datauri,width=${c.pxSizeText},height=${c.pxSizeText}"
+                     data-th-src="${c.dataUri}"/>
+            </p>
+            <p class="qrcode-error" data-th-if="${c.error}" data-th-attr="data-case=${c.key}">
+                lib-qrcode could not encode this case: <span data-th-text="${c.error}">err</span>
+            </p>
+            <p>
+                Raw PNG endpoint:
+                <a class="qrcode-raw-png-link"
+                   data-th-attr="data-case=${c.key}"
+                   data-th-href="${c.rawPngUrl}"
+                   data-th-text="${c.rawPngUrl}">[raw png url]</a>
+            </p>
+        </div>
+    </div>
+
+    <h3>3. Edge cases</h3>
+    <p>
+        Behaviour for input the API treats specially.
+    </p>
+    <div class="qrcode-cases">
+        <div class="qrcode-case" data-th-each="c : ${edgeCases}" data-th-attr="data-case=${c.key},data-category=${c.category}">
+            <h4 data-th-text="${c.label}">case label</h4>
+            <p data-th-text="${c.description}">case description</p>
+            <p>
+                Payload (<span data-th-text="${c.textLength}">0</span> chars):
+                <code class="qrcode-payload" data-th-text="${c.displayText}">payload</code>
+            </p>
+            <p>
+                Size: <span class="qrcode-size" data-th-text="${c.pxSize}">0</span> px
+            </p>
+            <p data-th-unless="${c.error}">
+                <img class="qrcode-image"
+                     alt="QR Code"
+                     data-th-attr="data-case=${c.key},data-format=datauri,width=${c.pxSizeText},height=${c.pxSizeText}"
+                     data-th-src="${c.dataUri}"/>
+            </p>
+            <p class="qrcode-error" data-th-if="${c.error}" data-th-attr="data-case=${c.key}">
+                lib-qrcode could not encode this case: <span data-th-text="${c.error}">err</span>
+            </p>
+            <p>
+                Raw PNG endpoint:
+                <a class="qrcode-raw-png-link"
+                   data-th-attr="data-case=${c.key}"
+                   data-th-href="${c.rawPngUrl}"
+                   data-th-text="${c.rawPngUrl}">[raw png url]</a>
+            </p>
+        </div>
+    </div>
+
+    <p class="qrcode-summary">
+        Total preset cases rendered: <span id="qrcode-case-count" data-th-text="${caseCount}">0</span>
+    </p>
+</div>

@@ -1,4 +1,5 @@
 import createRouter = require('/lib/router');
+import {requestHandler, RESPONSE_CACHE_CONTROL} from '/lib/enonic/static';
 import type {Request, Response} from '@enonic-types/core';
 
 const router = createRouter();
@@ -12,19 +13,30 @@ router.filter(function (req, next) {
     return response;
 });
 
-router.get(['', '/'], function (req) {
+router.get(['', '/', '/api', '/api/'], function (req) {
     return {
         status: 200,
         contentType: 'application/json',
         body: {
             route: 'index',
             method: req.method,
-            message: 'lib-router demo index'
+            message: 'lib-router + lib-static demo',
+            api: [
+                '/api/items/{id}',
+                '/api/items/{id}/numeric',
+                '/api/search?q=',
+                '/api/echo (GET, POST)',
+                '/api/ping (any method)'
+            ],
+            static: [
+                '/static-demo/hello.html',
+                '/no-store-demo/dev.css (served with a no-store cache-control handler)'
+            ]
         }
     };
 });
 
-router.get('/items/{id}', function (req) {
+router.get('/api/items/{id}', function (req) {
     return {
         status: 200,
         contentType: 'application/json',
@@ -36,7 +48,7 @@ router.get('/items/{id}', function (req) {
     };
 });
 
-router.get('/items/{id:[0-9]+}/numeric', function (req) {
+router.get('/api/items/{id:[0-9]+}/numeric', function (req) {
     return {
         status: 200,
         contentType: 'application/json',
@@ -48,7 +60,7 @@ router.get('/items/{id:[0-9]+}/numeric', function (req) {
     };
 });
 
-router.get('/search', function (req) {
+router.get('/api/search', function (req) {
     return {
         status: 200,
         contentType: 'application/json',
@@ -60,7 +72,7 @@ router.get('/search', function (req) {
     };
 });
 
-router.get('/echo', function (req) {
+router.get('/api/echo', function (req) {
     return {
         status: 200,
         contentType: 'application/json',
@@ -71,7 +83,7 @@ router.get('/echo', function (req) {
     };
 });
 
-router.post('/echo', function (req) {
+router.post('/api/echo', function (req) {
     return {
         status: 201,
         contentType: 'application/json',
@@ -83,7 +95,7 @@ router.post('/echo', function (req) {
     };
 });
 
-router.all('/ping', function (req) {
+router.all('/api/ping', function (req) {
     return {
         status: 200,
         contentType: 'application/json',
@@ -95,27 +107,23 @@ router.all('/ping', function (req) {
     };
 });
 
-router.get(['/static', '/static/{path:.*}'], function (req) {
-    return {
-        status: 200,
-        contentType: 'application/json',
-        body: {
-            route: 'static',
-            path: req.pathParams.path || ''
-        }
-    };
+// lib-static as a router handler: the /no-store-demo/ subtree is served with a
+// dedicated no-store cache-control handler, kept separate from the default
+// static handler below to demonstrate lib-static's cacheControl option.
+router.get('/no-store-demo/{path:.*}', function (req) {
+    return requestHandler(req, {
+        root: '/assets',
+        cacheControl: () => RESPONSE_CACHE_CONTROL.DEV,
+    });
 });
 
+// Everything else is delegated to lib-static, which resolves the request under
+// /assets and returns its own 404 when the file is missing. Running as a router
+// route means the X-Router-Filter / elapsed headers wrap static responses too.
 router.all('/{path:.*}', function (req) {
-    return {
-        status: 404,
-        contentType: 'application/json',
-        body: {
-            route: 'not-found',
-            path: req.pathParams.path,
-            method: req.method
-        }
-    };
+    return requestHandler(req, {
+        root: '/assets',
+    });
 });
 
 export function all(req: Request): Response {
