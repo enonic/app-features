@@ -31,6 +31,9 @@
       "/lib/mustache": [
         "./types/mustache"
       ],
+      "/lib/sql": [
+        "./types/sql"
+      ],
       "/lib/recaptcha": [
         "./types/recaptcha"
       ],

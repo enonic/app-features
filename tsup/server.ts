@@ -63,6 +63,7 @@ export default function buildServerConfig(): Options {
       '/lib/recaptcha',
       '/lib/qrcode',
       '/lib/router',
+      '/lib/sql',
       '/lib/util',
       '/lib/vanilla',
       '/lib/text-encoding',

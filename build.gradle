@@ -31,6 +31,8 @@ dependencies {
     include libs.mustache
     include libs.text.encoding
     include libs.asset
+    include libs.sql
+    include libs.h2
     include libs.static
     include libs.recaptcha
     include libs.qrcode
