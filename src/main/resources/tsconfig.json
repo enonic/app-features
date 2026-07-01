@@ -19,6 +19,9 @@
       "/lib/enonic/cors": [
         "./types/cors"
       ],
+      "/lib/router": [
+        "./types/router"
+      ],
       "/lib/thymeleaf": [
         "./types/thymeleaf"
       ],

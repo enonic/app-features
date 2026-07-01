@@ -27,6 +27,7 @@ dependencies {
     include libs.cache
     include libs.cors
     include libs.http.client
+    include libs.router
     include libs.thymeleaf
     include libs.mustache
     include libs.xslt

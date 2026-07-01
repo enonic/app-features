@@ -3,6 +3,7 @@ asset = "2.0.1"
 cache = "3.0.0"
 cors = "2.0.0"
 http-client = "4.0.0"
+router = "4.0.0"
 thymeleaf = "3.0.0"
 mustache = "3.0.0"
 static = "3.0.0"
@@ -22,6 +23,7 @@ asset = { module = "com.enonic.lib:lib-asset", version.ref = "asset" }
 cache = { module = "com.enonic.lib:lib-cache", version.ref = "cache" }
 cors = { module = "com.enonic.lib:lib-cors", version.ref = "cors" }
 http-client = { module = "com.enonic.lib:lib-http-client", version.ref = "http-client" }
+router = { module = "com.enonic.lib:lib-router", version.ref = "router" }
 thymeleaf = { module = "com.enonic.lib:lib-thymeleaf", version.ref = "thymeleaf" }
 mustache = { module = "com.enonic.lib:lib-mustache", version.ref = "mustache" }
 static = { module = "com.enonic.lib:lib-static", version.ref = "static" }
