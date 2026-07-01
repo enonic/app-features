@@ -24,6 +24,7 @@ dependencies {
     include xplibs.auditlog
     include xplibs.project
     include xplibs.export
+    include libs.cors
     include libs.http.client
     include libs.thymeleaf
     include libs.mustache
