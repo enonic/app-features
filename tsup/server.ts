@@ -57,6 +57,7 @@ export default function buildServerConfig(): Options {
       '/lib/graphql-connection',
       '/lib/http-client',
       '/lib/license',
+      '/lib/markdown',
       '/lib/mustache',
       '/lib/router',
       '/lib/util',
