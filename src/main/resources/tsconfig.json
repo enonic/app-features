@@ -28,6 +28,8 @@
       "/lib/mustache": [
         "./types/mustache"
       ],
+      "/lib/qrcode": [
+        "./types/qrcode"
       "/lib/cache": [
         "./types/cache"
       "/lib/markdown": [
