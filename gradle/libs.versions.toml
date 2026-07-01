@@ -1,5 +1,6 @@
 [versions]
-asset = "2.0.1"
+asset = "2.0.0"
+cron = "2.0.0"
 cache = "3.0.0"
 cors = "2.0.0"
 http-client = "4.0.0"
@@ -20,6 +21,7 @@ junit-bom = "6.1.1"
 
 [libraries]
 asset = { module = "com.enonic.lib:lib-asset", version.ref = "asset" }
+cron = { module = "com.enonic.lib:lib-cron", version.ref = "cron" }
 cache = { module = "com.enonic.lib:lib-cache", version.ref = "cache" }
 cors = { module = "com.enonic.lib:lib-cors", version.ref = "cors" }
 http-client = { module = "com.enonic.lib:lib-http-client", version.ref = "http-client" }

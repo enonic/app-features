@@ -50,6 +50,7 @@ export default function buildServerConfig(): Options {
 
     external: [
       '/lib/cache',
+      '/lib/cron',
       '/lib/enonic/asset',
       '/lib/enonic/cors',
       '/lib/enonic/static',

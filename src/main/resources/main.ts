@@ -124,6 +124,17 @@ function createContent() {
     }
 }
 
+function preloadCronLib() {
+    contextLib.run({
+        repository: 'system-repo',
+        branch: 'master',
+        principals: ["role:system.admin"]
+    }, () => {
+        require('/lib/cron');
+    });
+}
+
 if (clusterLib.isMaster()) {
     initializeProject();
+    preloadCronLib();
 }

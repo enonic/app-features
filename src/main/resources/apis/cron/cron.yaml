@@ -1,0 +1,6 @@
+kind: "API"
+title: "Cron Control API"
+allow:
+  - "role:system.everyone"
+mount:
+  - "web"

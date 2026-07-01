@@ -24,6 +24,7 @@ dependencies {
     include xplibs.auditlog
     include xplibs.project
     include xplibs.export
+    include libs.cron
     include libs.cache
     include libs.cors
     include libs.http.client
