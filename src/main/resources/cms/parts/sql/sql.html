@@ -1,0 +1,68 @@
+<div class="sql-part">
+    <h2>SQL Lib Demo</h2>
+
+    <p>
+        This part exercises <code>lib-sql</code> against an embedded H2 in-memory database. On every
+        request the part runs ten cases end-to-end: DDL, INSERT seed, SELECT, queryFirst, parameter
+        binding, UPDATE, DELETE, transaction commit, transaction rollback, error handling. The pooled
+        connection handle is cached across requests; the schema is dropped and recreated on each
+        request so the results are deterministic.
+    </p>
+
+    <fieldset class="sql-details">
+        <legend>Datasource</legend>
+        <ul>
+            <li><label>JDBC URL:</label> <code data-th-text="${jdbcUrl}"></code></li>
+            <li><label>JDBC driver:</label> <code data-th-text="${jdbcDriver}"></code></li>
+        </ul>
+    </fieldset>
+
+    <div data-th-if="${setupError != null}" style="color:darkred; margin-top:1em;">
+        <strong>Setup error:</strong> <code data-th-text="${setupError}"></code>
+    </div>
+
+    <div data-th-each="section : ${sections}">
+        <br/>
+        <fieldset class="sql-details" data-th-id="${'section-' + section.id}">
+            <legend>
+                <code data-th-text="${section.title}"></code>
+            </legend>
+
+            <!-- Stable machine-readable marker for E2E assertions. -->
+            <pre class="lib-sql-marker"
+                 data-th-attr="data-case=${section.id},data-status=${section.status}"
+                 data-th-text="${section.marker}"></pre>
+
+            <p>
+                <strong>SQL:</strong>
+            </p>
+            <ol>
+                <li data-th-each="stmt : ${section.sql}">
+                    <pre data-th-text="${stmt}" style="white-space:pre-wrap;"></pre>
+                </li>
+            </ol>
+
+            <p data-th-if="${section.status == 'ok'}" style="color:darkgreen;">
+                <strong>OK:</strong> <span data-th-text="${section.info}"></span>
+            </p>
+            <p data-th-if="${section.status == 'error'}" style="color:darkred;">
+                <strong>ERROR:</strong> <span data-th-text="${section.info}"></span>
+            </p>
+            <p data-th-if="${section.error != null and section.status == 'ok'}" style="color:darkorange;">
+                <strong>Expected exception:</strong> <code data-th-text="${section.error}"></code>
+            </p>
+            <p data-th-if="${section.affected != null}">
+                <strong>Affected rows:</strong> <code data-th-text="${section.affected}"></code>
+            </p>
+            <p data-th-if="${section.rowCount != null}">
+                <strong>Row count:</strong> <code data-th-text="${section.rowCount}"></code>
+            </p>
+
+            <ul data-th-if="${section.rowsPretty != null}" class="lib-sql-rows">
+                <li data-th-each="row : ${section.rowsPretty}">
+                    <code data-th-text="${row}"></code>
+                </li>
+            </ul>
+        </fieldset>
+    </div>
+</div>
