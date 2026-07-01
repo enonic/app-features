@@ -71,6 +71,7 @@ export default function buildServerConfig(): Options {
       '/lib/vanilla',
       '/lib/text-encoding',
       '/lib/thymeleaf',
+      '/lib/xslt',
       /^\/lib\/xp\//,
     ],
     format: 'cjs',

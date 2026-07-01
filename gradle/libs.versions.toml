@@ -7,6 +7,7 @@ thymeleaf = "3.0.0"
 mustache = "3.0.0"
 static = "3.0.0"
 text-encoding = "3.0.0"
+xslt = "3.0.0"
 geoip = "3.0.0"
 notifications = "3.0.0"
 sql = "2.0.0"
@@ -25,6 +26,7 @@ thymeleaf = { module = "com.enonic.lib:lib-thymeleaf", version.ref = "thymeleaf"
 mustache = { module = "com.enonic.lib:lib-mustache", version.ref = "mustache" }
 static = { module = "com.enonic.lib:lib-static", version.ref = "static" }
 text-encoding = { module = "com.enonic.lib:lib-text-encoding", version.ref = "text-encoding" }
+xslt = { module = "com.enonic.lib:lib-xslt", version.ref = "xslt" }
 geoip = { module = "com.enonic.lib:lib-geoip", version.ref = "geoip" }
 notifications = { module = "com.enonic.lib:lib-notifications", version.ref = "notifications" }
 sql = { module = "com.enonic.lib:lib-sql", version.ref = "sql" }
