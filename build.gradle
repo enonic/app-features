@@ -24,12 +24,15 @@ dependencies {
     include xplibs.auditlog
     include xplibs.project
     include xplibs.export
+    include libs.cache
+    include libs.cors
     include libs.http.client
     include libs.thymeleaf
     include libs.mustache
     include libs.text.encoding
     include libs.asset
     include libs.qrcode
+    include libs.markdown
     include "com.enonic.xp:lib-sse:${xpVersion}"
 
     testImplementation "com.enonic.xp:testing:${xpVersion}"
