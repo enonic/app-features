@@ -1,0 +1,174 @@
+<div class="geoip-part">
+    <h2>GeoIP Lib Demo</h2>
+
+    <p>
+        Exercises <code>com.enonic.lib:lib-geoip</code> 3.0.0 across several IP categories.
+        Lookups need a MaxMind <code>GeoLite2-City.mmdb</code> in <code>$XP_HOME/config/</code>,
+        or a custom path via <code>com.enonic.lib.geoip.database.filepath</code>.
+    </p>
+
+    <p data-test="db-status" data-th-attr="data-status=${dbStatusLabel}">
+        <strong>Database probe (<code data-th-text="${dbProbeIp}">?</code>):</strong>
+        <span data-th-if="${dbReady}" style="color:#2e7d32;">database-loaded</span>
+        <span data-th-unless="${dbReady}" style="color:#c62828;">database-unavailable</span>
+    </p>
+
+    <hr/>
+
+    <h3>1. Known IPv4 samples from different countries</h3>
+    <p>
+        Each row asserts country (ISO + name) and city via the lib's helpers. The Bhutan row
+        exercises the <em>country-only</em> path (no city in the test database).
+    </p>
+    <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+        <tr style="background:#eee;">
+            <th align="left">IP</th>
+            <th align="left">Expected</th>
+            <th align="left">ISO</th>
+            <th align="left">Country</th>
+            <th align="left">City</th>
+            <th align="left">geoPoint</th>
+            <th align="left">Time zone</th>
+            <th align="left">Postal</th>
+        </tr>
+        <tr data-th-each="r : ${knownResults}" data-th-attr="data-test='known-row',data-ip=${r.ip}">
+            <td><code data-th-text="${r.ip}">?</code></td>
+            <td data-th-text="${r.label}">?</td>
+            <td><code data-th-attr="data-test='known-' + ${r.ip} + '-iso'" data-th-text="${r.countryISO} ?: '&mdash;'">?</code></td>
+            <td><span data-th-attr="data-test='known-' + ${r.ip} + '-country'" data-th-text="${r.countryName} ?: '&mdash;'">?</span></td>
+            <td><span data-th-attr="data-test='known-' + ${r.ip} + '-city'" data-th-text="${r.cityName} ?: '&mdash;'">?</span></td>
+            <td><code data-th-text="${r.geoPoint} ?: '&mdash;'">?</code></td>
+            <td><code data-th-text="${r.timeZone} ?: '&mdash;'">?</code></td>
+            <td><code data-th-text="${r.postalCode} ?: '&mdash;'">?</code></td>
+        </tr>
+    </table>
+
+    <h3>2. IPv6 samples</h3>
+    <p>The lib accepts IPv6 transparently via <code>InetAddress.getByName</code>.</p>
+    <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+        <tr style="background:#eee;">
+            <th align="left">IP</th>
+            <th align="left">Expected</th>
+            <th align="left">ISO</th>
+            <th align="left">Country</th>
+            <th align="left">geoPoint</th>
+        </tr>
+        <tr data-th-each="r : ${ipv6Results}" data-th-attr="data-test='ipv6-row',data-ip=${r.ip}">
+            <td><code data-th-text="${r.ip}">?</code></td>
+            <td data-th-text="${r.label}">?</td>
+            <td><code data-th-attr="data-test='ipv6-' + ${r.ip} + '-iso'" data-th-text="${r.countryISO} ?: '&mdash;'">?</code></td>
+            <td><span data-th-attr="data-test='ipv6-' + ${r.ip} + '-country'" data-th-text="${r.countryName} ?: '&mdash;'">?</span></td>
+            <td><code data-th-text="${r.geoPoint} ?: '&mdash;'">?</code></td>
+        </tr>
+    </table>
+
+    <h3>3. Edge cases &mdash; private, reserved, and malformed input</h3>
+    <p>
+        Private (RFC1918) and reserved (RFC5737) ranges aren't in the database;
+        malformed strings throw <code>UnknownHostException</code> inside the lib, which
+        catches and returns <code>null</code>. None of these should throw at controller level.
+    </p>
+    <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+        <tr style="background:#eee;">
+            <th align="left">Input</th>
+            <th align="left">Label</th>
+            <th align="left">Resolved?</th>
+            <th align="left">Note</th>
+        </tr>
+        <tr data-th-each="r : ${edgeResults}" data-th-attr="data-test='edge-row',data-ip=${r.ip}">
+            <td><code data-th-text="${r.ip}">?</code></td>
+            <td data-th-text="${r.label}">?</td>
+            <td>
+                <span data-th-attr="data-test='edge-' + ${r.ip} + '-status'"
+                      data-th-text="${r.resolved} ? 'resolved' : 'graceful-null'"
+                      data-th-style="${r.resolved} ? 'color:#c62828;' : 'color:#2e7d32;'">?</span>
+            </td>
+            <td data-th-text="${r.note}">?</td>
+        </tr>
+    </table>
+
+    <h3 data-th-if="${distinctFields}">4. Distinct fields exposed via <code>getLocationData(<span data-th-text="${referenceIp}">?</span>)</code></h3>
+    <table data-th-if="${distinctFields}" border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+        <tr><th align="left">continent.code</th>          <td><code data-test="field-continentCode"     data-th-text="${distinctFields.continentCode}     ?: '&mdash;'">?</code></td></tr>
+        <tr><th align="left">continent.names.en</th>      <td><code data-test="field-continentName"     data-th-text="${distinctFields.continentName}     ?: '&mdash;'">?</code></td></tr>
+        <tr><th align="left">country.iso_code</th>        <td><code data-test="field-countryISO"        data-th-text="${distinctFields.countryISO}        ?: '&mdash;'">?</code></td></tr>
+        <tr><th align="left">country.names.en</th>        <td><code data-test="field-countryName"       data-th-text="${distinctFields.countryName}       ?: '&mdash;'">?</code></td></tr>
+        <tr><th align="left">registered_country.iso_code</th><td><code data-test="field-registeredISO"  data-th-text="${distinctFields.registeredCountryISO} ?: '&mdash;'">?</code></td></tr>
+        <tr><th align="left">city.names.en</th>           <td><code data-test="field-cityName"          data-th-text="${distinctFields.cityName}          ?: '&mdash;'">?</code></td></tr>
+        <tr><th align="left">subdivisions</th>            <td><code data-test="field-subdivisions"      data-th-text="${distinctFields.subdivisions}      ?: '&mdash;'">?</code></td></tr>
+        <tr><th align="left">location.latitude</th>       <td><code data-test="field-latitude"          data-th-text="${distinctFields.latitude}          ?: '&mdash;'">?</code></td></tr>
+        <tr><th align="left">location.longitude</th>      <td><code data-test="field-longitude"         data-th-text="${distinctFields.longitude}         ?: '&mdash;'">?</code></td></tr>
+        <tr><th align="left">location.time_zone</th>      <td><code data-test="field-timeZone"          data-th-text="${distinctFields.timeZone}          ?: '&mdash;'">?</code></td></tr>
+        <tr><th align="left">location.accuracy_radius</th><td><code data-test="field-accuracyRadius"    data-th-text="${distinctFields.accuracyRadiusKm}  ?: '&mdash;'">?</code></td></tr>
+        <tr><th align="left">postal.code</th>             <td><code data-test="field-postalCode"        data-th-text="${distinctFields.postalCode}        ?: '&mdash;'">?</code></td></tr>
+    </table>
+
+    <p>
+        <strong>Note on ASN / ISP:</strong> lib-geoip 3.0.0 loads only the City database
+        (<code>GeoLite2-City.mmdb</code>) and does not surface ASN / ISP / organization data.
+        MaxMind ships ASN data in a separate <code>GeoLite2-ASN.mmdb</code> that this lib does
+        not read.
+    </p>
+
+    <h3 data-th-if="${distinctFields}">5. Multilingual helpers &mdash; <code data-th-text="${referenceIp}">?</code></h3>
+    <p data-th-if="${distinctFields}">
+        <code>cityName(loc, lang)</code> and <code>countryName(loc, lang)</code> fall back to
+        English when the requested language is missing.
+    </p>
+    <table data-th-if="${distinctFields}" border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+        <tr style="background:#eee;">
+            <th align="left">language</th>
+            <th align="left">countryName</th>
+            <th align="left">cityName</th>
+        </tr>
+        <tr data-th-each="r : ${multilingualRows}" data-th-attr="data-test='lang-row',data-lang=${r.language}">
+            <td><code data-th-text="${r.language}">?</code></td>
+            <td><span data-th-attr="data-test='lang-' + ${r.language} + '-country'" data-th-text="${r.countryName} ?: '&mdash;'">?</span></td>
+            <td><span data-th-attr="data-test='lang-' + ${r.language} + '-city'"    data-th-text="${r.cityName}    ?: '&mdash;'">?</span></td>
+        </tr>
+    </table>
+
+    <hr/>
+
+    <h3>6. Ad-hoc lookup</h3>
+    <form action="#" data-th-action="${postUrl}" method="post">
+        <fieldset>
+            <p>
+                <label>IP address</label><br/>
+                <input type="text" name="ip" data-th-value="${formIp}" size="40"/>
+                <button type="submit">Look up</button>
+            </p>
+            <p style="font-size: smaller; color: #555;">
+                Remote address: <code data-th-text="${remoteIp}">?</code>.
+                <span data-th-if="${configuredIp}">Part config: <code data-th-text="${configuredIp}">?</code>.</span>
+            </p>
+        </fieldset>
+    </form>
+
+    <div data-th-if="${formMissing}" data-test="form-missing"
+         style="background:#fff8e1; border:1px solid #ffd54f; padding:10px;">
+        <strong>No location data for <code data-th-text="${formIp}">?</code>.</strong>
+        <p>
+            Either the GeoIP database is missing/misconfigured, or no entry exists for this
+            address (private/reserved/unknown). The lib swallows the underlying error and
+            returns <code>null</code>; no exception bubbled up.
+        </p>
+    </div>
+
+    <div data-th-if="${lookupError}" data-test="form-error"
+         style="background:#ffebee; border:1px solid #ef9a9a; padding:10px;">
+        <strong>Lookup error:</strong>
+        <pre data-th-text="${lookupError}"></pre>
+    </div>
+
+    <div data-th-if="${formResolved}" data-test="form-result">
+        <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;">
+            <tr><th align="left">cityName</th>   <td><code data-test="form-city"    data-th-text="${formCityName}    ?: '&mdash;'">?</code></td></tr>
+            <tr><th align="left">countryName</th><td><code data-test="form-country" data-th-text="${formCountryName} ?: '&mdash;'">?</code></td></tr>
+            <tr><th align="left">countryISO</th> <td><code data-test="form-iso"     data-th-text="${formCountryISO}  ?: '&mdash;'">?</code></td></tr>
+            <tr><th align="left">geoPoint</th>   <td><code data-test="form-geopoint" data-th-text="${formGeoPoint}   ?: '&mdash;'">?</code></td></tr>
+        </table>
+        <h4>Raw <code>getLocationData</code> JSON</h4>
+        <pre data-th-text="${formRawJson}" style="background:#f4f4f4; padding:10px; white-space: pre-wrap;"></pre>
+    </div>
+</div>

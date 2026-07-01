@@ -2,34 +2,9 @@
     <h2>Markdown Lib Demo</h2>
 
     <p>
-        Interactive sandbox plus a fixed set of demo cases covering the features and edge cases of
+        A fixed set of demo cases covering the features and edge cases of
         <code>com.enonic.lib:lib-markdown</code>.
     </p>
-
-    <section id="interactive">
-        <h3>Interactive sandbox</h3>
-        <form action="#" data-th-action="${postUrl}" method="post">
-            <fieldset>
-                <p>
-                    <label>Markdown source</label><br/>
-                    <textarea name="source" data-th-utext="${source}" rows="20"
-                              style="width: 600px; font-family: monospace;"></textarea>
-                </p>
-
-                <p>
-                    <button type="submit">Render</button>
-                </p>
-            </fieldset>
-        </form>
-
-        <h4>Rendered HTML (raw)</h4>
-        <pre data-th-text="${rendered}" style="background:#f4f4f4; padding:10px; white-space: pre-wrap;"></pre>
-
-        <h4>Rendered HTML (live)</h4>
-        <div class="markdown-output" data-th-utext="${rendered}"></div>
-    </section>
-
-    <hr/>
 
     <section id="cases">
         <h3>Use cases</h3>
