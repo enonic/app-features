@@ -1,0 +1,106 @@
+<div class="notifications-part">
+    <h2>Push Notifications Lib Demo</h2>
+
+    <p>
+        Exercises <code>/lib/notifications</code> (lib-notifications 3.0.0). The browser subscribes to the
+        push service using the server's VAPID public key; the server then sends push notifications with
+        <code>send()</code>, <code>sendAsync()</code> or against all stored subscriptions via the same
+        controller. The same store is exposed headlessly via the universal API
+        <code>/api/com.enonic.app.features:notifications</code>.
+    </p>
+
+    <span style="color:darkred;" data-th-if="${errorMsg != null}" data-th-text="${errorMsg}"></span>
+    <span style="color:darkgreen;" data-th-if="${infoMsg != null}" data-th-text="${infoMsg}"></span>
+
+    <fieldset class="notifications-details">
+        <legend>VAPID key pair</legend>
+        <ul>
+            <li><label>Public key:</label> <code data-th-text="${publicKey}"></code></li>
+            <li><label>Private key:</label> <code data-th-text="${privateKeyPreview}"></code> <em>(server-only)</em></li>
+        </ul>
+        <form action="#" data-th-action="${postUrl}" method="post">
+            <input type="hidden" name="action" value="regenerateKeys"/>
+            <button type="submit">Regenerate key pair</button>
+        </form>
+    </fieldset>
+
+    <br/>
+
+    <fieldset class="notifications-details">
+        <legend>Subscriptions (<span data-th-text="${subscriptionCount}"></span>)</legend>
+
+        <div data-th-if="${!hasSubscriptions}">
+            <p id="notif-status">No active subscription. Use <strong>Subscribe</strong> below
+                to capture a browser push subscription, or add a fake subscription to drive a degraded
+                send. (No subscription means <code>send</code> reports <em>"No subscription on file"</em>
+                rather than throwing &mdash; this is the graceful path.)</p>
+        </div>
+
+        <ul data-th-if="${hasSubscriptions}">
+            <li data-th-each="sub : ${subscriptions}">
+                <strong data-th-text="${sub.label}"></strong>
+                (id <code data-th-text="${sub.id}"></code>, saved <span data-th-text="${sub.savedAt}"></span>)
+                <form action="#" data-th-action="${postUrl}" method="post" style="display:inline;">
+                    <input type="hidden" name="action" value="unsubscribe"/>
+                    <input type="hidden" name="id" data-th-value="${sub.id}"/>
+                    <button type="submit">Remove</button>
+                </form>
+            </li>
+        </ul>
+
+        <p>
+            <button id="notif-subscribe" type="button">Subscribe (real browser)</button>
+            <span id="notif-support" style="margin-left:1em;color:#666;"></span>
+        </p>
+        <form action="#" data-th-action="${postUrl}" method="post" style="display:inline;">
+            <input type="hidden" name="action" value="subscribeFake"/>
+            <input name="label" type="text" placeholder="label" value="fake-sub"/>
+            <button type="submit">Add fake subscription</button>
+        </form>
+        <form action="#" data-th-action="${postUrl}" method="post" style="display:inline;" data-th-if="${hasSubscriptions}">
+            <input type="hidden" name="action" value="unsubscribe"/>
+            <button type="submit">Clear all</button>
+        </form>
+
+        <details data-th-if="${hasSubscriptions}">
+            <summary>Raw subscription data (JSON)</summary>
+            <pre data-th-text="${subscriptionsJson}" style="background:#f7f7f7;padding:0.5em;border:1px solid #ccc;"></pre>
+        </details>
+    </fieldset>
+
+    <br/>
+
+    <fieldset class="notifications-details">
+        <legend>Send push notification</legend>
+        <form action="#" data-th-action="${postUrl}" method="post">
+            <p>
+                <label>Message</label>
+                <input name="message" type="text" data-th-value="${defaultMessage}" size="60"/>
+            </p>
+            <p>
+                <label>Payload variant</label>
+                <select name="payloadVariant">
+                    <option value="string">String</option>
+                    <option value="object">Object {message,sender}</option>
+                    <option value="rich">Rich {title,body,icon,tag}</option>
+                    <option value="empty">Empty</option>
+                </select>
+            </p>
+            <p>
+                <button type="submit" name="action" value="send" data-th-disabled="${!hasSubscriptions}">Send (sync, first)</button>
+                <button type="submit" name="action" value="sendAsync" data-th-disabled="${!hasSubscriptions}">Send (async, first)</button>
+                <button type="submit" name="action" value="sendAll" data-th-disabled="${!hasSubscriptions}">Send to all</button>
+            </p>
+        </form>
+        <ul data-th-if="${sendResults != null}">
+            <li data-th-each="r : ${sendResults}">
+                <strong data-th-text="${r.label}"></strong>
+                <span> &rarr; status </span>
+                <code data-th-text="${r.status}"></code>
+                <em data-th-if="${r.error != null}" data-th-text="' (' + ${r.error} + ')'"></em>
+            </li>
+        </ul>
+        <p data-th-if="${sendAsyncSubmitted}"><em>sendAsync()</em> submitted &mdash; result is logged on the server.</p>
+    </fieldset>
+
+</div>

@@ -31,6 +31,9 @@
       "/lib/mustache": [
         "./types/mustache"
       ],
+      "/lib/notifications": [
+        "./types/notifications"
+      ],
       "/lib/sql": [
         "./types/sql"
       ],

@@ -60,6 +60,8 @@ export default function buildServerConfig(): Options {
       '/lib/license',
       '/lib/markdown',
       '/lib/mustache',
+      '/lib/notifications',
+      '/lib/notifications-store',
       '/lib/recaptcha',
       '/lib/qrcode',
       '/lib/router',
