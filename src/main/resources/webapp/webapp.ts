@@ -1,5 +1,6 @@
 import createRouter = require('/lib/router');
 import {requestHandler, RESPONSE_CACHE_CONTROL} from '/lib/enonic/static';
+import * as corsDemo from '/lib/cors-demo';
 import type {Request, Response} from '@enonic-types/core';
 
 const WEBAPP_BASE = '/webapp/' + app.name;
@@ -32,7 +33,8 @@ router.get(['/api', '/api/'], function (req) {
                 '/api/items/{id}/numeric',
                 '/api/search?q=',
                 '/api/echo (GET, POST)',
-                '/api/ping (any method)'
+                '/api/ping (any method)',
+                '/api/cors?profile= (GET, OPTIONS)'
             ]
         }
     };
@@ -109,6 +111,30 @@ router.all('/api/ping', function (req) {
     };
 });
 
+// lib-cors: the same profiles as the /cors-demo site mapping, exposed here so
+// the webapp landing page can link to it. GET returns the CORS headers + JSON;
+// OPTIONS returns the preflight response.
+router.all('/api/cors', function (req) {
+    const name = corsDemo.resolveProfile(req.params.profile as string | undefined);
+    if (req.method === 'OPTIONS') {
+        return corsDemo.optionsResponseFor(name, req);
+    }
+    const headers = corsDemo.headersFor(name, req);
+    return {
+        status: 200,
+        contentType: 'application/json',
+        headers: headers,
+        body: {
+            route: 'cors',
+            profile: name,
+            method: req.method,
+            origin: req.headers['Origin'] || null,
+            corsHeaders: headers,
+            profiles: corsDemo.profileNames()
+        }
+    };
+});
+
 // ---------------------------------------------------------------------------
 // HTML landing page — modelled on enonic/starter-myfirstwebapp: a plain HTML
 // document returned straight from the controller, linking a stylesheet that
@@ -126,7 +152,7 @@ function renderIndex(): Response {
   <body>
     <h1>Sweet, the &quot;Features&quot; web app is working!</h1>
     <p>This web app pairs <code>lib-router</code> (a JSON API under <code>/api</code>)
-       with <code>lib-static</code> (asset serving).</p>
+       with <code>lib-static</code> (asset serving) and <code>lib-cors</code> (CORS headers).</p>
 
     <h2>API &mdash; lib-router</h2>
     <ul>
@@ -136,6 +162,12 @@ function renderIndex(): Response {
       <li><a href="${WEBAPP_BASE}/api/search?q=router">/api/search?q=</a></li>
       <li><a href="${WEBAPP_BASE}/api/echo">/api/echo</a> &mdash; GET and POST</li>
       <li><a href="${WEBAPP_BASE}/api/ping">/api/ping</a> &mdash; any method</li>
+    </ul>
+
+    <h2>CORS &mdash; lib-cors</h2>
+    <ul>
+      <li><a href="${WEBAPP_BASE}/api/cors?profile=default">/api/cors?profile=</a> &mdash;
+          CORS response headers per profile: default, wildcard, reflect-any, regex-subdomain, disabled, app-config</li>
     </ul>
 
     <h2>Static assets &mdash; lib-static</h2>
