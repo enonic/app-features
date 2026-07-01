@@ -27,6 +27,7 @@ dependencies {
     include libs.http.client
     include libs.thymeleaf
     include libs.mustache
+    include libs.xslt
     include libs.text.encoding
     include libs.asset
     include "com.enonic.xp:lib-sse:${xpVersion}"
