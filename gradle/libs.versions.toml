@@ -15,7 +15,7 @@ notifications = "3.0.0"
 sql = "2.0.0"
 h2 = "2.4.240"
 recaptcha = "4.0.0"
-qrcode = "3.0.0"
+qrcode = "3.0.1"
 markdown = "2.0.0"
 junit-bom = "6.1.1"
 
