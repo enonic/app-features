@@ -4,6 +4,9 @@ apis:
   - "com.enonic.app.features:sse"
   - "com.enonic.app.features:websocket"
   - "com.enonic.app.features:websocket-public"
+  - "com.enonic.app.features:cron"
+  - "com.enonic.app.features:cron-sse"
+  - "com.enonic.app.features:cron-ws"
 processors:
   - name: "bgcolor-filter"
     order: 10

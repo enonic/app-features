@@ -1,0 +1,6 @@
+kind: "API"
+title: "Cron WebSocket Demo"
+allow:
+  - "role:system.everyone"
+mount:
+  - "web"
