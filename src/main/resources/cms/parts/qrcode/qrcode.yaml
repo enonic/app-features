@@ -1,17 +1,3 @@
 kind: "Part"
 title: "QR Code Lib example"
-form:
-  - type: "TextLine"
-    name: "text"
-    label: "Text or URL to encode"
-    occurrences:
-      min: 1
-      max: 1
-    default: "https://enonic.com"
-  - type: "Long"
-    name: "size"
-    label: "Image size (px)"
-    occurrences:
-      min: 1
-      max: 1
-    default: 250
+form: [ ]

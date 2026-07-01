@@ -15,47 +15,7 @@
         independently of size. Those parameters are not configurable; the lib uses sensible QRGen defaults.
     </p>
 
-    <h3>1. Interactive (form-driven)</h3>
-    <p>
-        Type a payload and size, hit <em>Generate</em>. Mirrors the original lib README example.
-        The image below is delivered as a base64-encoded inline data URI.
-    </p>
-    <form action="#" data-th-action="${postUrl}" method="get">
-        <fieldset>
-            <p>
-                <label>Text or URL&nbsp;</label>
-                <input id="qrcode-interactive-text" name="text" type="text" data-th-value="${interactiveText}" size="60"/>
-            </p>
-            <p>
-                <label>Size (px)&nbsp;</label>
-                <input id="qrcode-interactive-size" name="size" type="number" min="50" max="1000" data-th-value="${interactiveSize}"/>
-            </p>
-            <p>
-                <button type="submit">Generate</button>
-            </p>
-        </fieldset>
-    </form>
-    <p data-th-unless="${interactiveErrorPresent}">
-        <img id="qrcode-interactive-image"
-             class="qrcode-image"
-             alt="QR Code"
-             data-case="interactive"
-             data-format="datauri"
-             data-th-src="${interactiveDataUri}"
-             data-th-attr="width=${interactiveSizeText},height=${interactiveSizeText}"/>
-    </p>
-    <p class="qrcode-error" data-case="interactive" data-th-if="${interactiveErrorPresent}">
-        lib-qrcode could not encode this input: <span data-th-text="${interactiveError}">err</span>
-    </p>
-    <p>
-        Same payload, but served as a real <code>image/png</code> response from the controller:
-        <a class="qrcode-raw-png-link"
-           data-case="url"
-           data-th-href="${interactiveRawPngUrl}"
-           data-th-text="${interactiveRawPngUrl}">[raw png url]</a>
-    </p>
-
-    <h3>2. Different payloads</h3>
+    <h3>1. Different payloads</h3>
     <p>
         Same controller call, varied input. Each card shows the text being encoded, its length,
         the requested image size, an inline data-URI render, and a link to the raw <code>image/png</code>
@@ -98,7 +58,7 @@
         </div>
     </div>
 
-    <h3>3. Different image sizes</h3>
+    <h3>2. Different image sizes</h3>
     <p>
         Same URL payload, three image sizes. lib-qrcode 3.0.0 only exposes a <code>size</code>
         parameter; margin/scale/error-correction-level are not configurable.
@@ -129,7 +89,7 @@
         </div>
     </div>
 
-    <h3>4. Edge cases</h3>
+    <h3>3. Edge cases</h3>
     <p>
         Behaviour for input the API treats specially.
     </p>

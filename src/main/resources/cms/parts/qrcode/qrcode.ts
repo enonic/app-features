@@ -2,12 +2,7 @@ import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/thymeleaf';
 import * as qrcode from '/lib/qrcode';
 import {base64Encode} from '/lib/text-encoding';
-import type {ByteSource, PartComponent, Request} from '@enonic-types/core';
-
-const DEFAULT_TEXT = 'https://enonic.com';
-const DEFAULT_SIZE = 250;
-const MIN_SIZE = 50;
-const MAX_SIZE = 1000;
+import type {ByteSource, Request} from '@enonic-types/core';
 
 interface PresetCase {
     key: string;
@@ -103,14 +98,6 @@ function findCase(key: unknown): PresetCase | undefined {
     return undefined;
 }
 
-function clampSize(raw: unknown): number {
-    const n = typeof raw === 'number' ? raw : parseInt(String(raw ?? ''), 10);
-    if (isNaN(n) || !isFinite(n)) {
-        return DEFAULT_SIZE;
-    }
-    return Math.min(MAX_SIZE, Math.max(MIN_SIZE, Math.round(n)));
-}
-
 function generate(text: string, size: number): ByteSource {
     return qrcode.generateQrCode({text, size});
 }
@@ -190,21 +177,6 @@ export const GET = function (req: Request): {contentType: string; body: string |
         }
     }
 
-    const component = portal.getComponent<PartComponent>();
-    const config = component?.config ?? {};
-
-    const interactiveText = (params.text as string | undefined)
-        ?? (config.text as string | undefined)
-        ?? DEFAULT_TEXT;
-    const interactiveSize = clampSize(params.size ?? config.size);
-    let interactiveDataUri = '';
-    let interactiveError: string | null = null;
-    try {
-        interactiveDataUri = toDataUri(generate(interactiveText, interactiveSize));
-    } catch (e: any) {
-        interactiveError = String(e?.message ?? e);
-    }
-
     const renderedCases = PRESET_CASES.map(renderCase);
     const payloadCases = renderedCases.filter(c => c.category === 'payload');
     const sizeCases = renderedCases.filter(c => c.category === 'size');
@@ -212,16 +184,6 @@ export const GET = function (req: Request): {contentType: string; body: string |
 
     const view = resolve('qrcode.html');
     const body = thymeleaf.render(view, {
-        postUrl: portal.componentUrl({}),
-        interactiveText,
-        interactiveSize,
-        interactiveSizeText: String(interactiveSize),
-        interactiveDataUri,
-        interactiveError,
-        interactiveErrorPresent: interactiveError != null,
-        interactiveRawPngUrl: portal.componentUrl({
-            params: {case: 'url', format: 'png'}
-        }),
         payloadCases,
         sizeCases,
         edgeCases,
