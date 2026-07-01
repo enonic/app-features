@@ -4,9 +4,17 @@ cron = "2.0.0"
 cache = "3.0.0"
 cors = "2.0.0"
 http-client = "4.0.0"
+router = "4.0.0"
 thymeleaf = "3.0.0"
 mustache = "3.0.0"
+static = "3.0.0"
 text-encoding = "3.0.0"
+xslt = "3.0.0"
+geoip = "3.0.0"
+notifications = "3.0.0"
+sql = "2.0.0"
+h2 = "2.4.240"
+recaptcha = "4.0.0"
 qrcode = "3.0.0"
 markdown = "2.0.0"
 junit-bom = "6.1.1"
@@ -17,9 +25,17 @@ cron = { module = "com.enonic.lib:lib-cron", version.ref = "cron" }
 cache = { module = "com.enonic.lib:lib-cache", version.ref = "cache" }
 cors = { module = "com.enonic.lib:lib-cors", version.ref = "cors" }
 http-client = { module = "com.enonic.lib:lib-http-client", version.ref = "http-client" }
+router = { module = "com.enonic.lib:lib-router", version.ref = "router" }
 thymeleaf = { module = "com.enonic.lib:lib-thymeleaf", version.ref = "thymeleaf" }
 mustache = { module = "com.enonic.lib:lib-mustache", version.ref = "mustache" }
+static = { module = "com.enonic.lib:lib-static", version.ref = "static" }
 text-encoding = { module = "com.enonic.lib:lib-text-encoding", version.ref = "text-encoding" }
+xslt = { module = "com.enonic.lib:lib-xslt", version.ref = "xslt" }
+geoip = { module = "com.enonic.lib:lib-geoip", version.ref = "geoip" }
+notifications = { module = "com.enonic.lib:lib-notifications", version.ref = "notifications" }
+sql = { module = "com.enonic.lib:lib-sql", version.ref = "sql" }
+h2 = { module = "com.h2database:h2", version.ref = "h2" }
+recaptcha = { module = "com.enonic.lib:lib-recaptcha", version.ref = "recaptcha" }
 qrcode = { module = "com.enonic.lib:lib-qrcode", version.ref = "qrcode" }
 markdown = { module = "com.enonic.lib:lib-markdown", version.ref = "markdown" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit-bom" }

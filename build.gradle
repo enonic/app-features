@@ -28,10 +28,18 @@ dependencies {
     include libs.cache
     include libs.cors
     include libs.http.client
+    include libs.router
     include libs.thymeleaf
     include libs.mustache
+    include libs.xslt
     include libs.text.encoding
     include libs.asset
+    include libs.geoip
+    include libs.notifications
+    include libs.sql
+    include libs.h2
+    include libs.static
+    include libs.recaptcha
     include libs.qrcode
     include libs.markdown
     include "com.enonic.xp:lib-sse:${xpVersion}"
