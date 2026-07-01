@@ -16,6 +16,9 @@
       "/lib/enonic/static": [
         "../../../node_modules/@enonic-types/lib-static"
       ],
+      "/lib/enonic/cors": [
+        "./types/cors"
+      ],
       "/lib/thymeleaf": [
         "./types/thymeleaf"
       ],
@@ -27,6 +30,18 @@
       ],
       "/lib/mustache": [
         "./types/mustache"
+      ],
+      "/lib/recaptcha": [
+        "./types/recaptcha"
+      ],
+      "/lib/qrcode": [
+        "./types/qrcode"
+      ],
+      "/lib/cache": [
+        "./types/cache"
+      ],
+      "/lib/markdown": [
+        "./types/markdown"
       ],
       "/*": [
         "./*"
