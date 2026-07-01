@@ -1,0 +1,25 @@
+kind: "Part"
+title: "reCAPTCHA"
+description: "Demo of lib-recaptcha"
+form:
+  - type: "RadioButton"
+    name: "variant"
+    label: "reCAPTCHA variant"
+    helpText: "Pick v2 (checkbox) or v3 (invisible, score-based). Can be overridden via ?variant query parameter."
+    occurrences:
+      min: 0
+      max: 1
+    default: "v2"
+    options:
+      - value: "v2"
+        label: "v2 (checkbox)"
+      - value: "v3"
+        label: "v3 (invisible / score)"
+  - type: "Double"
+    name: "scoreThreshold"
+    label: "v3 score threshold"
+    helpText: "Accept v3 tokens whose score is at least this value (0.0 – 1.0). Default 0.5."
+    occurrences:
+      min: 0
+      max: 1
+    default: 0.5

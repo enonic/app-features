@@ -1,10 +1,13 @@
 import * as websocket from '/lib/xp/websocket';
 import * as thymeleaf from '/lib/thymeleaf';
+import {assetUrl} from '/lib/enonic/asset';
 import type {Request, WebSocketEvent} from '@enonic-types/core';
 
 function renderView() {
     const view = resolve('./chat.html');
-    const model = {};
+    const model = {
+        cssUrl: assetUrl({path: 'css/chat.css'})
+    };
     const body = thymeleaf.render(view, model);
 
     return {

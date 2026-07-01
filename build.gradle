@@ -24,6 +24,8 @@ dependencies {
     include xplibs.auditlog
     include xplibs.project
     include xplibs.export
+    include libs.cache
+    include libs.cors
     include libs.http.client
     include libs.thymeleaf
     include libs.mustache
@@ -31,6 +33,10 @@ dependencies {
     include libs.asset
     include libs.sql
     include libs.h2
+    include libs.static
+    include libs.recaptcha
+    include libs.qrcode
+    include libs.markdown
     include "com.enonic.xp:lib-sse:${xpVersion}"
 
     testImplementation "com.enonic.xp:testing:${xpVersion}"
@@ -43,6 +49,7 @@ repositories {
     mavenLocal()
     mavenCentral()
     xp.enonicRepo('dev')
+    maven { url 'https://jitpack.io' }
 }
 
 node {
