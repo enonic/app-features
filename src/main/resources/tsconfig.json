@@ -31,6 +31,9 @@
       "/lib/mustache": [
         "./types/mustache"
       ],
+      "/lib/geoip": [
+        "./types/geoip"
+      ],
       "/lib/notifications": [
         "./types/notifications"
       ],
