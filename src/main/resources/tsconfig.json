@@ -28,6 +28,8 @@
       "/lib/mustache": [
         "./types/mustache"
       ],
+      "/lib/cache": [
+        "./types/cache"
       "/lib/markdown": [
         "./types/markdown"
       ],
