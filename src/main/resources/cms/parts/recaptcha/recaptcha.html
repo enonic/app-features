@@ -1,0 +1,111 @@
+<div class="recaptcha-part">
+    <h2>reCAPTCHA Lib Demo</h2>
+
+    <p>
+        This part exercises <code>lib-recaptcha</code>. The site key and secret key are read
+        from the site config (fields <code>recaptchaSiteKey</code> and
+        <code>recaptchaSecretKey</code>). Token verification is delegated to
+        <code>recaptcha.verify()</code>, which calls Google's <code>siteverify</code> endpoint.
+    </p>
+
+    <p>
+        Active variant: <strong data-th-text="${variant}"></strong>.
+        Threshold (v3): <strong data-th-text="${threshold}"></strong>.
+    </p>
+
+    <ul style="font-size:0.9em;">
+        <li>Append <code>?variant=v2</code> or <code>?variant=v3</code> to switch widget.</li>
+        <li>Append <code>?threshold=0.7</code> to override the v3 score threshold.</li>
+        <li>Append <code>?simulatedScore=0.9</code> to test threshold logic without a real v3 token.</li>
+        <li>Append <code>?forceFail=true</code> to verify a deliberately invalid token (server-side only, no widget).</li>
+        <li>Append <code>?format=json</code> for a machine-readable result.</li>
+    </ul>
+
+    <form method="POST" action="" data-th-action="${postUrl}" id="recaptchaForm">
+        <fieldset>
+            <legend data-th-text="'Submit a token (' + ${variant} + ')'">Submit a token</legend>
+
+            <p>
+                <label for="message">Message</label>
+                <input id="message" name="message" type="text" size="60"/>
+            </p>
+
+            <div data-th-if="${recaptchaIsConfigured and !editMode and isV2}"
+                 class="g-recaptcha"
+                 data-th-attr="data-sitekey=${siteKey}"></div>
+
+            <div data-th-if="${recaptchaIsConfigured and !editMode and isV3}"
+                 class="g-recaptcha-v3-host">
+                <input type="hidden" name="g-recaptcha-response" id="recaptcha-v3-token"/>
+                <p style="font-size:0.9em;">
+                    reCAPTCHA v3 runs invisibly. A token is generated on submit via
+                    <code>grecaptcha.execute()</code> and posted as
+                    <code>g-recaptcha-response</code>.
+                </p>
+                <script data-th-inline="javascript">
+                    /*<![CDATA[*/
+                    (function () {
+                        var siteKey = /*[[${siteKey}]]*/ '';
+                        var form = document.getElementById('recaptchaForm');
+                        if (!form) {
+                            return;
+                        }
+                        form.addEventListener('submit', function (ev) {
+                            if (!window.grecaptcha) {
+                                return;
+                            }
+                            ev.preventDefault();
+                            grecaptcha.ready(function () {
+                                grecaptcha.execute(siteKey, {action: 'submit'}).then(function (token) {
+                                    document.getElementById('recaptcha-v3-token').value = token;
+                                    form.submit();
+                                });
+                            });
+                        });
+                    })();
+                    /*]]>*/
+                </script>
+            </div>
+
+            <div data-th-if="${!recaptchaIsConfigured}"
+                 style="padding:0.5em; background:#fff3cd; border:1px solid #ffeeba;">
+                Configure <code>recaptchaSiteKey</code> and <code>recaptchaSecretKey</code>
+                in the site config to render the widget and verify tokens. The form is shown
+                here so the demo remains visible.
+            </div>
+
+            <div data-th-if="${editMode}"
+                 style="padding:0.5em; background:#e2e3e5; border:1px solid #d6d8db;">
+                Edit-mode preview: the reCAPTCHA widget is hidden in Content Studio edit mode.
+            </div>
+
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </fieldset>
+    </form>
+
+    <div data-th-if="${verification != null}">
+        <fieldset class="recaptcha-result">
+            <legend>Verification result</legend>
+            <p>
+                <span style="font-weight:bold;">Outcome:</span>
+                <span data-th-text="${verification.accepted} ? 'ACCEPTED' : 'REJECTED'"
+                      data-th-style="${verification.accepted} ? 'color:darkgreen;' : 'color:darkred;'"></span>
+            </p>
+            <p data-th-text="${verification.reason}"></p>
+            <ul style="font-size:0.9em;">
+                <li>variant: <span data-th-text="${verification.variant}"></span></li>
+                <li>attempted: <span data-th-text="${verification.attempted}"></span></li>
+                <li>google-success: <span data-th-text="${verification.success}"></span></li>
+                <li data-th-if="${verification.score != null}">score: <span data-th-text="${verification.score}"></span></li>
+                <li data-th-if="${verification.threshold != null}">threshold: <span data-th-text="${verification.threshold}"></span></li>
+                <li data-th-if="${verification.simulatedScore}">score-source: <strong>simulated</strong></li>
+                <li data-th-if="${not #lists.isEmpty(verification.errorCodes)}">
+                    error-codes: <span data-th-text="${verification.errorCodes}"></span>
+                </li>
+            </ul>
+            <pre data-th-if="${verification.raw != null}" data-th-text="${verification.raw}"></pre>
+        </fieldset>
+    </div>
+</div>

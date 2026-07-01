@@ -6,6 +6,7 @@ http-client = "4.0.0"
 thymeleaf = "3.0.0"
 mustache = "3.0.0"
 text-encoding = "3.0.0"
+recaptcha = "4.0.0"
 qrcode = "3.0.0"
 markdown = "2.0.0"
 junit-bom = "6.1.1"
@@ -18,6 +19,7 @@ http-client = { module = "com.enonic.lib:lib-http-client", version.ref = "http-c
 thymeleaf = { module = "com.enonic.lib:lib-thymeleaf", version.ref = "thymeleaf" }
 mustache = { module = "com.enonic.lib:lib-mustache", version.ref = "mustache" }
 text-encoding = { module = "com.enonic.lib:lib-text-encoding", version.ref = "text-encoding" }
+recaptcha = { module = "com.enonic.lib:lib-recaptcha", version.ref = "recaptcha" }
 qrcode = { module = "com.enonic.lib:lib-qrcode", version.ref = "qrcode" }
 markdown = { module = "com.enonic.lib:lib-markdown", version.ref = "markdown" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit-bom" }

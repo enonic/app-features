@@ -28,6 +28,9 @@
       "/lib/mustache": [
         "./types/mustache"
       ],
+      "/lib/recaptcha": [
+        "./types/recaptcha"
+      ],
       "/lib/qrcode": [
         "./types/qrcode"
       ],

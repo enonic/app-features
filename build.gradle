@@ -31,6 +31,7 @@ dependencies {
     include libs.mustache
     include libs.text.encoding
     include libs.asset
+    include libs.recaptcha
     include libs.qrcode
     include libs.markdown
     include "com.enonic.xp:lib-sse:${xpVersion}"

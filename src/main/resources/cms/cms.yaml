@@ -22,3 +22,17 @@ form:
         label: "Blue"
       - value: "red"
         label: "Red"
+  - type: "TextLine"
+    name: "recaptchaSiteKey"
+    label: "reCAPTCHA site key"
+    helpText: "Public site key from https://www.google.com/recaptcha/admin (read by lib-recaptcha)."
+    occurrences:
+      min: 0
+      max: 1
+  - type: "TextLine"
+    name: "recaptchaSecretKey"
+    label: "reCAPTCHA secret key"
+    helpText: "Secret key from https://www.google.com/recaptcha/admin (read by lib-recaptcha)."
+    occurrences:
+      min: 0
+      max: 1
