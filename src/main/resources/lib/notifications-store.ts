@@ -15,15 +15,13 @@ interface State {
     subscriptions: StoredSubscription[];
 }
 
+// No key pair until one is generated on demand.
 const state: State = {
     keyPair: null,
     subscriptions: []
 };
 
-export function getKeyPair(): KeyPair {
-    if (!state.keyPair) {
-        state.keyPair = notifications.generateKeyPair();
-    }
+export function getKeyPair(): KeyPair | null {
     return state.keyPair;
 }
 
@@ -31,7 +29,9 @@ export function hasKeyPair(): boolean {
     return state.keyPair != null;
 }
 
-export function regenerateKeyPair(): KeyPair {
+// Generate a fresh VAPID key pair. Also used to regenerate — since a new key
+// pair invalidates existing subscriptions, they are cleared.
+export function generateKeyPair(): KeyPair {
     state.keyPair = notifications.generateKeyPair();
     state.subscriptions = [];
     return state.keyPair;
@@ -109,15 +109,6 @@ export function sendToSubscription(id: string, opts?: SendOptions): SendResult {
     return sendOne(sub, opts || {});
 }
 
-export function sendToAll(opts?: SendOptions): SendResult[] {
-    const o = opts || {};
-    const results: SendResult[] = [];
-    for (let i = 0; i < state.subscriptions.length; i++) {
-        results.push(sendOne(state.subscriptions[i], o));
-    }
-    return results;
-}
-
 export interface AsyncResult {
     submitted: boolean;
     id: string;
@@ -130,6 +121,9 @@ export function sendAsyncToSubscription(id: string, opts?: SendOptions): AsyncRe
         throw new Error('No subscription with id: ' + id);
     }
     const pair = getKeyPair();
+    if (!pair) {
+        throw new Error('No key pair. Generate one first.');
+    }
     const params: SendAsyncParams = {
         publicKey: pair.publicKey,
         privateKey: pair.privateKey,
@@ -150,6 +144,9 @@ export function sendAsyncToSubscription(id: string, opts?: SendOptions): AsyncRe
 
 function sendOne(sub: StoredSubscription, opts: SendOptions): SendResult {
     const pair = getKeyPair();
+    if (!pair) {
+        return {id: sub.id, label: sub.label, status: 0, error: 'No key pair'};
+    }
     const params: SendParams = {
         publicKey: pair.publicKey,
         privateKey: pair.privateKey,

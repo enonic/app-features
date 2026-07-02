@@ -15,6 +15,7 @@ declare module '/lib/notifications' {
         auth: string;
         receiverKey: string;
         payload?: string | Record<string, unknown>;
+        subject?: string;
     }
 
     export interface SendAsyncParams extends SendParams {

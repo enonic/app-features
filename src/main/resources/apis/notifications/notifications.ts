@@ -31,13 +31,16 @@ function dispatch(req: Request, method: string): ApiResponse {
         }
         if (method === 'GET' && action === 'key') {
             const pair = store.getKeyPair();
+            if (!pair) {
+                return ok({publicKey: null, privateKeyPresent: false});
+            }
             return ok({publicKey: pair.publicKey, privateKeyPresent: typeof pair.privateKey === 'string' && pair.privateKey.length > 0});
         }
         if (method === 'GET' && action === 'list') {
             return ok({subscriptions: store.listSubscriptions()});
         }
-        if (method === 'POST' && action === 'regenerate') {
-            const pair = store.regenerateKeyPair();
+        if (method === 'POST' && action === 'generate') {
+            const pair = store.generateKeyPair();
             return ok({publicKey: pair.publicKey, cleared: true});
         }
         if (method === 'POST' && action === 'subscribe') {
@@ -67,10 +70,6 @@ function dispatch(req: Request, method: string): ApiResponse {
             const id = stringOf(body.id || req.params.id);
             const r = store.sendAsyncToSubscription(id, parsePayloadOpts(body, req));
             return ok({async: r});
-        }
-        if (method === 'POST' && action === 'sendAll') {
-            const results = store.sendToAll(parsePayloadOpts(body, req));
-            return ok({results: results, sent: results.length});
         }
         return jsonError(404, 'Unknown action: ' + method + ' /' + action);
     } catch (e: any) {
