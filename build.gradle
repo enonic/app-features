@@ -48,6 +48,7 @@ dependencies {
     testImplementation(platform(libs.junit.bom))
     testImplementation libs.junit.jupiter
     testRuntimeOnly libs.junit.platform.launcher
+    testRuntimeOnly libs.graalvm.js
 }
 
 repositories {
@@ -65,6 +66,18 @@ test {
     useJUnitPlatform {
     }
 }
+
+def testGraalJs = tasks.register('testGraalJs', Test) {
+    group = 'verification'
+    description = 'Runs tests with the GraalJS script engine.'
+    useJUnitPlatform()
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    systemProperty 'xp.script-engine', 'GraalJS'
+    shouldRunAfter test
+}
+
+check.dependsOn testGraalJs
 
 processResources {
     exclude '**/.gitkeep'

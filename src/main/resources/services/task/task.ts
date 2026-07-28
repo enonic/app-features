@@ -1,34 +1,8 @@
 import * as taskLib from '/lib/xp/task';
-import type {Request} from '@enonic-types/core';
 
-function handleGet(req: Request) {
-    const steps = ['one', 'two', 'three'];
-
-    const taskId = taskLib.executeFunction({
-        description: 'my test',
-        func: function () {
-            log.info('Hello! ');
-
-            for (let i = 0; i < steps.length; i++) {
-                taskLib.sleep(1000);
-
-                taskLib.progress({
-                    info: 'Step ' + steps[i],
-                    current: i + 1,
-                    total: steps.length
-                });
-
-                const task = taskLib.get(taskId);
-                log.info(JSON.stringify(task, null, 4));
-            }
-
-            const tasks = taskLib.list();
-            log.info(JSON.stringify(tasks, null, 4));
-
-            taskLib.progress({
-                info: 'Done!'
-            });
-        }
+export function GET() {
+    const taskId = taskLib.submitTask({
+        descriptor: 'progress-demo'
     });
 
     return {
@@ -36,5 +10,3 @@ function handleGet(req: Request) {
         body: 'Task submitted: ' + taskId
     };
 }
-
-export {handleGet as GET};
