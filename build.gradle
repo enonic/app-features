@@ -66,6 +66,10 @@ test {
     }
 }
 
+xp {
+    scriptEngines = ['Nashorn', 'GraalJS']
+}
+
 processResources {
     exclude '**/.gitkeep'
     exclude '**/*.json'
