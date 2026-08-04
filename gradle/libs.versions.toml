@@ -18,7 +18,6 @@ recaptcha = "4.0.0"
 qrcode = "3.0.1"
 markdown = "2.0.0"
 junit-bom = "6.1.2"
-graalvm = "25.0.3"
 
 [libraries]
 asset = { module = "com.enonic.lib:lib-asset", version.ref = "asset" }
@@ -42,4 +41,3 @@ markdown = { module = "com.enonic.lib:lib-markdown", version.ref = "markdown" }
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit-bom" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
-graalvm-js = { module = "org.graalvm.polyglot:js", version.ref = "graalvm" }
