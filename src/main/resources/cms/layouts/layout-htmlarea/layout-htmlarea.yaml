@@ -4,5 +4,4 @@ form: [ ]
 regions:
   - "center"
 config:
-  - name: "allowOnContentType"
-    value: "${app}:htmlarea"
+  allowOnContentType: "${app}:htmlarea"
