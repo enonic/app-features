@@ -159,3 +159,7 @@ mappings:
     order: 50
     invertPattern: false
     pattern: "/samples/form-items/date-and-time"
+  - controller: "/cms/mappings/samples/media/media.js"
+    order: 50
+    invertPattern: false
+    pattern: "/samples/media"

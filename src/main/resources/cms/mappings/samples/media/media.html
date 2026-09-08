@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Media samples</title>
+    <style>
+        .ok { color: #1a7f37; font-weight: bold; }
+        .blocked, .failed { color: #b42318; font-weight: bold; }
+        table { border-collapse: collapse; width: 100%; }
+        td, th { text-align: left; vertical-align: top; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
+        .detail { color: #666; font-size: 0.85em; }
+        .item { border-bottom: 1px solid #ddd; padding: 0.75rem 0; }
+        .item img, .item video { max-width: 320px; height: auto; display: block; }
+        .item object { width: 100%; height: 400px; }
+        .urls { font-size: 0.8em; color: #666; word-break: break-all; }
+        h3 { margin-bottom: 0.2rem; }
+    </style>
+</head>
+<body data-th-attr="data-self-url=${selfUrl}">
+<p><a href="..">Back to samples</a></p>
+<h1>Media samples</h1>
+<p>
+    Every media item under <code data-th-text="${parent}">/samples/media</code>, rendered with the
+    element its declared type calls for, and a link as a fallback for anything the browser will not
+    play. The declared type is shown beside each item, because a plausible but unregistered spelling
+    is served as-is and then rejected by some browsers and not others.
+</p>
+<p data-th-text="${summary}">summary</p>
+
+<h2>Check what is actually served</h2>
+<p>
+    Requests each item's URL from the server and compares the returned content type with the type
+    the content declares. Asked for separately, since fetching every item would hold up the page.
+</p>
+<p>
+    <button id="verify" type="button">Check now</button>
+    <span id="verify-state"></span>
+</p>
+<div id="verify-results"></div>
+
+<h2>Items</h2>
+<div data-th-unless="${hasItems}" class="detail">No media items found.</div>
+<div data-th-each="item : ${items}" class="item">
+    <h3 data-th-text="${item.displayName}">name</h3>
+    <div class="detail">
+        <span data-th-text="${item.type}"></span>,
+        <span data-th-text="${item.mimeType}"></span>,
+        <span data-th-text="${item.fileSize}"></span>,
+        <span data-th-class="${item.registeredClass}" data-th-text="${item.registeredVerdict}"></span>
+    </div>
+
+    <div data-th-if="${item.kind == 'image'}">
+        <img data-th-src="${item.imageUrl}" data-th-alt="${item.displayName}">
+    </div>
+    <div data-th-if="${item.kind == 'audio'}">
+        <audio controls data-th-src="${item.url}"></audio>
+    </div>
+    <div data-th-if="${item.kind == 'video'}">
+        <video controls data-th-src="${item.url}"></video>
+    </div>
+    <div data-th-if="${item.kind == 'pdf'}">
+        <object type="application/pdf" data-th-data="${item.url}"></object>
+    </div>
+
+    <p><a data-th-href="${item.url}" data-th-text="'Open ' + ${item.name}">open</a></p>
+    <div class="urls">
+        <div>attachmentUrl: <span data-th-text="${item.url}"></span></div>
+        <div>absolute: <span data-th-text="${item.absoluteUrl}"></span></div>
+        <div data-th-if="${item.imageUrl}">imageUrl: <span data-th-text="${item.imageUrl}"></span></div>
+    </div>
+</div>
+
+<script data-th-src="${scriptUrl}" defer></script>
+</body>
+</html>
