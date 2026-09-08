@@ -51,3 +51,99 @@ mappings:
     order: 50
     invertPattern: false
     pattern: "/schedule-types"
+  - controller: "/cms/mappings/libraries/index.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries"
+  - controller: "/cms/mappings/libraries/cluster/cluster.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/cluster"
+  - controller: "/cms/mappings/libraries/content/content.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/content"
+  - controller: "/cms/mappings/libraries/context/context.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/context"
+  - controller: "/cms/mappings/libraries/i18n/i18n.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/i18n"
+  - controller: "/cms/mappings/libraries/node/node.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/node"
+  - controller: "/cms/mappings/libraries/repo/repo.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/repo"
+  - controller: "/cms/mappings/libraries/value/value.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/value"
+  - controller: "/cms/mappings/libraries/get-context/get-context.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/get-context"
+  - controller: "/cms/mappings/libraries/markdown/markdown.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/markdown"
+  - controller: "/cms/mappings/libraries/sql/sql.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/sql"
+  - controller: "/cms/mappings/libraries/xslt/xslt.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/xslt"
+  - controller: "/cms/mappings/libraries/auditlog/auditlog.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/auditlog"
+  - controller: "/cms/mappings/libraries/auth/auth.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/auth"
+  - controller: "/cms/mappings/libraries/cache/cache.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/cache"
+  - controller: "/cms/mappings/libraries/http/http.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/http"
+  - controller: "/cms/mappings/libraries/memberships/memberships.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/memberships"
+  - controller: "/cms/mappings/libraries/move-content/move-content.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/move-content"
+  - controller: "/cms/mappings/libraries/notifications/notifications.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/notifications"
+  - controller: "/cms/mappings/libraries/publish/publish.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/publish"
+  - controller: "/cms/mappings/libraries/qrcode/qrcode.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/qrcode"
+  - controller: "/cms/mappings/libraries/sanitize/sanitize.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/sanitize"
+  - controller: "/cms/mappings/libraries/scheduler/scheduler.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/scheduler"
+  - controller: "/cms/mappings/libraries/unpublish/unpublish.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/unpublish"

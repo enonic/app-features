@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Lib Node</title>
+    <style>
+        .ok { color: #1a7f37; font-weight: bold; }
+        .failed { color: #b42318; font-weight: bold; }
+        pre { white-space: pre-wrap; word-break: break-all; background: #f4f4f4; padding: 0.5rem; }
+        h3 { margin-bottom: 0.2rem; }
+        #task-log li { font-family: monospace; }
+    </style>
+</head>
+<body>
+<p><a href="..">Back to library tests</a></p>
+<h1>Lib Node</h1>
+<p>
+    Exercises <code>/lib/xp/node</code> against a scratch repository, one operation at a time, so a
+    failing call reports itself instead of hiding the rest. Writing nodes needs an administrator.
+    Nothing runs until you ask for it, because the suite takes long enough to hold up a page render.
+</p>
+<p><span data-th-text="${operationCount}">0</span> operations in this suite.</p>
+
+<h2>Run in the background</h2>
+<p>
+    Submits the <code>library-probe</code> named task and polls it, so the suite also exercises
+    <code>submitTask</code>, <code>progress</code> and <code>get</code> from the task library. A
+    named task is how work is started since 8.1, where <code>executeFunction</code> is deprecated
+    and unsupported on GraalJS.
+</p>
+<p>
+    <button id="run-task" type="button">Run as background task</button>
+    <span id="task-state"></span>
+</p>
+<ol id="task-log"></ol>
+
+<h2>Run in this request</h2>
+<p>Runs every operation server-side in one request and returns the full output of each.</p>
+<p>
+    <button id="run-inline" type="button">Run now</button>
+    <span id="inline-state"></span>
+</p>
+<div id="inline-results"></div>
+
+<script data-th-src="${scriptUrl}" defer></script>
+</body>
+</html>

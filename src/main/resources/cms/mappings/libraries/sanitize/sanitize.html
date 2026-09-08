@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Portal Lib sanitizeHtml Demo</title>
+</head>
+<body>
+<p><a href="..">Back to library tests</a></p>
+<h1>Portal Lib sanitizeHtml Demo</h1>
+    <div class="sanitize-part">
+    
+
+        <form action="#" data-th-action="${postUrl}" method="post" enctype="multipart/form-data">
+            <div class="sanitize-form">
+                <fieldset class="sanitize-form">
+                    <p>
+                        <button type="submit" name="sanitize">Sanitize</button>
+                    </p>
+                    <hr/>
+                    <p>
+                        <label>Original HTML </label>
+                        <textarea name="html" data-th-utext="${html}" rows="20" style="width: 600px;"></textarea>
+                    </p>
+                    <br/>
+                    <p>
+                        <label>Sanitized HTML</label>
+                        <textarea name="cleanHtml" data-th-utext="${cleanHtml}" rows="20" style="width: 600px;"></textarea>
+                    </p>
+                </fieldset>
+            </div>
+
+        </form>
+
+    </div>
+</body>
+</html>

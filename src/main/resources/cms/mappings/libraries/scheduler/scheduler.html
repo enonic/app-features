@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Scheduler Demo</title>
+</head>
+<body>
+<p><a href="..">Back to library tests</a></p>
+<h1>Scheduler Demo</h1>
+    <div class="scheduler-part xp-part">
+
+    
+
+        <fieldset>
+            <legend>Create Schedule</legend>
+            <div data-th-include="./includes/createForm :: createForm"></div>
+        </fieldset>
+
+        <fieldset>
+            <h4>List of Schedules</h4>
+            <div data-th-include="./includes/schedulesTable :: schedulesTable"></div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Delete Schedule</legend>
+            <div data-th-include="./includes/deleteForm :: deleteForm"></div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Modify Schedule</legend>
+            <div data-th-include="./includes/modifyForm :: modifyForm"></div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Get Schedule data</legend>
+
+            <div data-th-include="./includes/getForm :: getForm"></div>
+
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="scheduleResult">Schedule</label>
+                        </td>
+                        <td>
+                            <textarea id="scheduleResult" cols="60" rows="20" class="schedule__get-by-name"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+
+    </div>
+</body>
+</html>

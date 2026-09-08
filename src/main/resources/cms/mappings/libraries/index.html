@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Library tests</title>
+</head>
+<body>
+<h1>Library tests</h1>
+<p>
+    Tests that exercise a library rather than page rendering. Each one is served by a site mapping on
+    its own path, so it needs no page component and lives at the project root rather than inside the site.
+</p>
+<p>
+    This index is itself built with the XP 8.1 query additions: <code>parent</code> restricts the query
+    to the direct children, and <code>returns</code> has each hit carry named index fields instead of
+    the whole content.
+</p>
+
+<div data-th-unless="${hasEntries}">
+    <p>No entry points found under <code>/libraries</code>.</p>
+</div>
+<ul data-th-if="${hasEntries}">
+    <li data-th-each="entry : ${entries}">
+        <a data-th-href="${entry.url}" data-th-text="${entry.displayName}">test</a>
+        <span data-th-text="${entry.name}"></span>
+    </li>
+</ul>
+<p>Total: <span data-th-text="${total}"></span></p>
+</body>
+</html>

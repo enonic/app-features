@@ -83,7 +83,31 @@ function initializeProject() {
 // carried as node XML in the import. Creation is idempotent, which means a new entry point appears
 // on the next deploy without the project having to be deleted.
 const testEntryPoints = [
-    {parentPath: '/', name: 'schedule-types', displayName: 'Schedule types'}
+    {parentPath: '/', name: 'schedule-types', displayName: 'Schedule types'},
+    {parentPath: '/', name: 'libraries', displayName: 'Library tests'},
+    {parentPath: '/libraries', name: 'cluster', displayName: 'Lib Cluster'},
+    {parentPath: '/libraries', name: 'content', displayName: 'Lib Content'},
+    {parentPath: '/libraries', name: 'context', displayName: 'Lib Context'},
+    {parentPath: '/libraries', name: 'i18n', displayName: 'Lib I18n'},
+    {parentPath: '/libraries', name: 'node', displayName: 'Lib Node'},
+    {parentPath: '/libraries', name: 'repo', displayName: 'Lib Repo'},
+    {parentPath: '/libraries', name: 'value', displayName: 'Lib Value'},
+    {parentPath: '/libraries', name: 'get-context', displayName: 'Lib Context, getContext'},
+    {parentPath: '/libraries', name: 'markdown', displayName: 'Lib Markdown'},
+    {parentPath: '/libraries', name: 'sql', displayName: 'Lib SQL'},
+    {parentPath: '/libraries', name: 'xslt', displayName: 'Lib XSLT'},
+    {parentPath: '/libraries', name: 'auditlog', displayName: 'Lib Auditlog'},
+    {parentPath: '/libraries', name: 'auth', displayName: 'Lib Auth'},
+    {parentPath: '/libraries', name: 'cache', displayName: 'Lib Cache'},
+    {parentPath: '/libraries', name: 'http', displayName: 'Lib HTTP Client'},
+    {parentPath: '/libraries', name: 'memberships', displayName: 'Lib Auth, memberships'},
+    {parentPath: '/libraries', name: 'move-content', displayName: 'Lib Content, move'},
+    {parentPath: '/libraries', name: 'notifications', displayName: 'Lib Notifications'},
+    {parentPath: '/libraries', name: 'publish', displayName: 'Lib Content, publish'},
+    {parentPath: '/libraries', name: 'qrcode', displayName: 'Lib QR Code'},
+    {parentPath: '/libraries', name: 'sanitize', displayName: 'Lib IO, sanitize'},
+    {parentPath: '/libraries', name: 'scheduler', displayName: 'Lib Scheduler'},
+    {parentPath: '/libraries', name: 'unpublish', displayName: 'Lib Content, unpublish'}
 ];
 
 function createTestEntryPoints() {
