@@ -66,7 +66,14 @@ test {
     }
 }
 
+app {
+    // GraalJS is the engine that will replace Nashorn, available as a preview since XP 8.1. It is
+    // chosen per application, so this app runs on it while the rest of the installation does not.
+    scriptEngine = 'GraalJS'
+}
+
 xp {
+    // Tests still run on both engines, so a change that only works on one is caught.
     scriptEngines = ['Nashorn', 'GraalJS']
 }
 
