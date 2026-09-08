@@ -11,3 +11,6 @@ form:
     occurrences:
       min: 0
       max: 1
+    maxLength: 100
+    showCounter: true
+    
