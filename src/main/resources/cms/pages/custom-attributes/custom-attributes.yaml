@@ -1,0 +1,5 @@
+kind: "Page"
+title: "Custom attributes"
+form: []
+regions:
+  - "main"
