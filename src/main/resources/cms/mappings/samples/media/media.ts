@@ -1,6 +1,7 @@
 import * as contentLib from '/lib/xp/content';
 import * as portal from '/lib/xp/portal';
 import * as httpClient from '/lib/http-client';
+import * as ioLib from '/lib/xp/io';
 import * as thymeleaf from '/lib/thymeleaf';
 import {assetUrl} from '/lib/enonic/asset';
 import type {Request} from '@enonic-types/core';
@@ -101,6 +102,38 @@ function items(): Item[] {
         });
 }
 
+// getAttachments and getAttachmentStream had no coverage anywhere else once the unreachable
+// attachments page went, so the verification run exercises them here: the metadata the library
+// reports, and the byte count of the stream against the size the content declares.
+function attachmentCheck(id: string, name: string, declaredSize: string): {ok: boolean; detail: string} {
+    const attachments = contentLib.getAttachments(id);
+
+    if (!attachments) {
+        return {ok: false, detail: 'getAttachments returned nothing'};
+    }
+
+    const names = Object.keys(attachments);
+    const attachment = attachments[name] ?? attachments[names[0]];
+
+    if (!attachment) {
+        return {ok: false, detail: 'no attachment among ' + names.join(', ')};
+    }
+
+    const stream = contentLib.getAttachmentStream({key: id, name: attachment.name});
+
+    if (!stream) {
+        return {ok: false, detail: 'getAttachmentStream returned nothing for ' + attachment.name};
+    }
+
+    const streamed = ioLib.getSize(stream);
+
+    return {
+        ok: streamed === attachment.size,
+        detail: `getAttachments reported ${attachment.size} B for ${attachment.name}, the stream carried ${streamed} B`
+            + (declaredSize ? '' : '')
+    };
+}
+
 export const GET = function (req: Request) {
     // Fetching every item to check it would hold the response, and Content Studio would sit on a
     // spinner, so verification is asked for separately.
@@ -109,7 +142,9 @@ export const GET = function (req: Request) {
             try {
                 const response = httpClient.request({url: item.absoluteUrl, method: 'HEAD'});
                 const served = (response.contentType ?? '').split(';')[0];
-                const ok = response.status === 200 && served === item.mimeType && item.registered;
+                const attachment = attachmentCheck(item.id, item.name, item.fileSize);
+                const ok = response.status === 200 && served === item.mimeType && item.registered
+                    && attachment.ok;
 
                 return {
                     name: item.name,
@@ -117,6 +152,7 @@ export const GET = function (req: Request) {
                     verdict: ok ? 'ok' : 'FAILED',
                     detail: `status ${response.status}, declared ${item.mimeType}, served ${served || 'nothing'}`
                         + (item.registered ? '' : ', and the declared type is not registered')
+                        + '. ' + attachment.detail
                 };
             } catch (e) {
                 return {

@@ -30,7 +30,9 @@
 <h2>Check what is actually served</h2>
 <p>
     Requests each item's URL from the server and compares the returned content type with the type
-    the content declares. Asked for separately, since fetching every item would hold up the page.
+    the content declares. Also exercises <code>getAttachments</code> and
+    <code>getAttachmentStream</code>, checking the byte count of the stream against the size the
+    library reports. Asked for separately, since fetching every item would hold up the page.
 </p>
 <p>
     <button id="verify" type="button">Check now</button>

@@ -163,3 +163,7 @@ mappings:
     order: 50
     invertPattern: false
     pattern: "/samples/media"
+  - controller: "/cms/mappings/samples/attachments/attachments.js"
+    order: 50
+    invertPattern: false
+    pattern: "/samples/my-attachment-content"
