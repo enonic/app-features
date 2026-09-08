@@ -35,3 +35,7 @@ mappings:
     order: 50
     invertPattern: false
     pattern: "/"
+  - filter: "/cms/mappings/reroute-filter.js"
+    order: 50
+    invertPattern: false
+    pattern: "/request-steering"
