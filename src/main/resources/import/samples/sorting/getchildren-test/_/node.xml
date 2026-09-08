@@ -52,33 +52,6 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-06-04T12:04:03.133Z</dateTime>
         <property-set name="data"/>
-        <property-set name="components">
-            <string name="type">page</string>
-            <string name="path">/</string>
-            <property-set name="page">
-                <string name="descriptor">com.enonic.app.features:default</string>
-                <boolean name="customized">true</boolean>
-            </property-set>
-        </property-set>
-        <property-set name="components">
-            <string name="type">part</string>
-            <string name="path">/main/0</string>
-            <property-set name="part">
-                <string name="descriptor">com.enonic.app.features:sort</string>
-                <property-set name="config">
-                    <property-set name="com-enonic-app-features">
-                        <property-set name="sort"/>
-                    </property-set>
-                </property-set>
-            </property-set>
-        </property-set>
-        <property-set name="components">
-            <string name="type">part</string>
-            <string name="path">/main/1</string>
-            <property-set name="part">
-                <string isNull="true" name="descriptor"/>
-            </property-set>
-        </property-set>
     </data>
     <indexConfigs>
         <defaultConfig>

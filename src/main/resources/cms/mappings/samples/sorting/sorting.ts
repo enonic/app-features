@@ -1,36 +1,30 @@
-import * as portal from '/lib/xp/portal';
 import * as contentSvc from '/lib/xp/content';
 import * as thymeleaf from '/lib/thymeleaf';
 import type {Request} from '@enonic-types/core';
 
-const view = resolve('sort-test.html');
+const view = resolve('sorting.html');
 
 function handleGet(req: Request) {
-    log.info("Request: %s", req);
 
-    const content = portal.getContent();
-
-    log.info("Content: %s", req);
-
-    const currentPage = portal.pageUrl({
-        path: content._path
-    });
+    // A mapping controller has no page, so it links to its own request path rather than through
+    // pageUrl, which belongs to the page concept.
+    const currentPage = req.path;
 
     const byDefault = contentSvc.getChildren({
-        key: "/features/sorting/getchildren-test",
+        key: "/samples/sorting/getchildren-test",
         start: 0,
         count: 1000
     });
 
     const byCreatedTime = contentSvc.getChildren({
-        key: "/features/sorting/getchildren-test",
+        key: "/samples/sorting/getchildren-test",
         start: 0,
         count: 1000,
         sort: 'createdTime DESC'
     });
 
     const byUpdateTime = contentSvc.getChildren({
-        key: "/features/sorting/getchildren-test",
+        key: "/samples/sorting/getchildren-test",
         start: 0,
         count: 1000,
         sort: 'modifiedTime DESC'

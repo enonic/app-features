@@ -6,7 +6,7 @@ export function create() {
         parentPath: '/features/js-libraries',
         displayName: 'My Content',
         requireValid: true,
-        contentType: app.name + ':all-input-types',
+        contentType: app.name + ':all-form-items',
         language: 'no',
         data: {
             myCheckbox: true,

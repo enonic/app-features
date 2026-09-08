@@ -1,9 +1,8 @@
-import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/thymeleaf';
 import * as contentSvc from '/lib/xp/content';
 import type {Request} from '@enonic-types/core';
 
-const view = resolve('datetime-queries.page.html');
+const view = resolve('date-and-time.html');
 
 function handleGet(req: Request) {
     const d = new Date();
@@ -16,7 +15,7 @@ function handleGet(req: Request) {
         start: 0,
         count: 25,
         sort: 'data.datetime DESC',
-        query: "_parentPath = '/content/features/input-types/date-and-time/datetime-queries' AND data.requiredDatetime > dateTime('" +
+        query: "_parentPath = '/content/samples/form-items/date-and-time/datetime-queries' AND data.requiredDatetime > dateTime('" +
                nowISO + "')"
     });
 
@@ -24,7 +23,7 @@ function handleGet(req: Request) {
         start: 0,
         count: 25,
         sort: 'data.datetime DESC',
-        query: "_parentPath = '/content/features/input-types/date-and-time/datetime-queries' AND data.requiredDatetime < dateTime('" +
+        query: "_parentPath = '/content/samples/form-items/date-and-time/datetime-queries' AND data.requiredDatetime < dateTime('" +
                nowISO + "')"
     });
 
@@ -32,20 +31,19 @@ function handleGet(req: Request) {
         start: 0,
         count: 25,
         sort: 'data.datetime DESC',
-        query: "_parentPath = '/content/features/input-types/date-and-time/datetime-queries' AND data.datetime > '" + now + "'"
+        query: "_parentPath = '/content/samples/form-items/date-and-time/datetime-queries' AND data.datetime > '" + now + "'"
     });
 
     const pastNoTZ = contentSvc.query({
         start: 0,
         count: 25,
         sort: 'data.datetime DESC',
-        query: "_parentPath = '/content/features/input-types/date-and-time/datetime-queries' AND data.datetime < '" + now + "'"
+        query: "_parentPath = '/content/samples/form-items/date-and-time/datetime-queries' AND data.datetime < '" + now + "'"
     });
 
-    const content = portal.getContent();
-    const currentPage = portal.pageUrl({
-        path: content._path
-    });
+    // A mapping controller has no page, so it links to its own request path rather than through
+    // pageUrl, which belongs to the page concept.
+    const currentPage = req.path;
 
     const params = {
         futureWithTZ: futureWithTZ.hits,

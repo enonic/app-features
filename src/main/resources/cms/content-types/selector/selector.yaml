@@ -54,15 +54,27 @@ form:
     allowContentType:
       - "article"
   - type: "ContentSelector"
-    name: "allowCurrentSite_input-types_date-and-time"
-    label: "Allow ${site}/input-types/date-and-time"
+    name: "allowCurrentSite"
+    label: "Allow anything in ${site}"
+    helpText: "Tests the ${site} token. The form item samples it used to point at now live outside the site, under /samples/form-items."
     occurrences:
       min: 0
       max: 0
     attributes:
       relationshipType: "system:reference"
     allowPath:
-      - "${site}/input-types/date-and-time/*"
+      - "${site}/*"
+  - type: "ContentSelector"
+    name: "allowAbsolutePath_form-items_date-and-time"
+    label: "Allow /samples/form-items/date-and-time"
+    helpText: "Tests an absolute allowPath, which is how content outside the site has to be named."
+    occurrences:
+      min: 0
+      max: 0
+    attributes:
+      relationshipType: "system:reference"
+    allowPath:
+      - "/samples/form-items/date-and-time/*"
   - type: "ContentSelector"
     name: "contentSelectorTree"
     label: "Tree mode"

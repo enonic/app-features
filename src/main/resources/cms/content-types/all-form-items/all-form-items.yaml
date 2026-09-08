@@ -3,7 +3,7 @@ superType: "base:structured"
 abstract: false
 final: false
 allowChildContent: true
-title: "All the Input Types"
+title: "All the Form Items"
 form:
   - type: "ContentTypeFilter"
     name: "contentTypeFilter"

@@ -34,7 +34,7 @@ function handlePost(req: Request) {
         parentPath: saveLocation,
         displayName: contentName,
         requireValid: true,
-        contentType: app.name + ':all-input-types',
+        contentType: app.name + ':all-form-items',
         data: {
             myDateTime: contentData.datetime,
             myCheckbox: contentData.checkbox,

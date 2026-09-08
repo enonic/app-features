@@ -151,3 +151,11 @@ mappings:
     order: 50
     invertPattern: false
     pattern: "/libraries/node-listing"
+  - controller: "/cms/mappings/samples/sorting/sorting.js"
+    order: 50
+    invertPattern: false
+    pattern: "/samples/sorting"
+  - controller: "/cms/mappings/samples/date-and-time/date-and-time.js"
+    order: 50
+    invertPattern: false
+    pattern: "/samples/form-items/date-and-time"

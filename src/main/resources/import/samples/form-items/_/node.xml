@@ -44,7 +44,7 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Input types</string>
+        <string name="displayName">Form items</string>
         <string name="type">base:folder</string>
         <string name="owner">user:system:su</string>
         <dateTime name="modifiedTime">2015-05-28T12:14:21.440Z</dateTime>

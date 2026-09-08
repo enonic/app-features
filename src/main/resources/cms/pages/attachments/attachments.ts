@@ -35,7 +35,7 @@ export const GET = function (req: Request) {
 
     const params = {
         pageUrl: pageUrl,
-        contentPath: contentPath || '/features/media/image/Renault4_R01.jpg',
+        contentPath: contentPath || '/samples/media/image/Renault4_R01.jpg',
         attachments: attachments
     };
 
