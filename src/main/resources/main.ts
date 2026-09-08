@@ -107,7 +107,8 @@ const testEntryPoints = [
     {parentPath: '/libraries', name: 'qrcode', displayName: 'Lib QR Code'},
     {parentPath: '/libraries', name: 'sanitize', displayName: 'Lib IO, sanitize'},
     {parentPath: '/libraries', name: 'scheduler', displayName: 'Lib Scheduler'},
-    {parentPath: '/libraries', name: 'unpublish', displayName: 'Lib Content, unpublish'}
+    {parentPath: '/libraries', name: 'unpublish', displayName: 'Lib Content, unpublish'},
+    {parentPath: '/libraries', name: 'node-listing', displayName: 'NodeService list and enumerate'}
 ];
 
 function createTestEntryPoints() {

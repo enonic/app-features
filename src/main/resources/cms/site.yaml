@@ -147,3 +147,7 @@ mappings:
     order: 50
     invertPattern: false
     pattern: "/libraries/unpublish"
+  - controller: "/cms/mappings/libraries/node-listing/node-listing.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/node-listing"
