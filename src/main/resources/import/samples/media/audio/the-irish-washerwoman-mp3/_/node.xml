@@ -51,13 +51,13 @@
         <string name="creator">user:system:anonymous</string>
         <property-set name="data">
             <string name="media">the-irish-washerwoman.mp3</string>
-            <string name="mimeType">audio/mp3</string>
+            <string name="mimeType">audio/mpeg</string>
         </property-set>
         <property-set name="attachment">
             <string name="name">the-irish-washerwoman.mp3</string>
             <string name="label">source</string>
             <binaryReference name="binary">the-irish-washerwoman.mp3</binaryReference>
-            <string name="mimeType">audio/mp3</string>
+            <string name="mimeType">audio/mpeg</string>
             <long name="size">933012</long>
         </property-set>
     </data>
