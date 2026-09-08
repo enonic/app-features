@@ -14,6 +14,8 @@
 <p>
     But no worries, our minions are on it! Get a coffee and come back in 5 minutes, or go to the <a href="/" data-th-href="${siteRootUrl}">frontpage</a>.
 </p>
+<p data-th-if="${hint}" data-th-text="${hint}"></p>
 <pre data-th-text="${'( System got an error '+ errorCode+ '. )'}">( System got an error xxx. )</pre>
+<pre data-th-if="${message}" data-th-text="${message}"></pre>
 </body>
 </html>
