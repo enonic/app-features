@@ -16,6 +16,8 @@ processors:
     order: 10
   - name: "custom-attributes-processor"
     order: 20
+  - name: "csp-processor"
+    order: 20
 mappings:
   - controller: "/services/cors/cors.js"
     order: 40
