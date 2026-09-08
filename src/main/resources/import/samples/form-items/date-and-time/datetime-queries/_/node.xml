@@ -45,7 +45,7 @@
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Datetime Queries</string>
-        <string name="type">com.enonic.app.features:landing-page</string>
+        <string name="type">base:folder</string>
         <string name="owner">user:system:su</string>
         <dateTime name="modifiedTime">2015-08-03T14:06:50.271Z</dateTime>
         <string name="modifier">user:system:su</string>
