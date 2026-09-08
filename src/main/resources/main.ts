@@ -59,6 +59,83 @@ function initializeProject() {
     }
 }
 
+function publishContent() {
+    log.info('Publishing "' + projectData.id + '" content');
+
+    const sitePath = '/' + projectData.id;
+
+    const alreadyPublished = contextLib.run({
+        repository: 'com.enonic.cms.' + projectData.id,
+        branch: 'master',
+        principals: ['role:system.admin']
+    }, () => contentLib.exists({key: sitePath}));
+
+    if (alreadyPublished) {
+        log.info('Site ' + sitePath + ' is already published, nothing to do');
+        return;
+    }
+
+    const site = contentLib.get({key: sitePath});
+
+    if (!site) {
+        log.error('Site ' + sitePath + ' not found, nothing published');
+        return;
+    }
+
+    // `my-attachment-content` is created with requireValid: false and left IN_PROGRESS by
+    // addAttachment. Publish refuses it on workflow state, and one refused item aborts the whole
+    // call, so its id is kept out of the list. It stays unpublished on purpose, as a fixture for
+    // testing publish against content that is not ready.
+    const excluded = contentLib.get({key: sitePath + '/my-attachment-content'});
+
+    // Descendants travel with their key, so publishing the site would drag the excluded content in
+    // with it. excludeDescendantsOf takes content ids, not paths, and drops the descendants of the
+    // ids it names: the site node publishes alone, then each child with its own subtree.
+    const children = contentLib.query({
+        parent: site._id,
+        count: -1,
+        returns: 'ids'
+    });
+
+    const childIds = children.hits
+        .map((hit) => hit.id)
+        .filter((id) => id !== excluded?._id);
+
+    if (excluded) {
+        log.info('Excluding ' + excluded._path + ' [' + excluded._id + '] workflow ' + excluded.workflow?.state);
+    }
+
+    const message = 'Initial publish of imported content';
+
+    const siteResult = contentLib.publish({
+        keys: [site._id],
+        excludeDescendantsOf: [site._id],
+        includeDependencies: true,
+        message
+    });
+
+    const childResult = contentLib.publish({
+        keys: childIds,
+        includeDependencies: true,
+        message
+    });
+
+    const pushed = siteResult.pushedContents.concat(childResult.pushedContents);
+    const failed = siteResult.failedContents.concat(childResult.failedContents);
+
+    log.info('Published ' + pushed.length + ' content items');
+
+    if (failed.length !== 0) {
+        log.warning('Failed to publish ' + failed.length + ' content items:');
+        failed.forEach((key: string) => {
+            const item = contentLib.get({key});
+            log.warning(item
+                ? `${key} [${item._path}] valid=${item.valid} workflow=${item.workflow?.state}`
+                : key);
+        });
+    }
+}
+
 function createAttachmentsContent() {
     const content = contentLib.create({
         name: 'my-attachment-content',
@@ -136,5 +213,6 @@ function preloadCronLib() {
 
 if (clusterLib.isMaster()) {
     initializeProject();
+    runInContext(publishContent);
     preloadCronLib();
 }
