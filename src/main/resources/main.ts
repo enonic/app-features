@@ -6,6 +6,8 @@ import * as contentLib from '/lib/xp/content';
 import * as ioLib from '/lib/xp/io';
 import type { ImportNodesResult, ImportNodesError } from '@enonic-types/lib-export';
 
+const SAMPLES_PATH = '/samples';
+
 const projectData = {
     id: 'features',
     displayName: 'Features',
@@ -170,33 +172,29 @@ function publishContent() {
         return;
     }
 
-    const site = contentLib.get({key: sitePath});
-
-    if (!site) {
-        log.error('Site ' + sitePath + ' not found, nothing published');
-        return;
-    }
-
     // `my-attachment-content` is created with requireValid: false and left IN_PROGRESS by
     // addAttachment. Publish refuses it on workflow state, and one refused item aborts the whole
     // call, so its id is kept out of the list. It stays unpublished on purpose, as a fixture for
     // testing publish against content that is not ready.
-    const excluded = contentLib.get({key: sitePath + '/my-attachment-content'});
+    const excluded = contentLib.get({key: SAMPLES_PATH + '/my-attachment-content'});
+    const samples = contentLib.get({key: SAMPLES_PATH});
 
     // Descendants travel with their key, and `publish()` cannot exclude an individual id the way
-    // the Publishing Wizard does. So every ancestor of the excluded content is published on its
-    // own, with excludeDescendantsOf, and the wanted children are published separately.
-    const siteChildren = contentLib.query({parent: site._id, count: -1, returns: 'ids'});
+    // the Publishing Wizard does. So the folder holding the excluded content is published on its
+    // own, with excludeDescendantsOf, and its wanted children are published separately. Everything
+    // else, the site included, publishes whole.
     const rootChildren = contentLib.query({parent: '/', count: -1, returns: 'ids'});
 
-    const siteChildIds = siteChildren.hits
+    const wholeTreeIds = rootChildren.hits
         .map((hit) => hit.id)
-        .filter((id) => id !== excluded?._id);
+        .filter((id) => id !== samples?._id);
 
-    // Content outside the site, such as the demos that need no site context.
-    const outsideSiteIds = rootChildren.hits
-        .map((hit) => hit.id)
-        .filter((id) => id !== site._id);
+    const sampleChildIds = samples
+        ? contentLib.query({parent: samples._id, count: -1, returns: 'ids'})
+            .hits
+            .map((hit) => hit.id)
+            .filter((id) => id !== excluded?._id)
+        : [];
 
     if (excluded) {
         log.info('Excluding ' + excluded._path + ' [' + excluded._id + '] workflow ' + excluded.workflow?.state);
@@ -204,21 +202,23 @@ function publishContent() {
 
     const message = 'Initial publish of imported content';
 
-    const siteResult = contentLib.publish({
-        keys: [site._id],
-        excludeDescendantsOf: [site._id],
-        includeDependencies: true,
-        message
-    });
+    const samplesResult = samples
+        ? contentLib.publish({
+            keys: [samples._id],
+            excludeDescendantsOf: [samples._id],
+            includeDependencies: true,
+            message
+        })
+        : {pushedContents: [] as string[], failedContents: [] as string[]};
 
     const treeResult = contentLib.publish({
-        keys: siteChildIds.concat(outsideSiteIds),
+        keys: wholeTreeIds.concat(sampleChildIds),
         includeDependencies: true,
         message
     });
 
-    const pushed = siteResult.pushedContents.concat(treeResult.pushedContents);
-    const failed = siteResult.failedContents.concat(treeResult.failedContents);
+    const pushed = samplesResult.pushedContents.concat(treeResult.pushedContents);
+    const failed = samplesResult.failedContents.concat(treeResult.failedContents);
 
     log.info('Published ' + pushed.length + ' content items');
 
@@ -236,7 +236,7 @@ function publishContent() {
 function createAttachmentsContent() {
     const content = contentLib.create({
         name: 'my-attachment-content',
-        parentPath: '/features',
+        parentPath: SAMPLES_PATH,
         displayName: 'My Attachment Content',
         contentType: app.name + ':attachments',
         requireValid: false,
