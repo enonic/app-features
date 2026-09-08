@@ -47,3 +47,7 @@ mappings:
     order: 50
     invertPattern: false
     pattern: "/custom-attributes"
+  - controller: "/cms/mappings/schedule-types/schedule-types.js"
+    order: 50
+    invertPattern: false
+    pattern: "/schedule-types"
