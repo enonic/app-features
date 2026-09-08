@@ -39,7 +39,7 @@
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Request steering (variant B)</string>
-        <string name="type">com.enonic.app.features:landing-page</string>
+        <string name="type">base:folder</string>
         <string name="variantOf">1908cbf5-43df-4e22-b6a7-bd976e62fc82</string>
         <string name="owner">user:system:su</string>
         <dateTime name="modifiedTime">2026-09-08T10:01:00.000Z</dateTime>
@@ -52,11 +52,6 @@
             <dateTime isNull="true" name="to"/>
         </property-set>
         <property-set name="data"/>
-        <property-set name="x">
-            <property-set name="com-enonic-app-features">
-                <property-set name="all-except-folders"/>
-            </property-set>
-        </property-set>
         <property-set name="components">
             <string name="type">page</string>
             <string name="path">/</string>
