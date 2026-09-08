@@ -1,3 +1,4 @@
+import * as contentJsLib from '/lib/jslibraries/content';
 import * as nodeJsLib from '/lib/jslibraries/node';
 
 export interface Operation {
@@ -31,13 +32,31 @@ export const suites: Record<string, Suite> = {
             {label: 'diff', run: nodeJsLib.diff},
             {label: 'push', run: nodeJsLib.push},
             {label: 'findChildren (deprecated in 8.1)', run: nodeJsLib.findChildren},
-            {label: 'sort', run: nodeJsLib.sort},
             {label: 'query', run: nodeJsLib.query},
             {label: 'query with suggestions', run: nodeJsLib.suggestions},
             {label: 'query with highlight', run: nodeJsLib.highlight},
+            {label: 'sort', run: nodeJsLib.sort},
             {label: 'getVersions', run: nodeJsLib.findVersions},
             {label: 'getActiveVersion', run: nodeJsLib.getActiveVersion},
             {label: 'getCommit', run: nodeJsLib.getCommit}
+        ]
+    },
+    content: {
+        label: 'Lib Content',
+        operations: [
+            {label: 'create', run: contentJsLib.create},
+            {label: 'get', run: contentJsLib.get},
+            {label: 'exists', run: () => contentJsLib.exists('/features/js-libraries/mycontent')},
+            {label: 'exists, unknown key', run: () => contentJsLib.exists('unknown')},
+            {label: 'getChildren (deprecated in 8.1)', run: contentJsLib.getChildren},
+            {label: 'query', run: contentJsLib.query},
+            {label: 'publish', run: contentJsLib.publish},
+            {label: 'modify', run: contentJsLib.modify},
+            {label: 'getPermissions', run: contentJsLib.getPermissions},
+            {label: 'applyPermissions', run: contentJsLib.applyPermissions},
+            {label: 'getPermissions, after applying', run: contentJsLib.getPermissions},
+            {label: 'delete', run: contentJsLib.deleteContent},
+            {label: 'publish, after delete', run: contentJsLib.publish}
         ]
     }
 };

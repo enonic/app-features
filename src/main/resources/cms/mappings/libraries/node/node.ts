@@ -2,6 +2,7 @@ import * as taskLib from '/lib/xp/task';
 import * as thymeleaf from '/lib/thymeleaf';
 import {assetUrl} from '/lib/enonic/asset';
 import {runOperation, suites} from '/lib/library-suites';
+import {nodeQueryChecks} from '/lib/query-checks';
 import type {Request} from '@enonic-types/core';
 
 const view = resolve('node.html');
@@ -65,10 +66,21 @@ export const GET = function (req: Request) {
         });
     }
 
+    // The query checks read published content, so they are cheap enough to run on every render.
+    const checks = nodeQueryChecks();
+    const failedChecks = checks.filter((one) => one.verdict !== 'pass').length;
+
     return {
         contentType: 'text/html',
         body: thymeleaf.render(view, {
+            checks,
+            checkSummary: failedChecks === 0
+                ? `All ${checks.length} query checks passed`
+                : `${failedChecks} of ${checks.length} query checks did not pass`,
             operationCount: suites[SUITE].operations.length,
+            // Built server-side: in a Content Studio preview the browser URL is the admin preview
+            // address, not this mapping's path, so window.location is the wrong base to fetch from.
+            selfUrl: req.path,
             scriptUrl: assetUrl({path: 'js/pages/libraries/library-suite.js'})
         })
     };

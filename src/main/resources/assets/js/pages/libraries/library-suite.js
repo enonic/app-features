@@ -1,4 +1,5 @@
 (function () {
+    var base = document.body.getAttribute('data-self-url') || window.location.pathname;
     var taskButton = document.getElementById('run-task');
     var taskState = document.getElementById('task-state');
     var taskLog = document.getElementById('task-log');
@@ -19,7 +20,7 @@
     }
 
     function poll(taskId) {
-        fetch(window.location.pathname + '?taskId=' + encodeURIComponent(taskId), {
+        fetch(base + '?taskId=' + encodeURIComponent(taskId), {
             credentials: 'same-origin'
         }).then(function (response) {
             return response.json();
@@ -46,12 +47,13 @@
         });
     }
 
-    taskButton.addEventListener('click', function () {
+    if (taskButton) {
+        taskButton.addEventListener('click', function () {
         taskButton.disabled = true;
         taskLog.innerHTML = '';
         taskState.textContent = 'submitting...';
 
-        fetch(window.location.pathname, {method: 'POST', credentials: 'same-origin'})
+        fetch(base, {method: 'POST', credentials: 'same-origin'})
             .then(function (response) {
                 return response.json();
             })
@@ -66,19 +68,24 @@
                     poll(result.taskId);
                 }, 700);
             })
-            .catch(function (e) {
-                taskState.textContent = 'Could not submit: ' + e;
-                taskButton.disabled = false;
-            });
-    });
+                .catch(function (e) {
+                    taskState.textContent = 'Could not submit: ' + e;
+                    taskButton.disabled = false;
+                });
+        });
+    }
 
-    inlineButton.addEventListener('click', function () {
+    if (inlineButton) {
+        inlineButton.addEventListener('click', function () {
         inlineButton.disabled = true;
         inlineResults.innerHTML = '';
         inlineState.textContent = 'running...';
 
-        fetch(window.location.pathname + '?results=json', {credentials: 'same-origin'})
+        fetch(base + '?results=json', {credentials: 'same-origin'})
             .then(function (response) {
+                if (!response.ok) {
+                    throw new Error('the server answered ' + response.status);
+                }
                 return response.json();
             })
             .then(function (data) {
@@ -103,9 +110,10 @@
 
                 inlineButton.disabled = false;
             })
-            .catch(function (e) {
-                inlineState.textContent = 'Run failed: ' + e;
-                inlineButton.disabled = false;
-            });
-    });
+                .catch(function (e) {
+                    inlineState.textContent = 'Run failed: ' + e;
+                    inlineButton.disabled = false;
+                });
+        });
+    }
 })();

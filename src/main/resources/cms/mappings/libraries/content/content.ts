@@ -1,46 +1,55 @@
 import * as thymeleaf from '/lib/thymeleaf';
-import * as contentJsLib from '/lib/jslibraries/content';
+import {assetUrl} from '/lib/enonic/asset';
+import {runOperation, suites} from '/lib/library-suites';
+import {contentQueryChecks} from '/lib/query-checks';
 import type {Request} from '@enonic-types/core';
 
 const view = resolve('content.html');
 
-function handleGet(req: Request) {
-    const createResult = JSON.stringify(contentJsLib.create(), null, 4);
-    const getResult = JSON.stringify(contentJsLib.get(), null, 4);
-    const existsResult = JSON.stringify(contentJsLib.exists('/features/js-libraries/mycontent'), null, 4);
-    const existsUnknownResult = JSON.stringify(contentJsLib.exists('unknown'), null, 4);
-    const getChildrenResult = JSON.stringify(contentJsLib.getChildren(), null, 4);
-    const queryResult = JSON.stringify(contentJsLib.query(), null, 4);
-    const publishResult = JSON.stringify(contentJsLib.publish(), null, 4);
-    const modifyResult = JSON.stringify(contentJsLib.modify(), null, 4);
-    const getPermissionsResultBefore = JSON.stringify(contentJsLib.getPermissions(), null, 4);
-    const applyPermissionsResult = JSON.stringify(contentJsLib.applyPermissions(), null, 4);
-    const getPermissionsResultAfter = JSON.stringify(contentJsLib.getPermissions(), null, 4);
-    const deleteResult = JSON.stringify(contentJsLib.deleteContent(), null, 4);
-    const publishResult2 = JSON.stringify(contentJsLib.publish(), null, 4);
+const SUITE = 'content';
 
-    const params = {
-        createResult: createResult,
-        getResult: getResult,
-        existsResult: existsResult,
-        existsUnknownResult: existsUnknownResult,
-        getChildrenResult: getChildrenResult,
-        publishResult: publishResult,
-        queryResult: queryResult,
-        modifyResult: modifyResult,
-        getPermissionsResultBefore: getPermissionsResultBefore,
-        applyPermissionsResult: applyPermissionsResult,
-        getPermissionsResultAfter: getPermissionsResultAfter,
-        deleteResult: deleteResult,
-        publishResult2: publishResult2
-    };
+function firstValue(value: string | string[] | undefined): string | undefined {
+    return Array.isArray(value) ? value[0] : value;
+}
 
-    const body = thymeleaf.render(view, params);
+export const GET = function (req: Request) {
+    // The query checks read published content, so they run on every render. The suite writes and
+    // publishes content, needs the draft branch and an administrator, and is asked for separately.
+    const checks = contentQueryChecks();
+    const failedChecks = checks.filter((one) => one.verdict !== 'pass').length;
+
+    const wanted = firstValue(req.params.results) === 'json';
+    const results = wanted ? suites[SUITE].operations.map(runOperation) : [];
+    const failed = results.filter((result) => !result.ok).length;
+
+    if (wanted) {
+        return {
+            contentType: 'application/json',
+            body: JSON.stringify({
+                results,
+                failed,
+                total: results.length,
+                summary: failed === 0
+                    ? 'All ' + results.length + ' operations succeeded'
+                    : failed + ' of ' + results.length + ' operations failed'
+            })
+        };
+    }
 
     return {
         contentType: 'text/html',
-        body: body
+        body: thymeleaf.render(view, {
+            checks,
+            checkSummary: failedChecks === 0
+                ? `All ${checks.length} query checks passed`
+                : `${failedChecks} of ${checks.length} query checks did not pass`,
+            operationCount: suites[SUITE].operations.length,
+            // Built server-side: in a Content Studio preview the browser URL is the admin preview
+            // address, not this mapping's path, so window.location is the wrong base to fetch from.
+            selfUrl: req.path,
+            // An external asset, not an inline script: the admin endpoint that serves Content
+            // Studio's preview sets script-src 'self', which blocks inline scripts outright.
+            scriptUrl: assetUrl({path: 'js/pages/libraries/library-suite.js'})
+        })
     };
-}
-
-export {handleGet as GET};
+};
