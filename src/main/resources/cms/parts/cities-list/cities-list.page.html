@@ -1,18 +1,30 @@
 <div>
-    <div>
-        <h2 data-th-text="${title}">_title_</h2>
-    </div>
-    <div data-th-if="${cities}" data-th-remove="tag">
-        <div>
-            <span>Cities ordered by distance from: </span>
-            <select id="citiesSelect" onchange="location = this.options[this.selectedIndex].value;">
-                <option data-th-text="${currentCity}" selected="selected"/>
-                <option data-th-each="city : ${cities}" data-th-value="${currentPage} + '?city=' + ${city._name}"
-                        data-th-text="${city.displayName}"/>
-            </select>
-        </div>
-        <ol>
-            <li data-th-each="city : ${cities}" data-th-text="${city.displayName} + ': ' + ${city.data.cityLocation}"/>
-        </ol>
-    </div>
+    <h2 data-th-text="${title}">_title_</h2>
+
+    <p>
+        <label for="citiesSelect">Cities ordered by distance from: </label>
+        <select id="citiesSelect" data-th-attr="data-current=${currentPage}">
+            <option value="" data-th-selected="${!hasReference}">Select a city</option>
+            <option data-th-each="row : ${rows}" data-th-value="${row.url}" data-th-text="${row.displayName}"/>
+        </select>
+        <span data-th-if="${hasReference}">
+            measured from <strong data-th-text="${reference}">city</strong>
+        </span>
+    </p>
+
+    <div data-th-unless="${hasRows}">No cities found.</div>
+    <table data-th-if="${hasRows}">
+        <tr>
+            <th>City</th>
+            <th>Location</th>
+            <th>Distance</th>
+        </tr>
+        <tr data-th-each="row : ${rows}">
+            <td><a data-th-href="${row.url}" data-th-text="${row.displayName}">name</a></td>
+            <td data-th-text="${row.location}"></td>
+            <td data-th-text="${row.distance}"></td>
+        </tr>
+    </table>
+
+    <script data-th-src="${scriptUrl}" defer></script>
 </div>

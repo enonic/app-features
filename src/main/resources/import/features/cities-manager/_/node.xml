@@ -79,7 +79,9 @@
                 <string name="descriptor">com.enonic.app.features:cities-list</string>
                 <property-set name="config">
                     <property-set name="com-enonic-app-features">
-                        <property-set name="cities-list"/>
+                        <property-set name="cities-list">
+                            <string name="title">Cities by distance</string>
+                        </property-set>
                     </property-set>
                 </property-set>
             </property-set>
