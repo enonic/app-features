@@ -1,0 +1,74 @@
+<div>
+    <h2>pageUrl</h2>
+    <p>
+        Generates a URL to a page. Called with a <code>path</code> or an <code>id</code>, optionally
+        with a <code>type</code>, query <code>params</code>, and a <code>project</code> or
+        <code>branch</code> to resolve against a context other than the one serving the request.
+    </p>
+    <p>
+        Requested on branch <code data-th-text="${branch}">branch</code>.
+        <span data-th-text="${summary}">summary</span>
+        <br>
+        Site base URL: <code data-th-text="${baseUrl}">not set</code>.
+    </p>
+    <h3>Request-relative calls</h3>
+    <p>
+        Answered against the request being served, so they follow the vhost and come out relative
+        to it.
+    </p>
+    <table>
+        <tr>
+            <th>Call</th>
+            <th>Expected</th>
+            <th>Result</th>
+        </tr>
+        <tr data-th-each="row : ${requestRows}">
+            <td><code data-th-text="${row.call}">call</code></td>
+            <td data-th-text="${row.expected}"></td>
+            <td>
+                <span data-th-class="${row.cls}" data-th-text="${row.verdict}">?</span>
+                <div data-th-if="${row.link}">
+                    <a data-th-href="${row.got}" data-th-text="${row.got}">url</a>
+                </div>
+                <div data-th-unless="${row.link}"><code data-th-text="${row.got}"></code></div>
+            </td>
+        </tr>
+    </table>
+
+    <h3>Cross-context calls</h3>
+    <p>
+        Naming another project or branch asks for a URL the request cannot supply, so these are
+        resolved from content alone. They are anchored to the base URL of the target's nearest site
+        when it has one, and otherwise fall back to the site service path,
+        <code>/site/&lt;project&gt;/&lt;branch&gt;/...</code>, which is not a public address. This
+        is the pair whose result does not follow the vhost.
+    </p>
+    <p class="unstable">
+        Treat these two as unstable. The behaviour is still settling, and what these rows expect is
+        drawn from what the platform currently does rather than from anything specified. Three
+        things are known to be unresolved. A nested site inherits nothing, so a subsite without a
+        base URL of its own falls back to the service path while its parent resolves correctly.
+        The base URL and the path are not always taken from the same site, which produces an
+        address that looks right and resolves nowhere. And the service-path fallback is
+        indistinguishable from a working URL, so a missing configuration surfaces as a wrong answer
+        rather than as an error. Expect these expectations to change.
+    </p>
+    <table>
+        <tr>
+            <th>Call</th>
+            <th>Expected</th>
+            <th>Result</th>
+        </tr>
+        <tr data-th-each="row : ${crossRows}">
+            <td><code data-th-text="${row.call}">call</code></td>
+            <td data-th-text="${row.expected}"></td>
+            <td>
+                <span data-th-class="${row.cls}" data-th-text="${row.verdict}">?</span>
+                <div data-th-if="${row.link}">
+                    <a data-th-href="${row.got}" data-th-text="${row.got}">url</a>
+                </div>
+                <div data-th-unless="${row.link}"><code data-th-text="${row.got}"></code></div>
+            </td>
+        </tr>
+    </table>
+</div>
