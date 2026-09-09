@@ -1,0 +1,30 @@
+<div>
+    <h2>apiUrl</h2>
+    <p>
+        Generates a URL to a Universal API. The form depends on where it is called: a service point
+        under the current site, webapp or admin tool, and the <code>/api/</code> form otherwise. Takes
+        an <code>api</code> descriptor key, and optionally a <code>type</code>, a <code>path</code> as
+        a string or an array of segments, and query <code>params</code>.
+    </p>
+    <p data-th-text="${summary}">summary</p>
+        <br>
+        Site base URL: <code data-th-text="${baseUrl}">not set</code>.
+    <table>
+        <tr>
+            <th>Call</th>
+            <th>Expected</th>
+            <th>Result</th>
+        </tr>
+        <tr data-th-each="row : ${rows}">
+            <td><code data-th-text="${row.call}">call</code></td>
+            <td data-th-text="${row.expected}"></td>
+            <td>
+                <span data-th-class="${row.cls}" data-th-text="${row.verdict}">?</span>
+                <div data-th-if="${row.link}">
+                    <a data-th-href="${row.got}" data-th-text="${row.got}">url</a>
+                </div>
+                <div data-th-unless="${row.link}"><code data-th-text="${row.got}"></code></div>
+            </td>
+        </tr>
+    </table>
+</div>
