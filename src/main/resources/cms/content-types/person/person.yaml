@@ -1,0 +1,20 @@
+kind: "ContentType"
+title: "Person"
+displayNamePlaceholder: "Full Name"
+description: "Create a new person"
+superType: "base:structured"
+abstract: false
+final: true
+allowChildContent: true
+allowChildContentType:
+  - "base:folder"
+  - "${app}:article-*"
+form:
+  - type: "ContentSelector"
+    name: "spouse"
+    label: "Spouse"
+    occurrences:
+      min: 0
+      max: 1
+    allowContentType:
+      - "${app}:person"
