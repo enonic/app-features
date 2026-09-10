@@ -14,14 +14,19 @@ export const responseProcessor = function (req: Request, res: MappedResponse) {
         custom[key] = attributes[key];
     });
 
-    const escaped = JSON.stringify(custom, null, 2).replace(/</g, '&lt;');
+    const json = JSON.stringify(custom, null, 2);
+    // A script element holds raw text, so the island escapes the one sequence that could end it
+    // early, as a JSON escape that parses back to the same characters. The <pre> is markup, so
+    // everything that could turn into an element is escaped there instead.
+    const island = json.replace(/</g, '\\u003c');
+    const escaped = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     const pageContributions = res.pageContributions || {};
     res.pageContributions = pageContributions;
     const bodyEnd = ([] as string[]).concat(pageContributions.bodyEnd || []);
 
     // A data island rather than an executable script: the page script reads it from the DOM, so it
     // does not depend on this contribution running before the deferred page script.
-    bodyEnd.push(`<script type="application/json" id="processor-attributes">${escaped}</script>`);
+    bodyEnd.push(`<script type="application/json" id="processor-attributes">${island}</script>`);
     bodyEnd.push(`<h2>Attributes as the response processor saw them</h2><pre>${escaped}</pre>`);
     pageContributions.bodyEnd = bodyEnd;
 
