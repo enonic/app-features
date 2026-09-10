@@ -72,11 +72,12 @@ export interface OperationResult {
 // the operations after it nor takes down whatever is running the suite.
 export function runOperation(operation: Operation): OperationResult {
     try {
+        const output = JSON.stringify(operation.run(), null, 4);
         return {
             label: operation.label,
             ok: true,
             verdict: 'ok',
-            output: JSON.stringify(operation.run(), null, 4)
+            output: output === undefined ? 'undefined' : output
         };
     } catch (e) {
         return {
