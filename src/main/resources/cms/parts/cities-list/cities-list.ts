@@ -24,7 +24,7 @@ function cityByName(name: string) {
     return contentSvc.query({
         count: 1,
         contentTypes: [CITY_TYPE],
-        query: "_name = '" + name + "'"
+        query: {term: {field: '_name', value: name}}
     }).hits[0];
 }
 
@@ -55,7 +55,7 @@ function handleGet(req: Request) {
             sort: "geoDistance('data.cityLocation','" + reference.data.cityLocation + "','km')",
             // Compare against the name, not the display name. The two differ for most of these
             // cities, so comparing display names left the reference city in its own list.
-            query: "_name != '" + from + "'"
+            query: {boolean: {mustNot: {term: {field: '_name', value: from}}}}
         })
         : contentSvc.query({
             start: 0,
@@ -71,7 +71,7 @@ function handleGet(req: Request) {
         displayName: city.displayName,
         location: String((city.data as {cityLocation?: string}).cityLocation ?? ''),
         distance: reference ? distanceOf(city) : '',
-        url: currentPage + '?city=' + city._name
+        url: currentPage + '?city=' + encodeURIComponent(city._name)
     }));
 
     const part = portal.getComponent<PartComponent>();
