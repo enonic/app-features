@@ -157,68 +157,67 @@ function createTestEntryPoints() {
 }
 
 function publishContent() {
-    log.info('Publishing "' + projectData.id + '" content');
-
-    const sitePath = '/' + projectData.id;
+    log.info('Publishing ' + SAMPLES_PATH + ' content');
 
     const alreadyPublished = contextLib.run({
         repository: 'com.enonic.cms.' + projectData.id,
         branch: 'master',
         principals: ['role:system.admin']
-    }, () => contentLib.exists({key: sitePath}));
+    }, () => contentLib.exists({key: SAMPLES_PATH}));
 
     if (alreadyPublished) {
-        log.info('Site ' + sitePath + ' is already published, nothing to do');
+        log.info(SAMPLES_PATH + ' is already published, nothing to do');
         return;
     }
+
+    const samples = contentLib.get({key: SAMPLES_PATH});
+
+    if (!samples) {
+        log.warning(SAMPLES_PATH + ' not found, nothing to publish');
+        return;
+    }
+
+    // Only the samples are published. The rest of the imported content stays on draft, because
+    // several tests publish content through the API and cannot observe the transition on content
+    // that is already live.
 
     // `my-attachment-content` is created with requireValid: false and left IN_PROGRESS by
     // addAttachment. Publish refuses it on workflow state, and one refused item aborts the whole
     // call, so its id is kept out of the list. It stays unpublished on purpose, as a fixture for
     // testing publish against content that is not ready.
     const excluded = contentLib.get({key: SAMPLES_PATH + '/my-attachment-content'});
-    const samples = contentLib.get({key: SAMPLES_PATH});
 
     // Descendants travel with their key, and `publish()` cannot exclude an individual id the way
-    // the Publishing Wizard does. So the folder holding the excluded content is published on its
-    // own, with excludeDescendantsOf, and its wanted children are published separately. Everything
-    // else, the site included, publishes whole.
-    const rootChildren = contentLib.query({parent: '/', count: -1, returns: 'ids'});
-
-    const wholeTreeIds = rootChildren.hits
+    // the Publishing Wizard does. So the folder is published on its own, with
+    // excludeDescendantsOf, and its wanted children are published separately.
+    const childIds = contentLib.query({parent: samples._id, count: -1, returns: 'ids'})
+        .hits
         .map((hit) => hit.id)
-        .filter((id) => id !== samples?._id);
-
-    const sampleChildIds = samples
-        ? contentLib.query({parent: samples._id, count: -1, returns: 'ids'})
-            .hits
-            .map((hit) => hit.id)
-            .filter((id) => id !== excluded?._id)
-        : [];
+        .filter((id) => id !== excluded?._id);
 
     if (excluded) {
         log.info('Excluding ' + excluded._path + ' [' + excluded._id + '] workflow ' + excluded.workflow?.state);
     }
 
-    const message = 'Initial publish of imported content';
+    const message = 'Initial publish of sample content';
 
-    const samplesResult = samples
+    const folderResult = contentLib.publish({
+        keys: [samples._id],
+        excludeDescendantsOf: [samples._id],
+        includeDependencies: true,
+        message
+    });
+
+    const childResult = childIds.length !== 0
         ? contentLib.publish({
-            keys: [samples._id],
-            excludeDescendantsOf: [samples._id],
+            keys: childIds,
             includeDependencies: true,
             message
         })
         : {pushedContents: [] as string[], failedContents: [] as string[]};
 
-    const treeResult = contentLib.publish({
-        keys: wholeTreeIds.concat(sampleChildIds),
-        includeDependencies: true,
-        message
-    });
-
-    const pushed = samplesResult.pushedContents.concat(treeResult.pushedContents);
-    const failed = samplesResult.failedContents.concat(treeResult.failedContents);
+    const pushed = folderResult.pushedContents.concat(childResult.pushedContents);
+    const failed = folderResult.failedContents.concat(childResult.failedContents);
 
     log.info('Published ' + pushed.length + ' content items');
 
@@ -232,6 +231,7 @@ function publishContent() {
         });
     }
 }
+
 
 function createAttachmentsContent() {
     const content = contentLib.create({
