@@ -17,8 +17,10 @@ import com.enonic.xp.script.bean.ScriptBean;
 /**
  * Exposes the NodeService list and enumerate methods added in XP 8.1. Both read a subtree in path
  * order, filtered by what the caller may read: list streams every entry, enumerate returns the same
- * entries one bounded batch at a time with a cursor. Neither has an equivalent in lib-node, so a
- * bean is the only way to reach them from an application.
+ * entries one bounded batch at a time with a cursor. Neither is exposed to JavaScript, and
+ * deliberately so: they are built to walk millions of entries, a workload where JavaScript is an
+ * unacceptable performance hog. Java is therefore the only way to reach them, which is what this
+ * bean does.
  * <p>
  * Results are returned as JSON strings rather than maps, so the shape does not depend on how a
  * particular script engine converts Java collections.
