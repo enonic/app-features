@@ -10,4 +10,4 @@ form:
     label: "One not required"
     occurrences:
       min: 0
-      max: 3
+      max: 1
