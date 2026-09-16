@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title data-th-text="${content.displayName}">Content Security Policy</title>
+    <link rel="stylesheet" data-th-href="${stylesUrl}">
+    <style data-th-attr="nonce=${styleNonce}">
+        .ok { color: #1a7f37; font-weight: bold; }
+        .blocked { color: #b42318; font-weight: bold; }
+        .pending { color: #666; }
+        table { border-collapse: collapse; width: 100%; }
+        td, th { text-align: left; vertical-align: top; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
+        pre { white-space: pre-wrap; word-break: break-all; background: #f4f4f4; padding: 0.5rem; }
+    </style>
+</head>
+<body data-portal-component-type="page" data-th-class="${editable}? 'edit'">
+<h1 data-th-text="${content.displayName}">Content Security Policy</h1>
+<p>
+    The page seeds a deny-all baseline with <code>csp().strict()</code> and opens <code>'self'</code> for scripts,
+    styles, images and fetch. The part below and the response processor contribute to the same header.
+    The inline <code>&lt;style&gt;</code> and one inline <code>&lt;script&gt;</code> carry the per-request nonce.
+</p>
+
+<h2>What the browser enforced</h2>
+<table>
+    <tr><th>Inline script without nonce</th><td id="inline-plain" class="pending">pending</td></tr>
+    <tr><th>Inline script with nonce</th><td id="inline-nonce" class="pending">pending</td></tr>
+    <tr><th>Script contributed by the response processor (same nonce)</th><td id="processor-script" class="pending">pending</td></tr>
+    <tr><th>Inline <code>style</code> attribute</th><td id="inline-style" class="pending" style="color: rgb(255, 0, 0)">pending</td></tr>
+    <tr><th><code>data:</code> image (allowed by the csp-image part)</th><td id="data-image" class="pending">pending</td></tr>
+</table>
+<script>window.inlineRan = true;</script>
+<script data-th-attr="nonce=${scriptNonce}">window.nonceRan = true;</script>
+
+<div id="mainRegion" data-portal-region="main">
+    <div data-th-if="${content.page.regions['main']}" data-th-remove="tag">
+        <div data-th-each="component : ${content.page.regions['main'].components}" data-th-remove="tag">
+            <div data-portal-component="${component.path}" data-th-remove="tag"></div>
+        </div>
+    </div>
+</div>
+
+<h2>Response headers</h2>
+<p>Read back with a same-origin <code>fetch</code> of this URL. The report-only policy comes from the response processor and only allows <code>'self'</code>, so the nonced inline scripts are reported in the console but not blocked.</p>
+<table>
+    <tr><th>Content-Security-Policy</th><td><pre id="header-csp">pending</pre></td></tr>
+    <tr><th>Content-Security-Policy-Report-Only</th><td><pre id="header-csp-ro">pending</pre></td></tr>
+</table>
+
+<script data-th-src="${scriptUrl}" defer></script>
+</body>
+</html>

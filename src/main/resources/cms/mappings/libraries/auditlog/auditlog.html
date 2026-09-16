@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Audit Logs Demo</title>
+</head>
+<body>
+<p><a href="..">Back to library tests</a></p>
+<h1>Audit Logs Demo</h1>
+    <div class="audit-log-part xp-part">
+    
+
+        <fieldset>
+            <legend>Create Audit Log</legend>
+            <div data-th-include="./includes/createForm :: createForm"></div>
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Find Audit Logs</legend>
+
+            <div data-th-include="./includes/findForm :: findForm"></div>
+
+            <h4>List of Audit Logs</h4>
+
+            <div data-th-include="./includes/auditLogTable :: auditLogTable"></div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Get Audit Log by ID</legend>
+
+            <div data-th-include="./includes/getForm :: getForm"></div>
+
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="auditLogResult">Audit Log</label>
+                        </td>
+                        <td>
+                            <textarea id="auditLogResult" cols="60" rows="20" class="audit-logs__get-by-id"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </fieldset>
+
+    </div>
+</body>
+</html>

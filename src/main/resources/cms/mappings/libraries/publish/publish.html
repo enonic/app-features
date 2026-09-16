@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Publish Content Demo</title>
+</head>
+<body>
+<p><a href="..">Back to library tests</a></p>
+<h1>Publish Content Demo</h1>
+    <div class="publish-part">
+    
+
+        <form action="#" data-th-action="${postUrl}" method="post">
+            <input name="debug" type="hidden" value="true"/>
+
+            <div class="publish-form">
+                <fieldset class="publish-form">
+                    <p>
+                        <label>Content Key</label>
+                        <input name="key" type="text" value="" size="80"/>
+                        <button type="button" name="moreKeys"><b>+</b></button>
+                    </p>
+                    <p>
+                        <label for="publish-source-branch">Branch</label>
+                        <select name="sourceBranch" id="publish-source-branch">
+                            <option value="master">Master</option>
+                            <option value="draft" selected="selected">Draft</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="publish-target-branch">Branch</label>
+                        <select name="targetBranch" id="publish-target-branch">
+                            <option value="master" selected="selected">Master</option>
+                            <option value="draft">Draft</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="publish-includeChildren">Include Children</label>
+                        <input id="publish-includeChildren" type="checkbox" name="includeChildren"/>
+                    </p>
+                    <p>
+                        <label for="publish-includeDependencies">Include Dependencies</label>
+                        <input id="publish-includeDependencies" type="checkbox" name="includeDependencies"/>
+                    </p>
+                    <span class="publishresultmsg success" style="display: none;">...</span>
+                    <span class="publishresultmsg fail" style="display: none;">...</span>
+
+                    <p>
+                        <button type="button" name="publish">Publish</button>
+                    </p>
+                </fieldset>
+            </div>
+
+        </form>
+
+    </div>
+</body>
+</html>

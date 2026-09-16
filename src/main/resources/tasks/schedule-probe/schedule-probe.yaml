@@ -1,0 +1,9 @@
+kind: "Task"
+description: "Reports what a scheduled task receives, and can linger to expose overlapping runs"
+form:
+  - type: "Long"
+    name: "sleepMs"
+    label: "Milliseconds to linger"
+    occurrences:
+      min: 0
+      max: 1

@@ -1,0 +1,10 @@
+kind: "Part"
+title: "Attribute writer"
+description: "Stores its configured message with setCustomLocalAttribute for the response processor and filter to read"
+form:
+  - type: "TextLine"
+    name: "message"
+    label: "Message"
+    occurrences:
+      min: 0
+      max: 1

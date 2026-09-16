@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Unpublish Content Demo</title>
+</head>
+<body>
+<p><a href="..">Back to library tests</a></p>
+<h1>Unpublish Content Demo</h1>
+    <div class="unpublish-part">
+    
+
+        <form action="#" data-th-action="${postUrl}" method="post">
+            <input name="debug" type="hidden" value="true"/>
+
+            <div class="unpublish-form">
+                <fieldset class="unpublish-form">
+                    <p>
+                        <label>Content Key</label>
+                        <input name="key" type="text" value="" size="80"/>
+                        <button type="button" name="moreKeys"><b>+</b></button>
+                    </p>
+                    <span class="unpublishresultmsg success" style="display: none;">...</span>
+                    <span class="unpublishresultmsg fail" style="display: none;">...</span>
+
+                    <p>
+                        <button type="button" name="unpublish">Unpublish</button>
+                    </p>
+                </fieldset>
+            </div>
+
+        </form>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title data-th-text="${content.displayName}">Custom attributes</title>
+    <link rel="stylesheet" data-th-href="${stylesUrl}">
+    <style>
+        .ok { color: #1a7f37; font-weight: bold; }
+        .blocked { color: #b42318; font-weight: bold; }
+        .pending { color: #666; }
+        table { border-collapse: collapse; width: 100%; }
+        td, th { text-align: left; vertical-align: top; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
+        pre { white-space: pre-wrap; word-break: break-all; background: #f4f4f4; padding: 0.5rem; }
+        .detail { color: #666; font-size: 0.85em; }
+    </style>
+</head>
+<body data-portal-component-type="page" data-th-class="${editable}? 'edit'">
+<h1 data-th-text="${content.displayName}">Custom attributes</h1>
+<p>
+    <code>setCustomLocalAttribute()</code> hands data between the filter, this page, the part below and the
+    response processor within one request. Each stage checks what it can see, and the verdict is shown per row.
+</p>
+
+<h2>Checks</h2>
+<table>
+    <tr>
+        <th>Check</th>
+        <th>Result</th>
+    </tr>
+    <tr data-th-each="check : ${checks}">
+        <td>
+            <span data-th-text="${check.label}">check</span>
+            <div class="detail">Expected: <span data-th-text="${check.expected}"></span></div>
+        </td>
+        <td>
+            <span data-th-class="${check.ok} ? 'ok' : 'blocked'" data-th-text="${check.ok} ? 'pass' : 'FAIL'">?</span>
+            <div class="detail">Got: <span data-th-text="${check.actual}"></span></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Page attribute is visible to the response processor
+            <div class="detail">Expected: the processor runs after the page and reads it back</div>
+        </td>
+        <td><span id="check-processor-page" class="pending">pending</span><div class="detail" id="detail-processor-page"></div></td>
+    </tr>
+    <tr>
+        <td>
+            Part attribute is visible to the response processor
+            <div class="detail">Expected: the part renders after the page, so only later stages see it</div>
+        </td>
+        <td><span id="check-processor-part" class="pending">pending</span><div class="detail" id="detail-processor-part"></div></td>
+    </tr>
+    <tr>
+        <td>
+            All three attributes are visible to the filter after <code>next()</code>
+            <div class="detail">Expected: filter, page and part values in the <code>X-Custom-Attributes</code> header</div>
+        </td>
+        <td><span id="check-filter" class="pending">pending</span><div class="detail" id="detail-filter"></div></td>
+    </tr>
+</table>
+
+<div id="mainRegion" data-portal-region="main">
+    <div data-th-if="${content.page.regions['main']}" data-th-remove="tag">
+        <div data-th-each="component : ${content.page.regions['main'].components}" data-th-remove="tag">
+            <div data-portal-component="${component.path}" data-th-remove="tag"></div>
+        </div>
+    </div>
+</div>
+
+<h2>Attributes as the page saw them</h2>
+<p>The part and the response processor had not run yet, so their values are absent here.</p>
+<pre data-th-text="${attributes}"></pre>
+
+<h2>Attributes as the filter saw them after <code>next()</code></h2>
+<pre id="header-custom-attributes">pending</pre>
+
+<script data-th-src="${scriptUrl}" defer></script>
+</body>
+</html>

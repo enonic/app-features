@@ -1,0 +1,4 @@
+kind: "Part"
+title: "CSP image"
+description: "Adds img-src data: to the shared Content Security Policy and renders a data: URI image"
+form: []

@@ -1,0 +1,72 @@
+import * as portal from '/lib/xp/portal';
+import * as contentLib from '/lib/xp/content';
+import * as thymeleaf from '/lib/thymeleaf';
+import {assetUrl} from '/lib/enonic/asset';
+import type {Request} from '@enonic-types/core';
+
+const view = resolve('move-content.html');
+
+export const GET = function (req: Request) {
+    const postUrl = req.path;
+
+    const params = {
+        postUrl: postUrl
+    };
+
+    const body = thymeleaf.render(view, params);
+
+    return {
+        contentType: 'text/html',
+        body: body,
+        pageContributions: {
+            bodyEnd: [
+                '<script src="' + assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/parts/moveContent/moveContent.js'}) + '" type="text/javascript"></script>',
+            ]
+        }
+    };
+};
+
+export const POST = function (req: Request) {
+    const source = req.params.source as string;
+    const target = req.params.target as string;
+
+    let errorMsg: string | undefined;
+    let msg: string | undefined;
+    try {
+        const moveResult = contentLib.move({
+            source: source,
+            target: target
+        });
+
+        msg = 'Content moved to: ' + moveResult._path;
+    } catch (e: any) {
+        if (e.code === 'contentAlreadyExist') {
+            errorMsg = 'There is already a content with the target path';
+        } else {
+            errorMsg = 'Error: ' + e.message;
+        }
+    }
+
+    const postUrl = req.path;
+    const params = {
+        postUrl: postUrl,
+        source: source,
+        target: target,
+        errorMsg: errorMsg,
+        msg: msg
+    };
+
+    const body = thymeleaf.render(view, params);
+
+    return {
+        contentType: 'text/html',
+        body: body,
+        pageContributions: {
+            bodyEnd: [
+                '<script src="' + assetUrl({path: 'js/jquery-2.1.4.min.js'}) + '" type="text/javascript"></script>',
+                '<script src="' + assetUrl({path: 'js/parts/moveContent/moveContent.js'}) + '" type="text/javascript"></script>',
+            ]
+        }
+    };
+};

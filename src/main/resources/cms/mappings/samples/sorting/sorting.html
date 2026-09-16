@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sort test</title>
+</head>
+<body>
+<p><a href="..">Back to samples</a></p>
+<h1>Sort test</h1>
+    <div>
+    
+
+
+        <h2>By default (from parent)</h2>
+        <ul>
+            <li data-th-each="content : ${byDefault.hits}">
+                <div data-th-text="${content.displayName}">Post title</div>
+            </li>
+        </ul>
+
+        <h2>By createdTime</h2>
+        <ul>
+            <li data-th-each="content : ${byCreatedTime.hits}">
+                <div data-th-text="${content.displayName}">Post title</div>
+            </li>
+        </ul>
+
+
+        <h2>By modifiedTime</h2>
+        <ul>
+            <li data-th-each="content : ${byUpdateTime.hits}">
+                <div data-th-text="${content.displayName}">Post title</div>
+            </li>
+        </ul>
+
+    </div>
+</body>
+</html>

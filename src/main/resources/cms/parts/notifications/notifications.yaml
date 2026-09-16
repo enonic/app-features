@@ -1,4 +1,0 @@
-kind: "Part"
-title: "Notifications"
-description: "Demonstrates lib-notifications web-push subscribe/send flow."
-form: [ ]

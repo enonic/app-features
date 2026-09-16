@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title data-th-text="${content.displayName}">Request steering</title>
+    <link rel="stylesheet" data-th-href="${stylesUrl}">
+    <style>
+        .ok { color: #1a7f37; font-weight: bold; }
+        .blocked { color: #b42318; font-weight: bold; }
+        table { border-collapse: collapse; width: 100%; }
+        td, th { text-align: left; vertical-align: top; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
+        .detail { color: #666; font-size: 0.85em; }
+        .role { background: #f4f4f4; border-left: 3px solid #1a7f37; padding: 0.6rem 0.8rem; margin: 1.25rem 0; }
+        .role strong { display: block; }
+    </style>
+</head>
+<body data-portal-component-type="page" data-th-class="${editable}? 'edit'">
+<h1 data-th-text="${content.displayName}">Request steering</h1>
+<p>
+    A site mapping filter re-routes the canonical address to the <code>variant-b</code> child when the
+    <code>variant</code> query parameter or cookie is <code>b</code>, by setting <code>req.contentPath</code>.
+    The address bar does not change and there is no redirect. The variant carries a <code>variantOf</code>
+    property pointing back at the canonical content, the same relation the variant tool in Content Studio creates.
+</p>
+
+<div class="role">
+    <strong data-th-text="${role}">This is the canonical content</strong>
+    <span class="detail" data-th-text="${roleDetail}"></span><br>
+    <span class="detail" data-th-text="${routeDetail}"></span>
+</div>
+
+<h2>Try it</h2>
+<ul>
+    <li><a data-th-href="${canonicalUrl}">Canonical address</a> renders the canonical content, unless the cookie is set</li>
+    <li><a data-th-href="${variantParamUrl}">Canonical address with <code>?variant=b</code></a> renders variant B at that same address</li>
+    <li><a data-th-href="${variantDirectUrl}">Variant B at its real path</a> is outside the filter's pattern, so it is never re-routed</li>
+    <li>
+        Cookie: <button id="cookie-set" type="button">set variant=b</button>
+        <button id="cookie-clear" type="button">clear</button>
+        <span id="cookie-state"></span>
+    </li>
+</ul>
+
+<h2>Checks</h2>
+<table>
+    <tr>
+        <th>Check</th>
+        <th>Result</th>
+    </tr>
+    <tr data-th-each="check : ${checks}">
+        <td>
+            <span data-th-text="${check.label}">check</span>
+            <div class="detail">Expected: <span data-th-text="${check.expected}"></span></div>
+        </td>
+        <td>
+            <span data-th-class="${check.ok} ? 'ok' : 'blocked'" data-th-text="${check.ok} ? 'pass' : 'FAIL'">?</span>
+            <div class="detail">Got: <span data-th-text="${check.actual}"></span></div>
+        </td>
+    </tr>
+</table>
+
+<h2>This request</h2>
+<table>
+    <tr><th>Requested path</th><td data-th-text="${requestedPath}"></td></tr>
+    <tr><th>Rendered content</th><td data-th-text="${content._path}"></td></tr>
+    <tr><th>Re-routed</th><td data-th-text="${rerouted}"></td></tr>
+</table>
+
+<h2>Canonical address</h2>
+<table>
+    <tr><th>Canonical path</th><td data-th-text="${canonicalPath}"></td></tr>
+    <tr><th>Known from</th><td data-th-text="${canonicalSource}"></td></tr>
+    <tr><th><code>pageUrl()</code> with no path</th><td data-th-text="${selfUrl}"></td></tr>
+    <tr><th><code>pageUrl({path: canonical})</code></th><td data-th-text="${canonicalUrl}"></td></tr>
+</table>
+
+<h2>Variant relation</h2>
+<table>
+    <tr><th><code>variantOf</code> on this content</th><td data-th-text="${variantOf}"></td></tr>
+    <tr><th>Resolved to</th><td data-th-text="${variantParentPath}"></td></tr>
+</table>
+
+<script data-th-src="${scriptUrl}" defer></script>
+</body>
+</html>

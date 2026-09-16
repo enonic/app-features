@@ -1,0 +1,34 @@
+import * as thymeleaf from '/lib/thymeleaf';
+import * as repoJsLib from '/lib/jslibraries/repo';
+import type {Request} from '@enonic-types/core';
+
+const view = resolve('repo.html');
+
+function handleGet(req: Request) {
+    const createFeaturesRepoResult = JSON.stringify(repoJsLib.create('features-repo'), null, 4);
+    const getFeaturesRepoResult = JSON.stringify(repoJsLib.get('features-repo'), null, 4);
+    const getFeaturesRepoRootNodeResult = JSON.stringify(repoJsLib.getRootNode('features-repo'), null, 4);
+    const createBranchResult = JSON.stringify(repoJsLib.createBranch('features-repo', 'features-branch'), null, 4);
+    const listReposResult = JSON.stringify(repoJsLib.list(), null, 4);
+    const deleteFeaturesRepoResult = JSON.stringify(repoJsLib.deleteRepo('features-repo'), null, 4);
+    const listReposResult2 = JSON.stringify(repoJsLib.list(), null, 4);
+
+    const params = {
+        createFeaturesRepoResult: createFeaturesRepoResult,
+        getFeaturesRepoResult: getFeaturesRepoResult,
+        getFeaturesRepoRootNodeResult: getFeaturesRepoRootNodeResult,
+        createBranchResult: createBranchResult,
+        listReposResult: listReposResult,
+        deleteFeaturesRepoResult: deleteFeaturesRepoResult,
+        listReposResult2: listReposResult2
+    };
+
+    const body = thymeleaf.render(view, params);
+
+    return {
+        contentType: 'text/html',
+        body: body
+    };
+}
+
+export {handleGet as GET};

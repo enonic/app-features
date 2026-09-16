@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title data-th-text="${title}">Schedule types</title>
+    <link rel="stylesheet" data-th-href="${stylesUrl}">
+    <style>
+        .ok { color: #1a7f37; font-weight: bold; }
+        .blocked { color: #b42318; font-weight: bold; }
+        .waiting { color: #8a6d00; font-weight: bold; }
+        table { border-collapse: collapse; width: 100%; }
+        td, th { text-align: left; vertical-align: top; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
+        .detail { color: #666; font-size: 0.85em; }
+        .empty { color: #666; }
+    </style>
+</head>
+<body data-portal-component-type="page" data-th-class="${editable}? 'edit'">
+<h1 data-th-text="${title}">Schedule types</h1>
+<p>
+    The scheduler gained three things in XP 8.1: a <code>FIXED_RATE</code> schedule taking an ISO-8601
+    duration, <code>deleteAfterRun</code> on a <code>ONE_TIME</code> schedule, and a
+    <code>schedule.lastTaskId</code> context attribute telling a task which task ran for its job last.
+    Runs of one job also no longer overlap themselves.
+</p>
+
+<h2>Try it</h2>
+<ul>
+    <li><button id="job-one-time" type="button">Create self-deleting one-time job</button> fires in five seconds, then removes itself</li>
+    <li><button id="job-fixed-rate" type="button">Create fixed-rate job</button> runs every thirty seconds, so a second run shows the previous task id</li>
+    <li><button id="job-slow" type="button">Create slow fixed-rate job</button> lingers twenty seconds on a ten second interval, so the next run has to wait</li>
+    <li><button id="job-clear" type="button">Delete all three jobs</button></li>
+    <li><button id="reload" type="button">Reload</button> <span id="op-state"></span></li>
+</ul>
+
+<h2>Checks</h2>
+<table>
+    <tr>
+        <th>Check</th>
+        <th>Result</th>
+    </tr>
+    <tr data-th-each="check : ${checks}">
+        <td>
+            <span data-th-text="${check.label}">check</span>
+            <div class="detail">Expected: <span data-th-text="${check.expected}"></span></div>
+        </td>
+        <td>
+            <span data-th-class="${check.verdictClass}" data-th-text="${check.verdictText}">?</span>
+            <div class="detail">Got: <span data-th-text="${check.actual}"></span></div>
+        </td>
+    </tr>
+</table>
+
+<h2>Jobs</h2>
+<div data-th-unless="${hasJobs}" class="empty">None of the three jobs exist right now.</div>
+<table data-th-if="${hasJobs}">
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Value</th>
+        <th>Enabled</th>
+        <th>Last run</th>
+        <th>Last task id</th>
+    </tr>
+    <tr data-th-each="job : ${jobs}">
+        <td data-th-text="${job.name}"></td>
+        <td data-th-text="${job.schedule.type}"></td>
+        <td data-th-text="${job.schedule.value}"></td>
+        <td data-th-text="${job.enabled}"></td>
+        <td data-th-text="${job.lastRun}"></td>
+        <td data-th-text="${job.lastTaskId}"></td>
+    </tr>
+</table>
+
+<h2>Probe tasks</h2>
+<p>What the platform currently reports for tasks submitted by these jobs. Finished tasks leave the list, so this is a live view rather than a history.</p>
+<div data-th-unless="${hasTasks}" class="empty">No probe task in the list right now.</div>
+<table data-th-if="${hasTasks}">
+    <tr>
+        <th>Id</th>
+        <th>State</th>
+        <th>Started</th>
+        <th>Progress</th>
+    </tr>
+    <tr data-th-each="task : ${tasks}">
+        <td data-th-text="${task.id}"></td>
+        <td data-th-text="${task.state}"></td>
+        <td data-th-text="${task.startTime}"></td>
+        <td data-th-text="${task.progress.info}"></td>
+    </tr>
+</table>
+
+<script data-th-src="${scriptUrl}" defer></script>
+</body>
+</html>

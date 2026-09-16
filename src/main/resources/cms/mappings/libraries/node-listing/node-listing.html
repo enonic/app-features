@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>NodeService list and enumerate</title>
+    <style>
+        .ok { color: #1a7f37; font-weight: bold; }
+        .blocked { color: #b42318; font-weight: bold; }
+        table { border-collapse: collapse; width: 100%; }
+        td, th { text-align: left; vertical-align: top; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
+        .detail { color: #666; font-size: 0.85em; }
+        code { background: #f4f4f4; padding: 0.1em 0.35em; }
+    </style>
+</head>
+<body>
+<p><a href="..">Back to library tests</a></p>
+<h1>NodeService list and enumerate</h1>
+<p>
+    XP 8.1 gives <code>NodeService</code> two methods for reading a subtree in path order.
+    <code>list</code> streams every entry, so nothing has to hold the whole subtree, and
+    <code>enumerate</code> returns the same entries one bounded batch at a time with a cursor.
+    <code>ListNodesResult</code> and its recursive flag are gone. They do not treat access the
+    same way, which the checks below settle.
+</p>
+<p>
+    Neither is exposed to JavaScript, and deliberately so: they are built to walk millions of
+    entries, a workload where JavaScript is an unacceptable performance hog. Java is therefore the
+    only way to reach them, so this test goes through a script bean,
+    <code>com.enonic.xp.sample.features.NodeListing</code> &mdash; the only test in the app that
+    needs one.
+</p>
+<p>
+    The two differ on access. <code>list</code> sets a required permission on its query, so it
+    returns only the entries the caller may read and needs no special role. <code>enumerate</code>
+    calls <code>requireAdminRole</code> and then queries without a required permission, so it
+    returns every entry in the subtree and is available to administrators only. That suits what it
+    is for: a resumable snapshot scan, with <code>modifiedBefore</code> as a cutoff, a version id
+    per entry and a cursor to continue from. An export or a dump that silently skipped unreadable
+    nodes would look complete while being wrong.
+</p>
+<p>
+    Reading <code data-th-text="${parent}">/content/libraries</code> in repository
+    <code data-th-text="${repository}">repo</code>, branch <code data-th-text="${branch}">branch</code>,
+    with a batch size of <span data-th-text="${batchSize}">5</span>.
+</p>
+<p data-th-text="${summary}">summary</p>
+
+<h2>Checks</h2>
+<table>
+    <tr>
+        <th>Check</th>
+        <th>Result</th>
+    </tr>
+    <tr data-th-each="check : ${checks}">
+        <td>
+            <span data-th-text="${check.label}">check</span>
+            <div class="detail">Expected: <span data-th-text="${check.expected}"></span></div>
+        </td>
+        <td>
+            <span data-th-class="${check.cls}" data-th-text="${check.verdict}">?</span>
+            <div class="detail">Got: <span data-th-text="${check.actual}"></span></div>
+        </td>
+    </tr>
+</table>
+
+<h2>Batches returned by enumerate</h2>
+<p><span data-th-text="${batchSizes}">sizes</span></p>
+
+<h2>First entries in path order</h2>
+<div data-th-unless="${hasEntries}" class="detail">No entries returned.</div>
+<table data-th-if="${hasEntries}">
+    <tr>
+        <th>Path</th>
+        <th>Id</th>
+        <th>Timestamp</th>
+    </tr>
+    <tr data-th-each="entry : ${entries}">
+        <td data-th-text="${entry.path}"></td>
+        <td data-th-text="${entry.id}"></td>
+        <td data-th-text="${entry.timestamp}"></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -79,7 +79,7 @@ function createContent(name: string) {
         parentPath: '/',
         displayName: 'My Content',
         requireValid: true,
-        contentType: app.name + ':all-input-types',
+        contentType: app.name + ':all-form-items',
         language: 'no',
         data: {
             myCheckbox: true,

@@ -1,0 +1,9 @@
+kind: "Task"
+description: "Runs a library test suite in the background, reporting progress per operation"
+form:
+  - type: "TextLine"
+    name: "suite"
+    label: "Suite name"
+    occurrences:
+      min: 1
+      max: 1
