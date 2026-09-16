@@ -22,6 +22,7 @@ interface Row {
     call: string;
     expected: string;
     got: string;
+    note?: string;
     verdict: string;
     cls: string;
     link: boolean;
@@ -33,13 +34,14 @@ function navigable(value: string): boolean {
     return value.indexOf('/') === 0 || value.indexOf('http://') === 0 || value.indexOf('https://') === 0;
 }
 
-function row(call: string, expected: string, fn: () => {ok: boolean; got: string}): Row {
+function row(call: string, expected: string, fn: () => {ok: boolean; got: string; note?: string}): Row {
     try {
         const result = fn();
         return {
             call,
             expected,
             got: result.got,
+            note: result.note ?? '',
             verdict: result.ok ? 'pass' : 'FAIL',
             cls: result.ok ? 'ok' : 'blocked',
             link: navigable(result.got)
@@ -142,7 +144,8 @@ export const GET = function (req: Request) {
                 const url = portal.apiUrl({api: OWN_API, type: 'absolute'});
                 return {
                     ok: url.indexOf(req.host) !== -1,
-                    got: url + (baseUrl ? '   (site base URL is ' + baseUrl + ')' : '')
+                    got: url,
+                    note: baseUrl ? 'Site base URL: ' + baseUrl : ''
                 };
             }
         ),

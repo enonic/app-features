@@ -1,5 +1,4 @@
 import * as contentLib from '/lib/xp/content';
-import {run as runInContext} from '/lib/xp/context';
 import * as portal from '/lib/xp/portal';
 import * as thymeleaf from '/lib/thymeleaf';
 import type {Request} from '@enonic-types/core';
@@ -9,15 +8,7 @@ const view = resolve('pageUrl.html');
 
 const OTHER_PATH = '/features/request-steering';
 
-// Two kinds of call, worth keeping apart because they resolve differently.
-//
-// A request-relative call is answered against the request being served, so it follows the vhost
-// and comes out relative to it. A cross-context call names another project or branch, which the
-// request cannot supply, so it is resolved from content alone: anchored to the base URL of the
-// target's nearest site if there is one, and otherwise falling back to the site service path,
-// /site/<project>/<branch>/..., which is not a public address.
 const REQUEST = 'Request-relative';
-const CROSS = 'Cross-context';
 
 // The site's base URL lives in siteConfig under the reserved `portal` application key, not in this
 // app's own config, so getSiteConfig() cannot reach it. When set, generated absolute URLs are
@@ -48,28 +39,12 @@ function siteBaseUrl(): string {
     return baseUrlOf(portal.getSite());
 }
 
-// The base URL is content, so it is per branch: a value edited on draft and not yet published is
-// not the value master carries. A URL asked for in another branch resolves that branch's site
-// config, so the expectation has to be read from there too rather than from this request's branch.
-function baseUrlInBranch(path: string, branch: string): string {
-    // Read with the admin role on purpose. A visitor who cannot see the other branch would other-
-    // wise leave the expectation undecidable, and the row would fail for lack of information rather
-    // than because the URL was wrong. Site config is not a secret, and the value read is shown.
-    try {
-        return runInContext(
-            {branch, principals: ['role:system.admin']},
-            () => baseUrlOf(contentLib.getSite({key: path}))
-        );
-    } catch (e) {
-        return '';
-    }
-}
-
 interface Row {
     group: string;
     call: string;
     expected: string;
     got: string;
+    note?: string;
     verdict: string;
     cls: string;
     link: boolean;
@@ -81,7 +56,19 @@ function navigable(value: string): boolean {
     return value.indexOf('/') === 0 || value.indexOf('http://') === 0 || value.indexOf('https://') === 0;
 }
 
-function row(group: string, call: string, expected: string, fn: () => {ok: boolean; got: string}): Row {
+function queryValues(url: string, key: string): string[] {
+    const query = url.split('#')[0].split('?')[1] ?? '';
+    return query.split('&')
+        .filter((param) => decodeURIComponent(param.split('=')[0].replace(/\+/g, ' ')) === key)
+        .map((param) => decodeURIComponent(param.substring(param.indexOf('=') + 1).replace(/\+/g, ' ')));
+}
+
+function sameUrl(params: PageUrlParams, reference: PageUrlParams): {ok: boolean; got: string} {
+    const url = portal.pageUrl(params);
+    return {ok: url.indexOf('/_/error/') === -1 && url === portal.pageUrl(reference), got: url};
+}
+
+function row(group: string, call: string, expected: string, fn: () => {ok: boolean; got: string; note?: string}): Row {
     try {
         const result = fn();
         return {
@@ -89,6 +76,7 @@ function row(group: string, call: string, expected: string, fn: () => {ok: boole
             call,
             expected,
             got: result.got,
+            note: result.note ?? '',
             verdict: result.ok ? 'pass' : 'FAIL',
             cls: result.ok ? 'ok' : 'blocked',
             link: navigable(result.got)
@@ -110,9 +98,7 @@ export const GET = function (req: Request) {
     const content = portal.getContent();
     const other = contentLib.get({key: OTHER_PATH});
     const baseUrl = siteBaseUrl();
-    const targetBranch = req.branch === 'master' ? 'draft' : 'master';
-    const targetBranchBaseUrl = baseUrlInBranch(content._path, targetBranch);
-
+    const currentBranch = req.branch ?? 'draft';
     const rows: Row[] = [
         row(
             REQUEST,
@@ -208,7 +194,8 @@ export const GET = function (req: Request) {
             'the space and ampersand encoded, not passed through',
             () => {
                 const url = portal.pageUrl({path: content._path, params: {q: 'a b&c'}});
-                return {ok: url.indexOf('a b') === -1 && url.indexOf('c') !== -1, got: url};
+                const values = queryValues(url, 'q');
+                return {ok: values.length === 1 && values[0] === 'a b&c' && url.indexOf(' ') === -1, got: url};
             }
         ),
         row(
@@ -229,47 +216,6 @@ export const GET = function (req: Request) {
             }
         ),
         row(
-            CROSS,
-            'pageUrl({path, branch})',
-            targetBranchBaseUrl
-                ? 'anchored to the base URL configured in that branch, which replaces the whole'
-                    + ' prefix, so the branch is no longer visible in the URL at all'
-                : 'the branch named in the URL, rather than the one serving this request: naming a'
-                    + ' branch resolves outside this request, so the vhost mapping is not used',
-            () => {
-                const url = portal.pageUrl({path: content._path, branch: targetBranch});
-                return {
-                    ok: targetBranchBaseUrl
-                        ? url.indexOf(targetBranchBaseUrl) === 0
-                        : url.indexOf('/' + targetBranch + '/') !== -1,
-                    got: url + (targetBranchBaseUrl !== baseUrl
-                        ? '   (' + targetBranch + ' has ' + (targetBranchBaseUrl || 'no base URL')
-                            + ', this branch has ' + (baseUrl || 'none') + ')'
-                        : '')
-                };
-            }
-        ),
-        row(
-            CROSS,
-            'pageUrl({path, project})',
-            baseUrl
-                ? 'anchored to the site base URL, with the path relative to the site appended: naming a'
-                    + ' project resolves outside this request, so there is no request host to borrow'
-                : 'the project named in the URL, since no site base URL is set',
-            () => {
-                const url = portal.pageUrl({path: content._path, project: 'features'});
-                const site = portal.getSite();
-                const relative = site ? content._path.substring(site._path.length) : content._path;
-
-                return {
-                    ok: baseUrl
-                        ? url.indexOf(baseUrl) === 0 && url.indexOf(relative) === url.length - relative.length
-                        : url.indexOf('/features/') !== -1,
-                    got: url
-                };
-            }
-        ),
-        row(
             REQUEST,
             'pageUrl({}) with neither path nor id',
             'a URL for the content being rendered',
@@ -281,14 +227,55 @@ export const GET = function (req: Request) {
         )
     ];
 
+    // Keep path/id pairs next to their concrete options so the page demonstrates both forms.
+    for (const type of ['absolute', 'websocket'] as const) {
+        rows.push(row(
+            REQUEST,
+            `pageUrl({id, type: '${type}'})`,
+            'the same URL as selecting this content by path with the same type',
+            () => sameUrl({id: content._id, type}, {path: content._path, type})
+        ));
+    }
+
+    rows.push(
+        row(
+            REQUEST,
+            "pageUrl({id, params: {tag: ['news', 'events']}})",
+            'the ID selects this page and each tag becomes a separate query parameter',
+            () => {
+                const url = portal.pageUrl({id: content._id, params: {tag: ['news', 'events']}});
+                const values = queryValues(url, 'tag');
+                return {ok: values.length === 2 && values[0] === 'news' && values[1] === 'events', got: url};
+            }
+        ),
+        row(
+            REQUEST,
+            "pageUrl({path, params: {q: 'Tromsø + café'}})",
+            'Unicode, spaces and a literal plus sign survive query encoding and decoding',
+            () => {
+                const url = portal.pageUrl({path: content._path, params: {q: 'Tromsø + café'}});
+                const values = queryValues(url, 'q');
+                return {ok: values.length === 1 && values[0] === 'Tromsø + café' && url.indexOf(' ') === -1, got: url};
+            }
+        ),
+        row(
+            REQUEST,
+            'pageUrl({path, params: {}})',
+            'an empty parameter object leaves the URL unchanged',
+            () => sameUrl({path: content._path, params: {}}, {path: content._path})
+        )
+    );
+
     const failed = rows.filter((one) => one.verdict !== 'pass').length;
 
     return {
         contentType: 'text/html',
         body: thymeleaf.render(view, {
             requestRows: rows.filter((one) => one.group === REQUEST),
-            crossRows: rows.filter((one) => one.group === CROSS),
-            branch: req.branch ?? '',
+            branch: currentBranch,
+            explicitTestsUrl: '/site/features/draft/libraries/explicit-url',
+            path: content._path,
+            id: content._id,
             baseUrl: baseUrl || 'not set',
             summary: failed === 0
                 ? `All ${rows.length} calls behaved as expected`

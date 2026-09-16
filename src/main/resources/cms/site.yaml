@@ -55,6 +55,10 @@ mappings:
     order: 50
     invertPattern: false
     pattern: "/libraries"
+  - controller: "/cms/mappings/libraries/explicit-url/explicit-url.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/explicit-url"
   - controller: "/cms/mappings/libraries/cluster/cluster.js"
     order: 50
     invertPattern: false
