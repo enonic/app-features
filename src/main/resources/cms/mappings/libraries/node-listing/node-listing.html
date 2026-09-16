@@ -23,9 +23,11 @@
     same way, which the checks below settle.
 </p>
 <p>
-    Neither has an equivalent in the node library, so this test reaches them through a script bean,
-    <code>com.enonic.xp.sample.features.NodeListing</code>. It is the only test in the app that needs
-    Java to exercise its feature.
+    Neither is exposed to JavaScript, and deliberately so: they are built to walk millions of
+    entries, a workload where JavaScript is an unacceptable performance hog. Java is therefore the
+    only way to reach them, so this test goes through a script bean,
+    <code>com.enonic.xp.sample.features.NodeListing</code> &mdash; the only test in the app that
+    needs one.
 </p>
 <p>
     The two differ on access. <code>list</code> sets a required permission on its query, so it
