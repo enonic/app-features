@@ -37,7 +37,7 @@ type UrlInvoker = (params: ExplicitPageUrlParams) => string | null;
 // A target outside the explicit base's subtree is expected to throw the specified error.
 // Site configuration is selected from the target project and branch.
 // Assumes both target pages exist on draft and master, /features has base URL
-// https://example.com/demo on both branches, and /features/subsite has no configured base URL.
+// https://example.com/demo on both branches, and /features/subsite has https://subsite.com on both branches.
 // /unbased and /unbased/subsite have no base URL or site apps; /libraries is a folder outside any site.
 // Their folder targets and /libraries/explicit-url exist on both branches.
 export const testCases: readonly TestCase[] = [
@@ -219,7 +219,7 @@ export const testCases: readonly TestCase[] = [
                 "path": "/features/subsite"
             }
         },
-        "expected": "/pageurl"
+        "expected": "https://subsite.com/pageurl"
     },
     {
         "group": "Nested site",

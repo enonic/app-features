@@ -53,6 +53,12 @@
         <property-set name="data">
             <string name="description">A site nested inside the Features site.</string>
             <property-set name="siteConfig">
+                <string name="applicationKey">portal</string>
+                <property-set name="config">
+                    <string name="baseUrl">https://subsite.com</string>
+                </property-set>
+            </property-set>
+            <property-set name="siteConfig">
                 <string name="applicationKey">com.enonic.app.features</string>
                 <property-set name="config"/>
             </property-set>
