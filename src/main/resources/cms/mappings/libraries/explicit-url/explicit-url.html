@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Explicit URL tests</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        table { border-collapse: collapse; width: 100%; }
+        td, th { text-align: left; vertical-align: top; padding: 0.6rem; border-bottom: 1px solid #ddd; }
+        code, pre { overflow-wrap: anywhere; white-space: pre-wrap; }
+        pre { margin: 0.5rem 0 0; }
+        .OK { color: #1a7f37; }
+        .FAIL { color: #b42318; }
+    </style>
+</head>
+<body>
+<p><a href="./">Back to library tests</a></p>
+<h1>Explicit URL tests</h1>
+<p>
+    Each case has fixed inputs and a hardcoded expected URL. The same cases run whichever page or
+    branch you opened this from. Mismatches and unexpected exceptions show as FAIL; later cases still run.
+</p>
+<p>
+    <strong data-th-text="${passed}">0</strong> OK,
+    <strong data-th-text="${failed}">0</strong> FAIL,
+    <span data-th-text="${total}">0</span> total.
+    <a href="">Run tests again</a>
+</p>
+<details>
+    <summary>Fixed setup and how to edit the tests</summary>
+    <p>
+        Cases live in <code>/lib/explicit-url-tests.ts</code>. Execution context is
+        <code>com.enonic.cms.features</code>, branch <code>draft</code>; individual calls may select
+        <code>master</code>. Both target pages must exist on both branches.
+    </p>
+    <p>
+        A configured site base URL is used only when <code>base</code> explicitly identifies that site
+        in the selected project and branch. When the explicit base has no configured base URL,
+        the expected path is relative to that base: <code>/features/subsite/pageurl</code> with
+        base <code>/features/subsite</code> produces <code>/pageurl</code>.
+        Without <code>base</code>, the expected URL is the full content path, such as
+        <code>/unbased/subsite/folder</code>, without a project or branch prefix.
+        The target content does not implicitly select a site base URL.
+        A target outside the explicit base's subtree is expected to throw the specified exception.
+        Returning a URL or <code>null</code> fails that case.
+    </p>
+    <p>
+        This baseline expects <code>/features</code> to have base URL
+        <code>https://example.com/demo</code> on both branches, and <code>/features/subsite</code>
+        to have <code>https://subsite.com</code> on both branches.
+        Changing content or configuration does not change the expected values.
+    </p>
+    <p>
+        The main-site and nested-site sections also cover <code>/unbased/folder</code> and
+        <code>/unbased/subsite/folder</code>. Both sites have no assigned apps or configured base URL.
+        Content outside a site is covered by <code>/libraries/explicit-url</code>, including
+        selection of its parent folder <code>/libraries</code> as an explicit base.
+        These targets must exist on both branches.
+    </p>
+    <p>
+        Calls temporarily use the Java <code>PortalUrlService.pageUrl</code> API because the JS
+        wrapper does not expose <code>base</code>. Query spaces encoded as <code>+</code> or
+        <code>%20</code> are treated as equivalent.
+    </p>
+</details>
+<section data-th-each="group : ${groups}">
+    <h2 data-th-text="${group.name}">Site</h2>
+    <table>
+        <thead><tr><th>#</th><th>Call</th><th>Expected URL</th><th>Generated URL</th><th>Result</th></tr></thead>
+        <tbody>
+        <tr data-th-each="row, iter : ${group.rows}">
+            <td data-th-text="${iter.count}">1</td>
+            <td><span data-th-text="${row.label}">Case</span><pre data-th-text="${row.call}">call</pre></td>
+            <td>
+                <strong data-th-if="${row.expectedError}">Exception: </strong>
+                <code data-th-text="${row.expected == null ? 'null' : row.expected}">expected</code>
+            </td>
+            <td>
+                <strong data-th-if="${row.error}">Exception: </strong>
+                <a data-th-if="${row.link}" data-th-href="${row.actual}" data-th-text="${row.actual}">URL</a>
+                <code data-th-unless="${row.link}" data-th-text="${row.actual == null ? 'null' : row.actual}">actual</code>
+            </td>
+            <td><strong data-th-class="${row.verdict}" data-th-text="${row.verdict}">FAIL</strong></td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

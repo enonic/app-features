@@ -87,6 +87,7 @@ function initializeProject() {
 const testEntryPoints = [
     {parentPath: '/', name: 'schedule-types', displayName: 'Schedule types'},
     {parentPath: '/', name: 'libraries', displayName: 'Library tests'},
+    {parentPath: '/libraries', name: 'explicit-url', displayName: 'Explicit URL tests'},
     {parentPath: '/libraries', name: 'cluster', displayName: 'Lib Cluster'},
     {parentPath: '/libraries', name: 'content', displayName: 'Lib Content'},
     {parentPath: '/libraries', name: 'context', displayName: 'Lib Context'},
@@ -153,6 +154,44 @@ function createTestEntryPoints() {
 
     if (result.failedContents.length !== 0) {
         log.warning('Failed to publish ' + result.failedContents.length + ' test entry point(s)');
+    }
+}
+
+// Plain sites and folders for explicit URL tests. No site applications or base URLs are assigned.
+function createUnbasedUrlFixtures() {
+    const fixtures = [
+        {parentPath: '/', name: 'unbased', displayName: 'Unbased', contentType: 'portal:site'},
+        {parentPath: '/unbased', name: 'subsite', displayName: 'Subsite', contentType: 'portal:site'},
+        {parentPath: '/unbased', name: 'folder', displayName: 'Folder', contentType: 'base:folder'},
+        {parentPath: '/unbased/subsite', name: 'folder', displayName: 'Folder', contentType: 'base:folder'}
+    ];
+    const paths = fixtures.map((fixture) => {
+        const path = (fixture.parentPath === '/' ? '' : fixture.parentPath) + '/' + fixture.name;
+        if (!contentLib.exists({key: path})) {
+            contentLib.create({...fixture, requireValid: true, data: {}});
+            log.info('Created explicit URL fixture ' + path);
+        }
+        return path;
+    });
+
+    // Make fixtures available on both branches, including after an interrupted initial publish.
+    // Existing content and subsequent edits are left intact on redeployment.
+    const unpublished = contextLib.run({branch: 'master'}, () =>
+        paths.filter((path) => !contentLib.exists({key: path})));
+    if (unpublished.length === 0) {
+        return;
+    }
+
+    const ids = unpublished.map((path) => contentLib.get({key: path})!._id);
+    const result = contentLib.publish({
+        keys: ids,
+        excludeDescendantsOf: ids,
+        includeDependencies: false,
+        message: 'Unbased sites for explicit URL tests'
+    });
+    log.info('Published ' + result.pushedContents.length + ' explicit URL fixture(s)');
+    if (result.failedContents.length !== 0) {
+        log.warning('Failed to publish explicit URL fixtures: ' + result.failedContents.join(', '));
     }
 }
 
@@ -311,6 +350,7 @@ function preloadCronLib() {
 if (clusterLib.isMaster()) {
     initializeProject();
     runInContext(createTestEntryPoints);
+    runInContext(createUnbasedUrlFixtures);
     runInContext(publishContent);
     preloadCronLib();
 }

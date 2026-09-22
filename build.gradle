@@ -8,6 +8,7 @@ plugins {
 dependencies {
     implementation xplibs.api.script
     implementation xplibs.api.core
+    implementation "com.enonic.xp:portal-api:${xpVersion}"
     include xplibs.auth
     include xplibs.content
     include xplibs.context
@@ -46,6 +47,7 @@ dependencies {
     include "com.enonic.xp:lib-sse:${xpVersion}"
 
     testImplementation "com.enonic.xp:testing:${xpVersion}"
+    testImplementation "org.mockito:mockito-core:5.23.0"
     testImplementation(platform(libs.junit.bom))
     testImplementation libs.junit.jupiter
     testRuntimeOnly libs.junit.platform.launcher
