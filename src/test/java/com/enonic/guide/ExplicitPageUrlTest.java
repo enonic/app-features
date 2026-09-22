@@ -56,12 +56,12 @@ class ExplicitPageUrlTest
     void selectsBaseByIdAndPreservesQueryValues()
     {
         final PageUrlParams params = invoke( Map.of(
-            "path", "/features/nested/page", "branch", "draft", "base", Map.of( "id", "site-id" ),
+            "path", "/features/nested/page", "project", "features", "branch", "draft", "base", Map.of( "id", "site-id" ),
             "params", Map.of( "q", "Tromsø + café & tea", "tag", List.of( "news", "events" ) ) ) );
 
         assertEquals( "/features/nested/page", params.getPath() );
         assertEquals( "draft", params.getBranch() );
-        assertNull( params.getProjectName() );
+        assertEquals( "features", params.getProjectName() );
         assertEquals( "site-id", params.getBase().getId() );
         assertNull( params.getBase().getPath() );
         assertEquals( List.of( "Tromsø + café & tea" ), params.getParams().get( "q" ) );

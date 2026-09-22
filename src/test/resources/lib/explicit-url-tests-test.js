@@ -30,9 +30,9 @@ exports.testMismatchAndExceptionDoNotChangeExpectationsOrStopTheSuite = function
         return expectedOutcome(test);
     });
 
-    t.assertEquals(33, index);
+    t.assertEquals(26, index);
     t.assertEquals(2, result.failed);
-    t.assertEquals(31, result.passed);
+    t.assertEquals(24, result.passed);
     t.assertEquals('/features/portal-functions/pageurl', result.results[0].expected);
     t.assertEquals('https://unexpected.example/page', result.results[0].actual);
     t.assertEquals('FAIL', result.results[0].verdict);
@@ -40,7 +40,7 @@ exports.testMismatchAndExceptionDoNotChangeExpectationsOrStopTheSuite = function
     t.assertEquals('Content unavailable', result.results[1].actual);
     t.assertEquals(true, result.results[1].error);
     t.assertEquals(false, result.results[1].link);
-    t.assertEquals('OK', result.results[32].verdict);
+    t.assertEquals('OK', result.results[25].verdict);
     var outOfScope = result.results.filter(function (row) { return row.expectedError; })[0];
     t.assertEquals('Content [/unbased/folder] is not inside [/features]', outOfScope.actual);
     t.assertEquals('OK', outOfScope.verdict);
@@ -84,7 +84,7 @@ exports.testExpectedExceptionRejectsReturnValuesAndUnrelatedErrors = function ()
             }
             return actual;
         });
-        t.assertEquals(33, index);
+        t.assertEquals(26, index);
         t.assertEquals(1, result.failed);
         var outOfScope = result.results.filter(function (row) { return row.expectedError; })[0];
         t.assertEquals('FAIL', outOfScope.verdict);

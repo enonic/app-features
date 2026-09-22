@@ -2,7 +2,7 @@ import {run as runInContext} from '/lib/xp/context';
 import type {ScriptValue} from '@enonic-types/core';
 import type {PageUrlParams} from '@enonic-types/lib-portal';
 
-export type ExplicitPageUrlParams = Omit<PageUrlParams, 'type'> & {base?: {id: string} | {path: string}};
+export type ExplicitPageUrlParams = Omit<PageUrlParams, 'type'> & {project: string; base?: {id: string} | {path: string}};
 
 export interface TestCase {
     group: string;
@@ -35,7 +35,7 @@ type UrlInvoker = (params: ExplicitPageUrlParams) => string | null;
 // An explicit base selects a relative path, prefixed by its configured site base URL if present.
 // Calls without an explicit base use the full content path, without a project or branch prefix.
 // A target outside the explicit base's subtree is expected to throw the specified error.
-// Site configuration is selected from the target project and branch.
+// Every case passes the project explicitly. Site configuration is selected from the target project and branch.
 // Assumes both target pages exist on draft and master, /features has base URL
 // https://example.com/demo on both branches, and /features/subsite has https://subsite.com on both branches.
 // /unbased and /unbased/subsite have no base URL or site apps; /libraries is a folder outside any site.
@@ -46,6 +46,7 @@ export const testCases: readonly TestCase[] = [
         "label": "Path and master branch",
         "params": {
             "path": "/features/portal-functions/pageurl",
+            "project": "features",
             "branch": "master"
         },
         "expected": "/features/portal-functions/pageurl"
@@ -55,6 +56,7 @@ export const testCases: readonly TestCase[] = [
         "label": "Path and master branch, nearest site selected explicitly",
         "params": {
             "path": "/features/portal-functions/pageurl",
+            "project": "features",
             "branch": "master",
             "base": {
                 "path": "/features"
@@ -64,19 +66,7 @@ export const testCases: readonly TestCase[] = [
     },
     {
         "group": "Main site",
-        "label": "Path and master branch, /features selected explicitly",
-        "params": {
-            "path": "/features/portal-functions/pageurl",
-            "branch": "master",
-            "base": {
-                "path": "/features"
-            }
-        },
-        "expected": "https://example.com/demo/portal-functions/pageurl"
-    },
-    {
-        "group": "Main site",
-        "label": "Path and project, draft execution context",
+        "label": "Path, draft execution context",
         "params": {
             "path": "/features/portal-functions/pageurl",
             "project": "features"
@@ -88,15 +78,6 @@ export const testCases: readonly TestCase[] = [
         "label": "Path and draft branch",
         "params": {
             "path": "/features/portal-functions/pageurl",
-            "branch": "draft"
-        },
-        "expected": "/features/portal-functions/pageurl"
-    },
-    {
-        "group": "Main site",
-        "label": "Path, project and draft branch",
-        "params": {
-            "path": "/features/portal-functions/pageurl",
             "project": "features",
             "branch": "draft"
         },
@@ -104,40 +85,11 @@ export const testCases: readonly TestCase[] = [
     },
     {
         "group": "Main site",
-        "label": "ID, project and draft branch",
+        "label": "ID and draft branch",
         "params": {
             "id": "e1c4a9d7-3b52-4f08-9a61-7d2c8e5b40f3",
             "project": "features",
             "branch": "draft"
-        },
-        "expected": "/features/portal-functions/pageurl"
-    },
-    {
-        "group": "Main site",
-        "label": "Path, project and master branch",
-        "params": {
-            "path": "/features/portal-functions/pageurl",
-            "project": "features",
-            "branch": "master"
-        },
-        "expected": "/features/portal-functions/pageurl"
-    },
-    {
-        "group": "Main site",
-        "label": "ID, project and master branch",
-        "params": {
-            "id": "e1c4a9d7-3b52-4f08-9a61-7d2c8e5b40f3",
-            "project": "features",
-            "branch": "master"
-        },
-        "expected": "/features/portal-functions/pageurl"
-    },
-    {
-        "group": "Main site",
-        "label": "ID and project, draft execution context",
-        "params": {
-            "id": "e1c4a9d7-3b52-4f08-9a61-7d2c8e5b40f3",
-            "project": "features"
         },
         "expected": "/features/portal-functions/pageurl"
     },
@@ -146,7 +98,17 @@ export const testCases: readonly TestCase[] = [
         "label": "ID and master branch",
         "params": {
             "id": "e1c4a9d7-3b52-4f08-9a61-7d2c8e5b40f3",
+            "project": "features",
             "branch": "master"
+        },
+        "expected": "/features/portal-functions/pageurl"
+    },
+    {
+        "group": "Main site",
+        "label": "ID, draft execution context",
+        "params": {
+            "id": "e1c4a9d7-3b52-4f08-9a61-7d2c8e5b40f3",
+            "project": "features"
         },
         "expected": "/features/portal-functions/pageurl"
     },
@@ -205,6 +167,7 @@ export const testCases: readonly TestCase[] = [
         "label": "Path and master branch",
         "params": {
             "path": "/features/subsite/pageurl",
+            "project": "features",
             "branch": "master"
         },
         "expected": "/features/subsite/pageurl"
@@ -214,6 +177,7 @@ export const testCases: readonly TestCase[] = [
         "label": "Path and master branch, nearest site selected explicitly",
         "params": {
             "path": "/features/subsite/pageurl",
+            "project": "features",
             "branch": "master",
             "base": {
                 "path": "/features/subsite"
@@ -226,6 +190,7 @@ export const testCases: readonly TestCase[] = [
         "label": "Path and master branch, /features selected explicitly",
         "params": {
             "path": "/features/subsite/pageurl",
+            "project": "features",
             "branch": "master",
             "base": {
                 "path": "/features"
@@ -235,7 +200,7 @@ export const testCases: readonly TestCase[] = [
     },
     {
         "group": "Nested site",
-        "label": "Path and project, draft execution context",
+        "label": "Path, draft execution context",
         "params": {
             "path": "/features/subsite/pageurl",
             "project": "features"
@@ -247,15 +212,6 @@ export const testCases: readonly TestCase[] = [
         "label": "Path and draft branch",
         "params": {
             "path": "/features/subsite/pageurl",
-            "branch": "draft"
-        },
-        "expected": "/features/subsite/pageurl"
-    },
-    {
-        "group": "Nested site",
-        "label": "Path, project and draft branch",
-        "params": {
-            "path": "/features/subsite/pageurl",
             "project": "features",
             "branch": "draft"
         },
@@ -263,40 +219,11 @@ export const testCases: readonly TestCase[] = [
     },
     {
         "group": "Nested site",
-        "label": "ID, project and draft branch",
+        "label": "ID and draft branch",
         "params": {
             "id": "b0238199-23ab-4451-9ad4-6cb9f1575387",
             "project": "features",
             "branch": "draft"
-        },
-        "expected": "/features/subsite/pageurl"
-    },
-    {
-        "group": "Nested site",
-        "label": "Path, project and master branch",
-        "params": {
-            "path": "/features/subsite/pageurl",
-            "project": "features",
-            "branch": "master"
-        },
-        "expected": "/features/subsite/pageurl"
-    },
-    {
-        "group": "Nested site",
-        "label": "ID, project and master branch",
-        "params": {
-            "id": "b0238199-23ab-4451-9ad4-6cb9f1575387",
-            "project": "features",
-            "branch": "master"
-        },
-        "expected": "/features/subsite/pageurl"
-    },
-    {
-        "group": "Nested site",
-        "label": "ID and project, draft execution context",
-        "params": {
-            "id": "b0238199-23ab-4451-9ad4-6cb9f1575387",
-            "project": "features"
         },
         "expected": "/features/subsite/pageurl"
     },
@@ -305,7 +232,17 @@ export const testCases: readonly TestCase[] = [
         "label": "ID and master branch",
         "params": {
             "id": "b0238199-23ab-4451-9ad4-6cb9f1575387",
+            "project": "features",
             "branch": "master"
+        },
+        "expected": "/features/subsite/pageurl"
+    },
+    {
+        "group": "Nested site",
+        "label": "ID, draft execution context",
+        "params": {
+            "id": "b0238199-23ab-4451-9ad4-6cb9f1575387",
+            "project": "features"
         },
         "expected": "/features/subsite/pageurl"
     },
@@ -412,7 +349,7 @@ export function runTests(invoke: UrlInvoker = javaPageUrl) {
         let actual: string | null;
         let error = false;
         try {
-            // Branch-only and project-only cases must see the same context on every test page.
+            // Cases without an explicit branch must see the same draft context on every test page.
             actual = runInContext({repository: 'com.enonic.cms.features', branch: 'draft'}, () => invoke(test.params));
         } catch (e) {
             actual = (e as Error).message || String(e);
