@@ -335,6 +335,18 @@ function javaPageUrl(params: ExplicitPageUrlParams): string | null {
         .pageUrl(__.toScriptValue(params));
 }
 
+function formatCall(params: ExplicitPageUrlParams): string {
+    const scope = {
+        project: params.project,
+        branch: params.branch,
+        key: params.base && ('id' in params.base ? params.base.id : params.base.path)
+    };
+    const page = JSON.stringify({id: params.id, path: params.path, params: params.params}, null, 2);
+    return 'const scope = portal.portalScope(' + JSON.stringify(scope, null, 2) + ');\n'
+        + 'const parts = portal.pageUrlParts({\n  scope,' + page.substring(1) + ');\n'
+        + "const url = (parts.baseUrl || '') + parts.path + parts.queryString;";
+}
+
 function comparable(url: string | null): string | null {
     if (url === null) {
         return null;
@@ -358,7 +370,7 @@ export function runTests(invoke: UrlInvoker = javaPageUrl) {
         return {
             group: test.group,
             label: test.label,
-            call: 'pageUrl(' + JSON.stringify(test.params, null, 2) + ')',
+            call: formatCall(test.params),
             expected: test.expected,
             expectedError: !!test.expectedError,
             actual,

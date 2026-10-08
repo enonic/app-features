@@ -21,6 +21,11 @@
     branch you opened this from. Mismatches and unexpected exceptions show as FAIL; later cases still run.
 </p>
 <p>
+    The examples show the equivalent RC3 JavaScript calls, with <code>portal</code> imported from
+    <code>/lib/xp/portal</code>. <code>portalScope()</code> selects the site or project and its
+    configuration; <code>pageUrlParts()</code> resolves the target within that scope.
+</p>
+<p>
     <strong data-th-text="${passed}">0</strong> OK,
     <strong data-th-text="${failed}">0</strong> FAIL,
     <span data-th-text="${total}">0</span> total.
@@ -58,15 +63,17 @@
         These targets must exist on both branches.
     </p>
     <p>
-        Calls temporarily use the Java <code>PortalUrlService.pageUrl</code> API because the JS
-        wrapper does not expose <code>base</code>. Query spaces encoded as <code>+</code> or
+        The Java bridge maps these fixed inputs to RC3's <code>PortalUrlService.portalScope</code>
+        and <code>pageUrlParts</code> APIs, then joins the returned URL parts. RC3 resolves a
+        selected base to its nearest site or project; folder-relative expectations remain in
+        this baseline to show any differences. Query spaces encoded as <code>+</code> or
         <code>%20</code> are treated as equivalent.
     </p>
 </details>
 <section data-th-each="group : ${groups}">
     <h2 data-th-text="${group.name}">Site</h2>
     <table>
-        <thead><tr><th>#</th><th>Call</th><th>Expected URL</th><th>Generated URL</th><th>Result</th></tr></thead>
+        <thead><tr><th>#</th><th>Equivalent JS calls</th><th>Expected URL</th><th>Generated URL</th><th>Result</th></tr></thead>
         <tbody>
         <tr data-th-each="row, iter : ${group.rows}">
             <td data-th-text="${iter.count}">1</td>
