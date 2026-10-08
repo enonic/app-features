@@ -68,7 +68,7 @@
 <section data-th-each="group : ${groups}">
     <h2 data-th-text="${group.name}">Site</h2>
     <table>
-        <thead><tr><th>#</th><th>Scope call</th><th>Expected URL</th><th>Generated URL</th><th>Result</th></tr></thead>
+        <thead><tr><th>#</th><th>Scope call and target</th><th>Expected URL</th><th>Generated URL</th><th>Result</th></tr></thead>
         <tbody>
         <tr data-th-each="row, iter : ${group.rows}">
             <td data-th-text="${iter.count}">1</td>

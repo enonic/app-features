@@ -341,7 +341,8 @@ function formatCall(params: ExplicitPageUrlParams): string {
         branch: params.branch,
         key: params.base && ('id' in params.base ? params.base.id : params.base.path)
     };
-    return 'portalScope(' + JSON.stringify(scope, null, 2) + ');';
+    const target = params.id ? 'id: ' + JSON.stringify(params.id) : 'path: ' + JSON.stringify(params.path);
+    return 'portalScope(' + JSON.stringify(scope, null, 2) + ');\n\n' + target;
 }
 
 function comparable(url: string | null): string | null {
