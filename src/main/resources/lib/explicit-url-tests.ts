@@ -341,10 +341,7 @@ function formatCall(params: ExplicitPageUrlParams): string {
         branch: params.branch,
         key: params.base && ('id' in params.base ? params.base.id : params.base.path)
     };
-    const page = JSON.stringify({id: params.id, path: params.path, params: params.params}, null, 2);
-    return 'const scope = portal.portalScope(' + JSON.stringify(scope, null, 2) + ');\n'
-        + 'const parts = portal.pageUrlParts({\n  scope,' + page.substring(1) + ');\n'
-        + "const url = (parts.baseUrl || '') + parts.path + parts.queryString;";
+    return 'portalScope(' + JSON.stringify(scope, null, 2) + ');';
 }
 
 function comparable(url: string | null): string | null {
