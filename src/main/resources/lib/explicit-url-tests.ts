@@ -8,6 +8,7 @@ export interface TestCase {
     group: string;
     label: string;
     params: ExplicitPageUrlParams;
+    // For expected errors, null accepts any exception message.
     expected: string | null;
     expectedError?: boolean;
 }
@@ -35,6 +36,7 @@ type UrlInvoker = (params: ExplicitPageUrlParams) => string | null;
 // An explicit base selects a relative path, prefixed by its configured site base URL if present.
 // Calls without an explicit base use the full content path, without a project or branch prefix.
 // A target outside the explicit base's subtree is expected to throw the specified error.
+// An explicit base identifying a non-site content item is expected to throw, without a fixed message.
 // Every case passes the project explicitly. Site configuration is selected from the target project and branch.
 // Assumes both target pages exist on draft and master, /features has base URL
 // https://example.com/demo on both branches, and /features/subsite has https://subsite.com on both branches.
@@ -317,7 +319,7 @@ export const testCases: readonly TestCase[] = [
     },
     {
         "group": "Outside a site",
-        "label": "Content outside a site: explicit folder base",
+        "label": "Content outside a site: non-site base must throw",
         "params": {
             "path": "/libraries/explicit-url",
             "project": "features",
@@ -326,7 +328,8 @@ export const testCases: readonly TestCase[] = [
                 "path": "/libraries"
             }
         },
-        "expected": "/explicit-url"
+        "expected": null,
+        "expectedError": true
     }
 ];
 
@@ -373,7 +376,7 @@ export function runTests(invoke: UrlInvoker = javaPageUrl) {
             expectedError: !!test.expectedError,
             actual,
             verdict: (test.expectedError
-                ? error && actual === test.expected
+                ? error && (test.expected === null || actual === test.expected)
                 : !error && comparable(actual) === comparable(test.expected)) ? 'OK' : 'FAIL',
             error,
             link: !error && typeof actual === 'string' && /^(https?:\/\/|\/)/.test(actual)

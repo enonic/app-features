@@ -12,7 +12,7 @@ var suite = require('/lib/explicit-url-tests');
 
 function expectedOutcome(test) {
     if (test.expectedError) {
-        throw new Error(test.expected);
+        throw new Error(test.expected === null ? 'Base is not a site' : test.expected);
     }
     return test.expected;
 }
@@ -76,7 +76,7 @@ exports.testExpectedExceptionRejectsReturnValuesAndUnrelatedErrors = function ()
         var index = 0;
         var result = suite.runTests(function () {
             var test = suite.testCases[index++];
-            if (!test.expectedError) {
+            if (!test.expectedError || test.expected === null) {
                 return expectedOutcome(test);
             }
             if (actual instanceof Error) {
@@ -89,5 +89,26 @@ exports.testExpectedExceptionRejectsReturnValuesAndUnrelatedErrors = function ()
         var outOfScope = result.results.filter(function (row) { return row.expectedError; })[0];
         t.assertEquals('FAIL', outOfScope.verdict);
         t.assertEquals(actual instanceof Error, outOfScope.error);
+    });
+};
+
+exports.testNonSiteBaseRequiresAnExceptionWithoutAFixedMessage = function () {
+    [null, '/libraries/explicit-url', '/explicit-url', new Error('Base content must be a site')].forEach(function (actual) {
+        var index = 0;
+        var result = suite.runTests(function () {
+            var test = suite.testCases[index++];
+            if (index !== suite.testCases.length) {
+                return expectedOutcome(test);
+            }
+            if (actual instanceof Error) {
+                throw actual;
+            }
+            return actual;
+        });
+        var last = result.results[result.results.length - 1];
+        t.assertEquals(true, last.expectedError);
+        t.assertNull(last.expected);
+        t.assertEquals(actual instanceof Error ? 'OK' : 'FAIL', last.verdict);
+        t.assertEquals(actual instanceof Error ? 0 : 1, result.failed);
     });
 };

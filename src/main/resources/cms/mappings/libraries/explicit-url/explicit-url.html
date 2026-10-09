@@ -54,14 +54,16 @@
         The main-site and nested-site sections also cover <code>/unbased/folder</code> and
         <code>/unbased/subsite/folder</code>. Both sites have no assigned apps or configured base URL.
         Content outside a site is covered by <code>/libraries/explicit-url</code>, including
-        selection of its parent folder <code>/libraries</code> as an explicit base.
+        selection of its parent folder <code>/libraries</code> as an explicit base. The last case
+        expects an exception because this base is a folder, not a site content item; no exact error
+        message is required. Returning a URL or <code>null</code> fails the case.
         These targets must exist on both branches.
     </p>
     <p>
         The Java bridge maps these fixed inputs to RC3's <code>PortalUrlService.portalScope</code>
         and <code>pageUrlParts</code> APIs, then joins the returned URL parts. RC3 resolves a
-        selected base to its nearest site or project; folder-relative expectations remain in
-        this baseline to show any differences. Query spaces encoded as <code>+</code> or
+        selected base to its nearest site or project; the last case checks the stricter expectation
+        that an explicitly selected base must itself be a site. Query spaces encoded as <code>+</code> or
         <code>%20</code> are treated as equivalent.
     </p>
 </details>
@@ -75,7 +77,7 @@
             <td><span data-th-text="${row.label}">Case</span><pre data-th-text="${row.call}">call</pre></td>
             <td>
                 <strong data-th-if="${row.expectedError}">Exception: </strong>
-                <code data-th-text="${row.expected == null ? 'null' : row.expected}">expected</code>
+                <code data-th-text="${row.expected == null ? (row.expectedError ? 'any error message' : 'null') : row.expected}">expected</code>
             </td>
             <td>
                 <strong data-th-if="${row.error}">Exception: </strong>
