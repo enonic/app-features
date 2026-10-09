@@ -1,9 +1,9 @@
 <node>
-    <id>features</id>
+    <id>5b7e2f10-8c46-4d93-b0a5-6e19cf3d72ab</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2019-03-13T08:49:51.645Z</timestamp>
-    <inheritPermissions>false</inheritPermissions>
+    <timestamp>2026-09-09T09:01:00.000Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="user:system:anonymous">
             <allow type="array">
@@ -44,43 +44,32 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Features</string>
-        <string name="type">portal:site</string>
-        <dateTime name="modifiedTime">2019-03-13T08:49:51.644Z</dateTime>
-        <string name="modifier">user:system:anonymous</string>
-        <string name="creator">user:system:anonymous</string>
-        <dateTime name="createdTime">2015-02-11T11:01:56.747Z</dateTime>
-        <property-set name="data">
-            <string name="description">The Features Site.</string>
-            <property-set name="siteConfig">
-                <string name="applicationKey">portal</string>
-                <property-set name="config">
-                    <string name="baseUrl">https://example.com/features</string>
-                </property-set>
-            </property-set>
-            <property-set name="siteConfig">
-                <string name="applicationKey">com.enonic.app.features</string>
-                <property-set name="config"/>
-            </property-set>
-        </property-set>
+        <string name="displayName">apiUrl</string>
+        <string name="type">com.enonic.app.features:landing-page</string>
+        <string name="owner">user:system:su</string>
+        <dateTime name="modifiedTime">2015-07-14T13:49:07.166Z</dateTime>
+        <string name="modifier">user:system:su</string>
+        <string name="creator">user:system:su</string>
+        <dateTime name="createdTime">2015-07-14T13:48:49.798Z</dateTime>
+        <property-set name="data"/>
         <property-set name="components">
             <string name="type">page</string>
             <string name="path">/</string>
             <property-set name="page">
-                <string name="descriptor">com.enonic.app.features:main</string>
+                <string name="descriptor">com.enonic.app.features:default</string>
                 <boolean name="customized">true</boolean>
-                <property-set name="config">
-                    <property-set name="com-enonic-app-features">
-                        <property-set name="main"/>
-                    </property-set>
-                </property-set>
             </property-set>
         </property-set>
         <property-set name="components">
-            <string name="type">text</string>
+            <string name="type">part</string>
             <string name="path">/main/0</string>
-            <property-set name="text">
-                <string name="value">Hello world!</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.features:apiUrl</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-features">
+                        <property-set name="apiUrl"/>
+                    </property-set>
+                </property-set>
             </property-set>
         </property-set>
     </data>
@@ -101,17 +90,17 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>components.page.config.com-enonic-app-features.main.*</path>
+                <path>components.part.config.com-enonic-app-features.apiUrl.*</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>false</decideByType>
+                    <decideByType>true</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>data.siteConfig.applicationkey</path>
+                <path>components.page.config.com-enonic-app-features.default.*</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -198,23 +187,23 @@
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>true</decideByType>
+                    <decideByType>false</decideByType>
                     <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
                 </indexConfig>
-                <path>x.*</path>
+                <path>data.htmlarea_text</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
                     <decideByType>false</decideByType>
                     <enabled>true</enabled>
-                    <nGram>true</nGram>
-                    <fulltext>true</fulltext>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>attachment.text</path>
+                <path>x</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -238,36 +227,6 @@
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>owner</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>modifier</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>modifiedTime</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
                     <decideByType>true</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
@@ -275,26 +234,6 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>data</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>creator</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>createdTime</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>

@@ -1,0 +1,64 @@
+<div>
+    <h2>pageUrl</h2>
+    <p>
+        Generates a URL to a page. Called with a <code>path</code> or an <code>id</code>, optionally
+        with a <code>type</code>, query <code>params</code>, and a <code>project</code> or
+        <code>branch</code> to specify the context explicitly.
+    </p>
+    <h3>Link to the current page</h3>
+    <p>Use the content path for a navigation link. Add query parameters to carry a search term or filter.</p>
+    <pre><code>const url = portal.pageUrl({
+    path: portal.getContent()._path,
+    params: {q: 'a b&amp;c'}
+});</code></pre>
+    <p>The examples below show the generated URLs for this page and explain how each option changes them.</p>
+    <p>
+        Requested on branch <code data-th-text="${branch}">branch</code>.
+        <br>
+        Site base URL: <code data-th-text="${baseUrl}">not set</code>.
+    </p>
+    <p>
+        In the examples, <code>path</code> is <code data-th-text="${path}"></code> and
+        <code>id</code> is <code data-th-text="${id}"></code>.
+    </p>
+    <h3>Request-relative calls</h3>
+    <p>
+        Answered against the request being served, so they follow the vhost and come out relative
+        to it.
+    </p>
+    <table>
+        <tr>
+            <th>Example</th>
+            <th>Behavior</th>
+            <th>Generated URL</th>
+        </tr>
+        <tr data-th-each="row : ${requestRows}">
+            <td><code data-th-text="${row.call}">call</code></td>
+            <td data-th-text="${row.expected}"></td>
+            <td>
+                <div data-th-if="${row.link}">
+                    <a data-th-href="${row.got}" data-th-text="${row.got}">url</a>
+                </div>
+                <div data-th-unless="${row.link}"><code data-th-text="${row.got}"></code></div>
+                <p data-th-if="${row.note}" data-th-text="${row.note}"></p>
+            </td>
+        </tr>
+    </table>
+
+    <h3>Explicit URL tests</h3>
+    <p>
+        <a data-th-href="${explicitTestsUrl}">Open the explicit URL test page</a>
+        for fixed inputs and expected URLs covering the main site and nested site.
+    </p>
+
+    <details>
+        <summary>Behavior checks</summary>
+        <p data-th-text="${summary}">summary</p>
+        <ul>
+            <li data-th-each="row : ${requestRows}">
+                <code data-th-text="${row.call}">call</code>:
+                <span data-th-class="${row.cls}" data-th-text="${row.verdict}">?</span>
+            </li>
+        </ul>
+    </details>
+</div>
