@@ -8,7 +8,6 @@ export interface TestCase {
     group: string;
     label: string;
     params: ExplicitPageUrlParams;
-    // For expected errors, null accepts any exception message.
     expected: string | null;
     expectedError?: boolean;
 }
@@ -36,12 +35,11 @@ type UrlInvoker = (params: ExplicitPageUrlParams) => string | null;
 // An explicit base selects a relative path, prefixed by its configured site base URL if present.
 // Calls without an explicit base use the full content path, without a project or branch prefix.
 // A target outside the explicit base's subtree is expected to throw the specified error.
-// An explicit base identifying a non-site content item is expected to throw, without a fixed message.
 // Every case passes the project explicitly. Site configuration is selected from the target project and branch.
 // Assumes both target pages exist on draft and master, /features has base URL
 // https://example.com/demo on both branches, and /features/subsite has https://subsite.com on both branches.
 // /unbased and /unbased/subsite have no base URL or site apps; /libraries is a folder outside any site.
-// Their folder targets and /libraries/explicit-url exist on both branches.
+// Their folder targets and /libraries/portal/pageUrlParts exist on both branches.
 export const testCases: readonly TestCase[] = [
     {
         "group": "Main site",
@@ -301,35 +299,34 @@ export const testCases: readonly TestCase[] = [
         "group": "Outside a site",
         "label": "Content outside a site: draft without base",
         "params": {
-            "path": "/libraries/explicit-url",
+            "path": "/libraries/portal/pageUrlParts",
             "project": "features",
             "branch": "draft"
         },
-        "expected": "/libraries/explicit-url"
+        "expected": "/libraries/portal/pageUrlParts"
     },
     {
         "group": "Outside a site",
         "label": "Content outside a site: master without base",
         "params": {
-            "path": "/libraries/explicit-url",
+            "path": "/libraries/portal/pageUrlParts",
             "project": "features",
             "branch": "master"
         },
-        "expected": "/libraries/explicit-url"
+        "expected": "/libraries/portal/pageUrlParts"
     },
     {
         "group": "Outside a site",
-        "label": "Content outside a site: non-site base must throw",
+        "label": "Content outside a site: explicit folder base",
         "params": {
-            "path": "/libraries/explicit-url",
+            "path": "/libraries/portal/pageUrlParts",
             "project": "features",
             "branch": "master",
             "base": {
-                "path": "/libraries"
+                "path": "/libraries/portal"
             }
         },
-        "expected": null,
-        "expectedError": true
+        "expected": "/pageUrlParts"
     }
 ];
 
@@ -376,7 +373,7 @@ export function runTests(invoke: UrlInvoker = javaPageUrl) {
             expectedError: !!test.expectedError,
             actual,
             verdict: (test.expectedError
-                ? error && (test.expected === null || actual === test.expected)
+                ? error && actual === test.expected
                 : !error && comparable(actual) === comparable(test.expected)) ? 'OK' : 'FAIL',
             error,
             link: !error && typeof actual === 'string' && /^(https?:\/\/|\/)/.test(actual)

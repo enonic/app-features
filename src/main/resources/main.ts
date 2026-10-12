@@ -87,7 +87,8 @@ function initializeProject() {
 const testEntryPoints = [
     {parentPath: '/', name: 'schedule-types', displayName: 'Schedule types'},
     {parentPath: '/', name: 'libraries', displayName: 'Library tests'},
-    {parentPath: '/libraries', name: 'explicit-url', displayName: 'Explicit URL tests'},
+    {parentPath: '/libraries', name: 'portal', displayName: 'Lib Portal'},
+    {parentPath: '/libraries/portal', name: 'pageUrlParts', displayName: 'pageUrlParts', legacyPath: '/libraries/explicit-url'},
     {parentPath: '/libraries', name: 'cluster', displayName: 'Lib Cluster'},
     {parentPath: '/libraries', name: 'content', displayName: 'Lib Content'},
     {parentPath: '/libraries', name: 'context', displayName: 'Lib Context'},
@@ -114,7 +115,7 @@ const testEntryPoints = [
     {parentPath: '/libraries', name: 'node-listing', displayName: 'NodeService list and enumerate'}
 ];
 
-function createTestEntryPoints() {
+export function createTestEntryPoints() {
     const created: string[] = [];
 
     testEntryPoints.forEach((entry) => {
@@ -124,28 +125,62 @@ function createTestEntryPoints() {
             return;
         }
 
-        contentLib.create({
-            name: entry.name,
-            parentPath: entry.parentPath,
-            displayName: entry.displayName,
-            contentType: 'base:folder',
-            requireValid: true,
-            data: {}
-        });
+        if (entry.legacyPath && contentLib.exists({key: entry.legacyPath})) {
+            const moved = contentLib.move({source: entry.legacyPath, target: path});
+            contentLib.update({
+                key: moved._id,
+                editor: (content) => {
+                    content.displayName = entry.displayName;
+                    return content;
+                }
+            });
+            log.info('Moved test entry point ' + entry.legacyPath + ' to ' + path);
+        } else {
+            contentLib.create({
+                name: entry.name,
+                parentPath: entry.parentPath,
+                displayName: entry.displayName,
+                contentType: 'base:folder',
+                requireValid: true,
+                data: {}
+            });
+        }
 
         created.push(path);
     });
 
     if (created.length === 0) {
         log.info('Test entry points are all present');
+    } else {
+        log.info('Created or moved ' + created.length + ' test entry point(s): ' + created.join(', '));
+    }
+
+    // Also finish publishing after an interrupted creation or move.
+    const toPublish = contextLib.run({branch: 'master'}, () => testEntryPoints.map((entry) =>
+        (entry.parentPath === '/' ? '' : entry.parentPath) + '/' + entry.name
+    ).filter((path) => created.indexOf(path) !== -1 || !contentLib.exists({key: path})));
+    if (toPublish.length === 0) {
         return;
     }
 
-    log.info('Created ' + created.length + ' test entry point(s): ' + created.join(', '));
+    // Updating the display name resets workflow. Complete this migration even when a previous
+    // start moved the page but stopped before it could be published.
+    testEntryPoints.filter((entry) => entry.legacyPath).forEach((entry) => {
+        const path = entry.parentPath + '/' + entry.name;
+        if (toPublish.indexOf(path) !== -1) {
+            contentLib.updateWorkflow({
+                key: path,
+                editor: (workflow) => {
+                    workflow.state = 'READY';
+                    return workflow;
+                }
+            });
+        }
+    });
 
     // Publish what was just created, so the bulk publish below does not have to run again for it.
     const result = contentLib.publish({
-        keys: created,
+        keys: toPublish,
         includeDependencies: true,
         message: 'Test entry points'
     });
@@ -153,7 +188,7 @@ function createTestEntryPoints() {
     log.info('Published ' + result.pushedContents.length + ' test entry point(s)');
 
     if (result.failedContents.length !== 0) {
-        log.warning('Failed to publish ' + result.failedContents.length + ' test entry point(s)');
+        log.warning('Failed to publish test entry points: ' + JSON.stringify(result.failed));
     }
 }
 

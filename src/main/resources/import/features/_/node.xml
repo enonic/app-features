@@ -55,7 +55,7 @@
             <property-set name="siteConfig">
                 <string name="applicationKey">portal</string>
                 <property-set name="config">
-                    <string name="baseUrl">https://example.com/features</string>
+                    <string name="baseUrl">https://example.com/demo</string>
                 </property-set>
             </property-set>
             <property-set name="siteConfig">
