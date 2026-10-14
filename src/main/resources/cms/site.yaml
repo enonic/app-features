@@ -55,6 +55,14 @@ mappings:
     order: 50
     invertPattern: false
     pattern: "/libraries"
+  - controller: "/cms/mappings/libraries/portal/portal.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/portal"
+  - controller: "/cms/mappings/libraries/portal/pageUrlParts/pageUrlParts.js"
+    order: 50
+    invertPattern: false
+    pattern: "/libraries/portal/pageUrlParts"
   - controller: "/cms/mappings/libraries/cluster/cluster.js"
     order: 50
     invertPattern: false

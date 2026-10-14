@@ -41,7 +41,7 @@ function hintFor(message: string): string | null {
 }
 
 export const handleError = function (err: ErrorRequest) {
-    log.error("Error:" + JSON.stringify(err, null, 2));
+    log.error('Error: %s', JSON.stringify(err, null, 2));
     const debugMode = err.request.params.debug === 'true';
     if (debugMode && (err.request.mode === 'preview' || err.request.mode === 'edit')) {
         return null;

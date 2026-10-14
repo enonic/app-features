@@ -5,8 +5,6 @@ export function assetUrl() {
         path: 'error/css/custom.css',
     });
 
-    log.info('AssetUrl result: ' + JSON.stringify(url, null, 4));
-
     return url;
 }
 
@@ -18,8 +16,6 @@ export function attachmentUrl() {
         download: true
     });
 
-    log.info('AttachmentUrl result: ' + JSON.stringify(url, null, 4));
-
     return url;
 }
 
@@ -29,8 +25,6 @@ export function componentUrl() {
     const url = portal.componentUrl({
         component: 'main/0'
     });
-
-    log.info('ComponentUrl result: ' + JSON.stringify(url, null, 4));
 
     return url;
 }
@@ -43,8 +37,6 @@ export function imageUrl() {
         scale: 'block(1024,768)',
         filter: 'rounded(5);sharpen()',
     });
-
-    log.info('ImageUrl result: ' + JSON.stringify(url, null, 4));
 
     return url;
 }
@@ -60,8 +52,6 @@ export function pageUrl() {
         }
     });
 
-    log.info('PageUrl result: ' + JSON.stringify(url, null, 4));
-
     return url;
 }
 
@@ -76,8 +66,6 @@ export function serviceUrl() {
         }
     });
 
-    log.info('ServiceUrl result: ' + JSON.stringify(url, null, 4));
-
     return url;
 }
 
@@ -89,8 +77,6 @@ export function processHtml() {
                '<a href="media://inline/5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b" target="">Inline</a>' +
                '<a href="media://download/5a5fc786-a4e6-4a4d-a21a-19ac6fd4784b" target="">Download</a>'
     });
-
-    log.info('ProcessHtml result: ' + JSON.stringify(processedHtml, null, 4));
 
     return processedHtml;
 }

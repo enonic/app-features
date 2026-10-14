@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Lib Portal</title>
+</head>
+<body>
+<p><a data-th-href="${backUrl}">Back to library tests</a></p>
+<h1>Lib Portal</h1>
+<p>Tests for the functions in <code>/lib/xp/portal</code>.</p>
+<ul data-th-if="${hasEntries}">
+    <li data-th-each="entry : ${entries}">
+        <a data-th-href="${entry.url}" data-th-text="${entry.displayName}">Function tests</a>
+    </li>
+</ul>
+<p data-th-unless="${hasEntries}">No portal tests found.</p>
+</body>
+</html>
