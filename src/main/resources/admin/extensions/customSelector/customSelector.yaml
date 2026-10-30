@@ -1,0 +1,5 @@
+kind: "AdminExtension"
+title: "Custom Selector"
+description: "Provides sample options for the CustomSelector form item"
+interfaces:
+  - "contentstudio.customselector"

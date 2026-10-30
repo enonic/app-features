@@ -11,4 +11,4 @@ form:
     occurrences:
       min: 0
       max: 2
-    service: "customSelector"
+    extension: "customSelector"
