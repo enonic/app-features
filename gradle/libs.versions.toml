@@ -1,7 +1,7 @@
 [versions]
 asset = "2.0.1"
 cron = "2.0.0"
-cache = "3.0.0"
+cache = "3.0.1"
 cors = "2.0.0"
 http-client = "4.0.1"
 router = "4.0.0"
