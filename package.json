@@ -32,8 +32,8 @@
     "@enonic-types/lib-websocket": "^8.0.0",
     "@swc/core": "^1.15.3",
     "@types/node": "^26.0.0",
-    "glob": "^13.0.6",
-    "tsup": "^8.5.1",
+    "glob": "^14.0.3",
+    "tsup": "^9.0.0",
     "typescript": "^5.9.3"
   }
 }

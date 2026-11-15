@@ -1,16 +1,22 @@
-var helper = require('/lib/custom-selector-helper');
+import type { Request, RequestParams } from '@enonic-types/core';
 
-function handleGet(req) {
+interface CustomSelectorHelper {
+    parseparams(params: RequestParams): unknown;
+    createresults(items: unknown[], params: unknown): string;
+}
+const helper = require('/lib/custom-selector-helper') as CustomSelectorHelper;
 
-    var params = helper.parseparams(req.params);
-
-    var body = helper.createresults(getItems(), params);
+function handleGet(req: Request) {
+    const params = helper.parseparams(req.params);
+    const body = helper.createresults(getItems(), params);
 
     return {
         contentType: 'application/json',
         body: body
-    }
+    };
 }
+
+export { handleGet as GET };
 
 function getItems() {
     return [
@@ -33,22 +39,20 @@ function getItems() {
     ];
 }
 
-function getItemFor(color, desc) {
+function getItemFor(color: string, desc: string) {
     return {
         id: color,
         displayName: color,
         description: desc,
         icon: getIconFor(color)
-    }
+    };
 }
 
-function getIconFor(color) {
+function getIconFor(color: string) {
     return {
         data: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">' +
         '<rect x="0" y="0" width="32" height="32" rx="4" ry="4" fill="' + color + '"/>' +
         '</svg>',
         type: 'image/svg+xml'
-    }
+    };
 }
-
-exports.get = handleGet;

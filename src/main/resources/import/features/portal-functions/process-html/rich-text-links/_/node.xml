@@ -1,0 +1,142 @@
+<node>
+    <id>3c856dd6-1b13-4973-b384-185449620586</id>
+    <childOrder>modifiedtime DESC</childOrder>
+    <nodeType>content</nodeType>
+    <timestamp>2019-03-13T08:49:52.153Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
+    <permissions>
+        <principal key="user:system:anonymous">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.authenticated">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
+    <data>
+        <boolean name="valid">true</boolean>
+        <string name="displayName">Rich text links</string>
+        <string name="type">com.enonic.app.features:htmlarea</string>
+        <string name="owner">user:system:su</string>
+        <dateTime name="modifiedTime">2015-07-07T11:50:13.478Z</dateTime>
+        <string name="modifier">user:system:su</string>
+        <string name="creator">user:system:su</string>
+        <dateTime name="createdTime">2015-07-07T11:48:51.393Z</dateTime>
+        <property-set name="data">
+            <string name="htmlarea_text">&lt;p&gt;Links to contents of the site: &lt;a href="content://9c806e53-ff57-4835-a9bd-06126ddfb838"&gt;Oslo&lt;/a&gt;, &lt;a href="content://9c806e53-ff57-4835-a9bd-06126ddfb838?query=ref%3Ddemo&amp;amp;fragment=top"&gt;Oslo, with a query and a fragment&lt;/a&gt; and &lt;a href="content://features"&gt;the site itself&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Links to media: &lt;a href="media://download/a3e276b6-62a9-44e8-ace2-3bd2e9f08d2f"&gt;Download the tune&lt;/a&gt; and &lt;a href="media://inline/df6b0084-4bd4-4bf6-ae49-62ccad48d6b8"&gt;open the photo&lt;/a&gt;.&lt;/p&gt;
+&lt;figure class="captioned editor-align-justify"&gt;
+&lt;img alt="Gasa Dzong" src="image://df6b0084-4bd4-4bf6-ae49-62ccad48d6b8" style="width:100%" /&gt;
+&lt;figcaption&gt;Gasa Dzong&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure class="editor-align-justify"&gt;
+&lt;img alt="Renault 4" src="image://a3cc4a32-a278-4fc6-bc9b-4e8b337003dd" style="width:100%" /&gt;
+&lt;figcaption&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;</string>
+        </property-set>
+    </data>
+    <indexConfigs>
+        <defaultConfig>
+            <decideByType>true</decideByType>
+            <enabled>true</enabled>
+            <nGram>false</nGram>
+            <fulltext>false</fulltext>
+            <includeInAllText>false</includeInAllText>
+        </defaultConfig>
+        <pathIndexConfigs>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>x</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>type</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>site</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <languages>
+                        <language>en</language>
+                    </languages>
+                </indexConfig>
+                <path>displayName</path>
+            </pathIndexConfig>
+        </pathIndexConfigs>
+        <allTextIndexConfig/>
+    </indexConfigs>
+</node>
