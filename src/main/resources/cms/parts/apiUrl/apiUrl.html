@@ -1,0 +1,47 @@
+<div>
+    <h2>apiUrl</h2>
+    <p>
+        Generates a URL to a Universal API. The form depends on where it is called: a service point
+        under the current site, webapp or admin tool, and the <code>/api/</code> form otherwise. Takes
+        an <code>api</code> descriptor key, and optionally a <code>type</code>, a <code>path</code> as
+        a string or an array of segments, and query <code>params</code>.
+    </p>
+    <h3>Build a link to an API</h3>
+    <p>Use the API descriptor key to locate an endpoint. Add path segments and query parameters as needed.</p>
+    <pre><code>const url = portal.apiUrl({
+    api: 'com.enonic.app.features:sse',
+    type: 'absolute'
+});</code></pre>
+    <p>The examples below show how the same API is addressed with different options. A generated URL
+        does not guarantee that the API accepts the example path or that the visitor has access.</p>
+    <p>Site base URL: <code data-th-text="${baseUrl}">not set</code>.</p>
+    <table>
+        <tr>
+            <th>Example</th>
+            <th>Behavior</th>
+            <th>Generated URL</th>
+        </tr>
+        <tr data-th-each="row : ${rows}">
+            <td><code data-th-text="${row.call}">call</code></td>
+            <td data-th-text="${row.expected}"></td>
+            <td>
+                <div data-th-if="${row.link}">
+                    <a data-th-href="${row.got}" data-th-text="${row.got}">url</a>
+                </div>
+                <div data-th-unless="${row.link}"><code data-th-text="${row.got}"></code></div>
+                <p data-th-if="${row.note}" data-th-text="${row.note}"></p>
+            </td>
+        </tr>
+    </table>
+
+    <details>
+        <summary>Behavior checks</summary>
+        <p data-th-text="${summary}">summary</p>
+        <ul>
+            <li data-th-each="row : ${rows}">
+                <code data-th-text="${row.call}">call</code>:
+                <span data-th-class="${row.cls}" data-th-text="${row.verdict}">?</span>
+            </li>
+        </ul>
+    </details>
+</div>
