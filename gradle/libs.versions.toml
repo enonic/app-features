@@ -16,7 +16,7 @@ sql = "2.0.0"
 h2 = "2.5.252"
 recaptcha = "4.0.1"
 qrcode = "3.0.1"
-markdown = "2.0.0"
+markdown = "2.0.1"
 junit-bom = "6.1.3"
 
 [libraries]
