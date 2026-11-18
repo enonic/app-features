@@ -1,0 +1,41 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title: "CustomValidator"
+description: "Content type with server-side validation of a file and of an input inside an option set"
+form:
+  - type: "AttachmentUploader"
+    name: "file"
+    label: "File"
+    helpText: "Only a readable, non-empty zip archive is allowed. Any other file is rejected by the server-side validator."
+    occurrences:
+      min: 1
+      max: 1
+  - type: "OptionSet"
+    name: "choice"
+    expanded: false
+    label: "Choice"
+    helpText: "Select Colour and enter red, green or blue (case-insensitive). Any other value is rejected by the server-side validator; an empty value is accepted."
+    occurrences:
+      min: 0
+      max: 0
+    options:
+      - name: "color"
+        label: "Colour"
+        selected: false
+        items:
+          - type: "TextLine"
+            name: "value"
+            label: "Colour"
+            helpText: "Allowed values are red, green and blue (case-insensitive). Any other value is rejected by the server-side validator."
+            occurrences:
+              min: 0
+              max: 1
+      - name: "none"
+        label: "None"
+        selected: false
+    selection:
+      min: 1
+      max: 1
