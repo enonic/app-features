@@ -61,7 +61,7 @@ repositories {
 
 node {
     download = true
-    version = '22.15.1'
+    version = '22.23.5'
 }
 
 test {
